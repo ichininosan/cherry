@@ -7,20 +7,21 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.cherry.dao.DestinationInfoDAO;
 import com.internousdev.cherry.dto.DestinationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class PurchaseInfoAction extends ActionSupport implements SessionAware{
+public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 
 	/**
 	 * セッション
 	 */
-	private Map<String, Object> session;
+	private Map<String,Object> session;
 
 	/**
 	 * 合計金額
 	 */
-	private int totalPrice = 0;
+	private int totalPrice=0;
 
 	/**
 	 * 個数
@@ -28,19 +29,21 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware{
 	private int count;
 
 	/**
-	 * カード情報一覧
+	 * カート情報一覧
 	 */
 	private List<CartInfoDTO> cartInfoDTOList = new ArrayList<CartInfoDTO>();
 
 	/**
 	 * 宛先情報一覧
 	 */
-	private ArrayList<DestinationInfoDTO> addressInfoDTOList = new ArrayList<DestinationInfoDTO>();
+	private ArrayList<DestinationInfoDTO> destinationInfoListDTO = new ArrayList<DestinationInfoDTO>();
 
 	/**
 	 * 決済情報取得メソッド
 	 */
 	public String execute() throws SQLException{
+		String result = ERROR;
+
 		CartInfoDAO cartInfoDAO = new CartInfoDAO();
 		cartInfoDTOList = cartInfoDAO.showUserCartList(session.get("userId").toString());
 
@@ -59,46 +62,20 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware{
 		/**
 		 * 宛先情報取得メソッド
 		 */
-		AddressInfoDAO addressInfoDAO = new AddressInfoDAO();
-		addressInfoListDTO = addressInfoDAO.obtainingaddressInfo(session.get("userId").toString());
+		DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
+		destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
 
-		if(addressInfoListDTO.size() > 0) {
+		if(destinationInfoListDTO.size() > 0) {
 			result = SUCCESS;
 
 		} else if(!(boolean) session.get("loginFlg")) {
 			result=ERROR;
 
 		} else {
-			result = "ADDRESS";
+			result = "destination";
 
 		}
 
 		return result;
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
