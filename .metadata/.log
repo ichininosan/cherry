@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 !SESSION 2018-01-05 14:43:41.250 -----------------------------------------------
+=======
+!SESSION 2018-01-05 14:38:58.457 -----------------------------------------------
+>>>>>>> 12c5a4361e2c10838d45d7e1c9c43a730cd219ed
 eclipse.buildId=4.5.2.M20160212-1500
 java.version=1.8.0_74
 java.vendor=Oracle Corporation
@@ -6,6 +10,7 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ja_JP
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.jface 2 0 2018-01-05 14:43:53.790
 !MESSAGE キーバインドの競合が発生しました。 通常のアクセラレーター操作を妨げる可能性があります。
 !SUBENTRY 1 org.eclipse.jface 2 0 2018-01-05 14:43:53.790
@@ -409,6 +414,9 @@ Binding(ALT+SHIFT+D R,
 	org.eclipse.ui.contexts.window,,,system)
 
 !ENTRY org.eclipse.ui 4 0 2018-01-05 18:17:50.659
+=======
+!ENTRY org.eclipse.ui 4 0 2018-01-05 14:39:31.411
+>>>>>>> 12c5a4361e2c10838d45d7e1c9c43a730cd219ed
 !MESSAGE 未処理のイベント・ループ例外
 !STACK 0
 org.eclipse.swt.SWTException: Failed to execute runnable (java.lang.NoSuchMethodError: org.eclipse.ui.internal.registry.FileEditorMapping.setDefaultEditor(Lorg/eclipse/ui/internal/registry/EditorDescriptor;)V)
@@ -416,7 +424,15 @@ org.eclipse.swt.SWTException: Failed to execute runnable (java.lang.NoSuchMethod
 	at org.eclipse.swt.SWT.error(SWT.java:4406)
 	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:138)
 	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4155)
+<<<<<<< HEAD
 	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3772)
+=======
+	at org.eclipse.swt.widgets.Display.msgFilterProc(Display.java:3487)
+	at org.eclipse.swt.internal.win32.OS.TrackPopupMenu(Native Method)
+	at org.eclipse.swt.widgets.Menu._setVisible(Menu.java:262)
+	at org.eclipse.swt.widgets.Display.runPopups(Display.java:4221)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3763)
+>>>>>>> 12c5a4361e2c10838d45d7e1c9c43a730cd219ed
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
 	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
@@ -444,4 +460,8 @@ Caused by: java.lang.NoSuchMethodError: org.eclipse.ui.internal.registry.FileEdi
 	at org.eclipse.ui.internal.UISynchronizer$3.run(UISynchronizer.java:154)
 	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
 	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:135)
+<<<<<<< HEAD
 	... 23 more
+=======
+	... 27 more
+>>>>>>> 12c5a4361e2c10838d45d7e1c9c43a730cd219ed
