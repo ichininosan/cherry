@@ -4,6 +4,9 @@ import java.util.Date;
 
 public class DestinationInfoDTO {
 
+	/**
+	 * 宛先情報
+	 */
 	private int id;
 	private String userId;
 	private String familyName;

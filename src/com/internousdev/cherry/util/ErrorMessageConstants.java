@@ -1,6 +1,6 @@
 package com.internousdev.cherry.util;
 
-public class ErrorMessageConstants {
+public abstract interface ErrorMessageConstants {
 
 	/**
 	 * 入力エラーをまとめて処理

@@ -48,7 +48,7 @@ release_date datetime NOT NULL, -- 発売年月
 release_company varchar(50), -- 発売会社
 status tinyint NOT NULL DEFAULT 0,-- ステータス(0:無効、1:有効)
 regist_date datetime NOT NULL,-- 登録日
-update_time datetime,-- 更新日
+update_date datetime,-- 更新日
 FOREIGN KEY(category_id) REFERENCES m_category(category_id) ON UPDATE CASCADE
 );
 
@@ -101,7 +101,57 @@ update_date datetime-- 更新日
 
 
 
+-- ---------------↓INSERT文↓----------------------------
 
+INSERT INTO m_category(-- カテゴリーマスタテーブルへ
+	id,-- ID
+	category_id,-- カテゴリID
+	category_name,-- カテゴリ名
+	category_description,-- カテゴリ詳細
+	insert_date,-- 登録日
+	update_date-- 更新日
+)VALUES(
+	1,
+	4,
+	"ゲーム",
+	"ゲームに関するカテゴリー",
+	NOW(),
+	NOW()
+	);
+
+
+
+INSERT INTO product_info(-- 商品情報テーブルへ
+	id, -- ID
+	product_id,-- 商品ID
+    product_name,-- 商品名
+    product_name_kana,-- 商品名かな
+    product_description,-- 商品詳細
+    category_id,-- カテゴリID
+    price,-- 値段
+	image_file_path, -- 画像ファイルパス
+	image_file_name, -- 画像ファイル名
+	release_date,-- 発売年月
+	release_company,-- 発売会社
+	status,-- ステータス(0:無効、1:有効)
+	regist_date,-- 登録日
+	update_date-- 更新日
+)VALUES(
+	1,-- ID
+	1,-- 商品ID
+	"英雄伝説",-- 商品名
+	"えいゆうでんせつ",-- 商品名かな
+	"おもしろいゲーム",
+	4,
+	2000,
+	"./image/",
+	"test_game.jpeg",
+	cast('2017-12-31' as date),
+	"ファルファル",
+	1,
+	NOW(),
+	NOW()
+	);
 
 
 
