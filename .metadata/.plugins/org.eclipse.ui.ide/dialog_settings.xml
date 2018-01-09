@@ -2,31 +2,13 @@
 <section name="Workbench">
 	<section name="ExternalProjectImportWizard">
 		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
-<<<<<<< HEAD
-		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
-		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
-		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value="C:\Users\internousdev\Desktop\workspace\workspace-ochiai\cherry"/>
-=======
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value="C:\Users\internousdev\Desktop\workspace\workspace-honma\cherry"/>
->>>>>>> 12c5a4361e2c10838d45d7e1c9c43a730cd219ed
+			<item value="C:\Users\internousdev\Desktop\workspace\workspace-honma\cherry\cherry"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
 		</list>
 	</section>
-<<<<<<< HEAD
-=======
-	<section name="WORKBENCH_SETTINGS">
-		<list key="ENABLED_TRANSFERS">
-		</list>
-	</section>
-	<section name="ChooseWorkspaceDialogSettings">
-		<item value="31" key="DIALOG_X_ORIGIN"/>
-		<item value="221" key="DIALOG_Y_ORIGIN"/>
-	</section>
->>>>>>> 12c5a4361e2c10838d45d7e1c9c43a730cd219ed
 </section>
