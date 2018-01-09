@@ -16,37 +16,59 @@ public class PurchaseCompleteDAO {
 	private Connection con=db.getConnection();
 	private DateUtil dateUtil=new DateUtil();
 
-	/*
-	 * カート情報取得
-	 * @param user_id
-	 * @param product_id
-	 * @return
-	 * @throws SQLExcception
-	 */
+	      /**
+	       * 購入履歴にカートの情報を挿入
+	       * @param userId
+	       * @param productId
+	       * @throws SQLException
+	       */
 
-	public ArrayList<CartInfoDTO> setCartInfo(String user_Id, String product_id) throws SQLException {
-		ArrayList<CartInfoDTO> cartInfoDTO = new ArrayList<CartInfoDTO>();
+		public void purchaseHistoryInfo(String userId,int productId,int count) throws SQLException{
+			Connection con=db.getConnection();
+			String sql = "INSERT INTO purchase_history_info(user_id,product_id,count,insert_date)  VALUES(?,?,?,NOW())";
 
-	String sql="SELECT ci.id,ci.user_id, ci.product_id, ci.product_count, ci.price,ci.regist.date, ci.update_date FROM cart_info  ci RIGHT JOIN purchase-history-info phi ON ci.user_id=? AND product_id=?ORDER BY insert_date DESC";
+			try{
+				PreparedStatement preparedStatement = con.prepareStatement(sql);
+			    preparedStatement.setString(1,userId);
+			    preparedStatement.setInt(2, productId);
+			    preparedStatement.setInt(3, count);
 
-	try{
-		PreparedStatment ps=con.prepareStatement(sql);
-		ps.setString(1,user_id);
-		ps.setString(2,product_id);
-		ResultSet rs=ps.executeQuery();
+			    preparedStatement.execute();
 
-		while(rs.next()){
-			ProductInfoDTO pidto=new ProductInfoDTO();
-			pidto.setId(rs.getString("id"));
-			pidto.setProductId(rs.getString("product_id"));
-			pidto.setProductCount(rs.getString(""))
-		}
+			}catch(Exception e){
+				e.printStackTrace();
+			}try{
+				con.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
 
-	}catch{
-		(SQLException e){
-			e.printStackTrace();
-		}finally{
-			con.close();
-		}
+			/**
+			 * カートの情報を削除
+			 * @param userId
+			 */
+
+			public void deleteUserCartInfo(String userId) {
+				Connection con=db.getConnection();
+				String sql = "DELETE FROM cart_info WHERE user_id = ?";
+
+				try{
+				PreparedStatement preparedStatement = con.prepareStatement(sql);
+				preparedStatement.setString(1, userId);
+
+				preparedStatement.execute();
+
+			}catch(Exception e){
+				e.printStackTrace();
+			}try{
+				con.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+
+			}
+
+
+
+
 	}
-}
