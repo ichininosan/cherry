@@ -14,8 +14,6 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 
 	private String loginPassword;
 
-	private String loginPasswordc;
-
 	public Map<String,Object> session;
 
 	private ResetPasswordCompleteDAO resetPasswordCompleteDAO = new ResetPasswordCompleteDAO();
@@ -23,13 +21,13 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 	public String execute() throws SQLException {
 
 		resetPasswordCompleteDAO.resetPassword(session.get("loginUserId").toString(),
-				session.get("loginPassword").toString(),
-				session.get("loginPasswordc").toString());
+				session.get("loginPassword").toString());
 
 		String result = SUCCESS;
 
 		return result ;
 	}
+
 
 	public String getLoginUserId() {
 		return loginUserId;
@@ -47,13 +45,6 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 		this.loginPassword = loginPassword;
 	}
 
-	public String getLoginPasswordc() {
-		return loginPasswordc;
-	}
-
-	public void setLoginPasswordc(String loginPasswordc) {
-		this.loginPasswordc = loginPasswordc;
-	}
 
 
 

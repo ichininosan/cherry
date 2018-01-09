@@ -7,14 +7,14 @@ import java.sql.SQLException;
 import com.internousdev.cherry.util.DBConnector;
 import com.internousdev.cherry.util.DateUtil;
 
-
-public class ResetPasswordCompleteDAO  {
+public class ResetPasswordConfirmDAO  {
 
 	private DBConnector dbConnector = new DBConnector();
 
 	private Connection connection = dbConnector.getConnection();
 
 	private DateUtil dateUtil = new DateUtil();
+
 
 	private String sql = "INSERT INTO login_user_transaction (login_id, login_pass, insert_date) VALUES(?, ? ,?)";
 
