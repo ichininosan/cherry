@@ -46,7 +46,6 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public String getUser_id() {
 		return user_id;
 	}
-
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
@@ -54,7 +53,6 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
