@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import freemarker.template.utility.DateUtil;
+import com.internousdev.cherry.util.DBConnector;
 
 
 public class ResetPasswordCompleteDAO  {
@@ -13,7 +13,6 @@ public class ResetPasswordCompleteDAO  {
 
 	private Connection connection = dbConnector.getConnection();
 
-	private DateUtil dateUtil = new DateUtil();
 
 	private String sql = "INSERT INTO login_user_transaction (login_id, login_pass, login_passc, insert_date) VALUES(?, ? ,?, ?)";
 
@@ -24,7 +23,6 @@ public class ResetPasswordCompleteDAO  {
 			preparedStatement.setString(1, loginUserId);
 			preparedStatement.setString(2, loginUserPassword);
 			preparedStatement.setString(3, loginUserPasswordc);
-			preparedStatement.setString(4, dateUtil.getDate());
 
 			preparedStatement.execute();
 

@@ -22,19 +22,67 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	public String execute() {
 
 		String result = SUCCESS;
-		boolean a = loginUserId.equals("");
-		boolean b = loginPassword.equals("");
-		boolean c = loginPasswordc.equals("");
 
-		if(!a && !b && !c) {
-			session.put("loginUserId", loginUserId);
-			session.put("loginPassword", loginPassword);
-			session.put("loginPasswordc", loginPasswordc);
-		}else if(a && b && c){
-			setErrorMassage("IDを入力してください。");
-			result = ERROR;
-		}else
 
+		/**
+		 * 未入力
+		 */
+		if(!(loginUserId.equals(""))){
+			setErrorMassage("ログインIDを入力してください。");
+		}
+		if(!(loginPassword.equals(""))){
+			setErrorMassage("パスワードを入力してください。");
+		}
+		if(!(loginPasswordc.equals(""))){
+			setErrorMassage("再確認パスワードを入力してください。");
+		}
+
+		/**
+		 * 桁数
+		 */
+		if(loginUserId.matches("{1,8}")){
+			return SUCCESS;
+		}else{
+			System.out.println("ログインIDは1文字以上8文字以下で入力してください。");
+		}
+		if(loginPassword.matches("{1,16}")){
+			return SUCCESS;
+		}else{
+			System.out.println("パスワードは1文字以上16文字以下で入力してください。");
+		}
+		if(loginPasswordc.matches("{1,16}")){
+			return SUCCESS;
+		}else{
+			System.out.println("再確認パスワードは1文字以上16文字以下で入力してください。");
+		}
+
+		/**
+		 * 入力文字種違い
+		 */
+		if(loginUserId.matches("^[0-9a-zA-Z]+$")){
+			return SUCCESS;
+		}else{
+			System.out.println("ログインIDは半角英数字で入力してください。");
+		}
+		if(loginPassword.matches("^[0-9a-zA-Z]+$")){
+			return SUCCESS;
+		}else{
+			System.out.println("パスワードは半角英数字で入力してください。");
+		}
+		if(loginPasswordc.matches("^[0-9a-zA-Z]+$")){
+			return SUCCESS;
+		}else{
+			System.out.println("再確認パスワードは半角英数字で入力してください。");
+		}
+
+		/**
+		 * パスワード間違い
+		 */
+		if(loginPassword != loginPasswordc){
+			System.out.println("入力されたパスワードが異なります。");
+		}
+
+		result = ERROR;
 		return result;
 	}
 
