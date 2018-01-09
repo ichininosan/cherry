@@ -3,15 +3,15 @@ CREATE DATABASE cherry CHARACTER SET utf8;
 
 use cherry;
 
-
+-- -----------↓会員情報テーブル↓----------------------------
 CREATE TABLE user_info(
 id int PRIMARY KEY NOT NULL AUTO_INCREMENT,-- ID
 user_id varchar(16) UNIQUE KEY NOT NULL,-- ユーザーID
 password varchar(16) NOT NULL,-- パスワード
 family_name varchar(32) NOT NULL, -- 姓
 first_name varchar(32) NOT NULL,-- 名
-family_name_kana varchar(32),-- 姓かな
-first_name_kana varchar(32), -- 名かな
+family_name_kana varchar(32) NOT NULL,-- 姓かな
+first_name_kana varchar(32) NOT NULL, -- 名かな
 sex tinyint NOT NULL DEFAULT 0, -- 性別 (0:男性 1:女性)
 email varchar(32) NOT NULL,-- メールアドレス
 status tinyint NOT NULL DEFAULT 0,-- ステータス (0:無効、1:有効)
@@ -21,27 +21,103 @@ update_date datetime-- 更新日
 );
 
 
-CREATE TABLE product_info(
-id int PRIMARY KEY NOT NULL AUTO INCREMENT,-- ID
-product_id int UNIQUE KEY NOT NULL-- 商品ID
-product_name varchar(100) UNIQUE KEY NOT NULL,-- 商品名
-product_name_kana varchar(100) UNIQUE KEY NOT NULL,-- 商品名かな
--- 商品詳細
--- カテゴリID
--- 価格
--- 画像ファイルパス
--- 画像ファイル名
--- 発売年月
--- 発売会社
--- ステータス
--- 登録日
--- 更新日
+-- -----------↓カテゴリマスタテーブル↓----------------------------
+CREATE TABLE m_category(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT, -- ID
+category_id int NOT NULL UNIQUE KEY, -- カテゴリID
+category_name varchar(20) NOT NULL UNIQUE KEY, -- カテゴリ名
+category_description varchar(100), -- カテゴリ詳細
+insert_date datetime NOT NULL, -- 登録日
+update_date datetime-- 更新日
 );
 
-CREATE TABLE cart_info();
 
-CREATE TABLE purchase_history_info();
 
-CREATE TABLE destination_info();
+-- -----------↓商品情報テーブル↓----------------------------
+CREATE TABLE product_info(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,-- ID
+product_id int UNIQUE KEY NOT NULL,-- 商品ID
+product_name varchar(100) UNIQUE KEY NOT NULL,-- 商品名
+product_name_kana varchar(100) UNIQUE KEY NOT NULL,-- 商品名かな
+product_description varchar(255) NOT NULL,-- 商品詳細
+category_id int NOT NULL,-- カテゴリID
+price int ,-- 価格
+image_file_path varchar(100),-- 画像ファイルパス
+image_file_name varchar(50),-- 画像ファイル名
+release_date datetime NOT NULL, -- 発売年月
+release_company varchar(50), -- 発売会社
+status tinyint NOT NULL DEFAULT 0,-- ステータス(0:無効、1:有効)
+regist_date datetime NOT NULL,-- 登録日
+update_time datetime,-- 更新日
+FOREIGN KEY(category_id) REFERENCES m_category(category_id) ON UPDATE CASCADE
+);
 
-CREATE TABLE m_category();
+
+-- -----------↓カート情報テーブル↓----------------------------
+CREATE TABLE cart_info(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,-- ID
+user_id varchar(16) NOT NULL,-- ユーザーID
+temp_user_id varchar(128) UNIQUE KEY,-- 仮ユーザーID
+product_id int NOT NULL ,-- 商品ID
+product_count int NOT NULL,-- 個数
+price int NOT NULL,-- 金額
+regist_date datetime NOT NULL,-- 登録日
+update_date datetime,-- 更新日
+FOREIGN KEY(user_id) REFERENCES user_info(user_id) ON UPDATE CASCADE,
+FOREIGN KEY(product_id) REFERENCES product_info(product_id) ON UPDATE CASCADE
+);
+
+
+
+-- -----------↓購入履歴情報テーブル↓----------------------------
+CREATE TABLE purchase_history_info(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,-- ID
+user_id varchar(16) NOT NULL ,-- ユーザーID
+product_id int NOT NULL ,-- 商品ID
+product_count int NOT NULL ,-- 個数
+price int NOT NULL, -- 金額
+regist_date datetime NOT NULL,-- 登録日
+update_date datetime,-- 更新日
+FOREIGN KEY(user_id) REFERENCES user_info(user_id) ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY(product_id) REFERENCES product_info(product_id) ON UPDATE CASCADE
+);
+
+
+-- -----------↓宛先情報テーブル↓----------------------------
+CREATE TABLE destination_info(
+id int PRIMARY KEY NOT NULL AUTO_INCREMENT,-- ID
+user_id varchar(16) NOT NULL UNIQUE KEY,-- ユーザーID
+family_name varchar(32) NOT NULL,-- 姓
+first_name varchar(32) NOT NULL,-- 名
+family_name_kana varchar(32) NOT NULL,-- 姓かな
+first_name_kana varchar(32) NOT NULL,-- 名かな
+email varchar(32) NOT NULL,-- メールアドレス
+tell_number varchar(13) NOT NULL,-- 電話番号
+user_address varchar(50) NOT NULL,-- 住所
+regist_date datetime NOT NULL,-- 登録日
+update_date datetime-- 更新日
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
