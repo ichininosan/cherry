@@ -21,7 +21,7 @@ public class PurchaseCompleteDAO {
 	 * @param user_id
 	 * @param product_id
 	 * @return
-	 * @throws SQLException
+	 * @throws SQLExcception
 	 */
 
 	public ArrayList<CartInfoDTO> setCartInfo(String user_Id, String product_id) throws SQLException {

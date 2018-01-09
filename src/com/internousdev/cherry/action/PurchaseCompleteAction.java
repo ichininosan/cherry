@@ -17,7 +17,7 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 
 
 	/**
-	 * カート情報登録完了メソッド
+	 * カート情報登録登録メソッド
 	 */
 	public String execute() throws SQLException{
 			String result = SUCCESS;
