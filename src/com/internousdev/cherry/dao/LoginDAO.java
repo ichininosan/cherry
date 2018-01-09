@@ -12,19 +12,18 @@ public class LoginDAO {
 	private Connection connection = dbConnector.getConnection();
 	private LoginDTO loginDTO = new LoginDTO();
 
-	public LoginDTO getLoginUserInfo (String loginUserId,String loginPassword){
+	public LoginDTO getLoginUserInfo (String user_id,String password){
 		String sql = "SELECT * FROM login_user_transaction where login_id = ? AND login_pass =?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, loginUserId);
-			preparedStatement.setString(2, loginPassword);
+			preparedStatement.setString(1, user_id);
+			preparedStatement.setString(2, password);
 
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()){
-				loginDTO.setLoginId(resultSet.getString("login_id"));
-				loginDTO.setLoginPassword(resultSet.getString("login_pass"));
-				loginDTO.setUserName(resultSet.getString("user_name"));
+				loginDTO.setId(resultSet.getString("login_id"));
+				loginDTO.setPassword(resultSet.getString("login_pass"));
 
 				if(!(resultSet.getString("login_id").equals(null))){
 					loginDTO.setLoginFlg(true);

@@ -11,8 +11,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware{
 
-	private String loginUserId;
-	private String loginPassword;
+	private String user_id;
+	private String password;
+
 	private String result;
 	public Map<String, Object> session;
 	private LoginDAO loginDAO = new LoginDAO();
@@ -22,7 +23,7 @@ public class LoginAction extends ActionSupport implements SessionAware{
 
 		result = ERROR;
 
-		loginDTO = loginDAO.getLoginUserInfo(loginUserId, loginPassword);
+		loginDTO = loginDAO.getLoginUserInfo(user_id, password);
 
 		session.put("loginUser", loginDTO);
 
@@ -30,10 +31,10 @@ public class LoginAction extends ActionSupport implements SessionAware{
 			result = SUCCESS;
 
 /*			BuyItemDTO buyItemDTO = buyItemDAO.getBuyItemInfo();
-			session.put("login_user_id",	loginDTO.getLoginId());
+			session.put("user_id",	loginDTO.getUser_id());
 			session.put("id", buyItemDTO.getId());
-			session.put("buyItem_name", buyItemDTO.getItemName());
-			session.put("buyItem_price", buyItemDTO.getItemPrice());
+			session.put("product_name", buyItemDTO.getItemName());
+			session.put("price", buyItemDTO.getItemPrice());
 
 			return result;
 */
@@ -42,20 +43,20 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		return result;
 	}
 
-	public String getLoginUserId() {
-		return loginUserId;
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public void setLoginUserId(String loginUserId) {
-		this.loginUserId = loginUserId;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
-	public String getLoginPassword() {
-		return loginPassword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setLoginPassword(String loginPassword) {
-		this.loginPassword = loginPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Map<String, Object> getSession() {
