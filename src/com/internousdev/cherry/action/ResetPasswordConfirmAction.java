@@ -61,19 +61,13 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		/**
 		 * 入力文字種違い
 		 */
-		if(loginUserId.matches("^[0-9a-zA-Z]+$")){
-			return SUCCESS;
-		}else{
+		if(!(loginUserId.matches("^[0-9a-zA-Z]+$"))){
 			setErrorMassage("ログインIDは半角英数字で入力してください。");
 		}
-		if(loginPassword.matches("^[0-9a-zA-Z]+$")){
-			return SUCCESS;
-		}else{
+		if(!(loginPassword.matches("^[0-9a-zA-Z]+$"))){
 			setErrorMassage("パスワードは半角英数字で入力してください。");
 		}
-		if(loginPasswordc.matches("^[0-9a-zA-Z]+$")){
-			return SUCCESS;
-		}else{
+		if(!(loginPasswordc.matches("^[0-9a-zA-Z]+$"))){
 			setErrorMassage("再確認パスワードは半角英数字で入力してください。");
 		}
 
