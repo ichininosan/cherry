@@ -84,7 +84,7 @@
 						<label>パスワード:</label>
 					</td>
 					<td>
-						<input type="text" name="loginPassword" value="">
+						<input type="password" name="loginPassword" value="">
 					</td>
 				</tr>
 				<tr>
@@ -92,7 +92,7 @@
 						<label>再確認パスワード:</label>
 					</td>
 					<td>
-						<input type="text" name="loginPasswordc" value="">
+						<input type="password" name="loginPasswordc" value="">
 					</td>
 				</tr>
 				<s:submit value="登録" />
