@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<s:form action="TestAction">
-	<s:submit value="TEST"/>
+	<s:form action="SerchAction">
+	<s:submit value="Serch"/>
 	</s:form>
 
 </body>

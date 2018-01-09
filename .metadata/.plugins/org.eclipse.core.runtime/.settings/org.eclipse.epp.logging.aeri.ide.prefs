@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+eclipse.preferences.version=1
+resetSendMode=KEEP
+resetSendModeOn=0
+sendMode=NOTIFY
+=======
 anonymizeMessages=false
 anonymizeStackTraces=true
 configured=true
@@ -10,3 +16,4 @@ resetSendModeOn=0
 sendMode=NEVER
 servers/org.eclipse.epp.logging.aeri.ide.server/configured=true
 servers/org.eclipse.epp.logging.aeri.ide.server/enabled=false
+>>>>>>> 12c5a4361e2c10838d45d7e1c9c43a730cd219ed

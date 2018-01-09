@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+org.eclipse.rse.preferences.order.connections=00174045119499.\u30ED\u30FC\u30AB\u30EB
+=======
 org.eclipse.rse.preferences.order.connections=internous-PC.\u30ED\u30FC\u30AB\u30EB
+>>>>>>> 12c5a4361e2c10838d45d7e1c9c43a730cd219ed
