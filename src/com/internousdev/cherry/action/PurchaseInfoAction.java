@@ -21,7 +21,7 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 	/**
 	 * 合計金額
 	 */
-	private int totalPrice=0;
+	private int totalPrice;
 
 	/**
 	 * 個数

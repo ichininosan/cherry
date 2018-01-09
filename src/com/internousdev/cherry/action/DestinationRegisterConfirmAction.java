@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 
 
-public class DestinationInfoConfirmAction extends ActionSupport implements ErrorMessageConstants{
+public class DestinationRegisterConfirmAction extends ActionSupport implements ErrorMessageConstants{
 
 	private String familyName;
 	private String firstName;

@@ -9,7 +9,7 @@ import com.internousdev.cherry.dao.DestinationInfoDAO;
 import com.internousdev.cherry.dto.DestinationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class DestinationInfoCompleteAction extends ActionSupport implements SessionAware{
+public class DestinationRegisterCompleteAction extends ActionSupport implements SessionAware{
 
 	private Map<String, Object> session;
 	private String familyName;
