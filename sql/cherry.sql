@@ -14,7 +14,7 @@ family_name_kana varchar(32) NOT NULL,-- 姓かな
 first_name_kana varchar(32) NOT NULL, -- 名かな
 sex tinyint NOT NULL DEFAULT 0, -- 性別 (0:男性 1:女性)
 email varchar(32) NOT NULL,-- メールアドレス
-status tinyint NOT NULL DEFAULT 0,-- ステータス (0:無効、1:有効)
+status tinyint NOT NULL DEFAULT 1,-- ステータス (0:無効、1:有効)
 logined tinyint NOT NULL DEFAULT 0,-- ログインフラグ (0:未ログイン、1:ログイン済み)
 regist_date datetime NOT NULL,-- 登録日
 update_date datetime-- 更新日
@@ -83,7 +83,7 @@ FOREIGN KEY(product_id) REFERENCES product_info(product_id) ON UPDATE CASCADE
 );
 
 
--- -----------↓宛先情報テーブル↓----------------------------
+-- -----------↓宛先情報テーブル↓-----------------------------------
 CREATE TABLE destination_info(
 id int PRIMARY KEY NOT NULL AUTO_INCREMENT,-- ID
 user_id varchar(16) NOT NULL UNIQUE KEY,-- ユーザーID
@@ -101,9 +101,55 @@ update_date datetime-- 更新日
 
 
 
--- ---------------↓INSERT文↓----------------------------
+-- ---------------↓INSERT文↓--------------------------------------
 
-INSERT INTO m_category(-- カテゴリーマスタテーブルへ
+INSERT INTO user_info(-- ------会員情報テーブルへ-----------------
+	id,-- ID
+	user_id,-- ユーザーID
+	password,-- パスワード
+	family_name,-- 姓
+	first_name,-- 名
+	family_name_kana,-- 姓かな
+	first_name_kana, -- 名かな
+	sex,-- 性別 (0:男性 1:女性)
+	email,-- メールアドレス
+	regist_date -- 登録日
+)VALUES(
+	1,-- ID
+	"a",-- ユーザーID
+	"a",-- パスワード
+	"ポンデ",-- 姓
+	"ライオン",-- 名
+	"ぽんで",-- 姓かな
+	"らいおん", -- 名かな
+	0,-- 性別 (0:男性 1:女性)
+	"ponde@com",-- メールアドレス
+	NOW()-- 登録日
+);
+
+INSERT INTO destination_info(-- -----------宛先情報テーブルへ-----------
+	user_id,-- ユーザーID
+	family_name,-- 姓
+	first_name,-- 名
+	family_name_kana,-- 姓かな
+	first_name_kana,-- 名かな
+	email,-- メールアドレス
+	tell_number,-- 電話番号
+	user_address,-- 住所
+	regist_date-- 登録日
+)VALUES(
+	"a",-- ユーザーID
+	"ポンデ",-- 姓
+	"ライオン",-- 名
+	"ぽんで",-- 姓かな
+	"らいおん", -- 名かな
+	"ponde@com",-- メールアドレス
+	"080-0000-0000",-- 電話番号
+	"東京",-- 住所
+	NOW()-- 登録日
+);
+
+INSERT INTO m_category(-- --------カテゴリーマスタテーブルへ-----------
 	id,-- ID
 	category_id,-- カテゴリID
 	category_name,-- カテゴリ名
@@ -111,17 +157,17 @@ INSERT INTO m_category(-- カテゴリーマスタテーブルへ
 	insert_date,-- 登録日
 	update_date-- 更新日
 )VALUES(
-	1,
-	4,
-	"ゲーム",
-	"ゲームに関するカテゴリー",
-	NOW(),
-	NOW()
+	1, -- ID
+	4, -- カテゴリID
+	"ゲーム", -- カテゴリ名
+	"ゲームに関するカテゴリー", -- カテゴリ詳細
+	NOW(), -- 登録日
+	NOW() -- 更新日
 	);
 
 
 
-INSERT INTO product_info(-- 商品情報テーブルへ
+INSERT INTO product_info(-- ------商品情報テーブルへ--------------
 	id, -- ID
 	product_id,-- 商品ID
     product_name,-- 商品名
@@ -141,17 +187,19 @@ INSERT INTO product_info(-- 商品情報テーブルへ
 	1,-- 商品ID
 	"英雄伝説",-- 商品名
 	"えいゆうでんせつ",-- 商品名かな
-	"おもしろいゲーム",
-	4,
-	2000,
-	"./image/",
-	"test_game.jpeg",
-	cast('2017-12-31' as date),
-	"ファルファル",
-	1,
-	NOW(),
-	NOW()
+	"おもしろいゲーム", -- 商品詳細
+	4,-- カテゴリID
+	2000, -- 値段
+	"./image/", -- 画像ファイルパス
+	"test_game.jpeg",-- 画像ファイル名
+	cast('2017-12-31' as date),-- 発売年月
+	"ファルファル",-- 発売会社
+	1,-- ステータス(0:無効、1:有効)
+	NOW(),-- 登録日
+	NOW()-- 更新日
 	);
+
+
 
 
 
