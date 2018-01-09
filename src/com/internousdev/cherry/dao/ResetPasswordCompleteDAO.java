@@ -16,13 +16,12 @@ public class ResetPasswordCompleteDAO  {
 
 	private String sql = "INSERT INTO login_user_transaction (login_id, login_pass, login_passc, insert_date) VALUES(?, ? ,?, ?)";
 
-	public void resetPassword(String loginUserId, String loginUserPassword, String loginUserPasswordc) throws SQLException {
+	public void resetPassword(String loginUserId, String loginUserPassword) throws SQLException {
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, loginUserId);
 			preparedStatement.setString(2, loginUserPassword);
-			preparedStatement.setString(3, loginUserPasswordc);
 
 			preparedStatement.execute();
 

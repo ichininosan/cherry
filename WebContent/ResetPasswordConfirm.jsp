@@ -81,7 +81,7 @@
 							<label>ログインID:</label>
 						</td>
 						<td>
-							<s:property value="loginUserId" escape="false" />
+							<s:property value="confirmId" escape="false" />
 						</td>
 					</tr>
 					<tr id="box">
@@ -89,15 +89,7 @@
 							<label>パスワード:</label>
 						</td>
 						<td>
-							<s:property value="loginPassword" escape="false" />
-						</td>
-					</tr>
-					<tr id="box">
-						<td>
-							<label>再確認パスワード:</label>
-						</td>
-						<td>
-							<s:property value="loginPasswordc" escape="false" />
+							<s:property value="confirmPass" escape="false" />
 						</td>
 					</tr>
 					<tr>

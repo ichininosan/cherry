@@ -19,6 +19,14 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 
 	private String errorMassage;
 
+	public String confirmId1 = loginUserId.substring(0);
+	public String confirmId2 = loginUserId.substring(1,8);
+	public String confirmId = confirmId1 + confirmId2;
+
+	public String confirmPass1 = loginPassword.substring(0);
+	public String confirmPass2 = loginPassword.substring(1,16);
+	public String confirmPass = confirmPass1 + confirmPass2;
+
 	public String execute() {
 
 		String result = SUCCESS;
@@ -40,20 +48,14 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		/**
 		 * 桁数
 		 */
-		if(loginUserId.matches("{1,8}")){
-			return SUCCESS;
-		}else{
-			System.out.println("ログインIDは1文字以上8文字以下で入力してください。");
+		if(!(loginUserId.matches("{1,8}"))){
+			setErrorMassage("ログインIDは1文字以上8文字以下で入力してください。");
 		}
-		if(loginPassword.matches("{1,16}")){
-			return SUCCESS;
-		}else{
-			System.out.println("パスワードは1文字以上16文字以下で入力してください。");
+		if(!(loginPassword.matches("{1,16}"))){
+			setErrorMassage("パスワードは1文字以上16文字以下で入力してください。");
 		}
-		if(loginPasswordc.matches("{1,16}")){
-			return SUCCESS;
-		}else{
-			System.out.println("再確認パスワードは1文字以上16文字以下で入力してください。");
+		if(!(loginPasswordc.matches("{1,16}"))){
+			setErrorMassage("再確認パスワードは1文字以上16文字以下で入力してください。");
 		}
 
 		/**
@@ -62,24 +64,24 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		if(loginUserId.matches("^[0-9a-zA-Z]+$")){
 			return SUCCESS;
 		}else{
-			System.out.println("ログインIDは半角英数字で入力してください。");
+			setErrorMassage("ログインIDは半角英数字で入力してください。");
 		}
 		if(loginPassword.matches("^[0-9a-zA-Z]+$")){
 			return SUCCESS;
 		}else{
-			System.out.println("パスワードは半角英数字で入力してください。");
+			setErrorMassage("パスワードは半角英数字で入力してください。");
 		}
 		if(loginPasswordc.matches("^[0-9a-zA-Z]+$")){
 			return SUCCESS;
 		}else{
-			System.out.println("再確認パスワードは半角英数字で入力してください。");
+			setErrorMassage("再確認パスワードは半角英数字で入力してください。");
 		}
 
 		/**
 		 * パスワード間違い
 		 */
 		if(loginPassword != loginPasswordc){
-			System.out.println("入力されたパスワードが異なります。");
+			setErrorMassage("入力されたパスワードが異なります。");
 		}
 
 		result = ERROR;
