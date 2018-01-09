@@ -1,3 +1,4 @@
+
 package com.internousdev.cherry.action;
 
 import java.util.Map;
@@ -21,16 +22,18 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	public String execute() {
 
 		String result = SUCCESS;
+		boolean a = loginUserId.equals("");
+		boolean b = loginPassword.equals("");
+		boolean c = loginPasswordc.equals("");
 
-		if(!(loginUserId.equals("")) && !(loginPassword.equals("")) && !(loginPasswordc.equals(""))) {
+		if(!a && !b && !c) {
 			session.put("loginUserId", loginUserId);
 			session.put("loginPassword", loginPassword);
 			session.put("loginPasswordc", loginPasswordc);
-		} else {
-
-			setErrorMassage("未入力の項目があります。");
+		}else if(a && b && c){
+			setErrorMassage("IDを入力してください。");
 			result = ERROR;
-		}
+		}else
 
 		return result;
 	}
