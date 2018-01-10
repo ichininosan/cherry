@@ -7,11 +7,38 @@
 	<constant name="struts.devMode" value="true" />
 
 	<package name="com.internousdev.cherry.action" extends="struts-default">
-
+		<!-- 本間担当アクション -->
 		<action name="TestAction" class="com.internousdev.cherry.action.TestAction" method="execute">
-			<result name="success">testSuccess.jsp</result>
-
+			<result name="success"></result>
 		</action>
+
+		<!-- 工藤担当アクション -->
+		<action name="PurchaseinfoAction" class="com.internousdev.cherry.action.PurchaseinfoAction" method="execute">
+			<result name="success">settlement.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="GoDestinationRegisterAction" class="com.internousdev.cherry.action.GoDestinationRegisterAction" method="execute">
+			<result name="success">destinationRegister.jsp</result>
+		</action>
+		<action name="DestinationRegisterConfirmAction" class="com.internousdev.cherry.action.DestinationRegisterConfirmAction" method="execute">
+			<result name="success">destinationRegisterConfirm.jsp</result>
+		</action>
+		<action name="DestinationRegisterCompleteAction" class="com.internousdev.cherry.action.DestinationRegisterCompleteAction" method="execute">
+			<result name="success">destinationRegisterComplete.jsp</result>
+		</action>
+
+
+		<!-- 工藤担当アクション -->
+		<action name="ResetPasswordAction" class="com.internousdev.cherry.action.ResetPasswordAction" method="execute">
+			<result name="success">resetPasswordConfirm.jsp</result>
+		</action>
+		<action name="ResetPasswordConfirmAction" class="com.internousdev.cherry.action.ResetPasswordConfirmAction" method="execute">
+			<result name="success">resetPasswordComplete.jsp</result>
+		</action>
+		<action name="ResetPasswordCompleteAction" class="com.internousdev.cherry.action.ResetPasswordCompleteAction" method="execute">
+			<result name="success"></result>
+		</action>
+
 
 
 	</package>
