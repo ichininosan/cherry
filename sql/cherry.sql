@@ -42,8 +42,7 @@ product_name_kana varchar(100) UNIQUE KEY NOT NULL,-- 商品名かな
 product_description varchar(255) NOT NULL,-- 商品詳細
 category_id int NOT NULL,-- カテゴリID
 price int ,-- 価格
-image_file_path varchar(100),-- 画像ファイルパス
-image_file_name varchar(50),-- 画像ファイル名
+image_file_name varchar(255),-- 画像ファイル名
 release_date datetime NOT NULL, -- 発売年月
 release_company varchar(50), -- 発売会社
 status tinyint NOT NULL DEFAULT 0,-- ステータス(0:無効、1:有効)
@@ -156,13 +155,37 @@ INSERT INTO m_category(-- --------カテゴリーマスタテーブルへ-------
 	category_description,-- カテゴリ詳細
 	insert_date,-- 登録日
 	update_date-- 更新日
-)VALUES(
-	1, -- ID
+)VALUES
+	(1,
+	1,
+	"全てのカテゴリー",
+	"全てのカテゴリー",
+	cast('2018-01-10' as date),
+	cast('2018-01-10' as date)
+	),
+
+	(2,
+	2,
+	"本",
+	"本に関するカテゴリー",
+	cast('2018-01-10' as date),
+	cast('2018-01-10' as date)
+	),
+
+	(3,
+	3,
+	"家電・パソコン",
+	"家電とパソコンに関するカテゴリー",
+	cast('2018-01-10' as date),
+	cast('2018-01-10' as date)
+	),
+
+	(4, -- ID
 	4, -- カテゴリID
-	"ゲーム", -- カテゴリ名
-	"ゲームに関するカテゴリー", -- カテゴリ詳細
-	NOW(), -- 登録日
-	NOW() -- 更新日
+	"おもちゃ・ゲーム", -- カテゴリ名
+	"おもちゃとゲームに関するカテゴリー", -- カテゴリ詳細
+	cast('2018-01-10' as date), -- 登録日
+	cast('2017-01-10' as date) -- 更新日
 	);
 
 
@@ -175,7 +198,6 @@ INSERT INTO product_info(-- ------商品情報テーブルへ--------------
     product_description,-- 商品詳細
     category_id,-- カテゴリID
     price,-- 値段
-	image_file_path, -- 画像ファイルパス
 	image_file_name, -- 画像ファイル名
 	release_date,-- 発売年月
 	release_company,-- 発売会社
@@ -190,13 +212,26 @@ INSERT INTO product_info(-- ------商品情報テーブルへ--------------
 	"おもしろいゲーム", -- 商品詳細
 	4,-- カテゴリID
 	2000, -- 値段
-	"./WebContent/img/", -- 画像ファイルパス
-	"test_game.jpeg",-- 画像ファイル名
+	"/cherry/img/test_game.jpeg",-- 画像ファイル名
 	cast('2017-12-31' as date),-- 発売年月
 	"ファルファル",-- 発売会社
 	1,-- ステータス(0:無効、1:有効)
 	NOW(),-- 登録日
 	NOW()-- 更新日
+	),(-- --------二つ目の商品----------
+	2,
+	2,
+	"デデンネのぬいぐるみ",
+	"ででんねのぬいぐるみ",
+	"デデンネのかわいいぬいぐるみです！！",
+	4,
+	1000,
+	"/cherry/img/test_dede.jpg",-- 画像ファイル名
+	cast('2017-08-01' as date),
+	"ポケモンの会社",
+	1,
+	NOW(),
+	NOW()
 	);
 
 
