@@ -27,10 +27,15 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	public String confirmPass2 = loginPassword.substring(1,16);
 	public String confirmPass = confirmPass1 + confirmPass2;
 
-	public String execute() {
 
-		String result = SUCCESS;
+	public String execute(){
 
+
+		if(!(loginUserId.equals("")) && !(loginPassword.equals("")) && !(loginPasswordc.equals(""))) {
+			session.put("loginUserId", loginUserId);
+			session.put("loginPassword", loginPassword);
+			return SUCCESS;
+		}
 
 		/**
 		 * 未入力
@@ -78,8 +83,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			setErrorMassage("入力されたパスワードが異なります。");
 		}
 
-		result = ERROR;
-		return result;
+		return ERROR;
 	}
 
 	public String getLoginUserId() {

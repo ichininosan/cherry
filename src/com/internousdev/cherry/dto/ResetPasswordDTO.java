@@ -1,6 +1,6 @@
 package com.internousdev.cherry.dto;
 
-public class ResetPasswordCompleteDTO {
+public class ResetPasswordDTO {
 
 	private String loginId;
 	private String loginPassword;
