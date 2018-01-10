@@ -13,11 +13,23 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 
 	private ArrayList<CartInfoDTO> cartInfoDTO = new ArrayList<CartInfoDTO>();
 	private  Map<String,Object> session;
-	private  ProductInfoDTO productInfoDTO=new ProductInfoDTO();
+	private int totalPrice = 0;
+	private int count;
 
 
 	/**
-	 * カート情報登録登録メソッド
+	 * 合計金額を計算するメソッド
+	 */
+		public int calcTotalPrice(ArrayList<CartInfoDTO> cartList) {
+			int totalPrice = 0;
+			for(CartInfoDTO cartInfoDTO: cartList) {
+				totalPrice = cartInfoDTO.getPrice() * cartInfoDTO.getCount();
+			}
+			return totalPrice;
+
+
+	/**
+	 * カート情報登録メソッド
 	 */
 	public String execute() throws SQLException{
 			String result = SUCCESS;
@@ -28,9 +40,13 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 
 
 
-			cartInfoDTO = cartInfoDAO.getUserCartInfo(session.get("userId").toString());
+			cartInfoDTO = cartInfoDAO.getUserCartInfo(session.get("userId").toString());//userIDに紐づいているカート情報をDTOに代入
 
-			cartInfoDAO.deleteUserCartInfo(session.get("userId").toString());
+			//商品ごとの合計金額をだし、購入履歴テーブルpriceに入れる
+
+
+			purchaseHistoryDAO.purchaseHistoryInfo(session.get("userId").toString());//userIdに紐づいているカート情報を購入履歴に挿入
+			cartInfoDAO.deleteUserCartInfo(session.get("userId").toString());//userIdに紐づいているカート情報を削除
 
 			return result;
 
@@ -57,17 +73,24 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 
 
 
-		public ProductInfoDTO getProductInfoDTO() {
-			return productInfoDTO;
+	  	/**
+		 * 合計金額を計算するメソッド
+		 */
+		public int calculateTotalPrice(ArrayList<CartInfoDTO> cartInfoDTO) {
+				int totalPrice = 0;
+				for(CartInfoDTO dto: cartInfoDTO) {
+					totalPrice = dto.getPrice() * dto.getCount();
+				}
+				return totalPrice;
+		}
+		public int getCount() {
+			return count;
 		}
 
 
-
-		public void setProductInfoDTO(ProductInfoDTO productInfoDTO) {
-			this.productInfoDTO = productInfoDTO;
+		public void setCount(int count) {
+			this.count = count;
 		}
-
-
 
 
 
