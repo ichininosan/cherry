@@ -66,7 +66,10 @@
 			<p>ResetPassword</p>
 		</div>
 		<div>
-			<s:if test="errorMessage != ''">
+			<s:if test="errorMessage1 != ''">
+				<s:property value="errormessage" escape="false" />
+			</s:if>
+			<s:if test="errorMessage2 != ''">
 				<s:property value="errormessage" escape="false" />
 			</s:if>
 			<table>
