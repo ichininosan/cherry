@@ -32,7 +32,7 @@
 	<% for(ProductDTO pro : proList){ %>
 		<li>
 			<%= pro.getProduct_name() %>
-			<img src="/cherry/img/<%= pro.getImage_file_name() %>">
+			<img src="<%= pro.getImage_file_name() %>" alt="画像なし">
 		</li>
 	<% }; %>
 </ul>

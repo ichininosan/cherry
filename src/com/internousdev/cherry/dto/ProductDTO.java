@@ -11,7 +11,6 @@ public class ProductDTO implements Serializable{
 	private String product_description;
 	private int category_id;
 	private int price;
-	private String image_file_path;
 	private String image_file_name;
 	private String release_date;
 	private String release_company;
@@ -22,7 +21,7 @@ public class ProductDTO implements Serializable{
 	public ProductDTO(){};
 
 	//商品テーブル取得
-	public ProductDTO(int def_id, int product_id, String product_name, String product_name_kana, String product_description, int category_id, int price, String image_file_path, String image_file_name, String release_date, String release_company, String status, String regist_date, String update_date){
+	public ProductDTO(int def_id, int product_id, String product_name, String product_name_kana, String product_description, int category_id, int price, String image_file_name, String release_date, String release_company, String status, String regist_date, String update_date){
 		this.def_id = def_id;
 		this.product_id = product_id;
 		this.product_name = product_name;
@@ -30,7 +29,6 @@ public class ProductDTO implements Serializable{
 		this.product_description = product_description;
 		this.category_id = category_id;
 		this.price = price;
-		this.image_file_path = image_file_path;
 		this.image_file_name = image_file_name;
 		this.release_date = release_date;
 		this.release_company = release_company;
@@ -95,13 +93,6 @@ public class ProductDTO implements Serializable{
 		this.price = price;
 	}
 
-	public String getImage_file_path() {
-		return image_file_path;
-	}
-
-	public void setImage_file_path(String image_file_path) {
-		this.image_file_path = image_file_path;
-	}
 
 	public String getImage_file_name() {
 		return image_file_name;
