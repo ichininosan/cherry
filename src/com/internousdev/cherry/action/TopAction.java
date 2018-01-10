@@ -19,7 +19,7 @@ public class TopAction extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/cherry/home.jsp"); dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/home.jsp"); dispatcher.forward(request, response);
 	}
 
 

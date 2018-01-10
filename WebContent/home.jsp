@@ -8,6 +8,6 @@
 <title>home</title>
 </head>
 <body>
-
+<p>商品一覧作成中・・・</p>
 </body>
 </html>
