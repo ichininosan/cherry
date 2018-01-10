@@ -23,7 +23,7 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 	public String execute(){
 		result = SUCCESS;
 
-		if(!(user_id.equals("")) && !(password.equals("")) && !(email.equals(""))){
+		if(!(user_id.equals("")) && !(password.equals("")) && !(family_name.equals("")) && !(first_name.equals("")) && !(family_name_kana.equals("")) && !(first_name_kana.equals("")) && !(sex.equals("")) && !(email.equals(""))){
 			session.put("user_id", user_id);
 			session.put("password", password);
 			session.put("family_name", family_name);
@@ -33,11 +33,87 @@ public class UserCreateConfirmAction extends ActionSupport implements SessionAwa
 			session.put("sex", sex);
 			session.put("email", email);
 
+		}else {
+
+			if(user_id.equals("")){
+				setErrorMessage("ユーザーIDを入力して下さい");
+		}else{
+			if(password.equals("")){
+				setErrorMessage("パスワードを入力して下さい");
+		}else{
+			if(family_name.equals("")){
+				setErrorMessage("姓を入力して下さい");
+		}else{
+			if(first_name.equals("")){
+				setErrorMessage("名を入力して下さい");
+		}else{
+			if(family_name_kana.equals("")){
+				setErrorMessage("姓ふりがなを入力して下さい");
+		}else{
+			if(first_name_kana.equals("")){
+				setErrorMessage("名ふりがなを入力して下さい");
+		}else{
+			if(sex .equals("")){
+				setErrorMessage("性別を選択して下さい");
+		}else{
+			if(email.equals("")){
+				setErrorMessage("メールアドレスを入力して下さい");
 		}else{
 
-			setErrorMessage("未記入の項目があります");
-			result = ERROR;
+
+			if (user_id.length() < 1 || user_id.length() > 8) {
+				setErrorMessage("ログインIDは1文字以上8文字以内で入力して下さい");
+		}else{
+			if (password.length() < 1 || password.length() > 16) {
+				setErrorMessage("パスワードは1文字以上16文字以内で入力して下さい");
+		}else{
+			if (family_name.length() < 1 || family_name.length() > 16) {
+					setErrorMessage("姓は1文字以上16文字以内で入力して下さい");
+		}else{
+			if (first_name.length() < 1 || first_name.length() > 16) {
+				setErrorMessage("名は1文字以上16文字以内で入力して下さい");
+		}else{
+			if (family_name_kana.length() < 1 || family_name.length() > 16) {
+				setErrorMessage("姓ふりがなは1文字以上16文字以内で入力して下さい");
+		}else{
+			if (family_name_kana.length() < 1 || family_name.length() > 16) {
+				setErrorMessage("名ふりがなは1文字以上16文字以内で入力して下さい");
+		}else{
+			if (family_name.length() < 14 || family_name.length() > 32) {
+				setErrorMessage("メールアドレスは14文字以上32文字以内で入力して下さい");
+		}else{
+
+
+
+
+			if (!(user_id.matches("[0-9a-zA-Z]+"))) {
+				setErrorMessage("ログインIDは半角英数字で入力して下さい");
+		}else{
+			if (!(password.matches("[0-9a-zA-Z]+"))) {
+				setErrorMessage("パスワードは半角英数字で入力して下さい");
+		}else{
+			if (!(family_name.matches("\\p{InCjkUnifiedIdeographs}" + "^[\\u3040-\\u309F]+$" + ".*[^A-Za-z].*" ))) {
+				setErrorMessage("姓は漢字かひらがな、または半角英語で入力して下さい");
+		}else{
+			if (!(first_name.matches("\\p{InCjkUnifiedIdeographs}" + "^[\\u3040-\\u309F]+$" + ".*[^A-Za-z].*" ))) {
+				setErrorMessage("名は漢字かひらがな、または半角英語で入力して下さい");
+		}else{
+			if (!(family_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
+				setErrorMessage("姓ふりがなはひらがなで入力して下さい");
+		}else{
+			if (!(family_name_kana.matches("^[\\u3040-\\u309F]+$"))) {
+				setErrorMessage("名ふりがなはひらがなで入力して下さい");
+		}else{
+			if (!(email.matches("[0-9a-zA-Z]+" + "_-@+*;:#$%&"))) {
+				setErrorMessage("メールアドレスは半角英数字か半角記号で入力して下さい");
+		}}}}}}}}}}}}}}}}}}}}}}
+
+
+
+
+		result = ERROR;
 		}
+
 		return result;
 	}
 	public String getUser_id(){
