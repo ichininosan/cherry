@@ -47,15 +47,14 @@ public class Product_InfoDAO {
 				String product_description = rs.getString("PRODUCT_DESCRIPTION");
 				int category_id = rs.getInt("CATEGORY_ID");
 				int price = rs.getInt("PRICE");
-				String image_file_path = rs.getString("IMAGE_FILE_PATH");
-				String image_file_name = rs.getString("image_file_name");
+				String image_file_name = rs.getString("IMAGE_FILE_NAME");
 				String release_date = rs.getString("release_date");
 				String release_company = rs.getString("release_company");
 				String status = rs.getString("status");
 				String regist_date = rs.getString("regist_date");
 				String update_date = rs.getString("update_date");
 
-				ProductDTO pro_list = new ProductDTO(def_id, product_id, product_name, product_name_kana, product_description, category_id, price, image_file_path, image_file_name, release_date, release_company, status, regist_date, update_date);
+				ProductDTO pro_list = new ProductDTO(def_id, product_id, product_name, product_name_kana, product_description, category_id, price, image_file_name, release_date, release_company, status, regist_date, update_date);
 
 				proList.add(pro_list);
 
