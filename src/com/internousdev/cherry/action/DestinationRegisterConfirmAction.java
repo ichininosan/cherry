@@ -23,8 +23,8 @@ public class DestinationRegisterConfirmAction extends ActionSupport implements E
 		String result = SUCCESS;
 
 		InputChecker i = new InputChecker();
-		if(!i.familyNameKanaChk(familyName).equals("OK")){
-			errMsgList.add(i.familyNameKanaChk(familyName));
+		if(!i.familyNameChk(familyName).equals("OK")){
+			errMsgList.add(i.familyNameChk(familyName));
 			result = ERROR;
 		}
 		if(!i.firstNameChk(firstName).equals("OK")){
@@ -32,23 +32,23 @@ public class DestinationRegisterConfirmAction extends ActionSupport implements E
 			result = ERROR;
 		}
 		if(!i.familyNameKanaChk(familyNameKana).equals("OK")){
-			errMsgList.add(familyNameKana);
+			errMsgList.add(i.familyNameKanaChk(familyNameKana));
 			result = ERROR;
 		}
 		if(!i.firstNameKanaChk(firstNameKana).equals("OK")){
-			errMsgList.add(firstNameKana);
+			errMsgList.add(i.firstNameKanaChk(firstNameKana));
 			result = ERROR;
 		}
 		if(!i.emailChk(email).equals("OK")){
-			errMsgList.add(email);
+			errMsgList.add(i.emailChk(email));
 			result = ERROR;
 		}
 		if(!i.telNumberChk(telNumber).equals("OK")){
-			errMsgList.add(telNumber);
+			errMsgList.add(i.telNumberChk(telNumber));
 			result = ERROR;
 		}
 		if(!i.userAddressChk(userAddress).equals("OK")){
-			errMsgList.add(userAddress);
+			errMsgList.add(i.userAddressChk(userAddress));
 			result = ERROR;
 		}
 		return result;

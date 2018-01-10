@@ -91,7 +91,7 @@ public class SerchDAO {
 	*/
 
 	public ArrayList<SerchDTO> BySerchWord(String serchWord){
-		String sql="SELECT*FROM product_info WHERE product_name ";
+		String sql ="SELECT*FROM product_info WHERE product_name LIKE \'%' ? \'%' ";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setString(1, serchWord);
@@ -132,6 +132,7 @@ public class SerchDAO {
 		String sql="SELECT*FROM product_info WHERE category_id=?";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setInt(1,categoryId);
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
@@ -167,9 +168,11 @@ public class SerchDAO {
 	*/
 
 	public ArrayList<SerchDTO> ByCategoryANDSerchWord(int categoryId,String serchWord){
-		String sql="SELECT*FROM product_info WHERE product_id=?";
+		String sql="SELECT*FROM product_info WHERE product_name LIKE \'%' ? \'%' AND category_id=?";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, serchWord);
+			ps.setInt(2,categoryId);
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
@@ -200,6 +203,115 @@ public class SerchDAO {
 		return serchDTOList;
 
 	}
+	/*
+	ひらがな検索
+	*/
+	public ArrayList<SerchDTO> BySerchWordKana(String serchWord){
+		String sql="SELECT*FROM product_info WHERE product_name_kana LIKE \'%' ? \'%'";
+		try{
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, serchWord);
+			ResultSet rs=ps.executeQuery();
+
+			while(rs.next()){
+				SerchDTO serchDTO=new SerchDTO();
+				serchDTO.setId(rs.getInt("id"));
+				serchDTO.setProductId(rs.getInt("product_id"));
+				serchDTO.setProductName(rs.getString("product_name"));
+				serchDTO.setProductNameKana(rs.getString("product_name_kana"));
+				serchDTO.setProductDescription(rs.getString("product_description"));
+				serchDTO.setCategoryId(rs.getInt("category_id"));
+				serchDTO.setPrice(rs.getInt("price"));
+				serchDTO.setImageFileName(rs.getString("image_file_name"));
+				serchDTO.setReleaseDate(rs.getDate("release_date"));
+				serchDTO.setReleaseCompany(rs.getString("release_company"));
+				serchDTO.setStatus(rs.getShort("status"));
+				serchDTO.setRegistDate(rs.getDate("regist_date"));
+				serchDTO.setUpdateDate(rs.getDate("update_date"));
+
+				serchDTOList.add(serchDTO);
+
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return serchDTOList;
+
+	}
+	public ArrayList<SerchDTO> ByCategoryANDSerchWordKana(int categoryId,String serchWord){
+		String sql="SELECT*FROM product_info WHERE product_name_kana LIKE \'%' ? \'%' AND category_id=?";
+		try{
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, serchWord);
+			ps.setInt(2,categoryId);
+			ResultSet rs=ps.executeQuery();
+
+			while(rs.next()){
+				SerchDTO serchDTO=new SerchDTO();
+				serchDTO.setId(rs.getInt("id"));
+				serchDTO.setProductId(rs.getInt("product_id"));
+				serchDTO.setProductName(rs.getString("product_name"));
+				serchDTO.setProductNameKana(rs.getString("product_name_kana"));
+				serchDTO.setProductDescription(rs.getString("product_description"));
+				serchDTO.setCategoryId(rs.getInt("category_id"));
+				serchDTO.setPrice(rs.getInt("price"));
+				serchDTO.setImageFilePath(rs.getString("image_file_path"));
+				serchDTO.setImageFileName(rs.getString("image_file_name"));
+				serchDTO.setReleaseDate(rs.getDate("release_date"));
+				serchDTO.setReleaseCompany(rs.getString("release_company"));
+				serchDTO.setStatus(rs.getShort("status"));
+				serchDTO.setRegistDate(rs.getDate("regist_date"));
+				serchDTO.setUpdateDate(rs.getDate("update_date"));
+
+				serchDTOList.add(serchDTO);
+
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return serchDTOList;
+
+	}
+	/*public ArrayList<SerchDTO> ByCategoryANDSerchWord(int categoryId,String serchWord){
+		String sql="SELECT*FROM product_info WHERE product_name LIKE \'%' ? \'%' AND category_id=?";
+		try{
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, serchWord);
+			ps.setInt(2,categoryId);
+			ResultSet rs=ps.executeQuery();
+
+			while(rs.next()){
+				SerchDTO serchDTO=new SerchDTO();
+				serchDTO.setId(rs.getInt("id"));
+				serchDTO.setProductId(rs.getInt("product_id"));
+				serchDTO.setProductName(rs.getString("product_name"));
+				serchDTO.setProductNameKana(rs.getString("product_name_kana"));
+				serchDTO.setProductDescription(rs.getString("product_description"));
+				serchDTO.setCategoryId(rs.getInt("category_id"));
+				serchDTO.setPrice(rs.getInt("price"));
+				serchDTO.setImageFilePath(rs.getString("image_file_path"));
+				serchDTO.setImageFileName(rs.getString("image_file_name"));
+				serchDTO.setReleaseDate(rs.getDate("release_date"));
+				serchDTO.setReleaseCompany(rs.getString("release_company"));
+				serchDTO.setStatus(rs.getShort("status"));
+				serchDTO.setRegistDate(rs.getDate("regist_date"));
+				serchDTO.setUpdateDate(rs.getDate("update_date"));
+
+				serchDTOList.add(serchDTO);
+
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return serchDTOList;
+*/
+	/*}*/
 	/*
 	複数のキーワードで検索
 	*/

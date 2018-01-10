@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.cherry.util.Validation;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordConfirmAction extends ActionSupport implements SessionAware {
@@ -17,7 +18,9 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 
 	public Map<String,Object> session;
 
-	private String errorMassage;
+	public String errorMassage;
+	
+	Validation valid = new Validation();
 
 	public String confirmId1 = loginUserId.substring(0);
 	public String confirmId2 = loginUserId.substring(1,8);
@@ -27,10 +30,17 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	public String confirmPass2 = loginPassword.substring(1,16);
 	public String confirmPass = confirmPass1 + confirmPass2;
 
-	public String execute() {
 
+	public String execute(){
+		
 		String result = SUCCESS;
 
+
+		if(!(loginUserId.equals("")) && !(loginPassword.equals("")) && !(loginPasswordc.equals(""))) {
+			session.put("loginUserId", loginUserId);
+			session.put("loginPassword", loginPassword);
+		
+		}
 
 		/**
 		 * 未入力
@@ -77,10 +87,25 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		if(loginPassword != loginPasswordc){
 			setErrorMassage("入力されたパスワードが異なります。");
 		}
-
+		
 		result = ERROR;
+
 		return result;
 	}
+	
+	private String validation(String target, String targetName, int max){
+
+		if(valid.emptyValid(target)){
+			return targetName+"を入力してください";
+		}else if(valid.overUnderValid(target, max)){
+			return targetName+"は1文字以上"+max+"文字以下で入力してください。";
+		}else if (valid.harfEngNumValied(target)){
+			return targetName+"は半角英数で入力してください";
+		}
+
+		return "";
+	}
+
 
 	public String getLoginUserId() {
 		return loginUserId;

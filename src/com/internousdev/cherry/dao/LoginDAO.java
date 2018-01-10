@@ -22,7 +22,7 @@ public class LoginDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			if(resultSet.next()){
-				loginDTO.setId(resultSet.getString("login_id"));
+				loginDTO.setUser_id(resultSet.getString("login_id"));
 				loginDTO.setPassword(resultSet.getString("login_pass"));
 
 				if(!(resultSet.getString("login_id").equals(null))){
