@@ -2,73 +2,37 @@ package com.internousdev.cherry.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.internousdev.cherry.util.DBConnector;
-import com.internousdev.cherry.util.DateUtil;;
-
 
 
 public class PurchaseCompleteDAO {
 
-	private DBConnector db=new DBConnector();
-	private Connection con=db.getConnection();
-	private DateUtil dateUtil=new DateUtil();
+	    private DBConnector db= new DBConnector();
 
-	      /**
-	       * 購入履歴にカートの情報を挿入
-	       * @param userId
-	       * @param productId
-	       * @throws SQLException
-	       */
+		private Connection con = db.getConnection();
 
-		public void purchaseHistoryInfo(String userId,int productId,int count) throws SQLException{
-			Connection con=db.getConnection();
-			String sql = "INSERT INTO purchase_history_info(user_id,product_id,count,insert_date)  VALUES(?,?,?,NOW())";
 
-			try{
-				PreparedStatement preparedStatement = con.prepareStatement(sql);
-			    preparedStatement.setString(1,userId);
-			    preparedStatement.setInt(2, productId);
-			    preparedStatement.setInt(3, count);
+		//カートテーブルを購入履歴に登録するメソッド
 
-			    preparedStatement.execute();
+		public void putCartInfo(String userId) throws SQLException {
 
-			}catch(Exception e){
+			String sql= "INSERT INTO purcahse_history_info (product_id, product_count, price, regist_date, update_date) SELECT (product_id, product_count, price, regist_date, update_date from cart_info ci wehre ci.user_id=user_id ";
+
+			try {
+
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.executeQuery();
+
+				}catch (SQLException e) {
 				e.printStackTrace();
-			}try{
+
+			} finally {
 				con.close();
-			}catch(SQLException e){
-				e.printStackTrace();
-			}
-
-			/**
-			 * カートの情報を削除
-			 * @param userId
-			 */
-
-			public void deleteUserCartInfo(String userId) {
-				Connection con=db.getConnection();
-				String sql = "DELETE FROM cart_info WHERE user_id = ?";
-
-				try{
-				PreparedStatement preparedStatement = con.prepareStatement(sql);
-				preparedStatement.setString(1, userId);
-
-				preparedStatement.execute();
-
-			}catch(Exception e){
-				e.printStackTrace();
-			}try{
-				con.close();
-			}catch(SQLException e){
-				e.printStackTrace();
-			}
 
 			}
 
 
-
-
-	}
+		}
+}
