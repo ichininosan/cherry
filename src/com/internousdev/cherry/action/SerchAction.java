@@ -40,7 +40,7 @@ public class SerchAction extends ActionSupport{
 			ret=SUCCESS;
 
 		}
-		else if(categoryId>1&&serchWord.matches("^[\\u3040-\\u309F]+$")){
+		else if(categoryId>1&&serchWord.matches("^[\\u3040-\\u309FF]+$")){
 			setSerchDTOList(serchDAO.ByCategoryANDSerchWordKana(categoryId, serchWord));
 			ret=SUCCESS;
 
@@ -62,7 +62,7 @@ public class SerchAction extends ActionSupport{
 		else if(categoryId==1&&(serchWord.matches("^[\\u3040-\\u309F]+$")||
 				serchWord.matches("^[\\u30A0-\\u30FF]+$"))){
 
-		}else if(categoryId>1&&(serchWord.matches("^[\\u3040-\\u309F]+$")||
+		}else if(categoryId>1&&(serchWord.matches("^[\\u3040-\\u309FF]+$")||
 				serchWord.matches("^[\\u30A0-\\u30FF]+$"))){
 
 		}
