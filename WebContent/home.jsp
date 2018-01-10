@@ -4,7 +4,7 @@
     <%@ page import="com.internousdev.cherry.dto.ProductDTO, java.util.List" %>
 
 <%
-	List<ProductDTO> proList = (List<ProductDTO>) session.getAttribute("proList");	/* Loginから */
+	List<ProductDTO> proList = (List<ProductDTO>) session.getAttribute("proList");	//TopActionから
 %>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 
 	<a href="/cherry/Cart">カート</a>
 
-	<a href="/cherry/Login">マイページ</a>
+	<a href="/cherry/Mypage">マイページ</a>
 
 	<a href="/cherry/Login">ログイン</a>
 
