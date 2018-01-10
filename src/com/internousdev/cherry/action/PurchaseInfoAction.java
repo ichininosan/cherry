@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.dao.DestinationInfoDAO;
+import com.internousdev.cherry.dto.CartInfoDTO;
 import com.internousdev.cherry.dto.DestinationInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -44,7 +45,7 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 	public String execute() throws SQLException{
 		String result = ERROR;
 
-		CartInfoDAO cartInfoDAO = new CartInfoDAO();
+		/*CartInfoDAO cartInfoDAO = new CartInfoDAO();
 		cartInfoDTOList = cartInfoDAO.showUserCartList(session.get("userId").toString());
 
 		for(CartInfoDTO dto:cartInfoDTOList) {
@@ -57,7 +58,7 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 
 		} else {
 			result = ERROR;
-		}
+		}*/
 
 		/**
 		 * 宛先情報取得メソッド
@@ -72,7 +73,7 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 			result=ERROR;
 
 		} else {
-			result = "destination";
+			result = "DESTINATION";
 
 		}
 

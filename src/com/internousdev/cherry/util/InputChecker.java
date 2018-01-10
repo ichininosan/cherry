@@ -7,7 +7,7 @@ public class InputChecker {
 	 * @author internousdev
 	 * @return
 	 */
-	public String fmilyNameChk(String familyName){
+	public String familyNameChk(String familyName){
 		String result = "OK";
 
 		if(familyName.equals("")){
