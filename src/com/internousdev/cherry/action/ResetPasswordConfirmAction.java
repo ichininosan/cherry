@@ -17,7 +17,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 
 	public Map<String,Object> session;
 
-	private String errorMassage;
+	public String errorMassage;
 
 	public String confirmId1 = loginUserId.substring(0);
 	public String confirmId2 = loginUserId.substring(1,8);
