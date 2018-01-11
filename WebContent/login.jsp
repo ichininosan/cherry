@@ -7,15 +7,18 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="./css/login.css">
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="imagetoolbar" content="no" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<meta charset="utf-8">
-
+<link rel="stylesheet" href="./css/validationEngine.jquery.css"
+	type="text/css" />
+<script src="./js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="./js/languages/jquery.validationEngine-ja.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="./js/jquery.validationEngine.js" type="text/javascript"
+	charset="utf-8"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery("#LoginForm").validationEngine();
+	});
+</script>
 <title>ログイン画面</title>
 
 </head>
@@ -41,7 +44,7 @@
 							ユーザーID<br>
 						</div>
 						<div class="member_textbox">
-							<s:textfield type="text" name="user_id" value="%{#session.saveId}"
+							<s:textfield type="text" name="userId" value="%{#session.saveId}"
 								class="validate[required,minSize[1],maxSize[16],custom[onlyLetterNumber]]" />
 							<br>
 						</div>

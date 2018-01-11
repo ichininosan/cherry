@@ -1,16 +1,16 @@
 package com.internousdev.cherry.dto;
 
 public class LoginDTO {
-	private String user_id;
+	private String userId;
 	private String password;
 
 	private boolean loginFlg = false;
 
 	public String getUser_id(){
-		return user_id;
+		return userId;
 	}
-	public void setUser_id(String user_id){
-		this.user_id = user_id;
+	public void setUser_id(String userId){
+		this.userId = userId;
 	}
 	public String getPassword(){
 		return password;
