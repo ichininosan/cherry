@@ -5,41 +5,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Style-Type" content="text/css" />
-	<meta http-equiv="Content-Script-Type" content="text/javascript" />
-	<meta http-equiv="imagetoolbar" content="no" />
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta charset="utf-8">
-	<title>Login画面</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="./css/login.css">
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta charset="utf-8">
+
+<title>ログイン画面</title>
 
 </head>
 <body>
-	<div id="header">
-	 	<div id="pr">
-		</div>
-	</div>
+
 	<div id="main">
-		<div id="top">
-			<p>Login</p>
-		</div>
-		<div>
-			<h3>商品を購入する際にはログインをお願いします。</h3>
-			<s:form action="LoginAction">
-				<s:textfield name="user_id"/>
-				<s:password name="password"/>
-				<s:submit value="ログイン"/>
-			</s:form>
-			<br/>
-			<div>
-				<span>新規ユーザー登録は<a href='<s:url action="UserCreateAction" />'>こちら</a></span>
+		<h2 class="title">ログイン</h2>
+		<div class="login_box">
+			<div class="member">
+
+				<h5>
+					<s:iterator value="errorMessageList">
+						<s:div>
+							<s:property />
+						</s:div>
+					</s:iterator>
+				</h5>
+
+				<div class="member_form">
+					<s:form action="LoginAction" theme="simple" id="LoginForm">
+
+						<div class="member_form_title">
+							ユーザーID<br>
+						</div>
+						<div class="member_textbox">
+							<s:textfield type="text" name="user_id" value="%{#session.saveId}"
+								class="validate[required,minSize[1],maxSize[16],custom[onlyLetterNumber]]" />
+							<br>
+						</div>
+
+						<br>
+						<div class="member_form_title">
+							パスワード<br>
+						</div>
+						<div class="member_textbox">
+							<s:password name="password"
+								class="validate[required,minSize[1],maxSize[16],custom[onlyLetterNumber]]" />
+						</div>
+
+
+						<p>
+							<s:checkbox name="saveLogin" />
+							次回からIDの入力を省略
+						</p>
+
+						<div class="member_btn">
+							<button type="submit" class="">ログイン</button>
+						</div>
+					</s:form>
+				</div>
+			</div>
+
+
+
+			<div class="nomember">
+				商品購入の際はユーザー登録をお願いします。<br>
+				<br>
+				<div class="nomember_btn">
+					<a href='<s:url action="userCreateAction"/>'>新規ユーザー登録</a>
+				</div>
 			</div>
 		</div>
+
+
+
 	</div>
-	<div id="footer">
-	 	<div id="pr">
-		</div>
-	</div>
+
+
+
 </body>
 </html>
