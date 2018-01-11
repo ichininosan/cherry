@@ -18,14 +18,14 @@ public class PurchaseHistoryDAO {
 /*
  * 購入履歴表示メソッド
  *
- * */
+ */
 	public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String user_id) throws SQLException{
 		ArrayList<PurchaseHistoryDTO> purchaseHistoryDTOList = new ArrayList<PurchaseHistoryDTO>();
 
 		/*
 		 * piはproduct_infoの略
 		 * phiはpurchase_history_infoの略
-		 * */
+		 */
 		String sql = "SELECT pi.product_name,"
 				+ "pi.product_name_kana,"
 				+ "pi.image_file_name, "
