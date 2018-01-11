@@ -110,6 +110,21 @@ public class InputChecker {
 	}
 
 
+	public String passwordcChk(String password) {
+		String result = "OK";
+
+		if (password.equals("")) {
+			result = "再確認パスワードを入力してください。";
+		} else if (password.length() < 1 || password.length() > 8) {
+			result = "再確認パスワードは1文字以上8文字以下で入力してください。";
+		} else if (!password.matches("^[a-zA-Z0-9]+$")) {
+			result = "再確認パスワードは半角英数字で入力してください。";
+		}
+
+		return result;
+	}
+
+
 	public String telNumberChk(String telNumber) {
 		String result = "OK";
 
