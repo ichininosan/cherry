@@ -25,7 +25,7 @@ public class CartInfoDAO extends ActionSupport{
 		boolean result = false;
 		int updateCount = 0;
 
-		String sql = "INSERT INTO cart_info(user_id, product_id, product_count, insert_date)"
+		String sql = "INSERT INTO cart_info(user_id, product_id, product_count, regist_date)"
 						+ "VALUES(?, ?, ?, NOW())";
 
 		try{
@@ -56,7 +56,7 @@ public class CartInfoDAO extends ActionSupport{
 		boolean result = false;
 		int updateCount = 0;
 
-		String sql = "INSERT INTO cart_info(temp_user_id, product_id, product_count, insert_date)"
+		String sql = "INSERT INTO cart_info(temp_user_id, product_id, product_count, regist_date)"
 						+ "VALUES(?, ?, ?, NOW())";
 
 		try{

@@ -10,7 +10,7 @@ public class CartInfoDTO extends ProductDTO{
 	private int productId;
 	private int productCount;
 	private int price;
-	private Date insertDate;
+	private Date registDate;
 	private Date updateDate;
 
 	public int getId(){
@@ -61,12 +61,12 @@ public class CartInfoDTO extends ProductDTO{
 		this.price = price;
 	}
 
-	public Date getInsertDate(){
-		return insertDate;
+	public Date getRegistDate(){
+		return registDate;
 	}
 
-	public void setInsertDate(Date insertDate){
-		this.insertDate = insertDate;
+	public void setRegistDate(Date registDate){
+		this.registDate = registDate;
 	}
 
 	public Date getUpdateDate(){
