@@ -22,10 +22,7 @@ public class MyPageDAO {
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
-
-
-
-			ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
 
