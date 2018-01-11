@@ -103,7 +103,6 @@ update_date datetime-- 更新日
 -- ---------------↓INSERT文↓--------------------------------------
 
 INSERT INTO user_info(-- ------会員情報テーブルへ-----------------
-	id,-- ID
 	user_id,-- ユーザーID
 	password,-- パスワード
 	family_name,-- 姓
@@ -114,7 +113,6 @@ INSERT INTO user_info(-- ------会員情報テーブルへ-----------------
 	email,-- メールアドレス
 	regist_date -- 登録日
 )VALUES(
-	1,-- ID
 	"a",-- ユーザーID
 	"a",-- パスワード
 	"ポンデ",-- 姓
@@ -149,7 +147,6 @@ INSERT INTO destination_info(-- -----------宛先情報テーブルへ----------
 );
 
 INSERT INTO m_category(-- --------カテゴリーマスタテーブルへ-----------
-	id,-- ID
 	category_id,-- カテゴリID
 	category_name,-- カテゴリ名
 	category_description,-- カテゴリ詳細
@@ -157,7 +154,6 @@ INSERT INTO m_category(-- --------カテゴリーマスタテーブルへ-------
 	update_date-- 更新日
 )VALUES
 	(1,
-	1,
 	"全てのカテゴリー",
 	"全てのカテゴリー",
 	cast('2018-01-10' as date),
@@ -165,7 +161,6 @@ INSERT INTO m_category(-- --------カテゴリーマスタテーブルへ-------
 	),
 
 	(2,
-	2,
 	"本",
 	"本に関するカテゴリー",
 	cast('2018-01-10' as date),
@@ -173,15 +168,13 @@ INSERT INTO m_category(-- --------カテゴリーマスタテーブルへ-------
 	),
 
 	(3,
-	3,
 	"家電・パソコン",
 	"家電とパソコンに関するカテゴリー",
 	cast('2018-01-10' as date),
 	cast('2018-01-10' as date)
 	),
 
-	(4, -- ID
-	4, -- カテゴリID
+	(4, -- カテゴリID
 	"おもちゃ・ゲーム", -- カテゴリ名
 	"おもちゃとゲームに関するカテゴリー", -- カテゴリ詳細
 	cast('2018-01-10' as date), -- 登録日
@@ -191,7 +184,6 @@ INSERT INTO m_category(-- --------カテゴリーマスタテーブルへ-------
 
 
 INSERT INTO product_info(-- ------商品情報テーブルへ--------------
-	id, -- ID
 	product_id,-- 商品ID
     product_name,-- 商品名
     product_name_kana,-- 商品名かな
@@ -205,7 +197,6 @@ INSERT INTO product_info(-- ------商品情報テーブルへ--------------
 	regist_date,-- 登録日
 	update_date-- 更新日
 )VALUES(
-	1,-- ID
 	1,-- 商品ID
 	"英雄伝説",-- 商品名
 	"えいゆうでんせつ",-- 商品名かな
@@ -219,7 +210,6 @@ INSERT INTO product_info(-- ------商品情報テーブルへ--------------
 	NOW(),-- 登録日
 	NOW()-- 更新日
 	),(-- --------二つ目の商品----------
-	2,
 	2,
 	"デデンネのぬいぐるみ",
 	"ででんねのぬいぐるみ",

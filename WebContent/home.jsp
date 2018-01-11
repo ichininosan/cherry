@@ -35,8 +35,10 @@
 <ul>
 	<% for(ProductDTO pro : proList){ %>
 		<li>
-			<%= pro.getProduct_name() %>
-			<img src="<%= pro.getImage_file_name() %>" alt="画像なし">
+			<a href="/cherry/ProDetailAction?id=<%= pro.getDef_id() %>">
+				<%= pro.getProduct_name() %>
+				<img src="<%= pro.getImage_file_name() %>" alt="画像なし">
+			</a>
 		</li>
 	<% }; %>
 </ul>
