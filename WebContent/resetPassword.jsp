@@ -66,14 +66,17 @@
 			<p>ResetPassword</p>
 		</div>
 		<div>
-			<s:if test="errorMessage1 != ''">
-				<s:property value="errormessage" escape="false" />
-			</s:if>
-			<s:if test="errorMessage2 != ''">
-				<s:property value="errormessage" escape="false" />
-			</s:if>
 			<table>
 			<s:form action="ResetPasswordConfirmAction">
+
+				<!-- ここから入力エラーメッセージ表示 -->
+				<h5>
+					<s:iterator value="errMsgList">
+						<s:property/>
+					</s:iterator>
+				</h5>
+				<!-- ここまで入力エラーメッセージ表示 -->
+
 				<tr>
 					<td>
 						<label>ログインID:</label>
