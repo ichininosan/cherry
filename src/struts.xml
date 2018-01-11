@@ -9,11 +9,11 @@
 	<package name="com.internousdev.cherry.action" extends="struts-default">
 		<!-- 本間担当アクション -->
 		<action name="TestAction" class="com.internousdev.cherry.action.TestAction" method="execute">
-			<result name="success"></result>
+			<result name="success">testSuccess.jsp</result>
 		</action>
 
 		<!-- 工藤担当アクション -->
-		<action name="PurchaseinfoAction" class="com.internousdev.cherry.action.PurchaseinfoAction" method="execute">
+		<action name="PurchaseInfoAction" class="com.internousdev.cherry.action.PurchaseInfoAction" method="execute">
 			<result name="success">settlement.jsp</result>
 			<result name="error">login.jsp</result>
 		</action>
@@ -39,6 +39,11 @@
 			<result name="success"></result>
 		</action>
 
+		<!-- 松田アクション -->
+		<action name="ProDetailAction" class="com.internousdev.cherry.action.ProDetailAction">
+			<result name="success">pro_detail.jsp</result>
+
+		</action>
 
 
 	</package>
