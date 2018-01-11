@@ -15,7 +15,7 @@ public class CartDeleteDAO {
 
 	/**
 	 * カートの情報を削除
-	 * @param userId
+	 * @param user_id
 	 */
 
 	public void deleteCartInfo(String user_id){
@@ -25,7 +25,7 @@ public class CartDeleteDAO {
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, userId);
+			ps.setString(1, user_id);
 
 			ps.executeUpdate();
 
