@@ -18,7 +18,7 @@ public class CartDeleteDAO {
 	 * @param userId
 	 */
 
-	public void deleteCartInfo{
+	public void deleteCartInfo(String user_id){
 
 
 		String sql = "DELETE FROM cart_info WHERE user_id = ?";
