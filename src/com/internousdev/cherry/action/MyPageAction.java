@@ -48,6 +48,7 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 		  if (myPageList.size() >0){
 
 			result=SUCCESS;
+
 		  }
 		}
 			return result;
@@ -78,7 +79,7 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 		return myPageList;
 	}
 	/**
-	 * DTOに格納された情報をUserListに格納するメソッド
+	 * DTOに格納された情報をmyPageListに格納するメソッド
 	 * @param userList
 	 */
 	public void setMyPageList(ArrayList<MyPageDTO> myPageList){

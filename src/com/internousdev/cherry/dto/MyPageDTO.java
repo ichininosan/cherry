@@ -8,8 +8,13 @@ public class MyPageDTO {
 		private String firstName;
 		private String familyNameKana;
 		private String firstNameKana;
-		private String sex;
+		/**
+		 * 0:男性、1:女性
+		 */
+		private boolean sex;
 		private String email;
+		private Date register_date;
+        private Date update_date;
 
 
 		public String getUserId() {
@@ -48,11 +53,10 @@ public class MyPageDTO {
 		public void setFirstNameKana(String firstNameKana) {
 			this.firstNameKana = firstNameKana;
 		}
-
-		public String getSex() {
+		public boolean isSex() {
 			return sex;
 		}
-		public void setSex(String sex) {
+		public void setSex(boolean sex) {
 			this.sex = sex;
 		}
 		public String getEmail() {
@@ -61,6 +65,19 @@ public class MyPageDTO {
 		public void setEmail(String email) {
 			this.email = email;
 		}
+		public Date getRegister_date() {
+			return register_date;
+		}
+		public void setRegister_date(Date register_date) {
+			this.register_date = register_date;
+		}
+		public Date getUpdate_date() {
+			return update_date;
+		}
+		public void setUpdate_date(Date update_date) {
+			this.update_date = update_date;
+		}
+
 
 
 }
