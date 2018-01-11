@@ -12,15 +12,15 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordConfirmAction extends ActionSupport implements SessionAware,ErrorMessageConstants {
 
-	private String userId;
+	private String user_id;
 	private String password;
 	private String passwordc;
 	private ArrayList<String> errMsgList = new ArrayList<>();
 
 	public Map<String,Object> session;
 
-	public String confirmId1 = userId.substring(0);
-	public String confirmId2 = userId.substring(1);
+	public String confirmId1 = user_id.substring(0);
+	public String confirmId2 = user_id.substring(1);
 	public String confirmId = confirmId1 + confirmId2.replaceAll("^[0-9a-zA-Z]+$","*");
 
 	public String confirmPass1 = password.substring(0);
@@ -32,8 +32,8 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		String result = SUCCESS;
 
 		InputChecker i = new InputChecker();
-		if(!i.userIdChk(userId).equals("OK")){
-			errMsgList.add(i.userIdChk(userId));
+		if(!i.userIdChk(user_id).equals("OK")){
+			errMsgList.add(i.userIdChk(user_id));
 			result = ERROR;
 		}
 		if(!i.passwordChk(password).equals("OK")){
@@ -49,11 +49,11 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 
 
 	public String getUserId() {
-		return userId;
+		return user_id;
 	}
 
 	public void setUserId(String userId) {
-		this.userId = userId;
+		this.user_id = userId;
 	}
 
 	public String getPassword() {
