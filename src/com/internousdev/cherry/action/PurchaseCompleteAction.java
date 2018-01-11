@@ -38,13 +38,11 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 	delete.deleteCartInfo(session.get("userId").toString());
 
 		result=SUCCESS;
+
 	}
+	return result;
 
-
-
-	return result ;
-}
-
+//ここのエラーが解消できない
 
 
 

@@ -18,14 +18,14 @@ public class CartDeleteDAO {
 	 * @param user_id
 	 */
 
-	public void deleteCartInfo(String user_id){
+	public void deleteCartInfo(String userId){
 
 
 		String sql = "DELETE FROM cart_info WHERE user_id = ?";
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, user_id);
+			ps.setString(1, userId);
 
 			ps.executeUpdate();
 
