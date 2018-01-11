@@ -2,7 +2,7 @@ package com.internousdev.cherry.dto;
 
 import java.util.Date;
 
-public class CartInfoDTO {
+public class CartInfoDTO extends ProductDTO{
 
 	private int id;
 	private String userId;
@@ -21,7 +21,7 @@ public class CartInfoDTO {
 		this.id = id;
 	}
 
-	public String getuserId(){
+	public String getUserId(){
 		return userId;
 	}
 
