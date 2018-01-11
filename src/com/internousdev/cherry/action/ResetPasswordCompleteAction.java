@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.cherry.dao.ResetPasswordCompleteDAO;
+import com.internousdev.cherry.dao.ResetPasswordDAO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordCompleteAction  extends ActionSupport implements SessionAware{
@@ -16,12 +16,12 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 
 	public Map<String,Object> session;
 
-	private ResetPasswordCompleteDAO resetPasswordCompleteDAO = new ResetPasswordCompleteDAO();
+	private ResetPasswordDAO resetPasswordDAO = new ResetPasswordDAO();
 
 	public String execute() throws SQLException {
 
-		resetPasswordCompleteDAO.resetPassword(session.get("loginUserId").toString(),
-				session.get("loginPassword").toString());
+		resetPasswordDAO.updatePassword(session.get("userId").toString(),
+				session.get("password").toString());
 
 		String result = SUCCESS;
 

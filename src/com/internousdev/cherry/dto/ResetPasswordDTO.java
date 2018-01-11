@@ -2,21 +2,21 @@ package com.internousdev.cherry.dto;
 
 public class ResetPasswordDTO {
 
-	private String loginId;
-	private String loginPassword;
+	private String userId;
+	private String password;
 
-	public String getLoginId() {
-		return loginId;
+	public String getuserId() {
+		return userId;
 	}
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
+	public void setuserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getLoginPassword() {
-		return loginPassword;
+	public String getPassword() {
+		return password;
 	}
-	public void setLoginPassword(String loginPassword) {
-		this.loginPassword = loginPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
