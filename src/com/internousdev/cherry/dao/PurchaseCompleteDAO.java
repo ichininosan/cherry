@@ -18,11 +18,12 @@ public class PurchaseCompleteDAO {
 
 		public void putCartInfo(String userId) throws SQLException {
 
-			String sql= "INSERT INTO purcahse_history_info (product_id, product_count, price, regist_date, update_date) SELECT (product_id, product_count, price, regist_date, update_date from cart_info ci wehre ci.user_id=user_id ";
+			String sql= "INSERT INTO purcahse_history_info (product_id, product_count, price, regist_date, update_date) SELECT product_id, product_count, price, regist_date, update_date from cart_info wehre cart_info.user_id=? AND cart_info.user_id=purchase_history_info.user_id";
 
 			try {
 
 				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, userId);
 				ps.executeQuery();
 
 				}catch (SQLException e) {
