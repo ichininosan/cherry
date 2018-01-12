@@ -1,6 +1,8 @@
 package com.internousdev.cherry.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -15,11 +17,12 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 
 	private String userId;
 
+    //cart_infoテーブル情報をDAOでList型DTOにしたものを受け取るための箱　(型をそろえる)
+	private List<CartInfoDTO> cartList=new ArrayList<CartInfoDTO>();
 
 	public Map<String,Object> session;
 
 	/**
-	 * (非 Javadoc)
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 * 1.カートテーブルの情報を購入履歴テーブルに保存するメソッド実行
 	 * 2.カートテーブルの情報を削除する
@@ -28,34 +31,31 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 	public String execute () throws SQLException {
 		String result = ERROR;
 
-    PurchaseCompleteDAO purchaseCompleteDAO= new PurchaseCompleteDAO();
-    CartInfoDTO dto=new CartInfoDTO();
+	    PurchaseCompleteDAO purchaseCompleteDAO= new PurchaseCompleteDAO();
+//	    CartInfoDTO dto=new CartInfoDTO();
 
-    if(session.containsKey("userId")){
+	    if(session.containsKey("userId")){
 
-    //1.取得メソッド
-    purchaseCompleteDAO.getCartInfo(session.get("userId").toString());
+		    //1.取得メソッド －PurchaseDAOでList型でcartInfoのデータを格納　DTOListで渡す→ActionでList型の箱を作りデータを受け取り
+		    cartList=purchaseCompleteDAO.getCartInfo(session.get("userId").toString());
 
-    //sessionに保存
+		    //2.登録メソッド
+	    	int i=purchaseCompleteDAO.setPurchseHistory(cartList);
+
+	    	if(cartList.size()==i){
+			    //2 削除メソッド
+			    CartDeleteDAO delete=new CartDeleteDAO();
+				delete.deleteCartInfo(session.get("userId").toString());
+
+					result=SUCCESS;
+	    	}
+	    }
+
+		return result;
 
 
-
-    //2.登録メソッド
-    purchaseCompleteDAO.setPurchseHistory(session.get("userId").toString(), dto.getProductId(), dto.getProductCount());
-
-
-    //2 削除メソッド
-    CartDeleteDAO delete=new CartDeleteDAO();
-	delete.deleteCartInfo(session.get("userId").toString());
-
-		result=SUCCESS;
-    }
 
 	}
-	return result;
-
-//ここのエラーが解消できない
-
 
 
 public String getUserId() {
@@ -64,6 +64,17 @@ public String getUserId() {
 
 public void setUserId(String userId) {
 	this.userId = userId;
+}
+
+
+
+public List<CartInfoDTO> getCartList() {
+	return cartList;
+}
+
+
+public void setCartList(List<CartInfoDTO> cartList) {
+	this.cartList = cartList;
 }
 
 

@@ -1,15 +1,16 @@
 package com.internousdev.cherry.action;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
-import com.opensymphony.xwork2.ActionSupport;
 
 import com.internousdev.cherry.dao.CartDeleteDAO;
 import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dto.CartInfoDTO;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  *  カート内の商品を削除するクラス
@@ -42,6 +43,10 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
     private List<CartInfoDTO> cartList = new ArrayList<>();
 
 
+
+
+
+
     /**
      * カート情報を削除するメソッド
      *
@@ -52,31 +57,31 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
      * 1：ログインしているかを確認
      * 2：カートからその商品のデータを削除
      * 3：カートの情報を取得
+     * @throws SQLException
      */
 
 
-    public String execute(){
+    public String execute() throws SQLException{
         String result = ERROR;
 
 
         if (session.containsKey("userId")) {
-            userId = session.get("userId").toString();
-            CartDeleteDAO deletedao=new CartDeleteDAO();
-
-            }
-            result="other";
-
+            userId = session.get("userId").toString();//ログインしているuserId
+            CartDeleteDAO deletedao=new CartDeleteDAO();//
+            deletedao.deleteCartInfo(userId);
         //カートに接続しデータが入っていないことを表示
             CartInfoDAO cartdao= new CartInfoDAO();
-            cartList=cartdao.getCartInfo(userId);
+            cartList=cartdao.aquireUserCartInfo(userId);
+
             if(cartList==null){
 
-            }
+
+            	 }
+             }
             result=SUCCESS;
 
-
-        }
         return result;
+    }
 
 
     /**
