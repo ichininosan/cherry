@@ -13,11 +13,17 @@
 		</action>
 
 		<!-- 工藤担当アクション -->
+		<action name="GoCartAction" class="com.internousdev.cherry.action.GoCartAction" method="execute">
+			<result name="success">cart.jsp</result>
+		</action>
+		<action name="PutProductIntoCartAction" class="com.internousdev.cherry.action.PutProductIntoCartAction" method="execute">
+			<result name="success">cart.jsp</result>
+		</action>
 		<action name="PurchaseInfoAction" class="com.internousdev.cherry.action.PurchaseInfoAction" method="execute">
 			<result name="success">settlement.jsp</result>
 			<result name="error">login.jsp</result>
 		</action>
-		<action name="GoDestinationRegisterAction" class="com.internousdev.cherry.action.GoDestinationRegisterAction" method="execute">
+ 		<action name="GoDestinationRegisterAction" class="com.internousdev.cherry.action.GoDestinationRegisterAction" method="execute">
 			<result name="success">destinationRegister.jsp</result>
 		</action>
 		<action name="DestinationRegisterConfirmAction" class="com.internousdev.cherry.action.DestinationRegisterConfirmAction" method="execute">
@@ -43,6 +49,35 @@
 		<action name="ProDetailAction" class="com.internousdev.cherry.action.ProDetailAction">
 			<result name="success">pro_detail.jsp</result>
 
+		</action>
+
+		<!-- 佐藤アクション -->
+		<action name="ResetPasswordAction" class="com.internousdev.cherry.action.ResetPasswordAction">
+			<result name="success">resetPassword.jsp</result>
+		</action>
+		<action name="ResetPasswordConfirmAction" class="com.internousdev.cherry.action.ResetPasswordConfirmAction">
+			<result name="success">resetPasswordConfirm.jsp</result>
+			<result name="error">resetPassword.jsp</result>
+		</action>
+		<action name="ResetPasswordCompleteAction" class="com.internousdev.cherry.action.ResetPasswordCompleteAction">
+			<result name="success">resetPasswordComplete.jsp</result>
+		</action>
+
+		<!-- 小内アクション -->
+		<action name="LoginAction" class="com.internousdev.cherry.action.LoginAction" method="execute">
+			<result name="success">home.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="GoUserRegisterAction" class="com.internousdev.cherry.action.GoUserRegisterAction" method="execute">
+			<result name="success">userRegister.jsp</result>
+		</action>
+		<action name="CheckUserInfoAction" class="com.internousdev.cherry.action.CheckUserInfoAction" method="execute">
+			<result name="success">userRegisterConfirm.jsp</result>
+			<result name="error">userRegister.jsp</result>
+		</action>
+		<action name="RegisterUserInfoAction" class="com.internousdev.cherry.action.RegisterUserInfoAction" method="execute">
+			<result name="success">userRegisterCompletion.jsp</result>
+			<result name="error">home.jsp</result>
 		</action>
 
 

@@ -2,6 +2,7 @@ package com.internousdev.cherry.dto;
 
 
 public class PurchaseHistoryDTO {
+	private int id;
 	//商品名
 	private String productName;
 
@@ -21,6 +22,14 @@ public class PurchaseHistoryDTO {
 	private String releaseDate;
 
 /*----------------------ゲッ他セッタ--------------------------------*/
+	//ID
+	public int getId(){
+		return id;
+	}
+	public void setId(int id){
+		this.id = id;
+	}
+
 	//商品名
 	public String getProductName(){
 		return productName;

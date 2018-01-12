@@ -16,7 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class PurchaseHistoryAction extends ActionSupport implements SessionAware{
 	/*
-	 *
+	 *セッション
 	 */
 	public Map<String, Object> session;
 
@@ -41,6 +41,11 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	private String message;
 
 	/*
+	 * 個別削除id取得
+	 */
+	private int id;
+
+	/*
 	 * 商品購入履歴取得メソッド
 	 */
 	public String execute()throws SQLException{
@@ -48,7 +53,8 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 
 		if(deleteFlg == null){
-			String user_id = session.get("セッション名！").toString();
+			String user_id = "a";
+			//session.get("user_id").toString()せっっしょンの名前！
 			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
 			Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
 
@@ -57,6 +63,8 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 			}
 		} else if(deleteFlg.equals("1")){
 			delete();
+		} else if(deleteFlg.equals("2")){
+			deletePart(id);
 		}
 
 		return result;
@@ -66,13 +74,43 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	 * 購入履歴削除メソッド
 	 */
 	public void delete() throws SQLException{
-		historyList = null;
-		if(historyList == null){
-			setMessage("商品購入履歴を削除しました！！");
-		}else if(!(historyList == null)){
-			setMessage("商品購入履歴の削除に失敗しました！！");
+
+		String user_id = "a";
+
+		int res = purchaseHistoryDAO.deleteHistory(user_id);
+
+		if(res > 0){
+			historyList = null;
+			setMessage("商品を正しく削除しました。");
+		}else if(res == 0){
+			setMessage("商品の削除に失敗しました。");
+		}
+
+	}
+
+	/*
+	 * 履歴個別削除メソッド
+	 */
+	public void deletePart(int id) throws SQLException{
+
+
+		//id = Integer.parseInt(historyList.get(id).toString());
+		id = this.id;
+		purchaseHistoryDAO.deletePart(id);
+
+		int res = purchaseHistoryDAO.deletePart(id);
+
+		if(res > 0){
+			historyList = null;
+			setMessage("商品を正しく削除しました。");
+		}else if(res == 0){
+			setMessage("商品の削除に失敗しました。");
 		}
 	}
+
+
+
+
 
 
 	/*
@@ -83,6 +121,13 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	}
 	public void setDeleteFlg(String deleteFlg){
 		this.deleteFlg = deleteFlg;
+	}
+
+	public int getId(){
+		return id;
+	}
+	public void setId(int id){
+		this.id = id;
 	}
 
 	/*
