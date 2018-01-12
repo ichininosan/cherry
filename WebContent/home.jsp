@@ -23,7 +23,7 @@
 
 	<a href="/cherry/GoCartAction">カート</a>
 
-	<a href="/cherry/Mypage">マイページ</a>
+	<a href="/cherry/MyPageAction">マイページ</a>
 
 	<a href="/cherry/LoginAction">ログイン</a>
 
