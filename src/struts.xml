@@ -60,5 +60,23 @@
 			<result name="success">resetPasswordComplete.jsp</result>
 		</action>
 
+		<!-- 小内アクション -->
+		<action name="LoginAction" class="com.internousdev.cherry.action.LoginAction" method="execute">
+			<result name="success">home.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="GoUserRegisterAction" class="com.internousdev.cherry.action.GoUserRegisterAction" method="execute">
+			<result name="success">userRegister.jsp</result>
+		</action>
+		<action name="CheckUserInfoAction" class="com.internousdev.cherry.action.CheckUserInfoAction" method="execute">
+			<result name="success">userRegisterConfirm.jsp</result>
+			<result name="error">userRegister.jsp</result>
+		</action>
+		<action name="RegisterUserInfoAction" class="com.internousdev.cherry.action.RegisterUserInfoAction" method="execute">
+			<result name="success">userRegisterCompletion.jsp</result>
+			<result name="error">home.jsp</result>
+		</action>
+
+
 	</package>
 </struts>

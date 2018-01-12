@@ -10,16 +10,13 @@
 
 </head>
 <body>
-
 	<div id="main">
 		<h2 class="title">ログイン</h2>
 		<div class="login_box">
 			<div class="member">
-
 				<h5>
 					<s:iterator value="errorMessageList"/>
 				</h5>
-
 				<div class="member_form">
 					<s:form action="LoginAction" theme="simple" id="LoginForm">
 
@@ -27,8 +24,7 @@
 							ユーザーID<br>
 						</div>
 						<div class="member_textbox">
-							<s:textfield type="text" name="userId" value="%{#session.saveId}"
-								class="validate[required,minSize[1],maxSize[16],custom[onlyLetterNumber]]" />
+							<s:textfield type="text" name="userId" value="%{#session.saveId}"/>
 							<br>
 						</div>
 
@@ -37,10 +33,8 @@
 							パスワード<br>
 						</div>
 						<div class="member_textbox">
-							<s:password name="password"
-								class="validate[required,minSize[1],maxSize[16],custom[onlyLetterNumber]]" />
+							<s:password name="password"/>
 						</div>
-
 
 						<p>
 							<s:checkbox name="saveLogin" />
@@ -53,8 +47,6 @@
 					</s:form>
 				</div>
 			</div>
-
-
 
 			<div class="nomember">
 				商品購入の際はユーザー登録をお願いします。<br>
