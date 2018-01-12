@@ -21,11 +21,11 @@
 		<input type ="search"  placeholder="キーワードで検索する">
 	</form>
 
-	<a href="/cherry/Cart">カート</a>
+	<a href="/cherry/GoCartAction">カート</a>
 
 	<a href="/cherry/Mypage">マイページ</a>
 
-	<a href="/cherry/Login">ログイン</a>
+	<a href="/cherry/LoginAction">ログイン</a>
 
 </header>
 

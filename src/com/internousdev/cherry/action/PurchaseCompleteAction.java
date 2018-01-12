@@ -7,6 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.dao.CartDeleteDAO;
 import com.internousdev.cherry.dao.PurchaseCompleteDAO;
+import com.internousdev.cherry.dto.CartInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class PurchaseCompleteAction extends ActionSupport implements SessionAware{
@@ -28,9 +29,19 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 		String result = ERROR;
 
     PurchaseCompleteDAO purchaseCompleteDAO= new PurchaseCompleteDAO();
+    CartInfoDTO dto=new CartInfoDTO();
+
+    if(session.containsKey("userId")){
+
+    //1.取得メソッド
+    purchaseCompleteDAO.getCartInfo(session.get("userId").toString());
+
+    //sessionに保存
 
 
-    purchaseCompleteDAO.putCartInfo(session.get("userId").toString());
+
+    //2.登録メソッド
+    purchaseCompleteDAO.setPurchseHistory(session.get("userId").toString(), dto.getProductId(), dto.getProductCount());
 
 
     //2 削除メソッド
@@ -38,6 +49,7 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 	delete.deleteCartInfo(session.get("userId").toString());
 
 		result=SUCCESS;
+    }
 
 	}
 	return result;

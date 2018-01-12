@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.cherry.dao.UserInfoDAO;
+import com.internousdev.cherry.dto.UserInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class RegisterUserInfoAction extends ActionSupport implements SessionAware {

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dao.DestinationInfoDAO;
 import com.internousdev.cherry.dto.CartInfoDTO;
 import com.internousdev.cherry.dto.DestinationInfoDTO;
@@ -22,12 +23,13 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 	/**
 	 * 合計金額
 	 */
-	private int totalPrice;
+	private int totalPrice =0;
 
 	/**
 	 * 個数
 	 */
-	private int count;
+
+	private int productCount;
 
 	/**
 	 * カート情報一覧
@@ -45,11 +47,11 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 	public String execute() throws SQLException{
 		String result = ERROR;
 
-		/*CartInfoDAO cartInfoDAO = new CartInfoDAO();
+		CartInfoDAO cartInfoDAO = new CartInfoDAO();
 		cartInfoDTOList = cartInfoDAO.showUserCartList(session.get("userId").toString());
 
 		for(CartInfoDTO dto:cartInfoDTOList) {
-			totalPrice +=dto.getPrice() * dto.getCount();
+			totalPrice +=dto.getPrice() * dto.getProductCount();
 
 		}
 
@@ -58,7 +60,7 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 
 		} else {
 			result = ERROR;
-		}*/
+		}
 
 		/**
 		 * 宛先情報取得メソッド
@@ -78,5 +80,76 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 		}
 
 		return result;
+
 	}
-}
+
+		/**
+		 * @return session
+		 */
+		public Map<String, Object> getSession() {
+			return session;
+		}
+
+		/**
+		 * @param session セットする session
+		 */
+		public void setSession(Map<String, Object> session) {
+			this.session = session;
+		}
+
+		/**
+		 * @return cartInfoDTOList
+		 */
+		public List<CartInfoDTO> getCartInfoDTOList() {
+			return cartInfoDTOList;
+		}
+
+		/**
+		 * @param cartInfoDTOList セットする cartInfoDTOList
+		 */
+		public void setCartInfoDTOList(List<CartInfoDTO> cartInfoDTOList) {
+			this.cartInfoDTOList = cartInfoDTOList;
+		}
+
+		/**
+		 * @return totalPrice
+		 */
+		public int getTotalPrice() {
+			return totalPrice;
+		}
+
+		/**
+		 * @param totalPrice セットする totalPrice
+		 */
+		public void setTotalPrice(int totalPrice) {
+			this.totalPrice = totalPrice;
+		}
+
+		/**
+		 * @return destinationInfoListDTO
+		 */
+		public ArrayList<DestinationInfoDTO> getDestinationInfoListDTO() {
+			return destinationInfoListDTO;
+		}
+
+		/**
+		 * @param destinationInfoListDTO セットする destinationInfoListDTO
+		 */
+		public void setDestinationInfoListDTO(ArrayList<DestinationInfoDTO> destinationInfoListDTO) {
+			this.destinationInfoListDTO = destinationInfoListDTO;
+		}
+
+		/**
+		 * @return count
+		 */
+		public int getProductCount() {
+			return productCount;
+		}
+
+		/**
+		 * @param count セットする count
+		 */
+		public void setProductCount(int productCount) {
+			this.productCount = productCount;
+		}
+	}

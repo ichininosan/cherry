@@ -7,15 +7,17 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dao.LoginDAO;
 import com.internousdev.cherry.dto.CartInfoDTO;
+import com.internousdev.cherry.dto.UserInfoDTO;
 import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware, ErrorMessageConstants {
 
 
-	private String user_id;
+	private String userId;
 
 	private String password;
 
@@ -36,13 +38,13 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 
 
 
-		if (user_id.equals("")) {
+		if (userId.equals("")) {
 			errorMessageList.add("ユーザーIDを入力してください。");
 
-		} else if (user_id.length() < 1 || user_id.length() > 16) {
+		} else if (userId.length() < 1 || userId.length() > 16) {
 			errorMessageList.add("ユーザーIDは1文字以上16文字以下で入力してください。");
 
-		} else if (!user_id.matches("^[a-zA-Z0-9]+$")) {
+		} else if (!userId.matches("^[a-zA-Z0-9]+$")) {
 			errorMessageList.add("ユーザーIDは半角英数字で入力してください");
 
 		}
@@ -59,33 +61,33 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 		}
 
 		if (saveLogin) {
-			session.put("saveId", user_id);
+			session.put("saveId", userId);
 
 		} else {
 			session.remove("saveId");
 		}
 
-		if (!user_id.equals("") && !password.equals("")) {
-			if (!loginDAO.existsUserId(user_id)) {
+		if (!userId.equals("") && !password.equals("")) {
+			if (!loginDAO.existsUserId(userId)) {
 				errorMessageList.add("IDが正しくありません。");
 				result = ERROR;
 			} else {
-				userInfoDTO = loginDAO.select(user_id, password);
+				userInfoDTO = loginDAO.select(userId, password);
 
-				if (user_id.equals(userInfoDTO.getUser_id()) && password.equals(userInfoDTO.getPassword())) {
+				if (userId.equals(userInfoDTO.getUserId()) && password.equals(userInfoDTO.getPassword())) {
 					loginDAO.login(userInfoDTO);
 
-					for (CartInfoDTO cartInfoDTO : cartInfoDAO.showTempUserCartList(session.get("user_id").toString())) {
+					for (CartInfoDTO cartInfoDTO : cartInfoDAO.showTempUserCartList(session.get("userId").toString())) {
 						if (cartInfoDAO.isAlreadyIntoCart(userInfoDTO.getUserId(), cartInfoDTO.getProductId())) {
-							cartInfoDAO.deleteProductFromTempUserCart(session.get("user_id").toString(),
+							cartInfoDAO.deleteProductFromTempUserCart(session.get("userId").toString(),
 									cartInfoDTO.getProductId());
 						}
 					}
-//					updateCount = cartInfoDAO.integrateCart(session.get("user_id").toString(), userInfoDTO.getUser_id());
+					updateCount = cartInfoDAO.integrateCart(session.get("userId").toString(), userInfoDTO.getUserId());
 					System.out.println(updateCount + "件統合しました。");
 					result = SUCCESS;
 
-					session.put("user_id", userInfoDTO.getUser_id());
+					session.put("userId", userInfoDTO.getUserId());
 					session.put("loginFlg", true);
 				} else {
 					errorMessageList.add("入力されたパスワードが異なります。");
@@ -98,13 +100,13 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 	}
 
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 

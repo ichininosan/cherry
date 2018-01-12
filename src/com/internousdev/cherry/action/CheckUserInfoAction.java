@@ -3,6 +3,7 @@ package com.internousdev.cherry.action;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.internousdev.cherry.dao.UserInfoDAO;
 import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.internousdev.cherry.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;

@@ -110,15 +110,17 @@ public class InputChecker {
 	}
 
 
-	public String passwordcChk(String password) {
+	public String passwordcChk(String passwordc,String password) {
 		String result = "OK";
 
-		if (password.equals("")) {
+		if (passwordc.equals("")) {
 			result = "再確認パスワードを入力してください。";
-		} else if (password.length() < 1 || password.length() > 8) {
+		} else if (passwordc.length() < 1 || passwordc.length() > 8) {
 			result = "再確認パスワードは1文字以上8文字以下で入力してください。";
-		} else if (!password.matches("^[a-zA-Z0-9]+$")) {
+		} else if (!passwordc.matches("^[a-zA-Z0-9]+$")) {
 			result = "再確認パスワードは半角英数字で入力してください。";
+		} else if (!(passwordc.equals(password))) {
+			result = ("入力されたパスワードが異なります。");
 		}
 
 		return result;

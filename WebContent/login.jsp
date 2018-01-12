@@ -6,34 +6,17 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="./css/login.css">
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="imagetoolbar" content="no" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<meta charset="utf-8">
-
 <title>ログイン画面</title>
 
 </head>
 <body>
-
 	<div id="main">
 		<h2 class="title">ログイン</h2>
 		<div class="login_box">
 			<div class="member">
-
 				<h5>
-					<s:iterator value="errorMessageList">
-						<s:div>
-							<s:property />
-						</s:div>
-					</s:iterator>
+					<s:iterator value="errorMessageList"/>
 				</h5>
-
 				<div class="member_form">
 					<s:form action="LoginAction" theme="simple" id="LoginForm">
 
@@ -41,8 +24,7 @@
 							ユーザーID<br>
 						</div>
 						<div class="member_textbox">
-							<s:textfield type="text" name="user_id" value="%{#session.saveId}"
-								class="validate[required,minSize[1],maxSize[16],custom[onlyLetterNumber]]" />
+							<s:textfield type="text" name="userId" value="%{#session.saveId}"/>
 							<br>
 						</div>
 
@@ -51,10 +33,8 @@
 							パスワード<br>
 						</div>
 						<div class="member_textbox">
-							<s:password name="password"
-								class="validate[required,minSize[1],maxSize[16],custom[onlyLetterNumber]]" />
+							<s:password name="password"/>
 						</div>
-
 
 						<p>
 							<s:checkbox name="saveLogin" />
@@ -67,8 +47,6 @@
 					</s:form>
 				</div>
 			</div>
-
-
 
 			<div class="nomember">
 				商品購入の際はユーザー登録をお願いします。<br>

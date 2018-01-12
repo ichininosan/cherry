@@ -1,19 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Content-Style-Type" content="text/css" />
 	<meta http-equiv="Content-Script-Type" content="text/javascript" />
 	<meta http-equiv="imagetoolbar" content="no" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
-	<meta charset="utf-8">
-	<title>ResetPasswordComplete画面</title>
+	<title>パスワード再設定画面</title>
 	<style type="text/css">
 		/* ========TAG LAYOUT======== */
 		body {
@@ -21,7 +19,7 @@
 			padding:0;
 			line-height:1.6;
 			letter-spacing:1px;
-			font-family:Verdana,Helvetica,sans-serif;
+			font-family:Verdana, Helvetica, sans-serif;
 			font-size:12px;
 			color:#333;
 			background:#fff;
@@ -55,28 +53,64 @@
 			width: 100%;
 			height: 80px;
 			background-color: black;
-			clear:both;
+			clear: both;
 		}
 	</style>
 </head>
 <body>
 	<div id="header">
-		<div id="pr">
+		<div id="top">
 		</div>
 	</div>
 	<div id="main">
 		<div id="top">
-			<p>ResetPasswordConfirm</p>
+			<p>ResetPassword</p>
 		</div>
-		<div><br>
-			<h3>パスワードの再設定が完了致しました。</h3>
+		<div>
+			<table>
+			<s:form action="ResetPasswordConfirmAction">
 
+				<!-- ここから入力エラーメッセージ表示 -->
+				<h5>
+					<s:iterator value="errMsgList">
+						<s:property/>
+					</s:iterator>
+				</h5>
+				<!-- ここまで入力エラーメッセージ表示 -->
+
+				<tr>
+					<td>
+						<label>ログインID:</label>
+					</td>
+					<td>
+						<input type="text" name="userId" >
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>パスワード:</label>
+					</td>
+					<td>
+						<input type="password" name="password" value="">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>再確認パスワード:</label>
+					</td>
+					<td>
+						<input type="password" name="passwordc" value="">
+					</td>
+				</tr>
+				<s:submit value="登録" />
+			</s:form>
+			</table>
 			<div>
-				<a href='<s:url action="HomeAction" />'>ログインへ</a>
+				<span>前画面に戻る場合は</span><a href='<s:url action="LoginAction" />'>こちら</a>
 			</div>
 		</div>
 	</div>
-	<div id="footer">
+		<div id="footer">
 		<div id="pr">
 		</div>
 	</div>

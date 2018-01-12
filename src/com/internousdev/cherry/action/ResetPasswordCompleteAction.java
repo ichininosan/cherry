@@ -5,44 +5,49 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.cherry.dao.ResetPasswordCompleteDAO;
+import com.internousdev.cherry.dao.ResetPasswordDAO;
+import com.internousdev.cherry.dto.ResetPasswordDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordCompleteAction  extends ActionSupport implements SessionAware{
 
-	private String loginUserId;
-
-	private String loginPassword;
-
+	private String user_id;
+	private String password;
 	public Map<String,Object> session;
 
-	private ResetPasswordCompleteDAO resetPasswordCompleteDAO = new ResetPasswordCompleteDAO();
+	private ResetPasswordDAO resetPasswordDAO = new ResetPasswordDAO();
+	private ResetPasswordDTO resetPasswordDTO = new ResetPasswordDTO();
 
 	public String execute() throws SQLException {
 
-		resetPasswordCompleteDAO.resetPassword(session.get("loginUserId").toString(),
-				session.get("loginPassword").toString());
+		password=session.get("password").toString();
+		user_id=session.get("user_id").toString();
 
-		String result = SUCCESS;
+		/*ログインIDをDBから特定*/
+		resetPasswordDAO.getUserId(user_id);
 
-		return result ;
+		/*ユーザーIDを元にして新しいパスワードをDBにセットするメソッド*/
+		if(resetPasswordDAO.updatePassword(user_id,password)){
+			return SUCCESS;
+		}
+		return ERROR;
 	}
 
 
-	public String getLoginUserId() {
-		return loginUserId;
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public void setLoginUserId(String loginUserId) {
-		this.loginUserId = loginUserId;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
-	public String getLoginPassword() {
-		return loginPassword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setLoginPassword(String loginPassword) {
-		this.loginPassword = loginPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 
@@ -52,5 +57,13 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public ResetPasswordDTO getResetPasswordDTO() {
+		return resetPasswordDTO;
+	}
+
+	public void setResetPasswordDTO(ResetPasswordDTO resetPasswordDTO) {
+		this.resetPasswordDTO = resetPasswordDTO;
 	}
 }

@@ -20,7 +20,7 @@
 <img src="<%= pro.getImage_file_name() %>">
 <%= pro.getRelease_company() %>
 
-<p><a href="/cherry/Cart">カートへ</a></p>
+<p><a href="/cherry/PutProductIntoCartAction">カートへ追加</a></p>
 
 </body>
 </html>
