@@ -7,3 +7,4 @@ public class GoUserRegisterAction extends ActionSupport {
 		return SUCCESS;
 	}
 }
+

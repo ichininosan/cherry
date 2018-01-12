@@ -64,34 +64,7 @@ public class LoginDAO {
 
 		}
 		return result;
-
 	}
-	//上とした同じ処理なんで
-
-
-	public boolean logout(UserInfoDTO userInfoDTO) throws SQLException {
-		boolean result = false;
-		int updateCount = 0;
-		DBConnector db = new DBConnector();
-		Connection con = db.getConnection();
-
-		String sql = "UPDATE user_info SET logined=0 WHERE user_id=?";
-		try {
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, userInfoDTO.getUserId());
-			updateCount = ps.executeUpdate();
-			if(updateCount > 0) {
-				System.out.println("未ログイン");
-				result = true;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			con.close();
-		}
-		return result;
-	}
-
 
 	public boolean existsUserId(String userId) throws SQLException {
 		boolean result = false;

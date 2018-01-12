@@ -13,17 +13,17 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 
 	Map<String, Object> session;
 
-	private String  user_id;
+	private String  userId;
 
 	private String password;
 
-	private String family_name;
+	private String familyName;
 
-	private String first_name;
+	private String firstName;
 
-	private String family_name_kana;
+	private String familyNameKana;
 
-	private String first_name_kana;
+	private String firstNameKana;
 
 	/**
 	 * 0:男性、1:女性
@@ -36,18 +36,18 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 
 		UserInfoDAO dao = new UserInfoDAO();
 		UserInfoDTO dto = new UserInfoDTO();
-		dto.setUserName(family_name, first_name, family_name_kana, first_name_kana);
+		dto.setUserName(familyName, firstName, familyNameKana, firstNameKana);
 		if(sex.equals("0")) {
 			dto.setSex(false);
 		} else if (sex.equalsIgnoreCase("1")) {
 			dto.setSex(true);
 		}
 		dto.setEmail(email);
-		dto.setUserId(user_id);
+		dto.setUserId(userId);
 		dto.setPassword(password);
 
 		if (dao.registerUser(dto)) {
-			session.put("user_id", user_id);
+			session.put("userId", userId);
 			session.put("logined", true);
 
 			return SUCCESS;
@@ -58,8 +58,6 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 	}
 
 
-
-
 	public Map<String, Object> getSession() {
 		return session;
 	}
@@ -68,36 +66,35 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 		this.session = session;
 	}
 
-	public String getFamily_name() {
-		return family_name;
+	public String getFamilyName() {
+		return familyName;
 	}
 
-	public void setFamily_name(String family_name) {
-		this.family_name = family_name;
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
 	}
 
 	public String getFirstName() {
-		return first_name;
+		return firstName;
 	}
 
-	public void setFirstName(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getFamily_name_kana() {
-		return family_name_kana;
+	public String getFamilyNameKana() {
+		return familyNameKana;
+	}
+	public void setFamilyNameKana(String familyNameKana) {
+		this.familyNameKana = familyNameKana;
 	}
 
-	public void setFamily_name_kana(String family_name_kana) {
-		this.family_name_kana = family_name_kana;
+	public String getFirstNameKana() {
+		return firstNameKana;
 	}
 
-	public String getFirst_name_kana() {
-		return first_name_kana;
-	}
-
-	public void setFrist_name_kana(String first_name_kana) {
-		this.first_name_kana = first_name_kana;
+	public void setFristNameKana(String firstNameKana) {
+		this.firstNameKana = firstNameKana;
 	}
 
 	public String isSex() {
@@ -116,12 +113,12 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 		this.email = email;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getPassword() {

@@ -7,9 +7,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dao.LoginDAO;
-import com.internousdev.cherry.dto.CartInfoDTO;
 import com.internousdev.cherry.dto.UserInfoDTO;
 import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.opensymphony.xwork2.ActionSupport;
@@ -32,8 +30,8 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 	public String execute() throws SQLException {
 		String result = ERROR;
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
-		CartInfoDAO cartInfoDAO = new CartInfoDAO();
-		int updateCount = 0;
+//		CartInfoDAO cartInfoDAO = new CartInfoDAO();
+//		int updateCount = 0;
 		LoginDAO loginDAO = new LoginDAO();
 
 
@@ -77,14 +75,14 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 				if (userId.equals(userInfoDTO.getUserId()) && password.equals(userInfoDTO.getPassword())) {
 					loginDAO.login(userInfoDTO);
 
-					for (CartInfoDTO cartInfoDTO : cartInfoDAO.showTempUserCartList(session.get("userId").toString())) {
-						if (cartInfoDAO.isAlreadyIntoCart(userInfoDTO.getUserId(), cartInfoDTO.getProductId())) {
-							cartInfoDAO.deleteProductFromTempUserCart(session.get("userId").toString(),
-									cartInfoDTO.getProductId());
-						}
-					}
-					updateCount = cartInfoDAO.integrateCart(session.get("userId").toString(), userInfoDTO.getUserId());
-					System.out.println(updateCount + "件統合しました。");
+//					for (CartInfoDTO cartInfoDTO : cartInfoDAO.showTempUserCartList(session.get("userId").toString())) {
+//						if (cartInfoDAO.isAlreadyIntoCart(userInfoDTO.getUserId(), cartInfoDTO.getProductId())) {
+//							cartInfoDAO.deleteProductFromTempUserCart(session.get("userId").toString(),
+//									cartInfoDTO.getProductId());
+//						}
+//					}
+//				updateCount = cartInfoDAO.integrateCart(session.get("userId").toString(), userInfoDTO.getUserId());
+//				System.out.println(updateCount + "件統合しました。");
 					result = SUCCESS;
 
 					session.put("userId", userInfoDTO.getUserId());
