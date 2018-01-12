@@ -6,19 +6,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="./css/login.css">
-<link rel="stylesheet" href="./css/validationEngine.jquery.css"
-	type="text/css" />
-<script src="./js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="./js/languages/jquery.validationEngine-ja.js"
-	type="text/javascript" charset="utf-8"></script>
-<script src="./js/jquery.validationEngine.js" type="text/javascript"
-	charset="utf-8"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function() {
-		jQuery("#LoginForm").validationEngine();
-	});
-</script>
 <title>ログイン画面</title>
 
 </head>
@@ -30,11 +17,7 @@
 			<div class="member">
 
 				<h5>
-					<s:iterator value="errorMessageList">
-						<s:div>
-							<s:property />
-						</s:div>
-					</s:iterator>
+					<s:iterator value="errorMessageList"/>
 				</h5>
 
 				<div class="member_form">
