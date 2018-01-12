@@ -28,6 +28,7 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 	/**
 	 * 個数
 	 */
+
 	private int productCount;
 
 	/**

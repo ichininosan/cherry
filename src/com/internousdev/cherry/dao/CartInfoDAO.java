@@ -117,7 +117,7 @@ public class CartInfoDAO extends ActionSupport{
 	}
 
 	/**
-	 * 指定したログインユーザーのカート情報をすべて引き出す
+	 * 指定した非ログインユーザーのカート情報をすべて引き出す
 	 * @param tempUserId
 	 * @return
 	 * @throws SQLException
