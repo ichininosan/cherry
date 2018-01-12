@@ -18,7 +18,7 @@ public class MyPageDAO {
 		MyPageDTO myPageDTO = new MyPageDTO();
 		ArrayList<MyPageDTO> myPageList=new ArrayList<MyPageDTO>();
 
-		String sql = "SELECT * FROM user_info where login_id = ? ";
+		String sql = "SELECT * FROM user_info where user_id = ? ";
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);

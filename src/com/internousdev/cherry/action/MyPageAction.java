@@ -35,10 +35,13 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	 */
 	public String execute(){
 		String result=ERROR;
-		if (session.containsKey("loginDTO")){
+		//暫定でセッション値セット//
+		session.put("loginFlg",true);
+		session.put("userId", "a");
 
-
-		userId = session.get("user_id").toString();
+		//if (session.containsKey("loginDTO")){
+		if (session.containsKey("loginFlg")&& (boolean) session.get("loginFlg")){
+			     userId = session.get("userId").toString();
 
 		//ログイン情報取得DAO
 		MyPageDAO dao= new MyPageDAO();

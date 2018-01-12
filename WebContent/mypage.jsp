@@ -41,7 +41,7 @@
 			</table>
 
 			<div>
-				<button type="submit">注文履歴を確認する</button>
+				<a href="/cherry/PurchaseHistoryAction"><button type="submit">注文履歴を確認する</button></a>
 			</div>
 
 
