@@ -16,7 +16,7 @@ public class ResetPasswordDAO  {
 
 
 	/*ログインIDをDBから探すメソッド*/
-	public boolean getLoginId(String userId){
+	public boolean getUserId(String userId){
 
 	String sql="SELECT * FROM user_info where user_id=?";
 

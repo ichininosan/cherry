@@ -19,14 +19,16 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 
 	public Map<String,Object> session;
 
-	public String confirmId1 = user_id.substring(0);
+
+	/**
+	public char confirmId1 = user_id.charAt(0);
 	public String confirmId2 = user_id.substring(1);
 	public String confirmId = confirmId1 + confirmId2.replaceAll("^[0-9a-zA-Z]+$","*");
 
-	public String confirmPass1 = password.substring(0);
+	public char confirmPass1 = password.charAt(0);
 	public String confirmPass2 = password.substring(1);
 	public String confirmPass = confirmPass1 + confirmPass2.replaceAll("^[0-9a-zA-Z]+$","*");
-
+	*/
 
 	public String execute(){
 		String result = SUCCESS;

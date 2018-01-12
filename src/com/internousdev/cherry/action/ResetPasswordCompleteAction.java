@@ -6,26 +6,31 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.dao.ResetPasswordDAO;
+import com.internousdev.cherry.dto.ResetPasswordDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordCompleteAction  extends ActionSupport implements SessionAware{
 
 	private String user_id;
-
 	private String password;
-
 	public Map<String,Object> session;
 
 	private ResetPasswordDAO resetPasswordDAO = new ResetPasswordDAO();
+	private ResetPasswordDTO resetPasswordDTO = new ResetPasswordDTO();
 
 	public String execute() throws SQLException {
 
-		resetPasswordDAO.updatePassword(session.get("user_id").toString(),
-				session.get("password").toString());
+		password=session.get("password").toString();
+		user_id=session.get("user_id").toString();
 
-		String result = SUCCESS;
+		/*ログインIDをDBから特定*/
+		resetPasswordDAO.getUserId(user_id);
 
-		return result ;
+		/*ユーザーIDを元にして新しいパスワードをDBにセットするメソッド*/
+		if(resetPasswordDAO.updatePassword(user_id,password)){
+			return SUCCESS;
+		}
+		return ERROR;
 	}
 
 
@@ -52,5 +57,13 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public ResetPasswordDTO getResetPasswordDTO() {
+		return resetPasswordDTO;
+	}
+
+	public void setResetPasswordDTO(ResetPasswordDTO resetPasswordDTO) {
+		this.resetPasswordDTO = resetPasswordDTO;
 	}
 }

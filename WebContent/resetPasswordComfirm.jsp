@@ -13,7 +13,7 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<meta charset="utf-8">
-	<title>パスワード再設定完了画面</title>
+	<title>パスワード再設定確認画面</title>
 	<style type="text/css">
 		/* ========TAG LAYOUT======== */
 		body {
@@ -21,7 +21,7 @@
 			padding:0;
 			line-height:1.6;
 			letter-spacing:1px;
-			font-family:Verdana,Helvetica,sans-serif;
+			font-family:Verdana, Helvetica, sans-serif;
 			font-size:12px;
 			color:#333;
 			background:#fff;
@@ -51,10 +51,14 @@
 			text-align: center;
 		}
 
+		#box {
+			border: 1px solid #000000;
+		}
+
 		#footer {
 			width: 100%;
 			height: 80px;
-			background-color: black;
+			background-color: black
 			clear:both;
 		}
 	</style>
@@ -66,14 +70,35 @@
 	</div>
 	<div id="main">
 		<div id="top">
-			<p>ResetPasswordComplete</p>
+			<p>ResetPasswordConfirm</p>
 		</div>
-		<div><br>
-			<h3>パスワードの再設定が完了致しました。</h3>
-
-			<div>
-				<a href='<s:url action="LoginAction" />'>ログインへ</a>
-			</div>
+		<div>
+			<h3>登録する内容は以下でよろしいですか。</h3>
+			<table>
+				<s:form action="ResetPasswordCompleteAction">
+					<tr id="box">
+						<td>
+							<label>ログインID:</label>
+						</td>
+						<td>
+							<s:property value="user_id" escape="false" />
+						</td>
+					</tr>
+					<tr id="box">
+						<td>
+							<label>パスワード:</label>
+						</td>
+						<td>
+							<s:property value="password" escape="false" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<s:submit value="完了" />
+						</td>
+					</tr>
+				</s:form>
+			</table>
 		</div>
 	</div>
 	<div id="footer">

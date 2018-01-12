@@ -10,7 +10,7 @@
 	<meta http-equiv="imagetoolbar" content="no" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
-	<title>ResetPassword画面</title>
+	<title>パスワード再設定画面</title>
 	<style type="text/css">
 		/* ========TAG LAYOUT======== */
 		body {
@@ -82,7 +82,7 @@
 						<label>ログインID:</label>
 					</td>
 					<td>
-						<input type="text" value=userId >
+						<input type="text" value="user_id" >
 					</td>
 				</tr>
 				<tr>
