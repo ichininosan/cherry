@@ -13,9 +13,9 @@
 		</action>
 
 		<!-- 工藤担当アクション -->
-		<action name="GoCartAction" class="com.internousdev.cherry.action.GoCartAction" method="execute">
+		<!-- <action name="GoCartAction" class="com.internousdev.cherry.action.GoCartAction" method="execute">
 			<result name="success">cart.jsp</result>
-		</action>
+		</action> -->
 		<action name="PutProductIntoCartAction" class="com.internousdev.cherry.action.PutProductIntoCartAction" method="execute">
 			<result name="success">cart.jsp</result>
 		</action>
@@ -23,7 +23,7 @@
 			<result name="success">settlement.jsp</result>
 			<result name="error">login.jsp</result>
 		</action>
-		<action name="GoDestinationRegisterAction" class="com.internousdev.cherry.action.GoDestinationRegisterAction" method="execute">
+ 		<action name="GoDestinationRegisterAction" class="com.internousdev.cherry.action.GoDestinationRegisterAction" method="execute">
 			<result name="success">destinationRegister.jsp</result>
 		</action>
 		<action name="DestinationRegisterConfirmAction" class="com.internousdev.cherry.action.DestinationRegisterConfirmAction" method="execute">
