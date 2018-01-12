@@ -12,6 +12,8 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 	public String execute(){
 		ResetPasswordDAO dao = new ResetPasswordDAO();
 
+		dao.getUserId("user_id");
+
 
 
 			return SUCCESS;
