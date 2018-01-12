@@ -13,10 +13,9 @@
 		</action>
 
 		<!-- MyPageAction 落合担当 -->
-		<action name="MyPageAction"
-		class="com.internousdev.cherry.action.MyPageAction" method="execute">
+		<action name="MyPageAction" class="com.internousdev.cherry.action.MyPageAction" method="execute">
 			<result name="success">mypage.jsp</result>
-			<result name="error">home.jsp</result>
+			<result name="error">testError.jsp</result>
 		</action>
 
 
