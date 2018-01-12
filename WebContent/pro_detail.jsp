@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page import="com.internousdev.cherry.dto.ProductDTO" %>
 
 <%
@@ -13,6 +13,7 @@
 <title><%= pro.getProduct_name() %>の詳細ページ</title>
 </head>
 <body>
+<s:form action="PutProductIntoCartAction">
 <%= pro.getProduct_name_kana() %>
 <%= pro.getProduct_name() %>
 <%= pro.getProduct_description() %>
@@ -20,7 +21,9 @@
 <img src="<%= pro.getImage_file_name() %>">
 <%= pro.getRelease_company() %>
 
-<p><a href="/cherry/PutProductIntoCartAction">カートへ追加</a></p>
+
+	<input type="submit" value="カートに追加">
+</s:form>
 
 </body>
 </html>

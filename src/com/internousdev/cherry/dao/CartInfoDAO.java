@@ -87,8 +87,8 @@ public class CartInfoDAO extends ActionSupport{
 		ArrayList<CartInfoDTO> cartList = new ArrayList<>();
 
 		String sql = "SELECT cart_info.product_id, pi.product_name, pi.product_name_kana, pi.image_file_name, pi.price, pi.release_company, pi.release_date, product_count"
-						+ "FROM cart_info LEFT JOIN product_info as pi ON cart_info.product_id = pi.product_id"
-						+ "WHERE user_id = ?";
+						+ " FROM cart_info LEFT JOIN product_info as pi ON cart_info.product_id = pi.product_id"
+						+ " WHERE user_id = ?";
 
 		try{
 			con = db.getConnection();
@@ -126,8 +126,8 @@ public class CartInfoDAO extends ActionSupport{
 		ArrayList<CartInfoDTO> cartList = new ArrayList<>();
 
 		String sql = "SELECT cart_info.product_id, cart_info.product_count, pi.product_name, pi.product_name_kana, pi.image_file_name, pi.price, pi.release_company, pi.release_date"
-						+ "FROM cart_info LEFT JOIN product_info as pi ON cart_info.product_id = pi.product_id"
-						+ "WHERE temp_user_id = ?";
+						+ " FROM cart_info LEFT JOIN product_info as pi ON cart_info.product_id = pi.product_id"
+						+ " WHERE temp_user_id = ?";
 
 		try{
 			con = db.getConnection();
