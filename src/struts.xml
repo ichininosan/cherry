@@ -57,6 +57,5 @@
 			<result name="success">resetPasswordComplete.jsp</result>
 		</action>
 
-
 	</package>
 </struts>
