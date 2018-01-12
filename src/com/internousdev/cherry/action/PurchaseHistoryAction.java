@@ -13,6 +13,12 @@ import com.opensymphony.xwork2.ActionSupport;
 
 /*
  * マイページからボタン押して遷移
+ *
+ *       (要) executeメソッドとdeleteメソッドの
+ *        user_idをsessionからひっぱれるようにする！
+ *  1/12
+ *  個別削除でListからもけしたい！！
+ *
  */
 public class PurchaseHistoryAction extends ActionSupport implements SessionAware{
 	/*
@@ -45,15 +51,20 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	 */
 	private int id;
 
+
+
+
 	/*
 	 * 商品購入履歴取得メソッド
 	 */
 	public String execute()throws SQLException{
 		String result = SUCCESS;
 
+		//sessionからもってこれるようにする
+		String user_id = "a";
 
 		if(deleteFlg == null){
-			String user_id = "a";
+
 			//session.get("user_id").toString()せっっしょンの名前！
 			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
 			Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
@@ -62,10 +73,17 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 				historyList = null;
 			}
 		} else if(deleteFlg.equals("1")){
+			//すべて削除メソッド
 			delete();
+			historyList = null;
 		} else if(deleteFlg.equals("2")){
+			//個別削除メソッド
+			System.out.println("ID:"+id);
 			deletePart(id);
+			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
+
 		}
+
 
 		return result;
 	}
@@ -74,15 +92,18 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	 * 購入履歴削除メソッド
 	 */
 	public void delete() throws SQLException{
-
+		//sessionからもってこれるようにする
 		String user_id = "a";
 
-		int res = purchaseHistoryDAO.deleteHistory(user_id);
 
+		int res = purchaseHistoryDAO.deleteHistory(user_id);
+		System.out.println("削除しようとする件数："+res);
 		if(res > 0){
+			System.out.println("削除した");
 			historyList = null;
 			setMessage("商品を正しく削除しました。");
 		}else if(res == 0){
+			System.out.println("削除失敗");
 			setMessage("商品の削除に失敗しました。");
 		}
 
@@ -92,18 +113,24 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	 * 履歴個別削除メソッド
 	 */
 	public void deletePart(int id) throws SQLException{
-
-
-		//id = Integer.parseInt(historyList.get(id).toString());
+		//jspからもってきた
 		id = this.id;
-		purchaseHistoryDAO.deletePart(id);
 
-		int res = purchaseHistoryDAO.deletePart(id);
 
-		if(res > 0){
-			historyList = null;
+
+		int res2 = purchaseHistoryDAO.deletePart(id);
+
+
+
+		System.out.println("個別：削除しようとする件数："+res2);
+		if(res2 > 0){
+			System.out.println("個別：削除した");
+
+			//historyList.remove(id); listからもけせるかも？
+
 			setMessage("商品を正しく削除しました。");
-		}else if(res == 0){
+		}else if(res2 == 0){
+			System.out.println("個別：削除失敗");
 			setMessage("商品の削除に失敗しました。");
 		}
 	}
@@ -123,6 +150,9 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		this.deleteFlg = deleteFlg;
 	}
 
+	/*
+	 * jspからIDもってくる
+	 */
 	public int getId(){
 		return id;
 	}

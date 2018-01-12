@@ -9,6 +9,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>商品購入履歴画面</title>
 
+<!--------------------------------------------------------------
+
+
+1/12
+
+個別削除で全部消したら「購入情報はありません」って出したい！
+なんかテーブルもでてくる！
+
+
+ ----------------------------------------------------------------->
 </head>
 <body>
 <!-- ヘッダー -->
@@ -35,7 +45,6 @@
 
 			<table border = "1">
 				<tr>
-
 					<th>商品名</th>
 					<th>ふりがな</th>
 					<th>商品画像</th>
@@ -45,13 +54,11 @@
 					<th>削除ボタン</th>
 				</tr>
 
-				<s:iterator status="st" value = "historyList">
-
+				<s:iterator value = "historyList">
 					<tr>
-
 						<td><s:property value="productName"/></td>
 						<td><s:property value="productNameKana"/></td>
-						<td><img src="<s:property value="productImage"/>"></td>
+						<td><img src="<s:property value="productImage"/>" style="width: 300px; height: 300px;"></td>
 						<td><s:property value="price"/><span>円</span></td>
 						<td><s:property value="releaseCompany"/></td>
 						<td><s:property value="releaseDate"/></td>
@@ -76,7 +83,7 @@
 		</s:elseif>
 
 		<div class= "back">
-			<!-- MyPageに戻る action名あとで変更 -->
+			<!-- MyPageに戻る-->
 			<a href='<s:url action="MyPageAction" />'>マイページに戻る</a>
 		<!-- あとで消す！！！！！ -->
 			<a href='<s:url action="PurchaseHistoryAction" />'>テスト用リンク</a>

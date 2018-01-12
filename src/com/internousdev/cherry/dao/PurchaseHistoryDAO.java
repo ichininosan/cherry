@@ -9,11 +9,16 @@ import java.util.ArrayList;
 import com.internousdev.cherry.dto.PurchaseHistoryDTO;
 import com.internousdev.cherry.util.DBConnector;
 
-
+/*
+ *    PreparedStatementの1をuser_idとかにする！
+ *    購入履歴削除メソッドも同じ！！
+ *
+ *  1/12
+ *       ここは大ジョブそう
+ *
+ */
 
 public class PurchaseHistoryDAO {
-	private DBConnector db = new DBConnector();
-	private Connection con = db.getConnection();
 
 /*
  * 購入履歴表示メソッド
@@ -22,6 +27,8 @@ public class PurchaseHistoryDAO {
 
 
 	public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String user_id) throws SQLException{
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
 		ArrayList<PurchaseHistoryDTO> purchaseHistoryDTOList = new ArrayList<PurchaseHistoryDTO>();
 
 		/*
@@ -52,7 +59,7 @@ public class PurchaseHistoryDAO {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
-		}finally {
+		} finally{
 			con.close();
 		}
 		return purchaseHistoryDTOList;
@@ -62,6 +69,8 @@ public class PurchaseHistoryDAO {
 	 * 購入履歴削除メソッド
 	 */
 	public int deleteHistory(String user_id) throws SQLException{
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
 		String sql = "DELETE FROM purchase_history_info where user_id = ?";
 
 		PreparedStatement ps;
@@ -87,24 +96,24 @@ public class PurchaseHistoryDAO {
 	 * 履歴個別削除メソッド
 	 */
 	public int deletePart(int id) throws SQLException{
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
 		String sql = "DELETE  FROM purchase_history_info where id = ?";
 		PreparedStatement ps;
-		int result = 0;
+		int result2 = 0;
 		try{
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 
-
-			result = ps.executeUpdate();
+			result2 = ps.executeUpdate();
+			System.out.println(result2);
+			con.close();
 		}catch (SQLException e){
 			e.printStackTrace();
-		} finally {
-			con.close();
 		}
-		return result;
-
-}
+		return result2;
 	}
+}
 
 
 
