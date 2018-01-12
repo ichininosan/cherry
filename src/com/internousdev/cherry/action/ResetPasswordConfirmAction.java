@@ -50,7 +50,6 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		return result;
 	}
 
-
 	public String getUserId() {
 		return user_id;
 	}

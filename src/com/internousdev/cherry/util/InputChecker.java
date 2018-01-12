@@ -85,8 +85,8 @@ public class InputChecker {
 
 		if (userId.equals("")) {
 			result = "ログインIDを入力してください。";
-		} else if (userId.length() < 1 || userId.length() > 16) {
-			result = "ログインIDは1文字以上16文字以下で入力してください。";
+		} else if (userId.length() < 1 || userId.length() > 8) {
+			result = "ログインIDは1文字以上8文字以下で入力してください。";
 		} else if (!userId.matches("^[a-zA-Z0-9]+$")) {
 			result = "ログインIDは半角英数字で入力してください。";
 		}
@@ -100,8 +100,8 @@ public class InputChecker {
 
 		if (password.equals("")) {
 			result = "パスワードを入力してください。";
-		} else if (password.length() < 1 || password.length() > 8) {
-			result = "パスワードは1文字以上8文字以下で入力してください。";
+		} else if (password.length() < 1 || password.length() > 16) {
+			result = "パスワードは1文字以上16文字以下で入力してください。";
 		} else if (!password.matches("^[a-zA-Z0-9]+$")) {
 			result = "パスワードは半角英数字で入力してください。";
 		}
@@ -115,8 +115,8 @@ public class InputChecker {
 
 		if (passwordc.equals("")) {
 			result = "再確認パスワードを入力してください。";
-		} else if (passwordc.length() < 1 || passwordc.length() > 8) {
-			result = "再確認パスワードは1文字以上8文字以下で入力してください。";
+		} else if (passwordc.length() < 1 || passwordc.length() > 16) {
+			result = "再確認パスワードは1文字以上16文字以下で入力してください。";
 		} else if (!passwordc.matches("^[a-zA-Z0-9]+$")) {
 			result = "再確認パスワードは半角英数字で入力してください。";
 		} else if (!(passwordc.equals(password))) {

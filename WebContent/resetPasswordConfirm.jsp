@@ -79,7 +79,7 @@
 							<label>ログインID:</label>
 						</td>
 						<td>
-							<s:property value="user_id" escape="false" />
+							<s:property value="userId" escape="false" />
 						</td>
 					</tr>
 					<tr id="box">
