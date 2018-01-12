@@ -20,9 +20,12 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 
 	public String execute() throws SQLException {
 
+		/*
 		password=session.get("password").toString();
 		user_id=session.get("user_id").toString();
+		/*
 
+		 */
 		/*ログインIDをDBから特定*/
 		resetPasswordDAO.getUserId(user_id);
 
