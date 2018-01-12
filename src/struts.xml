@@ -45,6 +45,18 @@
 
 		</action>
 
+		<!-- 佐藤アクション -->
+		<action name="ResetPasswordAction" class="com.internousdev.cherry.action.ResetPasswordAction">
+			<result name="success">resetPassword.jsp</result>
+		</action>
+		<action name="ResetPasswordConfirmAction" class="com.internousdev.cherry.action.ResetPasswordConfirmAction">
+			<result name="success">resetPasswordConfirm.jsp</result>
+			<result name="error">resetPassword.jsp</result>
+		</action>
+		<action name="ResetPasswordCompleteAction" class="com.internousdev.cherry.action.ResetPasswordCompleteAction">
+			<result name="success">resetPasswordComplete.jsp</result>
+		</action>
+
 
 	</package>
 </struts>
