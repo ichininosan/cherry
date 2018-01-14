@@ -40,6 +40,7 @@
 
 		<form action="/cherry/Search" method="post">
 			<input type ="search"  placeholder="キーワードで検索する">
+			<button type="submit"><i class="material-icons">&#xE8B6;</i></button>
 		</form>
 
 	</div>
