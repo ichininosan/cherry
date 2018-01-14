@@ -48,6 +48,7 @@
     top: 0;
     right: 0;
     height: 36px;
+    cursor: pointer;
 }
 
 .home header a.logo:before{
@@ -144,8 +145,11 @@
 }
 
 .home .top_main ul li a .name{
-	margin-top: 5px;
-	font-weight: bold;
+    margin-top: 5px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .home .top_main ul li a .price{
