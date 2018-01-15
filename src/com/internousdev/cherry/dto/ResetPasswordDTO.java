@@ -4,7 +4,8 @@ public class ResetPasswordDTO {
 
 	private String userId;
 	private String password;
-	private String confirmpass;
+	private String s;
+
 
 	public String getuserId() {
 		return userId;
@@ -19,12 +20,11 @@ public class ResetPasswordDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getConfirmpass() {
-		return confirmpass;
+	public String getS() {
+		return s;
 	}
-	public void setConfirmpass(String confirmpass) {
-		this.confirmpass = confirmpass;
+	public void setS(String s) {
+		this.s = s;
 	}
 
 }
