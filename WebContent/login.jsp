@@ -11,6 +11,11 @@
 </head>
 <body>
 	<div id="main">
+	 <h5>
+	    <s:iterator value="errorMessageList">
+	      <s:div><s:property/></s:div>
+	    </s:iterator>
+	  </h5>
 		<h2 class="title">ログイン</h2>
 		<div class="login_box">
 			<div class="member">

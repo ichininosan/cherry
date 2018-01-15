@@ -16,6 +16,7 @@ public abstract interface ErrorMessageConstants {
 	public static final String PASSWORDC_ERROR_MESSAGE = "";
 	public static final String TEL_NUMBER_ERROR_MESSAGE = "";
 	public static final String USER_ADDRESS_ERROR_MESSAGE = "";
+	public static final String MY_PAGE_ERROR_MESSAGE="";
 
 
 }
