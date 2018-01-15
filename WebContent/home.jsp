@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page import="com.internousdev.cherry.dto.ProductDTO, java.util.List" %>
 
 
 <!DOCTYPE html>
@@ -26,11 +25,11 @@
 	<ul>
 		<s:iterator value="#session.proList">
 		<li>
-			<s:hidden name="def_id" value='<s:property value="def_id"/>' />
-			<s:hidden name="id" value='<s:property value="def_id"/>' />
-			    <s:url id="url" action="ProDetailAction">
+			<s:url id="url" action="ProDetailAction">
+				<s:param name="id" value="%{product_id}"/>
 
-			             </s:url>
+			</s:url>
+
 			<s:a href="%{url}">
 			<div><img src='<s:property value="image_file_name"/>' alt="画像なし"/></div>
 			<p class="name"><s:property value="product_name"/></p>

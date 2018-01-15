@@ -98,13 +98,13 @@ public class Product_InfoDAO {
 			String sql = "SELECT * from product_info where id = ?";
 
 
-			PreparedStatement pStmt = con.prepareStatement(sql);
+			PreparedStatement ps = con.prepareStatement(sql);
 
 			//「？」に使用する値を設定し、SQL完成
-			pStmt.setInt(1, pro_id);
+			ps.setInt(1, pro_id);
 
 			//実行
-			ResultSet rs = pStmt.executeQuery();
+			ResultSet rs = ps.executeQuery();
 
 			if(rs.next()) {
 

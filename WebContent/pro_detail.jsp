@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>
-<s:property value='<s:property value="product_name"/>'/>の詳細ページ
+<s:property value="pro_detail.product_name"/>の詳細ページ
 
 
 </title>
