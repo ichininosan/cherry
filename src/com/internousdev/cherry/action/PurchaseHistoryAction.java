@@ -112,7 +112,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		if(res > 0){
 			System.out.println("削除した");
 			historyList = null;
-
+			setMessage("注文履歴をすべて削除しました");
 		}else if(res == 0){
 			System.out.println("削除失敗");
 			//setMessage("商品の削除に失敗しました。");

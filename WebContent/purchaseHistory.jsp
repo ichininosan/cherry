@@ -8,13 +8,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>商品購入履歴画面</title>
-
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 
 </head>
 <body>
 <!-- ヘッダー -->
-	<div class = "header">
-	</div>
+	<jsp:include page="include_header.jsp" />
 <!-- ヘッダーここまで -->
 
 <!-- メイン -->
@@ -83,17 +84,16 @@
 			<!-- MyPageに戻る-->
 				<a href='<s:url action="MyPageAction" />'>マイページに戻る</a>
 
-		<!-- あとで消す！！！！！
+		<!-- あとで消す！！！！！ -->
 			<a href='<s:url action="PurchaseHistoryAction" />'>テスト用リンク</a>
-		 -->
+
 		</div>
 
 		</div>
 	</div>
 <!-- メインここまで -->
 <!-- フッター -->
-	<div class = "footer">
-	</div>
+	<jsp:include page="include_footer.jsp" />
 <!-- フッターここまで -->
 
 </body>
