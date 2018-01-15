@@ -20,6 +20,7 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 		return SUCCESS;
 	}
 
+	//ゲッター、セッター
 	public Map<String, Object> getSession() {
 		return session;
 	}
