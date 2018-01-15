@@ -13,6 +13,7 @@
 <title><%= pro.getProduct_name() %>の詳細ページ</title>
 </head>
 <body>
+
 <s:form action="PutProductIntoCartAction">
 <%= pro.getProduct_name_kana() %>
 <%= pro.getProduct_name() %>
@@ -21,9 +22,10 @@
 <img src="<%= pro.getImage_file_name() %>">
 <%= pro.getRelease_company() %>
 
-
 	<input type="submit" value="カートに追加">
 </s:form>
+
+
 
 </body>
 </html>
