@@ -60,6 +60,8 @@ public class MyPageDAO {
 		return myPageList;
 	}
 
+
+
 }
 
 
