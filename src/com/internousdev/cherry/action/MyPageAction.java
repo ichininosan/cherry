@@ -7,10 +7,11 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.dao.MyPageDAO;
 import com.internousdev.cherry.dto.MyPageDTO;
+import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-public class MyPageAction extends ActionSupport implements SessionAware{
+public class MyPageAction extends ActionSupport implements SessionAware, ErrorMessageConstants{
 
 
 	/**
@@ -28,16 +29,22 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 	private Map<String,Object> session;
 	//ログイン情報格納DTO
 	private ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
+	//エラーメッセージを格納
+	private ArrayList<String> errorMessageList=new ArrayList<>();
 
 	/**
 	 * セッション情報を取得する。
 	 * userListにセッションの情報が移っており、存在していたらSUCCESS
 	 */
 	public String execute(){
+
+		if(!(session.containsKey("userId"))){
+			errorMessageList.add("ログインしてください。");
+		}
 		String result=ERROR;
 		//暫定でセッション値セット//
 		session.put("loginFlg",true);
-		session.put("userId", "a");
+		session.put("userId", "1");
 
 		//if (session.containsKey("loginDTO")){
 		if (session.containsKey("loginFlg")&& (boolean) session.get("loginFlg")){

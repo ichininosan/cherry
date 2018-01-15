@@ -39,7 +39,7 @@
 								<td><s:property value="productName" /></td>
 								<td><s:property value="productNameKana" /></td>
 								<td><fmt:formatNumber value="${price}" />円</td>
-								<td><s:property value="count" /></td>
+								<td><s:property value="productCount" /></td>
 								<td><s:property value="releaseCompany" /></td>
 								<td><s:date name="releaseDate" format="yyyy年MM月dd日" /></td>
 								<td><s:hidden name="deleteProduct" value="%{productId}" />

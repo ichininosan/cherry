@@ -18,6 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *        user_idをsessionからひっぱれるようにする！
  *  1/12
  *  個別削除でListからもけしたい！！
+ *  //historyList.remove(id); Listから消せるかも！
  *
  */
 public class PurchaseHistoryAction extends ActionSupport implements SessionAware{
@@ -67,7 +68,13 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 			//session.get("user_id").toString()せっっしょンの名前！
 			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
+
+
+			System.out.println("List = "+historyList);
+
+
 			Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
+
 
 			if(!(iterator.hasNext())){
 				historyList = null;
@@ -76,14 +83,18 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 			//すべて削除メソッド
 			delete();
 			historyList = null;
+
 		} else if(deleteFlg.equals("2")){
 			//個別削除メソッド
 			System.out.println("ID:"+id);
-			deletePart(id);
+			deletePart(id);//個別削除メソッド
+			historyList = null;
 			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
+
 
 		}
 
+		//historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
 
 		return result;
 	}
@@ -117,16 +128,10 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		id = this.id;
 
 
-
+		//historyList.remove(id); Listから消せるかも！
 		int res2 = purchaseHistoryDAO.deletePart(id);
 
-
-
-		System.out.println("個別：削除しようとする件数："+res2);
 		if(res2 > 0){
-			System.out.println("個別：削除した");
-
-			//historyList.remove(id); listからもけせるかも？
 
 			setMessage("商品を正しく削除しました。");
 		}else if(res2 == 0){
