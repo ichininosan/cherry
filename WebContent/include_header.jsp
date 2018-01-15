@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <header>
 	<div class="wrap">
-		<a class="logo" href="/TopAction">Cherry</a>
+		<a class="logo" href="/cherry/TopAction">Cherry</a>
 
 		<ul>
 			<li>
