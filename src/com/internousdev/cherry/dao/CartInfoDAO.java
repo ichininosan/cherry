@@ -50,38 +50,7 @@ public class CartInfoDAO extends ActionSupport{
 		return count;
 	}
 
-	/**
-	 * ログインユーザーの商品をカートに入れる(user_id)
-	 * @param dto
-	 * @return
-	 * @throws SQLException
-	 */
-	public boolean putProductIntoCartByDto(CartInfoDTO dto) throws SQLException{
-		System.out.println("putProductIntoCartByDto");
-		boolean result = false;
-		int updateCount = 0;
 
-		String sql = "INSERT INTO cart_info(user_id, product_id, product_count, price, regist_date)"
-						+ "VALUES(?, ?, ?, ?,  NOW())";
-
-		try{
-			con = db.getConnection();
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, dto.getUserId());
-			ps.setInt(2, dto.getProductId());
-			ps.setInt(3, dto.getProductCount());
-			ps.setInt(4, dto.getPrice());
-			updateCount = ps.executeUpdate();
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			con.close();
-		}
-		if(updateCount == 1){
-			result = true;
-		}
-		return result;
-	}
 
 	/**
 	 * 非ログインユーザーの商品をカートに入れる(temp_user_id)
@@ -112,38 +81,7 @@ public class CartInfoDAO extends ActionSupport{
 		return count;
 	}
 
-	/**
-	 * 非ログインユーザーの商品をカートに入れる(temp_user_id)
-	 * @param dto
-	 * @return
-	 * @throws SQLException
-	 */
-	public boolean putProductIntoCartOfGuestUserByDto(CartInfoDTO dto) throws SQLException{
-		System.out.println("putProductIntoCartOfGuestUserByDto");
-		boolean result = false;
-		int updateCount = 0;
 
-		String sql = "INSERT INTO cart_info(temp_user_id, product_id, product_count, price, regist_date)"
-						+ "VALUES(?, ?, ?, ?, NOW())";
-
-		try{
-			con = db.getConnection();
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, dto.getTempUserId());
-			ps.setInt(2, dto.getProductId());
-			ps.setInt(3, dto.getProductCount());
-			ps.setInt(4, dto.getPrice());
-			updateCount = ps.executeUpdate();
-		}catch (SQLException e){
-			e.printStackTrace();
-		}finally{
-			con.close();
-		}
-		if(updateCount == 1){
-			result = true;
-		}
-		return result;
-	}
 
 	/**
 	 * 指定したログインユーザーのカート情報をすべて引き出す
@@ -286,32 +224,7 @@ public class CartInfoDAO extends ActionSupport{
 		return count;
 	}
 
-	/**
-	 * ログインユーザーのカート内商品の購入予定個数を変更
-	 * @param dto
-	 * @return
-	 * @throws SQLException
-	 */
-	public int updateUsersCountByDto(CartInfoDTO dto) throws SQLException {
-		System.out.println("updateUsersCountByDto");
-		int updateCount = 0;
-		String sql = "UPDATE cart_info SET product_count = ? WHERE user_id = ?";
 
-		try {
-			con = db.getConnection();
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, dto.getProductCount());
-			ps.setString(2, dto.getUserId());
-
-			updateCount = ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			con.close();
-		}
-
-		return updateCount;
-	}
 
 
 
@@ -342,32 +255,7 @@ public class CartInfoDAO extends ActionSupport{
 		return count;
 	}
 
-	/**
-	 * 非ログインユーザーのカート内商品の購入予定個数を変更
-	 * @param dto
-	 * @return
-	 * @throws SQLException
-	 */
-	public int updateTempUsersCountByDto(CartInfoDTO dto) throws SQLException {
-		System.out.println("updateTempUsersCountByDto");
-		int updateCount = 0;
-		String sql = "UPDATE cart_info SET count = ? WHERE temp_user_id = ?";
 
-		try {
-			con = db.getConnection();
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setInt(1, dto.getProductCount());
-			ps.setString(2, dto.getTempUserId());
-
-			updateCount = ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			con.close();
-		}
-
-		return updateCount;
-	}
 
 }
 
