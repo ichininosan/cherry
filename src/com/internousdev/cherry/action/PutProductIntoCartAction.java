@@ -14,8 +14,10 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 
 	private Map<String, Object> session;
 	private ArrayList<CartInfoDTO> cartList = new ArrayList<CartInfoDTO>();
+
 	// 商品重複フラグ
 	private boolean duplicationFlg;
+
 	// 商品ID
 	private String productId;
 
@@ -28,6 +30,7 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 
 	// カートの商品個数
 	private int productCount;
+
 	// カートの合計金額
 	private int totalPrice = 0;
 
