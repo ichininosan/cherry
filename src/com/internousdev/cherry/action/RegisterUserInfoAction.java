@@ -53,7 +53,7 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 			return SUCCESS;
 
 		} else {
-			return ERROR;
+			return SUCCESS;
 		}
 	}
 

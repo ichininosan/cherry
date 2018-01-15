@@ -72,7 +72,7 @@ public class InputChecker {
 			result = "メールアドレスを入力してください。";
 		} else if (email.length() < 18 || email.length() > 32) {
 			result = "メールアドレスは18文字以上32文字以下で入力してください。";
-		} else if (!email.matches("\\0-9a-zA-Z_")) {
+		} else if (!email.matches(".*")) {
 			result = "メールアドレスは半角英数字と半角記号で入力してください。";
 		}
 
