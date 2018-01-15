@@ -11,11 +11,9 @@
 </head>
 <body>
 	<div id="main">
-	 <h5>
-	    <s:iterator value="errorMessageList">
-	      <s:div><s:property/></s:div>
-	    </s:iterator>
-	  </h5>
+	 <s:if test="message !=null">
+          <h5><strong><s:property value="message"/></strong></h5>
+          </s:if>
 		<h2 class="title">ログイン</h2>
 		<div class="login_box">
 			<div class="member">
@@ -48,7 +46,7 @@
 
 						<div class="member_btn">
 							<button type="submit" class="">ログイン</button>
-							
+
 						</div>
 						<div class="member_btn">
 					<a href='<s:url action="ResetPasswordAction"/>'>パスワード再設定</a>
