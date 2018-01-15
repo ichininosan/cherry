@@ -16,9 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
  *
  *       (要) executeメソッドとdeleteメソッドの
  *        user_idをsessionからひっぱれるようにする！
- *  1/12
- *  個別削除でListからもけしたい！！
- *  //historyList.remove(id); Listから消せるかも！
+ *
  *
  */
 public class PurchaseHistoryAction extends ActionSupport implements SessionAware{
@@ -70,7 +68,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
 
 
-			System.out.println("List = "+historyList);
+			System.out.println("List = "+ historyList);
 
 
 			Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
@@ -80,22 +78,24 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 				historyList = null;
 			}
 		} else if(deleteFlg.equals("1")){
-			//すべて削除メソッド
+			/*
+			 * すべて削除するメソッド
+			 */
 			delete();
-			historyList = null;
+			//historyList = null;
 
 		} else if(deleteFlg.equals("2")){
-			//個別削除メソッド
+			/*
+			 * 個別削除するメソッド
+			 */
 			System.out.println("ID:"+id);
-			deletePart(id);//個別削除メソッド
-			historyList = null;
+			deletePart(id);
+
 			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
-
-
 		}
 
-		//historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
-
+		historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
+		System.out.println("List = "+ historyList);
 		return result;
 	}
 
@@ -112,10 +112,10 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		if(res > 0){
 			System.out.println("削除した");
 			historyList = null;
-			setMessage("商品を正しく削除しました。");
+
 		}else if(res == 0){
 			System.out.println("削除失敗");
-			setMessage("商品の削除に失敗しました。");
+			//setMessage("商品の削除に失敗しました。");
 		}
 
 	}
@@ -127,17 +127,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		//jspからもってきた
 		id = this.id;
 
-
-		//historyList.remove(id); Listから消せるかも！
-		int res2 = purchaseHistoryDAO.deletePart(id);
-
-		if(res2 > 0){
-
-			setMessage("商品を正しく削除しました。");
-		}else if(res2 == 0){
-			System.out.println("個別：削除失敗");
-			setMessage("商品の削除に失敗しました。");
-		}
+		purchaseHistoryDAO.deletePart(id);
 	}
 
 

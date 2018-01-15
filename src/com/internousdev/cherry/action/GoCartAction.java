@@ -8,15 +8,23 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dto.CartInfoDTO;
+import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class GoCartAction extends ActionSupport implements SessionAware{
+public class GoCartAction extends ActionSupport implements SessionAware,ErrorMessageConstants{
 
 	Map<String, Object> session;
 	ArrayList<CartInfoDTO> cartList = new ArrayList<>();
+	//エラーメッセージを格納
+	private ArrayList<String> errorMessageList=new ArrayList<>();
 	int totalPrice;
 
 	public String execute() throws SQLException{
+
+		if(!(session.containsKey("userId"))){
+			errorMessageList.add("ログインしてください。");
+		}
+		String result=ERROR;
 		CartInfoDAO dao = new CartInfoDAO();
 
 		//暫定でセッション値セット//
@@ -37,7 +45,9 @@ public class GoCartAction extends ActionSupport implements SessionAware{
 		//合計金額の計算
 		totalPrice = calcTotalPrice(cartList);
 
-		return SUCCESS;
+		result=SUCCESS;
+
+		return result;
 	}
 
 	/**

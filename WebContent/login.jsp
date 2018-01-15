@@ -48,6 +48,7 @@
 
 						<div class="member_btn">
 							<button type="submit" class="">ログイン</button>
+							
 						</div>
 						<div class="member_btn">
 					<a href='<s:url action="ResetPasswordAction"/>'>パスワード再設定</a>

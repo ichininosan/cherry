@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page import="com.internousdev.cherry.dto.ProductDTO, java.util.List" %>
 
 <%
@@ -27,6 +27,16 @@
 <div class="top_main clearfix">
 	<h1>商品一覧</h1>
 	<ul>
+		<s:iterator value="proList">
+			<s:hidden name="def_id" value='<s:property value="def_id"/>' />
+			<div><img src='<s:property value="image_file_name"/>' alt="画像なし"/></div>
+			<p class="name"><s:property value="product_name"/></p>
+			<p class="price">\<span><s:property value="price"/></span></p>
+		</s:iterator>
+
+
+
+
 		<% for(ProductDTO pro : proList){ %>
 			<li>
 				<a href="/cherry/ProDetailAction?id=<%= pro.getDef_id() %>">
