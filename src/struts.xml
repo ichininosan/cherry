@@ -109,6 +109,9 @@
 			<result name="success">userRegisterCompletion.jsp</result>
 			<result name="error">home.jsp</result>
 		</action>
+		<action name="GoHomeAction" class="com.internousdev.cherry.action.GoHomeAction" method="execute">
+			<result name="success">home.jsp</result>
+		</action>
 
 
 	</package>
