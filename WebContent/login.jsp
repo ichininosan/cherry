@@ -48,7 +48,7 @@
 
 						<div class="member_btn">
 							<button type="submit" class="">ログイン</button>
-							
+							<a href='<s:url action="GoHomeAction"/>'></a>
 						</div>
 					</s:form>
 				</div>
