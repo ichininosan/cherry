@@ -8,10 +8,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>商品購入履歴画面</title>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 
+<%-- <script type= "text/javascript">
+	function submitAction(url){
+		$('form').attr(action,url);
+		$('form').submit();
+	}
+</script> --%>
 </head>
 <body>
 <!-- ヘッダー -->
@@ -39,7 +42,9 @@
 			<!-- リストに応じたトップメッセージここまで -->
 
 			<table border = "1">
+
 				<tr>
+
 					<th>商品名</th>
 					<th>ふりがな</th>
 					<th>商品画像</th>
@@ -47,17 +52,18 @@
 					<th>発売会社</th>
 					<th>発売年月日</th>
 					<th>削除ボタン</th>
+
 				</tr>
 
 				<s:iterator value = "historyList">
 					<tr>
+
 						<td><s:property value="productName"/></td>
 						<td><s:property value="productNameKana"/></td>
 						<td><img src="<s:property value="productImage"/>" style="width: 300px; height: 300px;"></td>
 						<td><s:property value="price"/><span>円</span></td>
 						<td><s:property value="releaseCompany"/></td>
 						<td><s:property value="releaseDate"/></td>
-
 						<td>
 						<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
@@ -68,9 +74,13 @@
 						<!--  履歴個別削除ボタンここまで-->
 						</td>
 					</tr>
-
 				</s:iterator>
 			</table>
+
+
+
+
+
 
 			<!-- 全件削除ボタン -->
 				<s:form action = "PurchaseHistoryAction">
@@ -78,6 +88,10 @@
 					<s:submit value="履歴をすべて削除" method="delete" />
 				</s:form>
 			<!-- 全件削除ボタンここまで -->
+
+
+
+
 		</s:elseif>
 
 		<div class= "back">
