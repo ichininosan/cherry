@@ -13,10 +13,11 @@
 <div id="main">
 	<br>
 	<h2 class="title">カート</h2><br>
-	<table>
+
 		<s:property value="errMsg"/>
 		<s:if test="! cartList.isEmpty()">
 			<caption>カートの中には以下の商品が入っています。</caption>
+			<table>
 				<s:iterator value="cartList">
 					<s:form action="GoCartAction">
 
@@ -38,7 +39,7 @@
 								<td><img src='<s:property value = "imageFileName"/>' alt="商品画像"></td>
 								<td><s:property value="productName" /></td>
 								<td><s:property value="productNameKana" /></td>
-								<td><fmt:formatNumber value="${price}" />円</td>
+								<td><s:property value="price" />円</td>
 								<td><s:property value="productCount" /></td>
 								<td><s:property value="releaseCompany" /></td>
 								<td><s:date name="releaseDate" format="yyyy年MM月dd日" /></td>
@@ -48,13 +49,14 @@
 						</tbody>
 					</s:form>
 				</s:iterator>
+			</table>
 		</s:if>
 		<s:else>
 				<tr>
 					<td>カートの中は空です</td>
 				</tr>
 			</s:else>
-	</table>
+
 	<br>
 		<div class="totalprice">
 			合計金額:
