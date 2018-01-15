@@ -91,7 +91,7 @@
 		<action name="LoginAction" class="com.internousdev.cherry.action.LoginAction" method="execute">
 			<result name="success">home.jsp</result>
 			<result name="error">login.jsp</result>
-			<result name="login">login.jsp</result>
+			<result name="login">home.jsp</result>
 		</action>
 
 		<action name="UserCreateAction" class="com.internousdev.cherry.action.UserCreateAction" method="execute">

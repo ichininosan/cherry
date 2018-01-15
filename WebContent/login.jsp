@@ -48,6 +48,7 @@
 
 						<div class="member_btn">
 							<button type="submit" class="">ログイン</button>
+							
 						</div>
 					</s:form>
 				</div>
