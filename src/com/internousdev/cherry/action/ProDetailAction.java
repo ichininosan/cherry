@@ -1,73 +1,61 @@
 package com.internousdev.cherry.action;
 
-import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
-import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.dao.Product_InfoDAO;
 import com.internousdev.cherry.dto.ProductDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 
-public class ProDetailAction extends ActionSupport  implements ServletRequestAware{
+public class ProDetailAction extends ActionSupport implements SessionAware{
 
-	HttpServletRequest request;
-
-
-
-	public void setServletRequest(HttpServletRequest request) {
-		this.request = request;
-	}
-
-	public HttpServletRequest getServletRequest() {
-		return this.request;
-	}
-
-
-
-
-	protected void doGet(String pro_idA) throws ServletException, IOException {
-		//ロード
-		request.setCharacterEncoding("UTF-8");
-
-		int pro_id = Integer.parseInt(pro_idA);
-		Product_InfoDAO dao = new Product_InfoDAO();
-		HttpSession session = request.getSession();
-
-
-		try {
-			ProductDTO pro_detail = dao.pro_detail(pro_id);
-			session.setAttribute("pro_detail", pro_detail);
-		} catch (Exception e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		};
-
-
-	}
+	private String id;
+	private Map<String,Object> session;
+	ProductDTO pro_detail = new ProductDTO();
 
 	public String execute(){
-
-		/*	private String id = request.getParameter("id");*/
-		String id = getServletRequest().getParameter("id");
+		Product_InfoDAO dao=new Product_InfoDAO();
+//		int pro_id = 1;
+		int pro_id = Integer.parseInt(id);
 
 		try {
-			doGet(id);
-		} catch (ServletException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO 自動生成された catch ブロック
+			pro_detail = dao.pro_detail(pro_id);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
+		session.put("pro_detail", pro_detail);
 
 		return SUCCESS;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public ProductDTO getPro_detail() {
+		return pro_detail;
+	}
+
+	public void setPro_detail(ProductDTO pro_detail) {
+		this.pro_detail = pro_detail;
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+
 
 }

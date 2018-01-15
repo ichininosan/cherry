@@ -16,7 +16,7 @@ public class Product_InfoDAO {
 	private DBConnector db = new DBConnector();
 	private Connection con = null;
 
-	private ProductDTO pro_detail;
+//	private ProductDTO pro_detail;
 
 /*----------------------------------------------------------------------------------------------------------------------
  * 商品一覧表示する
@@ -86,6 +86,7 @@ public class Product_InfoDAO {
  * -------------------------------------------------------------------------------------------------------------------*/
 	public ProductDTO pro_detail(int pro_id) throws Exception{
 
+		ProductDTO dto = new ProductDTO();
 
 		try {
 
@@ -107,29 +108,22 @@ public class Product_InfoDAO {
 
 			if(rs.next()) {
 
-				int def_id = rs.getInt("ID");
-				int product_id = rs.getInt("PRODUCT_ID");
-				String product_name = rs.getString("PRODUCT_NAME");
-				String product_name_kana = rs.getString("PRODUCT_NAME_KANA");
-				String product_description = rs.getString("PRODUCT_DESCRIPTION");
-				int category_id = rs.getInt("CATEGORY_ID");
-				int price = rs.getInt("PRICE");
-				String image_file_name = rs.getString("IMAGE_FILE_NAME");
-				String release_date = rs.getString("release_date");
-				String release_company = rs.getString("release_company");
-				String status = rs.getString("status");
-				String regist_date = rs.getString("regist_date");
-				String update_date = rs.getString("update_date");
-
-				ProductDTO pro_detail = new ProductDTO(def_id, product_id, product_name, product_name_kana, product_description, category_id, price, image_file_name, release_date, release_company, status, regist_date, update_date);
-
-				this.pro_detail = pro_detail;
+				dto.setDef_id(rs.getInt("id"));
+				dto.setProduct_id(rs.getInt("product_id"));
+				dto.setProduct_name(rs.getString("PRODUCT_NAME"));
+				dto.setProduct_name_kana(rs.getString("PRODUCT_NAME_KANA"));
+				dto.setProduct_description(rs.getString("PRODUCT_DESCRIPTION"));
+				dto.setCategory_id(rs.getInt("CATEGORY_ID"));
+				dto.setPrice(rs.getInt("PRICE"));
+				dto.setImage_file_name(rs.getString("IMAGE_FILE_NAME"));
+				dto.setRelease_date(rs.getString("release_date"));
+				dto.setRelease_company(rs.getString("release_company"));
+				dto.setStatus(rs.getString("status"));
+				dto.setRegist_date(rs.getString("regist_date"));
+				dto.setUpdate_date(rs.getString("update_date"));
 
 
 			}
-
-			return  pro_detail;
-
 
 		} finally {
 			//データベース切断
@@ -142,7 +136,7 @@ public class Product_InfoDAO {
 			}	//if
 		}	//finally
 
-
+		return  dto;
 
 	}	//pro_list
 

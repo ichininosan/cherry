@@ -10,22 +10,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title><%= pro.getProduct_name() %>の詳細ページ</title>
+<title>
+<s:property value='<s:property value="product_name"/>'/>の詳細ページ
+
+
+</title>
 </head>
 <body>
 
 <s:form action="PutProductIntoCartAction">
-<%= pro.getProduct_name_kana() %>
-<%= pro.getProduct_name() %>
-<%= pro.getProduct_description() %>
-<%= pro.getPrice() %>
-<img src="<%= pro.getImage_file_name() %>">
-<%= pro.getRelease_company() %>
-
-	<input type="submit" value="カートに追加">
+<s:property value="pro_detail.product_name_kana"/>
+<s:property value="pro_detail.product_name"/>
+<s:property value="pro_detail.product_description"/>
+<s:property value="pro_detail.price"/>
+<img src='<s:property value="pro_detail.image_file_name"/>'/>
+<s:property value="pro_detail.release_company"/>
+<s:submit value="カートに追加"/>
 </s:form>
-
-
 
 </body>
 </html>
