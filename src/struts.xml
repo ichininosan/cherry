@@ -70,6 +70,11 @@
 
 		</action>
 
+		<action name="TopAction" class="com.internousdev.cherry.action.TopAction">
+			<result name="success">home.jsp</result>
+
+		</action>
+
 		<!-- 佐藤アクション -->
 		<action name="ResetPasswordAction" class="com.internousdev.cherry.action.ResetPasswordAction">
 			<result name="success">resetPassword.jsp</result>

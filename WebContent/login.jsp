@@ -59,6 +59,9 @@
 				<div class="nomember_btn">
 					<a href='<s:url action="UserCreateAction"/>'>新規ユーザー登録</a>
 				</div>
+				<div class="nomember_btn">
+					<a href='<s:url action="ResetPasswordAction"/>'>パスワード再設定</a>
+				</div>
 			</div>
 		</div>
 
