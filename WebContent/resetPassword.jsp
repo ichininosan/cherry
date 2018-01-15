@@ -83,7 +83,7 @@
 						<label>ログインID:</label>
 					</td>
 					<td>
-						<input type="text" name="userId" value="" >
+						<input type="text" name="userId" value='<s:property value="#session.userId"/>' />
 					</td>
 				</tr>
 				<tr>

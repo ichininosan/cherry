@@ -4,34 +4,39 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.cherry.dao.ResetPasswordDAO;
-import com.internousdev.cherry.dto.ResetPasswordDTO;
+//import com.internousdev.cherry.dao.ResetPasswordDAO;
+//import com.internousdev.cherry.dto.ResetPasswordDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordAction extends ActionSupport implements SessionAware{
 	Map<String, Object> session;
+	private String userId;
 
 	public String execute(){
-		ResetPasswordDAO dao = new ResetPasswordDAO();
-		ResetPasswordDTO dto = new ResetPasswordDTO();
-		//暫定でセッション値セット//
-				session.put("loginFlg",true);
-				session.put("userId", "a");
-
-		//ログインユーザーのカート情報を引き出す
-				if(session.containsKey("loginFlg") && (boolean) session.get("loginFlg")){
-					dao.getUserId("user_id");
-					dto.getuserId();
-					}
-
-
-			return SUCCESS;
-		}
-
-	@Override
-	public void setSession(Map<String, Object> arg0) {
-		// TODO 自動生成されたメソッド・スタブ
-
+		//DAO,DTOのインスタンス作成
+		//ResetPasswordDAO dao = new ResetPasswordDAO();
+		//ResetPasswordDTO dto = new ResetPasswordDTO();
+		session.put("userId", userId);
+		return SUCCESS;
 	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+
 
 	}
