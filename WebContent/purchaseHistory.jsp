@@ -9,16 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>商品購入履歴画面</title>
 
-<!--------------------------------------------------------------
 
-
-1/12
-
-個別削除で全部消したら「購入情報はありません」って出したい！
-なんかテーブルもでてくる！
-
-
- ----------------------------------------------------------------->
 </head>
 <body>
 <!-- ヘッダー -->
@@ -34,14 +25,17 @@
 				<s:if test="message != null">
 					<h2><s:property value="message"/></h2>
 				</s:if>
+
 			</div>
 		<!-- メインのトップここまで -->
 		<div>
-		<s:if test = "historyList == null && historyList.size() == 0">
-			<h2>購入情報はありません</h2>
-		</s:if>
-		<s:elseif test= "historyList != null && historyList.size() != 0">
-			<h2>購入情報は以下になります</h2>
+			<!-- リストに応じたトップメッセージ -->
+				<s:if test = "historyList.size() == 0">
+					<h2>購入情報はありません</h2>
+				</s:if>
+				<s:elseif test= "historyList != null && historyList.size() != 0">
+					<h2>購入情報は以下になります</h2>
+			<!-- リストに応じたトップメッセージここまで -->
 
 			<table border = "1">
 				<tr>
@@ -62,31 +56,36 @@
 						<td><s:property value="price"/><span>円</span></td>
 						<td><s:property value="releaseCompany"/></td>
 						<td><s:property value="releaseDate"/></td>
+
 						<td>
+						<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
 								<input type="hidden" name="deleteFlg" value="2">
 								<input type="hidden" name="id" value="${id}">
 								<s:submit value="削除" method="deletePart"/>
 							</s:form>
+						<!--  履歴個別削除ボタンここまで-->
 						</td>
 					</tr>
 
 				</s:iterator>
 			</table>
 
-			<!-- 削除ボタン -->
+			<!-- 全件削除ボタン -->
 				<s:form action = "PurchaseHistoryAction">
 					<input type = "hidden" name="deleteFlg" value= "1">
 					<s:submit value="履歴をすべて削除" method="delete" />
 				</s:form>
-			<!-- 削除ボタンここまで -->
+			<!-- 全件削除ボタンここまで -->
 		</s:elseif>
 
 		<div class= "back">
 			<!-- MyPageに戻る-->
-			<a href='<s:url action="MyPageAction" />'>マイページに戻る</a>
-		<!-- あとで消す！！！！！ -->
+				<a href='<s:url action="MyPageAction" />'>マイページに戻る</a>
+
+		<!-- あとで消す！！！！！
 			<a href='<s:url action="PurchaseHistoryAction" />'>テスト用リンク</a>
+		 -->
 		</div>
 
 		</div>
