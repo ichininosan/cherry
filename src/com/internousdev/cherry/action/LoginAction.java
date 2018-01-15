@@ -7,7 +7,9 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+//import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dao.LoginDAO;
+//import com.internousdev.cherry.dto.CartInfoDTO;
 import com.internousdev.cherry.dto.UserInfoDTO;
 import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.opensymphony.xwork2.ActionSupport;
@@ -33,9 +35,10 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 //		CartInfoDAO cartInfoDAO = new CartInfoDAO();
 //		int updateCount = 0;
 		LoginDAO loginDAO = new LoginDAO();
-
-
-
+		System.out.println(userId);
+		if(userId==null){
+			return "login";
+		}
 		if (userId.equals("")) {
 			errorMessageList.add("ユーザーIDを入力してください。");
 
@@ -80,10 +83,10 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 //							cartInfoDAO.deleteProductFromTempUserCart(session.get("userId").toString(),
 //									cartInfoDTO.getProductId());
 //						}
-//					}
+//				}
 //				updateCount = cartInfoDAO.integrateCart(session.get("userId").toString(), userInfoDTO.getUserId());
 //				System.out.println(updateCount + "件統合しました。");
-					result = SUCCESS;
+//					result = SUCCESS;
 
 					session.put("userId", userInfoDTO.getUserId());
 					session.put("loginFlg", true);

@@ -52,7 +52,7 @@
 				商品購入の際はユーザー登録をお願いします。<br>
 				<br>
 				<div class="nomember_btn">
-					<a href='<s:url action="userCreateAction"/>'>新規ユーザー登録</a>
+					<a href='<s:url action="UserCreateAction"/>'>新規ユーザー登録</a>
 				</div>
 			</div>
 		</div>
