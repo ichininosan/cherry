@@ -31,9 +31,9 @@
 			</s:url>
 
 			<s:a href="%{url}">
-			<div><img src='<s:property value="image_file_name"/>' alt="画像なし"/></div>
-			<p class="name"><s:property value="product_name"/></p>
-			<p class="price">\<span><s:property value="price"/></span></p>
+				<div><img src='<s:property value="image_file_name"/>' alt="画像なし"/></div>
+					<p class="name"><s:property value="product_name"/></p>
+					<p class="price">\<span><s:property value="price"/></span></p>
 			</s:a>
 		</li>
 		</s:iterator>
