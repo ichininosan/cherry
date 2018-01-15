@@ -117,4 +117,13 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 		this .session = arg0;
 	}
 
+	public ArrayList<String> getErrorMessageList() {
+		return errorMessageList;
+	}
+
+	public void setErrorMessageList(ArrayList<String> errorMessageList) {
+		this.errorMessageList = errorMessageList;
+	}
+
+
 }

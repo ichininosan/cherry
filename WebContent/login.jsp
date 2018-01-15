@@ -11,11 +11,11 @@
 </head>
 <body>
 	<div id="main">
-	 <h5>
+	 <h3><font color="red">
 	    <s:iterator value="errorMessageList">
 	      <s:div><s:property/></s:div>
-	    </s:iterator>
-	  </h5>
+	      </s:iterator></font>
+	  </h3>
 		<h2 class="title">ログイン</h2>
 		<div class="login_box">
 			<div class="member">
@@ -48,7 +48,6 @@
 
 						<div class="member_btn">
 							<button type="submit" class="">ログイン</button>
-							
 						</div>
 					</s:form>
 				</div>
@@ -59,9 +58,6 @@
 				<br>
 				<div class="nomember_btn">
 					<a href='<s:url action="UserCreateAction"/>'>新規ユーザー登録</a>
-				</div>
-				<div class="nomember_btn">
-					<a href='<s:url action="ResetPasswordAction"/>'>パスワード再設定</a>
 				</div>
 			</div>
 		</div>

@@ -15,7 +15,7 @@
 		<!-- 落合担当アクションMyPageAction -->
 		<action name="MyPageAction" class="com.internousdev.cherry.action.MyPageAction" method="execute">
 			<result name="success">mypage.jsp</result>
-			<result name="error">testError.jsp</result>
+			<result name="error">login.jsp</result>
 		</action>
 		<!-- 櫻井担当アクション -->
 		<action name="PurchaseHistoryAction" class="com.internousdev.cherry.action.PurchaseHistoryAction" method="execute">
