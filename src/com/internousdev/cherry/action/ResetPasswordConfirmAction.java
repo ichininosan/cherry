@@ -12,14 +12,18 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordConfirmAction extends ActionSupport implements SessionAware,ErrorMessageConstants {
 
-	private String user_id;
+	private String userId;
 	private String password;
 	private String passwordc;
+	private String confirmpass;
+	private String confirmpass1;
+	private String confirmpass2;
+	private String s;
+
+
 	private ArrayList<String> errMsgList = new ArrayList<>();
 
 	public Map<String,Object> session;
-
-
 
 
 /**
@@ -33,12 +37,13 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
  */
 
 
+	//エラーメッセージ表示
 	public String execute(){
 		String result = SUCCESS;
 
 		InputChecker i = new InputChecker();
-		if(!i.userIdChk(user_id).equals("OK")){
-			errMsgList.add(i.userIdChk(user_id));
+		if(!i.userIdChk(userId).equals("OK")){
+			errMsgList.add(i.userIdChk(userId));
 			result = ERROR;
 		}
 		if(!i.passwordChk(password).equals("OK")){
@@ -49,15 +54,25 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			errMsgList.add(i.passwordcChk(passwordc,password));
 			result = ERROR;
 		}
+		//パスワードが4文字以上のとき、最初の2文字のみ表示して、3文字以降を*で表示する
+		if(password.length() > 3){
+			confirmpass = password.substring(0,2);
+			confirmpass1 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*");
+			s = confirmpass + confirmpass1;
+		//パスワードが3文字以下のとき、*で表示する
+		}else{
+			s = password.replaceAll("^[0-9a-zA-Z]+$","*");
+		}
 		return result;
 	}
 
+
 	public String getUserId() {
-		return user_id;
+		return userId;
 	}
 
 	public void setUserId(String userId) {
-		this.user_id = userId;
+		this.userId = userId;
 	}
 
 	public String getPassword() {
@@ -76,6 +91,44 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		this.passwordc = passwordc;
 	}
 
+
+	public String getConfirmpass() {
+		return confirmpass;
+	}
+
+	public void setConfirmpass(String confirmpass) {
+		this.confirmpass = confirmpass;
+	}
+
+	public String getConfirmpass1() {
+		return confirmpass1;
+	}
+
+
+	public void setConfirmpass1(String confirmpass1) {
+		this.confirmpass1 = confirmpass1;
+	}
+
+	public String getConfirmpass2() {
+		return confirmpass2;
+	}
+
+
+	public void setConfirmpass2(String confirmpass2) {
+		this.confirmpass2 = confirmpass2;
+	}
+
+
+	public String getS() {
+		return s;
+	}
+
+
+	public void setS(String s) {
+		this.s = s;
+	}
+
+
 	public ArrayList<String> getErrMsgList() {
 		return errMsgList;
 	}
@@ -84,9 +137,10 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		this.errMsgList = errMsgList;
 	}
 
+	public Map<String, Object> getSession() {
+		return session;
+	}
 
-
-	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}

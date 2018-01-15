@@ -2,14 +2,15 @@ package com.internousdev.cherry.dto;
 
 public class ResetPasswordDTO {
 
-	private String user_id;
+	private String userId;
 	private String password;
+	private String confirmpass;
 
 	public String getuserId() {
-		return user_id;
+		return userId;
 	}
 	public void setuserId(String userId) {
-		this.user_id = userId;
+		this.userId = userId;
 	}
 
 	public String getPassword() {
@@ -17,6 +18,13 @@ public class ResetPasswordDTO {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getConfirmpass() {
+		return confirmpass;
+	}
+	public void setConfirmpass(String confirmpass) {
+		this.confirmpass = confirmpass;
 	}
 
 }
