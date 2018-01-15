@@ -107,6 +107,7 @@ public class PurchaseHistoryDAO {
 
 			result2 = ps.executeUpdate();
 			System.out.println(result2);
+
 			con.close();
 		}catch (SQLException e){
 			e.printStackTrace();

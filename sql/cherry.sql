@@ -66,8 +66,6 @@ FOREIGN KEY(user_id) REFERENCES user_info(user_id) ON UPDATE CASCADE,
 FOREIGN KEY(product_id) REFERENCES product_info(product_id) ON UPDATE CASCADE
 );
 
-
-
 -- -----------↓購入履歴情報テーブル↓----------------------------
 CREATE TABLE purchase_history_info(
 id int PRIMARY KEY NOT NULL AUTO_INCREMENT,-- ID

@@ -37,10 +37,10 @@
 			</div>
 		<!-- メインのトップここまで -->
 		<div>
-		<s:if test= "historyList == null">
+		<s:if test = "historyList == null && historyList.size() == 0">
 			<h2>購入情報はありません</h2>
 		</s:if>
-		<s:elseif test= "historyList != null">
+		<s:elseif test= "historyList != null && historyList.size() != 0">
 			<h2>購入情報は以下になります</h2>
 
 			<table border = "1">
