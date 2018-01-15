@@ -86,7 +86,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 //				}
 //				updateCount = cartInfoDAO.integrateCart(session.get("userId").toString(), userInfoDTO.getUserId());
 //				System.out.println(updateCount + "件統合しました。");
-//					result = SUCCESS;
+					result = SUCCESS;
 
 					session.put("userId", userInfoDTO.getUserId());
 					session.put("loginFlg", true);

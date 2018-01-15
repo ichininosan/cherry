@@ -18,17 +18,17 @@
 				<div class="member_form">
 					<s:form action="RegisterUserInfoAction" theme="simple">
 						<div class="member-form-title">
-							ふりがな:
-							<s:property value="familyNameKana" />
-							<s:hidden name="familyNameKana" value="%{familyNameKana}" />
-							<s:property value="firstNameKana" />
-							<s:hidden name="firstNameKana" value="%{firstNameKana}" />
-							<br>名前:
+							名前:
 							<s:property value="familyName" />
 							<s:hidden name="familyName" value="%{familyName}" />
 							<s:property value="firstName" />
 							<s:hidden name="firstName" value="%{firstName}" />
-							<br> ID:
+							<br>ふりがな:
+							<s:property value="familyNameKana" />
+							<s:hidden name="familyNameKana" value="%{familyNameKana}" />
+							<s:property value="firstNameKana" />
+							<s:hidden name="firstNameKana" value="%{firstNameKana}" />
+							<br> ユーザーID:
 							<s:property value="userId" />
 							<s:hidden name="userId" value="%{userId}" />
 							<br> パスワード:

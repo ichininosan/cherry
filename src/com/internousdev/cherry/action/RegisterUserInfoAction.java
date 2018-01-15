@@ -13,7 +13,7 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 
 	Map<String, Object> session;
 
-	private String  userId;
+	private String userId;
 
 	private String password;
 

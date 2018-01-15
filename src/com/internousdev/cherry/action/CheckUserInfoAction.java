@@ -10,16 +10,16 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CheckUserInfoAction extends ActionSupport implements ErrorMessageConstants {
 
-	private String family_name;
-	private String first_name;
-	private String family_name_kana;
-	private String first_name_kana;
+	private String familyName;
+	private String firstName;
+	private String familyNameKana;
+	private String firstNameKana;
 
 	//0:男性、1:女性
 
 	private String sex;
 	private String email;
-	private String  user_id;
+	private String userId;
 	private String password;
 	private ArrayList<String> errorMessageList = new ArrayList<>();
 	public String execute() throws SQLException {
@@ -29,31 +29,31 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 
 
 		InputChecker i = new InputChecker();
-		if (!i.familyNameChk(family_name).equals("OK")) {
-			errorMessageList.add(i.familyNameChk(family_name));
+		if (!i.familyNameChk(familyName).equals("OK")) {
+			errorMessageList.add(i.familyNameChk(familyName));
 			result = ERROR;
 		}
 
-		if (!i.firstNameChk(first_name).equals("OK")) {
-			errorMessageList.add(i.firstNameChk(first_name));
+		if (!i.firstNameChk(firstName).equals("OK")) {
+			errorMessageList.add(i.firstNameChk(firstName));
 			result = ERROR;
 		}
 
-		if (!i.familyNameKanaChk(family_name_kana).equals("OK")) {
-			errorMessageList.add(i.familyNameKanaChk(family_name_kana));
+		if (!i.familyNameKanaChk(familyNameKana).equals("OK")) {
+			errorMessageList.add(i.familyNameKanaChk(familyNameKana));
 			result = ERROR;
 		}
 
-		if (!i.firstNameKanaChk(first_name_kana).equals("OK")) {
-			errorMessageList.add(i.firstNameKanaChk(first_name_kana));
+		if (!i.firstNameKanaChk(firstNameKana).equals("OK")) {
+			errorMessageList.add(i.firstNameKanaChk(firstNameKana));
 			result = ERROR;
 		}
 
-		if(dao.existsUserId(user_id)) {
+		if(dao.existsUserId(userId)) {
 			errorMessageList.add("入力されたIDは既に存在します。");
 			result = ERROR;
-		}else if (!i.userIdChk(user_id).equals("OK")) {
-			errorMessageList.add(i.userIdChk(user_id));
+		}else if (!i.userIdChk(userId).equals("OK")) {
+			errorMessageList.add(i.userIdChk(userId));
 			result = ERROR;
 		}
 
@@ -77,35 +77,35 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 
 
 	public String getFamilyName() {
-		return family_name;
+		return familyName;
 	}
 
-	public void setFamilyName(String family_name) {
-		this.family_name = family_name;
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getFamily_name_kana() {
-		return family_name_kana;
+	public String getFamilyNameKana() {
+		return familyNameKana;
 	}
 
-	public void setFamily_name_kana(String family_name_kana) {
-		this.family_name_kana = family_name_kana;
+	public void setFamilyNameKana(String familyNameKana) {
+		this.familyNameKana = familyNameKana;
 	}
 
-	public String getFirst_name_kana() {
-		return first_name_kana;
+	public String getFirstNameKana() {
+		return firstNameKana;
 	}
 
-	public void setFirst_name_kana(String first_name_kana) {
-		this.first_name_kana = first_name_kana;
+	public void setFirstNameKana(String firstNameKana) {
+		this.firstNameKana = firstNameKana;
 	}
 
 	public String isSex() {
@@ -124,12 +124,12 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 		this.email = email;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getPassword() {
