@@ -2,9 +2,6 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ page import="com.internousdev.cherry.dto.ProductDTO, java.util.List" %>
 
-<%
-	List<ProductDTO> proList = (List<ProductDTO>) session.getAttribute("proList");	//TopActionから
-%>
 
 <!DOCTYPE html>
 <html>
@@ -27,25 +24,21 @@
 <div class="top_main clearfix">
 	<h1>商品一覧</h1>
 	<ul>
-		<s:iterator value="proList">
+		<s:iterator value="#session.proList">
+		<li>
 			<s:hidden name="def_id" value='<s:property value="def_id"/>' />
+			<s:hidden name="id" value='<s:property value="def_id"/>' />
+			    <s:url id="url" action="ProDetailAction">
+
+			             </s:url>
+			<s:a href="%{url}">
 			<div><img src='<s:property value="image_file_name"/>' alt="画像なし"/></div>
 			<p class="name"><s:property value="product_name"/></p>
 			<p class="price">\<span><s:property value="price"/></span></p>
+			</s:a>
+		</li>
 		</s:iterator>
 
-
-
-
-		<% for(ProductDTO pro : proList){ %>
-			<li>
-				<a href="/cherry/ProDetailAction?id=<%= pro.getDef_id() %>">
-					<div><img src="<%= pro.getImage_file_name() %>" alt="画像なし"></div>
-					<p class="name"><%= pro.getProduct_name() %></p>
-					<p class="price">\<span><%= pro.getPrice() %></span></p>
-				</a>
-			</li>
-		<% }; %>
 	</ul>
 </div>
 
