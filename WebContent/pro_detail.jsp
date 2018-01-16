@@ -4,51 +4,64 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>
-<s:property value="pro_detail.product_name"/>の詳細ページ
-
-
-</title>
+	<meta charset="UTF-8">
+	<title><s:property value="pro_detail.product_name"/>の詳細ページ</title>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 </head>
-<body>
+
+<body class="pro_detail">
+
+<!-- ヘッダー -->
+<jsp:include page="include_header.jsp" />
 
 <s:form action="PutProductIntoCartAction">
+
 	<s:hidden name="productId" value="%{pro_detail.product_id}"/>
-	<s:property value="pro_detail.product_id"/>
-
-	<s:hidden name="productNameKana" value="%{pro_detail.product_name_kana}"/>
-	<s:property value="pro_detail.product_name_kana"/>
-
-	<s:hidden name="productName" value="%{pro_detail.product_name}"/>
-	<s:property value="pro_detail.product_name"/>
-
-	<s:hidden name="productDescription" value="%{pro_detail.product_description}"/>
-	<s:property value="pro_detail.product_description"/>
-
-	<s:hidden name="price" value="%{pro_detail.price}"/>
-	<s:property value="pro_detail.price"/>
-
 	<s:hidden name="imageFileName" value="%{pro_detail.image_file_name}"/>
+	<s:hidden name="productNameKana" value="%{pro_detail.product_name_kana}"/>
+	<s:hidden name="productName" value="%{pro_detail.product_name}"/>
+	<s:hidden name="productDescription" value="%{pro_detail.product_description}"/>
+	<s:hidden name="price" value="%{pro_detail.price}"/>
+	<s:hidden name="releaseCompany" value="%{pro_detail.release_company}"/>
+	<p class="no_need"><s:property value="pro_detail.product_id" /></p>
+
 	<img src='<s:property value="pro_detail.image_file_name"/>'/>
 
-	<s:hidden name="releaseCompany" value="%{pro_detail.release_company}"/>
-	<s:property value="pro_detail.release_company"/>
+	<%-- <p class="name_kana"><s:property value="pro_detail.product_name_kana"/></p> --%>
+	<p class="name"><s:property value="pro_detail.product_name"/></p>
 
-	<%-- 購入個数:<s:select list="count" name="count" value="1" />
-		<br><br>
-		<s:hidden name="productId" value="%{pro_detail.product_id}" />
-		<s:hidden name="duplicationFlg" value="%{duplicationFlg}" />
-		<s:if test="duplicationFlg">
-		<input type="submit" value="購入個数を変更">
-		</s:if>
-		<s:else>
-		<input type="submit" value="カートに追加">
-		</s:else> --%>
+	<p class="price"><span>\</span><s:property value="pro_detail.price"/></p>
 
-	<s:submit value="カートに追加"/>
+<table>
+
+	<tr>
+		<th>
+			出品者から
+		</th>
+		<td>
+			<s:property value="pro_detail.product_description"/>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			出品者
+		</th>
+		<td>
+			<s:property value="pro_detail.release_company"/>
+		</td>
+	</tr>
+</table>
+	<p class="cart_before"></p>
+	<s:submit value="カートに追加" cssClass="cart_add" />
 </s:form>
+<a href="/cherry/TopAction">戻る</a>
+
+<!-- フッター -->
+<jsp:include page="include_footer.jsp" />
 
 </body>
 </html>

@@ -97,7 +97,9 @@ header li a i{
 }
 
 
-/* メインコンテンツ */
+/*----------------------------------------------------------------------------------------------------------------------
+ * ホーム_メインコンテンツ
+ * -------------------------------------------------------------------------------------------------------------------*/
 .home .top_main{
 	width: 1000px;
     margin: 0 auto;
@@ -162,7 +164,102 @@ header li a i{
 	font-size: 1.4rem;
 }
 
-/* フッター */
+
+/*----------------------------------------------------------------------------------------------------------------------
+ * 商品詳細_メインコンテンツ
+ * -------------------------------------------------------------------------------------------------------------------*/
+.pro_detail form{
+	width: 1000px;
+    margin: 0 auto;
+}
+
+.pro_detail form img{
+	display: block;
+    margin: 0 auto;
+}
+
+.pro_detail form .no_need{
+	visibility : hidden;
+}
+
+.pro_detail form table{
+	width: 100%;
+}
+
+.pro_detail form th,
+.pro_detail form td{
+	border: 1px solid #F8BBD0;
+}
+
+.pro_detail form th{
+	width: 20%;
+	padding: 16px 0;
+}
+
+.pro_detail form td{
+	padding: 0 0 0 16px;
+}
+
+.pro_detail form .cart_add{
+    width: 100%;
+    border: none;
+    margin-top: 20px;
+    height: 44px;
+    font-size: 1.2rem;
+    background: #FF5722;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 4px;
+}
+
+.pro_detail form .cart_add:hover{
+	opacity: 0.8;
+}
+
+.pro_detail form .cart_before{
+	position: relative;
+}
+
+.pro_detail form .cart_before:after{
+    content: "";
+    background: url(/cherry/img/ic_add_shopping_cart_white_24px.svg) no-repeat;
+    background-size: 24px;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 29px;
+    left: 417px;
+}
+
+/* .pro_detail .name_kana{
+	text-align: center;
+    font-size: 0.9rem;
+} */
+
+.pro_detail .name{
+	text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.pro_detail .price{
+	color: #E91E63;
+	font-weight: bold;
+    margin: 12px 0;
+    font-size: 1.9rem;
+    text-align: center;
+    padding-right: 12px;
+}
+
+.pro_detail .price span{
+	font-size: 1.4rem;
+    font-weight: normal;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+ * フッター
+ * -------------------------------------------------------------------------------------------------------------------*/
 footer{
 	background: #F48FB1;
 	clear: both;
