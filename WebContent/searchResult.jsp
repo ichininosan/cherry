@@ -36,9 +36,13 @@
 <!-- メインコンテンツ -->
 <div class="top_main clearfix">
 
-	<h1>
-		<s:property value="#session.searchWord"/>
-	</h1>
+
+		<s:iterator value="msgList">
+			<h1>検索キーワード "<s:property />"</h1>
+		</s:iterator>
+		<s:if test="searchDTOList.size()==0">
+			<h1>検索結果がありません。</h1>
+		</s:if>
 	<ul>
 		<s:iterator value="searchDTOList">
 		<li>
