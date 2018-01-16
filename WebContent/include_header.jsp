@@ -14,7 +14,7 @@
 			</li>
 
 			<li>
-				<a href="/cherry/LoginAction"><i class="material-icons">&#xE879;</i>ログイン</a>
+				<a href="/cherry/GoLoginAction"><i class="material-icons">&#xE879;</i>ログイン</a>
 			</li>
 		</ul>
 
