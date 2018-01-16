@@ -8,14 +8,18 @@
   height: 0;
   visibility: hidden;
 }
+html {
+  min-height: 100%;
+  position: relative;
+}
 
 img{
 	width: 300px;
 	height: 300px;
 }
 body{
+	margin-bottom: 100px;
 	height: 100%;
-	margin: 0;
 }
 
 /*--------------------------------------------------
@@ -45,21 +49,50 @@ header form{
 
 }
 
-header input{
-    width: 100%;
-    height: 36px;
-    padding-left: 5px;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-header form button{
+header .h_pulldown{
 	position: absolute;
     top: 0;
+    left: 0;
+    border-radius: 4px 0 0 4px;
+    height: 36px;
+    padding-left: 5px;
+    background: #eee;
+    border: none;
+    box-sizing: border-box;
+    border-right: 1px solid #9e9e9e;
+}
+
+header .h_search{
+    width: 94%;
+    padding-right: 7px;
+    height: 36px;
+	border-radius: 4px 0 0 4px;
+    margin-bottom: 20px;
+    font-size: 1.0rem;
+    border: none;
+    box-sizing: border-box;
+    padding-left: 142px;
+}
+
+header .h_button{
+    position: absolute;
+    top: 0;
     right: 0;
+    border-radius: 0 4px 4px 0;
     height: 36px;
     cursor: pointer;
+	box-sizing: border-box;
+	border: none;
+    border-left: 1px solid #9E9E9E;
+	background: #FFC107;
+    width: 60px;
+    transition: 0.4s;
 }
+
+header .h_button:hover{
+	opacity: 0.8;
+}
+
 
 header a.logo:before{
     content: "";
@@ -105,6 +138,8 @@ header li a i{
 	vertical-align: -5px;
 	margin-right: 5px;
 }
+
+
 /*--------------------------------------------------
 					メイン
 ---------------------------------------------------*/
@@ -112,9 +147,11 @@ header li a i{
 	width: 1000px;
     margin: 0 auto;
     min-height: 100%;
-    margin-bottom: -100px;
+    margin-bottom: 100px;
 }
-
+.title{
+	margin-top: 10px;
+}
 
 .top{
 	font-size: 30px;
@@ -128,17 +165,13 @@ h2{
 
 
 
-
-
 .all_delete{
 	text-align: center;
 }
 
 .back{
-	/* text-align: center; */
-	position:absolute;
-	bottom:10px;
-	right:10px;
+	text-align: center;
+	margin: 20px;
 }
 
 /*----------------------------------------------------
@@ -152,8 +185,9 @@ footer{
 	line-height: 100px;
 	margin-top: 100px;
 	color: #fff;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+
 }
 
-.push {
-  height: 100px;
-}
