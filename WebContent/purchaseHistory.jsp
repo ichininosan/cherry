@@ -21,7 +21,7 @@
 	<div class = "main">
 		<!-- メインのトップ -->
 			<div class = "top">
-				<p>商品購入履歴です</p>
+				<p class="title">注文履歴</p>
 				<s:if test="message != null">
 					<h2><s:property value="message"/></h2>
 				</s:if>
@@ -105,10 +105,9 @@
 
 		</div>
 	</div>
-	<div class="push"></div>
 <!-- メインここまで -->
 <!-- フッター -->
-	<jsp:include page="include_footer.jsp" />
+	<span><jsp:include page="include_footer.jsp" /></span>
 <!-- フッターここまで -->
 
 </body>
