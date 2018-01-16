@@ -5,16 +5,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/or_style.css">
 <title>新規登録完了画面</title>
 </head>
 <body>
-	<div id="main">
-		<div class="member">
-			<h3>新規登録完了しました</h3>
+	<header></header>
+	<div id="main" align="center">
+	<br><br><br><br>
+		<div class="member" >
+			<h1>新規登録完了しました</h1>
 		</div>
 		<div class="nomember_btn">
 			<a href='<s:url action="GoHomeAction"/>'>Home画面へ</a>
 		</div>
 	</div>
+	<!-- フッター -->
+<jsp:include page="include_footer.jsp" />
 </body>
 </html>

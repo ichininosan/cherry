@@ -6,15 +6,18 @@
 <html>
 <head>
 <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/or_style.css">
 <title>ログイン画面</title>
 
 </head>
 <body>
-	<div id="main">
+
+	<div id="main" align="center">
 	 <s:if test="message !=null">
           <h5><strong><s:property value="message"/></strong></h5>
           </s:if>
-		<h2 class="title">ログイン</h2>
+		<header><h1>ログイン</h1></header>
+		<br><br><br>
 		<div class="login_box">
 			<div class="member">
 				<h5>
@@ -68,8 +71,8 @@
 
 
 	</div>
-
-
+<!-- フッター -->
+<jsp:include page="include_footer.jsp" />
 
 </body>
 </html>
