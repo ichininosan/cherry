@@ -160,18 +160,21 @@ header li a i{
 	font-size: 30px;
 }
 h2{
-	width: 900px;
-    height: 300px;
-	text-align: center;
-	font-size: 30px;
-	background: url(/cherry/img/signboard.png) no-repeat;
-	background-size: 409px;
-    background-position:234px -75px,
-                         center;
-
+	height: 300px;
+    text-align: center;
+    font-size: 30px;
+    background: url(/cherry/img/signboard.png) no-repeat;
+    background-size: 409px;
+    padding-top: 160px;
+    background-position: 50% -78px;
+    animation: font infinite linear 2s;
 }
 
-
+@keyframes font
+{
+	0%{font-size:30px;}
+	100%{font-size:50px;}
+}
 
 
 
