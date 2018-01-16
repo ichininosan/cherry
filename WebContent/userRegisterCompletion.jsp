@@ -5,17 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>新規登録完了画面</title>
 </head>
 <body>
-	<header><a class="logo" href="/cherry/TopAction" >cherry</a></header>
+	<jsp:include page="include_header.jsp" />
 	<div id="main" align="center">
-	<br><br><br><br>
+	<br><br>
 		<div class="member" >
-			<h1>新規登録完了しました</h1>
+			新規登録完了しました
 		</div>
+		<br><br>
 		<div class="nomember_btn">
 			<a href='<s:url action="GoHomeAction"/>'>Home画面へ</a>
 		</div>

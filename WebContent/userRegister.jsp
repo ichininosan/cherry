@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
 <script type="text/javascript" src="script.js"></script>
@@ -12,11 +13,12 @@
 </head>
 <body>
 	<div id="main" align="center">
-		<header><a class="logo" href="/cherry/TopAction" >cherry</a></header>
+		<jsp:include page="include_header.jsp" />
 
-		<br><br><br>
+		<br><br>
 
 		<h2>新規ユーザー登録</h2>
+		<br>
 		<div class="register_box">
 			<div class="member" >
 				<h5>
@@ -26,6 +28,7 @@
 						</s:div>
 					</s:iterator>
 				</h5>
+				<br>
 				<div class="member_form">
 					<s:form action="CheckUserInfoAction" theme="simple"
 						id="userRegister">
@@ -59,14 +62,14 @@
 						</div>
 
 						<br>
-						<div class="member_form_title">ユーザーID</div>
+						<div class="member_form_title">ユーザーID＜半角英数字　８字以内＞</div>
 						<div class="member_form_text">
 							<s:textfield type="text" name="userId" value="%{userId}" />
 							<br>
 						</div>
 
 						<br>
-						<div class="member_form_title">パスワード</div>
+						<div class="member_form_title">パスワード＜半角英数字　８字以内＞</div>
 						<div class="member_form_text">
 							<s:password name="password" value="%{password}" />
 							<br>

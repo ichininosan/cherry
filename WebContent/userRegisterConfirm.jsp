@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript">
@@ -13,15 +14,16 @@
 <title>登録内容確認画面</title>
 </head>
 <body>
-	<header><a class="logo" href="/cherry/TopAction" >cherry</a></header>
+	<jsp:include page="include_header.jsp" />
 	<div id="main" align="center">
-		<h2 class="title">新規ユーザー登録確認</h2>
+	<br>
+		<div class="title">新規ユーザー登録確認</div>
 		<div class="register_box">
 			<div class="member">
 				<div class="member_form">
 					<s:form action="RegisterUserInfoAction" theme="simple">
 						<div class="member-form-title">
-						<br><br><br><br><br>
+						<br>
 							名前:
 							<s:property value="familyName" />
 							<s:hidden name="familyName" value="%{familyName}" />
