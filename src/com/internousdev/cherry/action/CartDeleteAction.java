@@ -72,6 +72,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
         //カートに接続しデータが入っていないことを表示
             CartInfoDAO cartdao= new CartInfoDAO();
             cartList=cartdao.aquireUserCartInfo(userId);
+            System.out.println("削除完了");
 
             if(cartList==null){
 

@@ -116,6 +116,7 @@ public class Product_InfoDAO {
 				dto.setProduct_description(rs.getString("PRODUCT_DESCRIPTION"));
 				dto.setCategory_id(rs.getInt("CATEGORY_ID"));
 				dto.setPrice(rs.getInt("PRICE"));
+				dto.setStock(rs.getInt("stock"));
 				dto.setImage_file_name(rs.getString("IMAGE_FILE_NAME"));
 				dto.setRelease_date(rs.getString("release_date"));
 				dto.setRelease_company(rs.getString("release_company"));
