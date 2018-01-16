@@ -41,14 +41,8 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		//暫定でセッション値セット//
 		session.put("loginFlg",true);
 		session.put("userId", "a");
-		productCount=0;
+		//productCount=0;
 		String tempUserId="1";
-
-		if(session.containsKey("loginFlg")){
-//			boolean loginFlg=(boolean)session.get("loginFlg");
-
-
-		}
 
 		dto.setUserId(session.get("userId").toString());
 		dto.setProductId(Integer.parseInt(productId.toString()));
@@ -92,7 +86,6 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		}
 
 		totalPrice = calcTotalPrice(cartList);
-		System.out.println("totalPrice");
 		return SUCCESS;
 	}
 
