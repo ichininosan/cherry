@@ -15,11 +15,17 @@ public class PurchaseHistoryDTO {
 	//値段
 	private int price;
 
+	//個数
+	private int count;
+
 	//発売会社
 	private String releaseCompany;
 
 	//発売年月日
 	private String releaseDate;
+
+	//注文日
+	private String registDate;
 
 /*----------------------ゲッ他セッタ--------------------------------*/
 	//ID
@@ -54,6 +60,14 @@ public class PurchaseHistoryDTO {
 		this.price = price;
 	}
 
+	//個数
+	public int getCount(){
+		return count;
+	}
+	public void setCount(int count){
+		this.count = count;
+	}
+
 	//発売会社
 	public String getReleaseCompany(){
 		return releaseCompany;
@@ -68,6 +82,14 @@ public class PurchaseHistoryDTO {
 	}
 	public void setReleaseDate(String releaseDate){
 		this.releaseDate = releaseDate;
+	}
+
+	//注文日
+	public String getRegistDate(){
+		return registDate;
+	}
+	public void setRegistDate(String registDate){
+		this.registDate = registDate;
 	}
 
 

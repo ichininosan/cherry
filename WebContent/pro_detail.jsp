@@ -18,7 +18,7 @@
 <!-- ヘッダー -->
 <jsp:include page="include_header.jsp" />
 
-<s:form action="PutProductIntoCartAction">
+
 
 	<s:hidden name="productId" value="%{pro_detail.product_id}"/>
 	<s:hidden name="imageFileName" value="%{pro_detail.image_file_name}"/>
@@ -27,6 +27,12 @@
 	<s:hidden name="productDescription" value="%{pro_detail.product_description}"/>
 	<s:hidden name="price" value="%{pro_detail.price}"/>
 	<s:hidden name="releaseCompany" value="%{pro_detail.release_company}"/>
+
+<s:form action="PutProductIntoCartAction">
+<s:if test="pro_detail.stock == 0">
+		<h3>在庫がありません</h3>
+</s:if>
+<s:else>
 	<p class="no_need"><s:property value="pro_detail.product_id" /></p>
 
 	<img src='<s:property value="pro_detail.image_file_name"/>'/>
@@ -56,7 +62,15 @@
 	</tr>
 </table>
 	<p class="cart_before"></p>
-	<s:submit value="カートに追加" cssClass="cart_add" />
+		購入個数:<s:select list="count" name="count" value="1" />
+		<s:hidden name="duplicationFlg" value="%{duplicationFlg}" />
+		<s:if test="duplicationFlg">
+			<input type="submit" value="購入個数を変更">
+		</s:if>
+		<s:else>
+			<input type="submit" value="カートに追加">
+		</s:else>
+</s:else>
 </s:form>
 <a class="return" href="/cherry/TopAction">戻る<i class="material-icons">&#xE315;</i></a>
 

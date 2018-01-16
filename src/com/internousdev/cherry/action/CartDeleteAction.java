@@ -30,6 +30,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
      * 商品ID
      */
     private int itemId;
+    private String productId;
 
 
     /**
@@ -41,6 +42,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
      * 　検索したカート内の商品の情報を入れるリスト
      */
     private List<CartInfoDTO> cartList = new ArrayList<>();
+
 
 
 
@@ -63,12 +65,33 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
 
     public String execute() throws SQLException{
         String result = ERROR;
+        CartInfoDAO dao = new CartInfoDAO();
+        ArrayList<CartInfoDTO> cartList = new ArrayList<>();
 
 
         if (session.containsKey("userId")) {
             userId = session.get("userId").toString();//ログインしているuserId
             CartDeleteDAO deletedao=new CartDeleteDAO();//
-            deletedao.deleteCartInfo(userId);
+            deletedao.deleteSeparate(userId,productId);
+
+    		//暫定でセッション値セット//
+    		session.put("loginFlg",true);
+    		session.put("userId", "a");
+
+    		//ログインユーザーのカート情報を引き出す
+    		if(session.containsKey("loginFlg") && (boolean) session.get("loginFlg")){
+    		//  if(session.containsKey("userId")){
+    			for(CartInfoDTO dto: dao.showUserCartList(session.get("userId").toString())){
+    				cartList.add(dto);
+    			}
+    		//非ログインユーザーのカート情報を引き出す
+    		}else{
+    			for(CartInfoDTO dto: dao.showTempUserCartList(session.get("tempUserId").toString())){
+    				cartList.add(dto);
+    			}
+    		}
+
+
         //カートに接続しデータが入っていないことを表示
             CartInfoDAO cartdao= new CartInfoDAO();
             cartList=cartdao.aquireUserCartInfo(userId);
@@ -149,6 +172,18 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
     public void setCartList(List<CartInfoDTO> cartList) {
         this.cartList = cartList;
     }
+
+
+	public String getProductId() {
+		return productId;
+	}
+
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+
 
 
     }

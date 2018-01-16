@@ -26,7 +26,7 @@ public class PurchaseHistoryDAO {
  */
 
 
-	public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String user_id) throws SQLException{
+	public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQLException{
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		ArrayList<PurchaseHistoryDTO> purchaseHistoryDTOList = new ArrayList<PurchaseHistoryDTO>();
@@ -35,12 +35,12 @@ public class PurchaseHistoryDAO {
 		 * piはproduct_infoの略
 		 * phiはpurchase_history_infoの略
 		 */
-		String sql = "SELECT phi.id, pi.product_name, pi.product_name_kana, pi.image_file_name,  phi.price, pi.release_company, pi.release_date  FROM purchase_history_info phi LEFT JOIN product_info pi ON phi.product_id = pi.product_id  WHERE phi.user_id = ?";
+		String sql = "SELECT phi.id, pi.product_name, pi.product_name_kana, pi.image_file_name,  phi.price, phi.product_count, pi.release_company, pi.release_date, phi.regist_date  FROM purchase_history_info phi LEFT JOIN product_info pi ON phi.product_id = pi.product_id  WHERE phi.user_id = ?";
 
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, user_id);
+			ps.setString(1, userId);
 						//user_id
 
 			ResultSet rs = ps.executeQuery();
@@ -51,8 +51,10 @@ public class PurchaseHistoryDAO {
 				dto.setProductName(rs.getString("product_name"));
 				dto.setProductNameKana(rs.getString("product_name_kana"));
 				dto.setPrice(rs.getInt("price"));
+				dto.setCount(rs.getInt("product_count"));
 				dto.setReleaseCompany(rs.getString("release_company"));
 				dto.setReleaseDate(rs.getString("release_date"));
+				dto.setRegistDate(rs.getString("regist_date"));
 				dto.setProductImage(rs.getString("image_file_name"));
 
 				purchaseHistoryDTOList.add(dto);
@@ -68,7 +70,7 @@ public class PurchaseHistoryDAO {
 	/*
 	 * 購入履歴削除メソッド
 	 */
-	public int deleteHistory(String user_id) throws SQLException{
+	public int deleteHistory(String userId) throws SQLException{
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		String sql = "DELETE FROM purchase_history_info where user_id = ?";
@@ -77,7 +79,7 @@ public class PurchaseHistoryDAO {
 		int result = 0;
 		try{
 			ps = con.prepareStatement(sql);
-			ps.setString(1, user_id);
+			ps.setString(1, userId);
 			//user_id
 
 			result = ps.executeUpdate();

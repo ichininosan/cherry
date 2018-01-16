@@ -44,6 +44,30 @@ public class CartDeleteDAO {
 
 	}
 
+	public void deleteSeparate(String userId,String productId){
+		String sql = "DELETE FROM cart_info WHERE user_id = ? AND product_id=?";
+
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.setString(2,productId);
+
+			ps.executeUpdate();
+
+
+
+		}catch(SQLException e){
+			e.printStackTrace();
+
+		}try{
+			con.close();
+
+		}catch(SQLException e){
+			e.printStackTrace();
+
+		}
+	}
+
 
 
 }

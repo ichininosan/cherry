@@ -75,14 +75,14 @@
 
 
 		<!-- 佐藤アクション -->
-		<action name="ResetPasswordAction" class="com.internousdev.cherry.action.ResetPasswordAction">
+		<action name="ResetPasswordAction" class="com.internousdev.cherry.action.ResetPasswordAction" method="execute">
 			<result name="success">resetPassword.jsp</result>
 		</action>
-		<action name="ResetPasswordConfirmAction" class="com.internousdev.cherry.action.ResetPasswordConfirmAction">
+		<action name="ResetPasswordConfirmAction" class="com.internousdev.cherry.action.ResetPasswordConfirmAction" method="execute">
 			<result name="success">resetPasswordConfirm.jsp</result>
 			<result name="error">resetPassword.jsp</result>
 		</action>
-		<action name="ResetPasswordCompleteAction" class="com.internousdev.cherry.action.ResetPasswordCompleteAction">
+		<action name="ResetPasswordCompleteAction" class="com.internousdev.cherry.action.ResetPasswordCompleteAction" method="execute">
 			<result name="success">resetPasswordComplete.jsp</result>
 		</action>
 

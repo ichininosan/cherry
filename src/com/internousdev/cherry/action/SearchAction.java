@@ -17,7 +17,7 @@ public class SearchAction extends ActionSupport implements SessionAware{
 	private SearchDAO searchDAO=new SearchDAO();
 	private ArrayList<SearchDTO> searchDTOList=new ArrayList<SearchDTO>();
 	private ToHiragana toHiragana=new  ToHiragana();
-	private Map<String,Object> session;
+	public Map<String,Object> session;
 
 /*	private String serchWordCheck(String serchWord){
 		String errorMsg="";
@@ -28,7 +28,13 @@ public class SearchAction extends ActionSupport implements SessionAware{
 			errorMsg="検索は半角英数字、漢字、カタカナ、ひらがなで入力してください。";
 		}return errorMsg;
 	}*/
-
+/*	private String[] createKeywords(String keyword) {
+		// 全角を半角に置き換えて、文字列を" "で分割する
+		keyword = keyword.replace("　", " ");
+		String[] keywords = keyword.split(" ", 0);
+		return keywords;
+	}
+*/
 	public String execute(){
 		String ret=ERROR;
 
@@ -58,7 +64,7 @@ public class SearchAction extends ActionSupport implements SessionAware{
 
 		/*
 		全件検索(カテゴリ、検索値なし)
-		
+
 		*/
 
 		if(categoryId==1&&searchWord.isEmpty()){

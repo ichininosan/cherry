@@ -69,12 +69,12 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		String result = SUCCESS;
 
 		//sessionからもってこれるようにする
-		String user_id = (String) session.get("user_id");
+		String userId = (String) session.get("userId");
 
 		if(deleteFlg == null){
 
 			//session.get("user_id").toString()せっっしょンの名前！
-			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
+			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
 
 			System.out.println("List = "+ historyList);
@@ -100,7 +100,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 			System.out.println("ID:"+id);
 			deletePart(id);
 
-			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
+			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
 		}	else if(deleteFlg.equals("3")){
 			/*
@@ -109,11 +109,11 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 			System.out.println("chooseList:"+ chooseList);
 			//deleteChoose(chooseList);
 
-			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
+			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
 		}
 
-		historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
+		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 		System.out.println("List = "+ historyList);
 		return result;
 	}
@@ -129,7 +129,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	 */
 	public void delete() throws SQLException{
 		//sessionからもってこれるようにする
-		String user_id = session.get("user_id").toString();;
+		String user_id = session.get("userId").toString();;
 
 
 		int res = purchaseHistoryDAO.deleteHistory(user_id);

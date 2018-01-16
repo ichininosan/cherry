@@ -35,7 +35,10 @@
 
 <!-- メインコンテンツ -->
 <div class="top_main clearfix">
-	<h1><s:property value="#session.searchWord"/></h1>
+
+	<h1>
+		<s:property value="#session.searchWord"/>
+	</h1>
 	<ul>
 		<s:iterator value="searchDTOList">
 		<li>
