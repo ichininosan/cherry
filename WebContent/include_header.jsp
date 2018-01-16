@@ -20,15 +20,16 @@
 		</ul>
 
 		<s:form action="SearchAction">
-			<select name="categoryId">
+			<select name="categoryId" class="h_pulldown">
 				<option value=1 selected="selected">全てのカテゴリ</option>
 				<option value=2 >本</option>
 				<option value=3 >家電・パソコン</option>
 				<option value=4 >おもちゃ・ゲーム</option>
 			</select>
-			<s:textfield name="searchWord"/>
+			<s:textfield name="searchWord" class="h_search" />
 
-			<s:submit value="Search"/>
+			<s:submit type="image" src="/cherry/img/search.svg" class="h_button" />
+
 
 		</s:form>
 

@@ -35,21 +35,50 @@ header form{
 
 }
 
-header input{
-    width: 100%;
-    height: 36px;
-    padding-left: 5px;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-header form button{
+header .h_pulldown{
 	position: absolute;
     top: 0;
+    left: 0;
+    border-radius: 4px 0 0 4px;
+    height: 36px;
+    padding-left: 5px;
+    background: #eee;
+    border: none;
+    box-sizing: border-box;
+    border-right: 1px solid #9e9e9e;
+}
+
+header .h_search{
+    width: 94%;
+    padding-right: 7px;
+    height: 36px;
+	border-radius: 4px 0 0 4px;
+    margin-bottom: 20px;
+    font-size: 1.0rem;
+    border: none;
+    box-sizing: border-box;
+    padding-left: 142px;
+}
+
+header .h_button{
+    position: absolute;
+    top: 0;
     right: 0;
+    border-radius: 0 4px 4px 0;
     height: 36px;
     cursor: pointer;
+	box-sizing: border-box;
+	border: none;
+    border-left: 1px solid #9E9E9E;
+	background: #FFC107;
+    width: 60px;
+    transition: 0.4s;
 }
+
+header .h_button:hover{
+	opacity: 0.8;
+}
+
 
 header a.logo:before{
     content: "";
