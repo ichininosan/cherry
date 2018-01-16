@@ -30,6 +30,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
      * 商品ID
      */
     private int itemId;
+    private String productId;
 
 
     /**
@@ -68,7 +69,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
         if (session.containsKey("userId")) {
             userId = session.get("userId").toString();//ログインしているuserId
             CartDeleteDAO deletedao=new CartDeleteDAO();//
-            deletedao.deleteCartInfo(userId);
+            deletedao.deleteSeparate(userId,productId);
         //カートに接続しデータが入っていないことを表示
             CartInfoDAO cartdao= new CartInfoDAO();
             cartList=cartdao.aquireUserCartInfo(userId);
@@ -149,6 +150,18 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
     public void setCartList(List<CartInfoDTO> cartList) {
         this.cartList = cartList;
     }
+
+
+	public String getProductId() {
+		return productId;
+	}
+
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
+
 
 
     }
