@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <header>
 	<div class="wrap">
 		<a class="logo" href="/cherry/TopAction">Cherry</a>
@@ -14,14 +15,22 @@
 			</li>
 
 			<li>
-				<a href="/cherry/GoLoginAction"><i class="material-icons">&#xE879;</i>ログイン</a>
+				<a href="/cherry/LoginAction"><i class="material-icons">&#xE879;</i>ログイン</a>
 			</li>
 		</ul>
 
-		<form action="/cherry/SearchAction" method="post">
-			<input type ="search"  placeholder="キーワードで検索する">
-			<button type="submit"><i class="material-icons">&#xE8B6;</i></button>
-		</form>
+		<s:form action="SearchAction">
+			<select name="categoryId">
+				<option value=1 selected="selected">全てのカテゴリ</option>
+				<option value=2 >本</option>
+				<option value=3 >家電・パソコン</option>
+				<option value=4 >おもちゃ・ゲーム</option>
+			</select>
+			<s:textfield name="searchWord"/>
+
+			<s:submit value="Search"/>
+
+		</s:form>
 
 	</div>
 </header>
