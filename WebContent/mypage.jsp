@@ -22,46 +22,68 @@
 
         <div class="main">
 
+          <div id="secRegist" class="section">
 
-			<table class="human">
-				<caption>ユーザー情報</caption>
-				<s:iterator value="myPageList">
-					<tr>
-						<th class="arror_box">ふりがな</th>
-						<td><s:property value="familyNameKana" /><s:property value="firstNameKana" /></td>
-					</tr>
-					<tr>
-						<th class="arror_box">名前</th>
-						<td><s:property value="familyName" /> <s:property value="firstName" /></td>
-					</tr>
-					<tr>
-						<th class="arror_box">性別</th>
-						<td><s:if test="sex==0">男性</s:if> <s:else>女性</s:else></td>
-					</tr>
-					<tr>
-						<th class="arror_box">メールアドレス</th>
+            <div class="sectionInner">
+
+              <div class="sectionHeader">
+                <h3>会員登録情報</h3>
+                <!-- sectionHeader -->
+              </div>
+
+              <div class="contBody">
+           		<table>
+        			<tbody>
+        			<s:iterator value="myPageList">
+					 <tr>
+						<th>基本情報</th>
+						 <td>
+						      <p><s:property value="familyNameKana" /><s:property value="firstNameKana" /><p>
+						<p><s:property value="familyName" /> <s:property value="firstName" /><p>
+						<p><s:if test="sex==0">男性</s:if> <s:else>女性</s:else><p>
+						</td>
+					    <td class="change">
+					    <a class="btn">変更</a>
+					 <!-- <a href="アクション"></> -->
+					    </td>
+					 </tr>
+					 <tr>
+					    <th>メールアドレス</th>
 						<td><s:property value="email" /></td>
+					    <td class="change">
+					      <a class="btn">変更</a>
+					      <!-- <a href="アクション"></> -->
+					    </td>
+				   	</tr>
+					<tr>
+					    <th>cheryyID</th>
+						<td><p><s:property value="#session.userId" /></p></td>
+						<td class="change">
+					      <p><a href="/cherry/ResetPasswordAction"></a></p>
+					    </td>
 					</tr>
-				</s:iterator>
- 			</table>
-
-			<div class="btn">
-				<a href="/cherry/PurchaseHistoryAction" type="submit">注文履歴確認</a>
+					<tr>
+					    <th>パスワード</th>
+						<td><p><s:property value="#session.password" /></p></td>
+					    <td class="change">
+					      <p><a href="/cherry/ResetPasswordAction" class="btn">変更</a></p>
+					    </td>
+					</tr>
+                   </s:iterator>
+				   </tbody>
+ 			   </table>
+              </div>
+            </div>
+           </div>
+          <div class="btnn">
+				<a href="/cherry/PurchaseHistoryAction" type="button">注文履歴確認</a>
 			</div>
-
-
 	</div>
 
 
 
 <!-- フッター -->
 <jsp:include page="include_footer.jsp" />
-
-  <div id="footer">
-    <div id="pr"></div>
-  </div>
-
-
 
 
 </body>
