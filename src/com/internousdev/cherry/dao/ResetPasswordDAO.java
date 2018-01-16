@@ -3,31 +3,44 @@ package com.internousdev.cherry.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import com.internousdev.cherry.dto.ResetPasswordDTO;
+import com.internousdev.cherry.dto.UserInfoDTO;
 import com.internousdev.cherry.util.DBConnector;
 
 public class ResetPasswordDAO  {
 
-	private DBConnector dbConnector = new DBConnector();
-	private Connection connection = dbConnector.getConnection();
+	UserInfoDTO userInfoDTO = new UserInfoDTO();
+	DBConnector db = new DBConnector();
+	Connection con = db.getConnection();
 
-	private ResetPasswordDTO resetPasswordDTO = new ResetPasswordDTO();
+
+	//userIdが存在しているか判定する
+	public boolean checkIdPass(String userId) throws SQLException{
+
+		String sql = "WHERE user_id = ? ";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, userId);
+		ResultSet resultSet = ps.executeQuery();
+
+		return resultSet.next();
+	}
 
 
-	/*userIdをDBから探すメソッド*/
+	//userIdをDBから取得する
 	public boolean getUserId(String userId){
 
 	String sql="SELECT * FROM user_info where user_id=?";
 
 		try{
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1, userId);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
 
-			ResultSet resultSet=preparedStatement.executeQuery();
+			ResultSet resultSet=ps.executeQuery();
 
 		if(resultSet.next()){
-			resetPasswordDTO.setuserId(resultSet.getString("userId"));
+			userInfoDTO.setUserId(resultSet.getString("userId"));
 			return true;
 		}
 
@@ -37,17 +50,17 @@ public class ResetPasswordDAO  {
 			return false;
 		}
 
-	/*ユーザーIDを元にして新しいパスワードをDBにセットするメソッド*/
+	//ユーザーIDを元にして新しいパスワードをDBにセットする
 	public boolean updatePassword(String password,String userId){
 
 	String sql="UPDATE user_info SET password =? where user_id= ?";
 
 		try{
-			PreparedStatement preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1, password);
-			preparedStatement.setString(2,userId);
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, password);
+			ps.setString(2,userId);
 
-			preparedStatement.executeUpdate();
+			ps.executeUpdate();
 			return true;
 
 		}catch(Exception e){
@@ -57,12 +70,12 @@ public class ResetPasswordDAO  {
 	}
 
 
-	public void setResetPasswordDTO(ResetPasswordDTO resetPasswordDTO) {
-		this.resetPasswordDTO = resetPasswordDTO;
+	public void setUserInfoDTO(UserInfoDTO userInfoDTO) {
+		this.userInfoDTO = userInfoDTO;
 	}
 
-	public ResetPasswordDTO getResetPasswordDTO() {
-		return resetPasswordDTO;
+	public UserInfoDTO getUserInfoDTO() {
+		return userInfoDTO;
 		}
 }
 

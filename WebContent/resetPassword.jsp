@@ -23,7 +23,7 @@
 
 <!-- メインコンテンツ -->
 	<div class="box">
-			<a>パスワード再設定</a>
+			<h1>パスワード再設定</h1>
 		<div>
 			<table>
 			<s:form action="ResetPasswordConfirmAction">
@@ -41,7 +41,7 @@
 						<label>ログインID:</label>
 					</td>
 					<td>
-						<input type="text" name="userId" value='<s:property value="#session.userId"/>' />
+						<input type="text" name="userId" value='<s:property value="#session.saveId"/>' />
 					</td>
 				</tr>
 				<tr>
