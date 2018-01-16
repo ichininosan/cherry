@@ -55,18 +55,6 @@
 			<result name="error">cart.jsp</result>
 		</action>
 
-
-		<!-- 工藤担当アクション -->
-		<action name="ResetPasswordAction" class="com.internousdev.cherry.action.ResetPasswordAction" method="execute">
-			<result name="success">resetPasswordConfirm.jsp</result>
-		</action>
-		<action name="ResetPasswordConfirmAction" class="com.internousdev.cherry.action.ResetPasswordConfirmAction" method="execute">
-			<result name="success">resetPasswordComplete.jsp</result>
-		</action>
-		<action name="ResetPasswordCompleteAction" class="com.internousdev.cherry.action.ResetPasswordCompleteAction" method="execute">
-			<result name="success"></result>
-		</action>
-
 		<!-- 松田アクション -->
 		<action name="ProDetailAction" class="com.internousdev.cherry.action.ProDetailAction">
 			<result name="success">pro_detail.jsp</result>
