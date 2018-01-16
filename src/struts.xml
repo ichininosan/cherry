@@ -17,11 +17,13 @@
 			<result name="success">mypage.jsp</result>
 			<result name="error">login.jsp</result>
 		</action>
+
+
 		<!-- 櫻井担当アクション -->
-		<action name="PurchaseHistoryAction" class="com.internousdev.cherry.action.PurchaseHistoryAction" method="execute">
-			<result name="success">purchaseHistory.jsp</result>
-			<result name="error">testError.jsp</result>
+		<action name="SearchAction" class="com.internousdev.cherry.action.SearchAction" method="execute">
+			<result name="success">searchResult.jsp</result>
 		</action>
+
 
 
 		<!-- 工藤担当アクション -->
