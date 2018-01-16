@@ -19,22 +19,16 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 	int totalPrice;
 
 	public String execute() throws SQLException{
-		String result;
-		//login画面遷移時にメッセージを出す
-         if(!(session.containsKey("userId"))){
-             setMessage("ログインしてください");
-		}
-		result=ERROR;
-
+        String result;
 		CartInfoDAO dao = new CartInfoDAO();
 
 		//暫定でセッション値セット//
-		//session.put("loginFlg",true);
-		//session.put("userId", 1);
+		session.put("loginFlg",true);
+		session.put("userId", 1);
 
 		//ログインユーザーのカート情報を引き出す
-		//if(session.containsKey("useId") && (boolean) session.get("loginFlg")){
-		  if(session.containsKey("userId")){
+		if(session.containsKey("useId") && (boolean) session.get("loginFlg")){
+		//  if(session.containsKey("userId")){
 			for(CartInfoDTO dto: dao.showUserCartList(session.get("userId").toString())){
 				cartList.add(dto);
 			}
