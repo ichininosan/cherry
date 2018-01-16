@@ -69,8 +69,10 @@
 		</action>
 
 		<action name="LogoutAction" class="com.internousdev.cherry.action.LogoutAction">
-			<result name="success">home.jsp</result>
+			<result name="success">logout_result.jsp</result>
 		</action>
+
+
 
 		<!-- 佐藤アクション -->
 		<action name="ResetPasswordAction" class="com.internousdev.cherry.action.ResetPasswordAction">
