@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String id = (String)session.getAttribute("userId");
+%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+
 <header>
 	<div class="wrap">
 		<a class="logo" href="/cherry/TopAction">Cherry</a>
@@ -14,9 +18,15 @@
 				<a href="/cherry/MyPageAction"><i class="material-icons">&#xE853;</i>マイページ</a>
 			</li>
 
-			<li>
-				<a href="/cherry/GoLoginAction"><i class="material-icons">&#xE879;</i>ログイン</a>
-			</li>
+			<% if( id == null){ %>
+				<li>
+					<a href="/cherry/GoLoginAction"><i class="material-icons">&#xE879;</i>ログイン</a>
+				</li>
+			<% }else{ %>
+				<li>
+					<a href="/cherry/LogoutAction"><i class="material-icons">&#xE879;</i>ログアウト</a>
+				</li>
+			<% } %>
 		</ul>
 
 		<s:form action="SearchAction">
