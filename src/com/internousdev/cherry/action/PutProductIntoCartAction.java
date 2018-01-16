@@ -41,7 +41,6 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		//暫定でセッション値セット//
 		session.put("loginFlg",true);
 		session.put("userId", "a");
-		/*productId="1";*/
 		productCount=0;
 		String tempUserId="1";
 
@@ -90,12 +89,10 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 				dao.putProductIntoCartOfGuestUser(tempUserId,Integer.parseInt(productId),productCount,iPrice);
 			}
 			cartList = dao.showTempUserCartList(session.get("userId").toString());
-//			for (CartInfoDTO cartInfoDTO: dao.showTempUserCartList(session.get("userId").toString())) {
-//				cartList.add(cartInfoDTO);
-//			}
 		}
 
-//		totalPrice = calcTotalPrice(cartList);
+		totalPrice = calcTotalPrice(cartList);
+		System.out.println("totalPrice");
 		return SUCCESS;
 	}
 
@@ -243,6 +240,7 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		int totalPrice = 0;
 		for(CartInfoDTO dto: cartList) {
 			totalPrice += dto.getPrice() * dto.getProductCount();
+			System.out.println("合計" + totalPrice + "円");
 		}
 		return totalPrice;
 	}

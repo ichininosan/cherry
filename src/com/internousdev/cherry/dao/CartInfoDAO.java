@@ -198,6 +198,78 @@ public class CartInfoDAO extends ActionSupport{
 	}
 
 	/**
+	 * ログイン時、カートに目標の商品が入っているかどうか確認
+	 * @param userId
+	 * @param productId
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean isAlreadyIntoCart(String userId, int productId) throws SQLException {
+		System.out.println("isAlreadyIntoCart");
+		boolean result = false;
+		String sql = "SELECT * FROM cart_info WHERE user_id = ? AND product_id = ?";
+
+		try {
+			con = db.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.setInt(2, productId);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				result = true;
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			con.close();
+
+		}
+
+		return result;
+	}
+
+	/**
+	 * 非ログイン時、カートに目標の商品が入っているかどうか確認
+	 * @param userId
+	 * @param productId
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean isAlreadyIntoTempCart(String tempUserId, int productId) throws SQLException {
+		System.out.println("isAlreadyIntoTempCart");
+		boolean result = false;
+		String sql = "SELECT * FROM cart_info WHERE temp_user_id = ? AND product_id = ?";
+
+		try {
+			con = db.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, tempUserId);
+			ps.setInt(2, productId);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				result = true;
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			con.close();
+
+		}
+
+		return result;
+	}
+
+	/**
 	 * ログインユーザーのカート内商品の購入予定個数を変更
 	 * @param dto
 	 * @return
@@ -254,6 +326,9 @@ public class CartInfoDAO extends ActionSupport{
 
 		return count;
 	}
+
+
+
 
 
 

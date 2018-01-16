@@ -15,19 +15,19 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 
 	Map<String, Object> session;
 	ArrayList<CartInfoDTO> cartList = new ArrayList<>();
-    private String message;
+   // private String message;
 	int totalPrice;
 
 	public String execute() throws SQLException{
-        String result;
+
 		CartInfoDAO dao = new CartInfoDAO();
 
 		//暫定でセッション値セット//
 		session.put("loginFlg",true);
-		session.put("userId", 1);
+		session.put("userId", "a");
 
 		//ログインユーザーのカート情報を引き出す
-		if(session.containsKey("useId") && (boolean) session.get("loginFlg")){
+		if(session.containsKey("loginFlg") && (boolean) session.get("loginFlg")){
 		//  if(session.containsKey("userId")){
 			for(CartInfoDTO dto: dao.showUserCartList(session.get("userId").toString())){
 				cartList.add(dto);
@@ -41,9 +41,7 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 		//合計金額の計算
 		totalPrice = calcTotalPrice(cartList);
 
-		result=SUCCESS;
-
-		return result;
+		return SUCCESS;
 	}
 
 	/**
@@ -98,17 +96,12 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 		int totalPrice = 0;
 		for(CartInfoDTO dto: cartList) {
 			totalPrice += dto.getPrice() * dto.getProductCount();
+			System.out.println("合計" + totalPrice + "円");
 		}
 		return totalPrice;
 	}
 
-	public String getMessage() {
-		return message;
-	}
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
 
 
 
