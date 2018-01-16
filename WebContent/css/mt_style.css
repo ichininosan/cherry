@@ -176,6 +176,7 @@ header li a i{
 .pro_detail form img{
 	display: block;
     margin: 0 auto;
+    max-width: 360px;
 }
 
 .pro_detail form .no_need{
@@ -230,6 +231,7 @@ header li a i{
     position: absolute;
     top: 29px;
     left: 417px;
+    z-index: 9999;
 }
 
 /* .pro_detail .name_kana{
@@ -241,6 +243,7 @@ header li a i{
 	text-align: center;
     font-weight: bold;
     font-size: 1.2rem;
+    margin-top: 10px;
 }
 
 .pro_detail .price{
@@ -255,6 +258,23 @@ header li a i{
 .pro_detail .price span{
 	font-size: 1.4rem;
     font-weight: normal;
+}
+
+.pro_detail .return{
+    display: block;
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    background: #eee;
+    color: #1f1f1f;
+    margin-top: 10px;
+    height: 44px;
+    line-height: 44px;
+    border-radius: 4px;
+}
+
+.pro_detail .return i{
+	vertical-align: -6px;
 }
 
 /*----------------------------------------------------------------------------------------------------------------------

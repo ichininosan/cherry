@@ -58,7 +58,7 @@
 	<p class="cart_before"></p>
 	<s:submit value="カートに追加" cssClass="cart_add" />
 </s:form>
-<a href="/cherry/TopAction">戻る</a>
+<a class="return" href="/cherry/TopAction">戻る<i class="material-icons">&#xE315;</i></a>
 
 <!-- フッター -->
 <jsp:include page="include_footer.jsp" />
