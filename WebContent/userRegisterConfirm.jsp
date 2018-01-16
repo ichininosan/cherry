@@ -5,19 +5,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/or_style.css">
 <script type="text/javascript">
 	history.forward();
 </script>
 <title>登録内容確認画面</title>
 </head>
 <body>
-	<div id="main">
-		<h2 class="title">新規ユーザー登録確認</h2>
+	<div id="main" align="center">
+		<header><h2 class="title">新規ユーザー登録確認</h2></header>
 		<div class="register_box">
 			<div class="member">
 				<div class="member_form">
 					<s:form action="RegisterUserInfoAction" theme="simple">
 						<div class="member-form-title">
+						<br><br><br><br><br>
 							名前:
 							<s:property value="familyName" />
 							<s:hidden name="familyName" value="%{familyName}" />
@@ -55,5 +57,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- フッター -->
+<jsp:include page="include_footer.jsp" />
 </body>
 </html>
