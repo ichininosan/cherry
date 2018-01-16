@@ -44,11 +44,11 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 		}
 		session.put("pro_detail", pro_detail);
 
+		//暫定でセッション値セット//
+		session.put("loginFlg",true);
+		session.put("userId", "a");
 
 		//ここから、目標の商品がすでにカートに入っているかどうか確認
-		//暫定でセッション値セット//
-				session.put("loginFlg",true);
-				session.put("userId", "a");
 		CartInfoDAO cartInfoDAO = new CartInfoDAO();
 		if((boolean)session.get("loginFlg")) {
 			duplicationFlg = cartInfoDAO.isAlreadyIntoCart(session.get("userId").toString(), productId);

@@ -43,13 +43,11 @@
 								<td><s:property value="productCount" /></td>
 								<td><s:property value="releaseCompany" /></td>
 								<td><s:date name="releaseDate" format="yyyy年MM月dd日" /></td>
+								<td><a href='<s:url action="CartDeleteAction"/>'>削除</a></td>
 							</tr>
 						</tbody>
 					</s:form>
 				</s:iterator>
-				<s:form action="CartDeleteAction">
-					<s:submit value="削除" />
-				</s:form>
 			</table>
 		</s:if>
 		<s:else>
