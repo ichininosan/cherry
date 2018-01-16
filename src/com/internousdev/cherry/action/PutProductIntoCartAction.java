@@ -41,7 +41,7 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		//暫定でセッション値セット//
 		session.put("loginFlg",true);
 		session.put("userId", "a");
-		productId="1";
+		/*productId="1";*/
 		productCount=0;
 		String tempUserId="1";
 
