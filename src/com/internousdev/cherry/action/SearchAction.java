@@ -18,6 +18,7 @@ public class SearchAction extends ActionSupport implements SessionAware{
 	private ArrayList<SearchDTO> searchDTOList=new ArrayList<SearchDTO>();
 	private ToHiragana toHiragana=new  ToHiragana();
 	public Map<String,Object> session;
+	private ArrayList<String> msgList=new ArrayList<String>();
 
 /*	private String serchWordCheck(String serchWord){
 		String errorMsg="";
@@ -38,9 +39,16 @@ public class SearchAction extends ActionSupport implements SessionAware{
 	public String execute(){
 		String ret=ERROR;
 
+		if(searchWord.length()>16){
+			msgList.add("16字以内で検索してください");
+		}else{
+			msgList.add(searchWord);
+		}
+
 		/*
 		検索値を全て全角ひらがな、全角カタカナに変換
 		 */
+
 		searchWord=Normalizer.normalize(searchWord, Normalizer.Form.NFKC);
 		System.out.println(searchWord);
 
@@ -185,6 +193,29 @@ public class SearchAction extends ActionSupport implements SessionAware{
 
 	public void setToHiragana(ToHiragana toHiragana) {
 		this.toHiragana = toHiragana;
+	}
+
+
+
+
+
+
+	public ArrayList<String> getMsgList() {
+		return msgList;
+	}
+
+
+
+
+	public void setMsgList(ArrayList<String> msgList) {
+		this.msgList = msgList;
+	}
+
+
+
+
+	public Map<String, Object> getSession() {
+		return session;
 	}
 
 
