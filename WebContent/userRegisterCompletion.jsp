@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/or_style.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>新規登録完了画面</title>
 </head>
 <body>
-	<header></header>
+	<header><a class="logo" href="/cherry/TopAction" >cherry</a></header>
 	<div id="main" align="center">
 	<br><br><br><br>
 		<div class="member" >

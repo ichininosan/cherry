@@ -6,23 +6,27 @@
 <html>
 <head>
 <meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/or_style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
 <title>ログイン画面</title>
 
 </head>
 <body>
-
+<!-- ヘッダー -->
+	<header><a class="logo" href="/cherry/TopAction" >cherry</a></header>
+<!-- メイン -->
 	<div id="main" align="center">
-	 <s:if test="message !=null">
-          <h5><strong><s:property value="message"/></strong></h5>
-          </s:if>
-		<header><h1>ログイン</h1></header>
-		<br><br><br>
+
+        <br><br><br>
+		<h2>ログイン</h2>
+			<s:if test="message !=null">
+          		<h5><strong><s:property value="message"/></strong></h5>
+          	</s:if>
 		<div class="login_box">
 			<div class="member">
-				<h5>
-					<s:iterator value="errorMessageList"/>
-				</h5>
+				<s:if test="errorMessageList !=null">
+          			<h5><s:property value="errorMessageList"/></h5>
+          		</s:if>
 				<div class="member_form">
 					<s:form action="LoginAction" theme="simple" id="LoginForm">
 
@@ -49,8 +53,8 @@
 
 						<div class="member_btn">
 							<button type="submit" class="">ログイン</button>
-
 						</div>
+						<br>
 						<div class="member_btn">
 					<a href='<s:url action="ResetPasswordAction"/>'>パスワード再設定</a>
 				</div>
