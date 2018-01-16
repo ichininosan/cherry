@@ -151,17 +151,27 @@ header li a i{
 }
 .title{
 	margin-top: 10px;
+	position:absolute;
+	top: 127px;
+    left: 37px;
 }
 
 .top{
 	font-size: 30px;
 }
 h2{
+	width: 900px;
+    height: 300px;
 	text-align: center;
 	font-size: 30px;
-	margin: 50px;
-	background: url(/cherry/img/Signboard.png) no-repeat;
+	background: url(/cherry/img/signboard.png) no-repeat;
+	background-size: 409px;
+    background-position:234px -75px,
+                         center;
+
 }
+
+
 
 
 

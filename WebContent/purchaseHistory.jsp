@@ -22,9 +22,9 @@
 		<!-- メインのトップ -->
 			<div class = "top">
 				<p class="title">注文履歴</p>
-				<s:if test="message != null">
+				<%-- <s:if test="message != null">
 					<h2><s:property value="message"/></h2>
-				</s:if>
+				</s:if> --%>
 			</div>
 		<!-- メインのトップここまで -->
 
@@ -35,12 +35,9 @@
 		<!-- リストに応じたトップメッセージ -->
 				<s:if test = "historyList.size() == 0">
 					<h2>購入情報はありません</h2>
-					<img src="../img/signboard.png">
-					<img src="../img/signboard.png" alt="看板">
 				</s:if>
 				<s:elseif test= "historyList != null && historyList.size() != 0">
 					<h2>購入情報は以下になります</h2>
-					<img src="../img/signboard.png">
 		<!-- リストに応じたトップメッセージここまで -->
 
 
@@ -64,7 +61,7 @@
 					<tr>
 						<td><s:property value="productName"/></td>
 						<td><s:property value="productNameKana"/></td>
-						<td><img src="<s:property value="productImage"/>""></td>
+						<td><img src="<s:property value="productImage"/>"></td>
 						<td><s:property value="price"/><span>円</span></td>
 						<td><s:property value="count"/><span>個</span></td>
 						<td><s:property value="releaseCompany"/></td>
