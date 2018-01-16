@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="refresh" content="0;URL='TopAction'" />
-<title>フォワード用なので気にしない</title>
+<title></title>
 </head>
 <body>
-	フォワード用なので気にしない
+<!-- 初期遷移するためのjsp -->
 </body>
 </html>
