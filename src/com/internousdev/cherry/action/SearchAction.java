@@ -3,15 +3,15 @@ package com.internousdev.cherry.action;
 import java.text.Normalizer;
 import java.util.ArrayList;
 
-import com.internousdev.cherry.dao.SerchDAO;
-import com.internousdev.cherry.dto.SerchDTO;
+import com.internousdev.cherry.dao.SearchDAO;
+import com.internousdev.cherry.dto.SearchDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SerchAction extends ActionSupport{
+public class SearchAction extends ActionSupport{
 	private String serchWord;
 	private int categoryId;
-	private SerchDAO serchDAO=new SerchDAO();
-	private ArrayList<SerchDTO> serchDTOList=new ArrayList<SerchDTO>();
+	private SearchDAO serchDAO=new SearchDAO();
+	private ArrayList<SearchDTO> serchDTOList=new ArrayList<SearchDTO>();
 
 /*	private String serchWordCheck(String serchWord){
 		String errorMsg="";
@@ -96,11 +96,11 @@ public class SerchAction extends ActionSupport{
 	}
 
 
-	public ArrayList<SerchDTO> getSerchDTOList() {
+	public ArrayList<SearchDTO> getSerchDTOList() {
 		return serchDTOList;
 	}
 
-	public void setSerchDTOList(ArrayList<SerchDTO> serchDTOList) {
+	public void setSerchDTOList(ArrayList<SearchDTO> serchDTOList) {
 		this.serchDTOList = serchDTOList;
 	}
 
