@@ -35,9 +35,12 @@
 		<!-- リストに応じたトップメッセージ -->
 				<s:if test = "historyList.size() == 0">
 					<h2>購入情報はありません</h2>
+					<img src="../img/signboard.png">
+					<img src="../img/signboard.png" alt="看板">
 				</s:if>
 				<s:elseif test= "historyList != null && historyList.size() != 0">
 					<h2>購入情報は以下になります</h2>
+					<img src="../img/signboard.png">
 		<!-- リストに応じたトップメッセージここまで -->
 
 
