@@ -4,7 +4,7 @@
 "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
 
 	<package name="com.internousdev.cherry.action" extends="struts-default">
 		<!-- 本間担当アクション -->
