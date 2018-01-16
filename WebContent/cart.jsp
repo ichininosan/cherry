@@ -36,7 +36,7 @@
 
 						<tbody>
 							<tr>
-								<td><img src='<s:property value = "imageFileName"/>' alt="商品画像"></td>
+								<td><img src='<s:property value="image_file_name"/>' alt="画像なし"/></td>
 								<td><s:property value="productName" /></td>
 								<td><s:property value="productNameKana" /></td>
 								<td><s:property value="price" />円</td>
@@ -61,7 +61,7 @@
 	<br>
 		<div class="totalprice">
 			合計金額:
-			<fmt:formatNumber value="${totalPrice}" />
+			<s:property value="totalPrice" />
 			<span>円</span>
 		</div>
 		<br>

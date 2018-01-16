@@ -1,6 +1,7 @@
 package com.internousdev.cherry.action;
 
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -12,9 +13,20 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ProDetailAction extends ActionSupport implements SessionAware{
 
+	// 商品ID
 	private String id;
+
+	//セッション
 	private Map<String,Object> session;
+
+	//商品一覧
 	ProductDTO pro_detail = new ProductDTO();
+
+	//購入個数
+	private ArrayList<Integer> count = new ArrayList<>();
+
+	//商品重複フラグ
+	private boolean duplicationFlg;
 
 	public String execute(){
 		Product_InfoDAO dao=new Product_InfoDAO();
