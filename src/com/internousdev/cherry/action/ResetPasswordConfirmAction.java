@@ -51,6 +51,8 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		}
 		//パスワードが4文字以上のとき、最初の2文字のみ表示して、3文字以降を*で表示する
 		if(password.length() > 3){
+			session.put("userId", userId);
+			session.put("password", password);
 			confirmpass = password.substring(0,2);
 			confirmpass3 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*");
 			s = confirmpass + confirmpass3;

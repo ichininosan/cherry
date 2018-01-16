@@ -22,11 +22,11 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 
 	//実行メソッド
 	public String execute() throws SQLException {
-
+		String ret=SUCCESS;
 		//password=session.get("password").toString();
 		//userId=session.get("userId").toString();
 
-		//ログインIDをDBから取得
+/*		//ログインIDをDBから取得
 		if(DAO.getUserId(userId)){
 			return SUCCESS;
 		}
@@ -34,8 +34,12 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 		//ユーザーIDを元にして新しいパスワードをDBにセット
 		if(DAO.updatePassword(password,userId)){
 			return SUCCESS;
-		}
-		return ERROR;
+		}*/
+
+		DAO.updatePassword(session.get("userId").toString(),
+						session.get("password").toString());
+
+		return ret;
 	}
 
 

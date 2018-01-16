@@ -14,6 +14,10 @@ public class ResetPasswordDAO  {
 	DBConnector db = new DBConnector();
 	Connection con = db.getConnection();
 
+	//userIdが入力されているか
+	if(!(userId.equals(""))){
+	}
+
 
 	//userIdが存在しているか判定する
 	public boolean checkIdPass(String userId) throws SQLException{
@@ -51,7 +55,7 @@ public class ResetPasswordDAO  {
 		}
 
 	//ユーザーIDを元にして新しいパスワードをDBにセットする
-	public boolean updatePassword(String password,String userId){
+	public void updatePassword(String userId,String password){
 
 	String sql="UPDATE user_info SET password =? where user_id= ?";
 
@@ -59,13 +63,12 @@ public class ResetPasswordDAO  {
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setString(1, password);
 			ps.setString(2,userId);
-
 			ps.executeUpdate();
-			return true;
+
+
 
 		}catch(Exception e){
 			e.printStackTrace();
-			return false;
 		}
 	}
 
