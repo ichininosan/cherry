@@ -5,15 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/or_style.css">
 <script type="text/javascript" src="script.js"></script>
 <title>ユーザー情報入力画面</title>
 </head>
 <body>
 	<div id="main">
 		</div>
-		<h2 class="title">新規ユーザー登録</h2>
+		<header><h2 class="title">新規ユーザー登録</h2></header>
 		<div class="register_box">
-			<div class="member">
+			<div class="member" align="center">
+				<br><br><br><br>
+
 				<h5>
 					<s:iterator value="errorMessageList">
 						<s:div>
@@ -90,5 +93,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- フッター -->
+<jsp:include page="include_footer.jsp" />
 </body>
 </html>
