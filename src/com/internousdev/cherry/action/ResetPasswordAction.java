@@ -6,46 +6,46 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.dao.LoginDAO;
+import com.internousdev.cherry.dao.ResetPasswordDAO;
 import com.internousdev.cherry.dto.UserInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordAction extends ActionSupport implements SessionAware{
-	private Map<String, Object> session;
+	public Map<String, Object> session;
 	private String userId;
+	private String password;
 	private boolean saveLogin;
+	public String result;
+
+	LoginDAO loginDAO = new LoginDAO();
+	UserInfoDTO userInfoDTO = new UserInfoDTO();
 
 	public String execute() throws SQLException{
+		result = SUCCESS;
 
-/*		//DAO,DTOのインスタンス作成
-		LoginDAO dao = new LoginDAO();
-		UserInfoDTO userInfoDTO = new UserInfoDTO();
+		//ログイン画面で入力されたuserIdをsessioに保管
+		if ((!userId.equals("")) && loginDAO.existsUserId(userId)) {
 
+			//会員情報DTOにuserIdとパスワードを設置
+			userInfoDTO = loginDAO.select(userId,password);
 
+			//sessionにuserIdを保管、チェックボックスしてるか
+			session.put("userId", userInfoDTO.getUserId());
+			session.put("saveLogin", true);
+		}
 
-		//IDの入力省略のチェックボックスにチェックされているか
-		if ((boolean) session.get("savaId")) {
+		//DAOのインスタンス作成
+			ResetPasswordDAO dao = new ResetPasswordDAO();
+
+		//IDチェックボックスかつID入力時→再設定画面でuserID表示
+			if((!(userId.equals("")))&&saveLogin){
 			//userIdをDBから探す
-			session.put("userId", dao.existsUserId(userId));
-			return SUCCESS;
+			session.put("userId", dao.getUserId(userId));
+			return result;
 		}else{
 			return ERROR;
-		}*/
-		//DAO,DTOのインスタンス作成
-				LoginDAO dao = new LoginDAO();
-				UserInfoDTO userInfoDTO = new UserInfoDTO();
-				
-/*				if((boolean) session.get("loginFlg")){
-					
-				}
-
-				//Loginされているかチェック
-				dao.login(userInfoDTO);
-
-				//userIdをDBから探す
-				session.put("userId", dao.existsUserId(userId));*/
-				return SUCCESS;
-			}
-
+		}
+	}
 
 	//ゲッター、セッター
 	public Map<String, Object> getSession() {
