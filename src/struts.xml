@@ -62,12 +62,14 @@
 		<!-- 松田アクション -->
 		<action name="ProDetailAction" class="com.internousdev.cherry.action.ProDetailAction">
 			<result name="success">pro_detail.jsp</result>
-
 		</action>
 
 		<action name="TopAction" class="com.internousdev.cherry.action.TopAction">
 			<result name="success">home.jsp</result>
+		</action>
 
+		<action name="LogoutAction" class="com.internousdev.cherry.action.LogoutAction">
+			<result name="success">home.jsp</result>
 		</action>
 
 		<!-- 佐藤アクション -->
