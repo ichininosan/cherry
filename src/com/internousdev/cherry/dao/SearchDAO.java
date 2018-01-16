@@ -12,7 +12,7 @@ import com.internousdev.cherry.util.DBConnector;
 public class SearchDAO {
 	private DBConnector db=new DBConnector();
 	private Connection con=db.getConnection();
-	private ArrayList<SearchDTO> serchDTOList=new ArrayList<SearchDTO>();
+	private ArrayList<SearchDTO> searchDTOList=new ArrayList<SearchDTO>();
 
 	/*
 	全ての商品を表示
@@ -24,22 +24,21 @@ public class SearchDAO {
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
-				SearchDTO serchDTO=new SearchDTO();
-				serchDTO.setId(rs.getInt("id"));
-				serchDTO.setProductId(rs.getInt("product_id"));
-				serchDTO.setProductName(rs.getString("product_name"));
-				serchDTO.setProductNameKana(rs.getString("product_name_kana"));
-				serchDTO.setProductDescription(rs.getString("product_description"));
-				serchDTO.setCategoryId(rs.getInt("category_id"));
-				serchDTO.setPrice(rs.getInt("price"));
-				serchDTO.setImageFilePath(rs.getString("image_file_path"));
-				serchDTO.setImageFileName(rs.getString("image_file_name"));
-				serchDTO.setReleaseDate(rs.getDate("release_date"));
-				serchDTO.setReleaseCompany(rs.getString("release_company"));
-				serchDTO.setStatus(rs.getShort("status"));
-				serchDTO.setRegistDate(rs.getDate("regist_date"));
-				serchDTO.setUpdateDate(rs.getDate("update_date"));
-				serchDTOList.add(serchDTO);
+				SearchDTO searchDTO=new SearchDTO();
+				searchDTO.setId(rs.getInt("id"));
+				searchDTO.setProductId(rs.getInt("product_id"));
+				searchDTO.setProductName(rs.getString("product_name"));
+				searchDTO.setProductNameKana(rs.getString("product_name_kana"));
+				searchDTO.setProductDescription(rs.getString("product_description"));
+				searchDTO.setCategoryId(rs.getInt("category_id"));
+				searchDTO.setPrice(rs.getInt("price"));
+				searchDTO.setImageFileName(rs.getString("image_file_name"));
+				searchDTO.setReleaseDate(rs.getDate("release_date"));
+				searchDTO.setReleaseCompany(rs.getString("release_company"));
+				searchDTO.setStatus(rs.getShort("status"));
+				searchDTO.setRegistDate(rs.getDate("regist_date"));
+				searchDTO.setUpdateDate(rs.getDate("update_date"));
+				searchDTOList.add(searchDTO);
 
 			}
 		}catch(SQLException e){
@@ -47,7 +46,7 @@ public class SearchDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return serchDTOList;
+		return searchDTOList;
 
 	}
 	/*
@@ -68,14 +67,13 @@ public class SearchDAO {
 				serchDTO.setProductDescription(rs.getString("product_description"));
 				serchDTO.setCategoryId(rs.getInt("category_id"));
 				serchDTO.setPrice(rs.getInt("price"));
-				serchDTO.setImageFilePath(rs.getString("image_file_path"));
 				serchDTO.setImageFileName(rs.getString("image_file_name"));
 				serchDTO.setReleaseDate(rs.getDate("release_date"));
 				serchDTO.setReleaseCompany(rs.getString("release_company"));
 				serchDTO.setStatus(rs.getShort("status"));
 				serchDTO.setRegistDate(rs.getDate("regist_date"));
 				serchDTO.setUpdateDate(rs.getDate("update_date"));
-				serchDTOList.add(serchDTO);
+				searchDTOList.add(serchDTO);
 
 			}
 		}catch(SQLException e){
@@ -83,7 +81,7 @@ public class SearchDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return serchDTOList;
+		return searchDTOList;
 
 	}
 	/*
@@ -106,7 +104,6 @@ public class SearchDAO {
 				serchDTO.setProductDescription(rs.getString("product_description"));
 				serchDTO.setCategoryId(rs.getInt("category_id"));
 				serchDTO.setPrice(rs.getInt("price"));
-				serchDTO.setImageFilePath(rs.getString("image_file_path"));
 				serchDTO.setImageFileName(rs.getString("image_file_name"));
 				serchDTO.setReleaseDate(rs.getDate("release_date"));
 				serchDTO.setReleaseCompany(rs.getString("release_company"));
@@ -114,7 +111,7 @@ public class SearchDAO {
 				serchDTO.setRegistDate(rs.getDate("regist_date"));
 				serchDTO.setUpdateDate(rs.getDate("update_date"));
 
-				serchDTOList.add(serchDTO);
+				searchDTOList.add(serchDTO);
 
 			}
 		}catch(SQLException e){
@@ -122,7 +119,7 @@ public class SearchDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return serchDTOList;
+		return searchDTOList;
 
 	}
 	/*
@@ -144,7 +141,6 @@ public class SearchDAO {
 				serchDTO.setProductDescription(rs.getString("product_description"));
 				serchDTO.setCategoryId(rs.getInt("category_id"));
 				serchDTO.setPrice(rs.getInt("price"));
-				serchDTO.setImageFilePath(rs.getString("image_file_path"));
 				serchDTO.setImageFileName(rs.getString("image_file_name"));
 				serchDTO.setReleaseDate(rs.getDate("release_date"));
 				serchDTO.setReleaseCompany(rs.getString("release_company"));
@@ -152,7 +148,7 @@ public class SearchDAO {
 				serchDTO.setRegistDate(rs.getDate("regist_date"));
 				serchDTO.setUpdateDate(rs.getDate("update_date"));
 
-				serchDTOList.add(serchDTO);
+				searchDTOList.add(serchDTO);
 
 			}
 		}catch(SQLException e){
@@ -160,7 +156,7 @@ public class SearchDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return serchDTOList;
+		return searchDTOList;
 
 	}
 	/*
@@ -184,7 +180,6 @@ public class SearchDAO {
 				serchDTO.setProductDescription(rs.getString("product_description"));
 				serchDTO.setCategoryId(rs.getInt("category_id"));
 				serchDTO.setPrice(rs.getInt("price"));
-				serchDTO.setImageFilePath(rs.getString("image_file_path"));
 				serchDTO.setImageFileName(rs.getString("image_file_name"));
 				serchDTO.setReleaseDate(rs.getDate("release_date"));
 				serchDTO.setReleaseCompany(rs.getString("release_company"));
@@ -192,7 +187,7 @@ public class SearchDAO {
 				serchDTO.setRegistDate(rs.getDate("regist_date"));
 				serchDTO.setUpdateDate(rs.getDate("update_date"));
 
-				serchDTOList.add(serchDTO);
+				searchDTOList.add(serchDTO);
 
 			}
 		}catch(SQLException e){
@@ -200,7 +195,7 @@ public class SearchDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return serchDTOList;
+		return searchDTOList;
 
 	}
 	/*
@@ -229,7 +224,7 @@ public class SearchDAO {
 				serchDTO.setRegistDate(rs.getDate("regist_date"));
 				serchDTO.setUpdateDate(rs.getDate("update_date"));
 
-				serchDTOList.add(serchDTO);
+				searchDTOList.add(serchDTO);
 
 			}
 		}catch(SQLException e){
@@ -237,7 +232,7 @@ public class SearchDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return serchDTOList;
+		return searchDTOList;
 
 	}
 	public ArrayList<SearchDTO> ByCategoryANDSerchWordKana(int categoryId,String serchWord){
@@ -257,7 +252,6 @@ public class SearchDAO {
 				serchDTO.setProductDescription(rs.getString("product_description"));
 				serchDTO.setCategoryId(rs.getInt("category_id"));
 				serchDTO.setPrice(rs.getInt("price"));
-				serchDTO.setImageFilePath(rs.getString("image_file_path"));
 				serchDTO.setImageFileName(rs.getString("image_file_name"));
 				serchDTO.setReleaseDate(rs.getDate("release_date"));
 				serchDTO.setReleaseCompany(rs.getString("release_company"));
@@ -265,7 +259,7 @@ public class SearchDAO {
 				serchDTO.setRegistDate(rs.getDate("regist_date"));
 				serchDTO.setUpdateDate(rs.getDate("update_date"));
 
-				serchDTOList.add(serchDTO);
+				searchDTOList.add(serchDTO);
 
 			}
 		}catch(SQLException e){
@@ -273,7 +267,7 @@ public class SearchDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return serchDTOList;
+		return searchDTOList;
 
 	}
 	/*public ArrayList<SerchDTO> ByCategoryANDSerchWord(int categoryId,String serchWord){
@@ -330,7 +324,6 @@ public class SearchDAO {
 				serchDTO.setProductDescription(rs.getString("product_description"));
 				serchDTO.setCategoryId(rs.getInt("category_id"));
 				serchDTO.setPrice(rs.getInt("price"));
-				serchDTO.setImageFilePath(rs.getString("image_file_path"));
 				serchDTO.setImageFileName(rs.getString("image_file_name"));
 				serchDTO.setReleaseDate(rs.getDate("release_date"));
 				serchDTO.setReleaseCompany(rs.getString("release_company"));
@@ -338,7 +331,7 @@ public class SearchDAO {
 				serchDTO.setRegistDate(rs.getDate("regist_date"));
 				serchDTO.setUpdateDate(rs.getDate("update_date"));
 
-				serchDTOList.add(serchDTO);
+				searchDTOList.add(serchDTO);
 
 			}
 		}catch(SQLException e){
@@ -346,7 +339,7 @@ public class SearchDAO {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return serchDTOList;
+		return searchDTOList;
 
 	}
 

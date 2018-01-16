@@ -2,16 +2,22 @@ package com.internousdev.cherry.action;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.dao.SearchDAO;
 import com.internousdev.cherry.dto.SearchDTO;
+import com.internousdev.cherry.util.ToHiragana;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SearchAction extends ActionSupport{
-	private String serchWord;
+public class SearchAction extends ActionSupport implements SessionAware{
+	private String searchWord;
 	private int categoryId;
-	private SearchDAO serchDAO=new SearchDAO();
-	private ArrayList<SearchDTO> serchDTOList=new ArrayList<SearchDTO>();
+	private SearchDAO searchDAO=new SearchDAO();
+	private ArrayList<SearchDTO> searchDTOList=new ArrayList<SearchDTO>();
+	private ToHiragana toHiragana=new  ToHiragana();
+	private Map<String,Object> session;
 
 /*	private String serchWordCheck(String serchWord){
 		String errorMsg="";
@@ -26,44 +32,57 @@ public class SearchAction extends ActionSupport{
 	public String execute(){
 		String ret=ERROR;
 
-		serchWord=Normalizer.normalize(serchWord, Normalizer.Form.NFKC);
-		System.out.println(serchWord);
-
+		/*
+		検索値を全て全角ひらがな、全角カタカナに変換
+		 */
+		searchWord=Normalizer.normalize(searchWord, Normalizer.Form.NFKC);
+		System.out.println(searchWord);
 
 
 		/*
 		ひらがな検索
 		*/
 
-		if(categoryId==1&&serchWord.matches("^[\\u3040-\\u309F]+$")){
-			setSerchDTOList(serchDAO.BySerchWordKana(serchWord));
+/*		if(categoryId==1&&searchWord.matches("^[\\u3040-\\u309F]+$")){
+			setSearchDTOList(searchDAO.BySerchWordKana(searchWord));
 			ret=SUCCESS;
 
 		}
-		else if(categoryId>1&&serchWord.matches("^[\\u3040-\\u309FF]+$")){
-			setSerchDTOList(serchDAO.ByCategoryANDSerchWordKana(categoryId, serchWord));
+		else if(categoryId>1&&searchWord.matches("^[\\u3040-\\u309FF]+$")){
+			searchWord=toHiragana.toZenkakuHiragana(searchWord);
+			System.out.println(searchWord);
+			setSearchDTOList(searchDAO.ByCategoryANDSerchWordKana(categoryId, searchWord));
 			ret=SUCCESS;
 
-		}
+		}*/
 
 		/*
 		全件検索(カテゴリ、検索値なし)
-
+		
 		*/
 
-		else if(categoryId==1&&serchWord.isEmpty()){
-			setSerchDTOList(serchDAO.allProductInfo());
+		if(categoryId==1&&searchWord.isEmpty()){
+			setSearchDTOList(searchDAO.allProductInfo());
 			ret=SUCCESS;
 
 		}
-		/*
+/*
 		ひらがな、カタカナ検索
 		*/
-		else if(categoryId==1&&(serchWord.matches("^[\\u3040-\\u309F]+$")||
-				serchWord.matches("^[\\u30A0-\\u30FF]+$"))){
+		else if(categoryId==1&&(searchWord.matches("^[\\u3040-\\u309F]+$")||
+				searchWord.matches("^[\\u30A0-\\u30FF]+$"))){
+			searchWord=toHiragana.toZenkakuHiragana(searchWord);
+			System.out.println(searchWord);
+			setSearchDTOList(searchDAO.BySerchWordKana(searchWord));
+			ret=SUCCESS;
 
-		}else if(categoryId>1&&(serchWord.matches("^[\\u3040-\\u309FF]+$")||
-				serchWord.matches("^[\\u30A0-\\u30FF]+$"))){
+
+		}else if(categoryId>1&&(searchWord.matches("^[\\u3040-\\u309F]+$")||
+				searchWord.matches("^[\\u30A0-\\u30FF]+$"))){
+			searchWord=toHiragana.toZenkakuHiragana(searchWord);
+			System.out.println(searchWord);
+			setSearchDTOList(searchDAO.ByCategoryANDSerchWordKana(categoryId, searchWord));
+			ret=SUCCESS;
 
 		}
 
@@ -71,17 +90,17 @@ public class SearchAction extends ActionSupport{
 		/*
 		カテゴリ有り、検索値なし
 		 */
-		else if(categoryId>1&&serchWord.isEmpty()){
+		else if(categoryId>1&&searchWord.isEmpty()){
 
-			setSerchDTOList(serchDAO.ByProductCategory(categoryId));
+			setSearchDTOList(searchDAO.ByProductCategory(categoryId));
 			ret=SUCCESS;
 		}
 
 		/*
 		カテゴリなし、検索値あり
 		 */
-		else if(categoryId==1&&!(serchWord.isEmpty())){
-			setSerchDTOList(serchDAO.BySerchWord(serchWord));
+		else if(categoryId==1&&!(searchWord.isEmpty())){
+			setSearchDTOList(searchDAO.BySerchWord(searchWord));
 			ret=SUCCESS;
 		}
 
@@ -89,19 +108,88 @@ public class SearchAction extends ActionSupport{
 		カテゴリあり、検索値あり
 		 */
 		else{
-			setSerchDTOList(serchDAO.ByCategoryANDSerchWord(categoryId, serchWord));
+			setSearchDTOList(searchDAO.ByCategoryANDSerchWord(categoryId, searchWord));
 			ret=SUCCESS;
 
 		}return ret;
 	}
 
 
-	public ArrayList<SearchDTO> getSerchDTOList() {
-		return serchDTOList;
+
+
+	public String getSearchWord() {
+		return searchWord;
 	}
 
-	public void setSerchDTOList(ArrayList<SearchDTO> serchDTOList) {
-		this.serchDTOList = serchDTOList;
+
+
+
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
 	}
+
+
+
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+
+
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+
+
+
+	public SearchDAO getSearchDAO() {
+		return searchDAO;
+	}
+
+
+
+
+	public void setSearchDAO(SearchDAO searchDAO) {
+		this.searchDAO = searchDAO;
+	}
+
+
+
+
+	public ArrayList<SearchDTO> getSearchDTOList() {
+		return searchDTOList;
+	}
+
+	public void setSearchDTOList(ArrayList<SearchDTO> searchDTOList) {
+		this.searchDTOList = searchDTOList;
+	}
+
+
+
+
+	public ToHiragana getToHiragana() {
+		return toHiragana;
+	}
+
+
+
+
+	public void setToHiragana(ToHiragana toHiragana) {
+		this.toHiragana = toHiragana;
+	}
+
+
+
+
+	@Override
+	public void setSession(Map<String, Object> arg0) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+
 
 }
