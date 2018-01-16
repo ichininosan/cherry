@@ -41,13 +41,21 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 	 */
 	public String execute(){
          //login画面遷移時にメッセージをだす
-		if(!(session.containsKey("userId"))){
+	     if(!(session.containsKey("userId"))){
 
 				setMessage("ログインしてください");
 
      	}
-
 		String result=ERROR;
+		//String result = null;
+
+
+		//暫定でセッション値セット//
+				//session.put("loginFlg",true);
+				//session.put("userId", "a");
+
+				//ログインユーザーのカート情報を引き出す
+				//if(session.containsKey("useId") && (boolean) session.get("loginFlg")){
 
 		if (session.containsKey("userId")){
 
