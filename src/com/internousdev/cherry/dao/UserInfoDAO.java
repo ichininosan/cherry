@@ -18,7 +18,7 @@ public class UserInfoDAO {
 		boolean result = false;
 		int updateCount = 0;
 
-		String sql = "INSERT INTO user_info(user_id, password, family_name, first_name, family_name_kana, first_name_kana, sex, email, insert_date) "
+		String sql = "INSERT INTO user_info(user_id, password, family_name, first_name, family_name_kana, first_name_kana, sex, email, regist_date) "
 						+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
 		try {
@@ -32,6 +32,8 @@ public class UserInfoDAO {
 			ps.setString(6, userInfoDTO.getFirstNameKana());
 			ps.setBoolean(7, userInfoDTO.isSex());
 			ps.setString(8, userInfoDTO.getEmail());
+
+			System.out.println(userInfoDTO.getFirstName());
 
 		updateCount = ps.executeUpdate();
 

@@ -6,25 +6,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.internousdev.cherry.dto.SerchDTO;
+import com.internousdev.cherry.dto.SearchDTO;
 import com.internousdev.cherry.util.DBConnector;
 
-public class SerchDAO {
+public class SearchDAO {
 	private DBConnector db=new DBConnector();
 	private Connection con=db.getConnection();
-	private ArrayList<SerchDTO> serchDTOList=new ArrayList<SerchDTO>();
+	private ArrayList<SearchDTO> serchDTOList=new ArrayList<SearchDTO>();
 
 	/*
 	全ての商品を表示
 	*/
-	public ArrayList<SerchDTO> allProductInfo(){
+	public ArrayList<SearchDTO> allProductInfo(){
 		String sql="SELECT*FROM product_info";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
-				SerchDTO serchDTO=new SerchDTO();
+				SearchDTO serchDTO=new SearchDTO();
 				serchDTO.setId(rs.getInt("id"));
 				serchDTO.setProductId(rs.getInt("product_id"));
 				serchDTO.setProductName(rs.getString("product_name"));
@@ -53,14 +53,14 @@ public class SerchDAO {
 	/*
 	商品IDのみで検索
 	*/
-	public ArrayList<SerchDTO> ByPrductId(){
+	public ArrayList<SearchDTO> ByPrductId(){
 		String sql="SELECT*FROM product_info WHERE product_id=?";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
-				SerchDTO serchDTO=new SerchDTO();
+				SearchDTO serchDTO=new SearchDTO();
 				serchDTO.setId(rs.getInt("id"));
 				serchDTO.setProductId(rs.getInt("product_id"));
 				serchDTO.setProductName(rs.getString("product_name"));
@@ -90,7 +90,7 @@ public class SerchDAO {
 	検索ワードのみで検索
 	*/
 
-	public ArrayList<SerchDTO> BySerchWord(String serchWord){
+	public ArrayList<SearchDTO> BySerchWord(String serchWord){
 		String sql ="SELECT*FROM product_info WHERE product_name LIKE \'%' ? \'%' ";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
@@ -98,7 +98,7 @@ public class SerchDAO {
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
-				SerchDTO serchDTO=new SerchDTO();
+				SearchDTO serchDTO=new SearchDTO();
 				serchDTO.setId(rs.getInt("id"));
 				serchDTO.setProductId(rs.getInt("product_id"));
 				serchDTO.setProductName(rs.getString("product_name"));
@@ -128,7 +128,7 @@ public class SerchDAO {
 	/*
 	カテゴリのみで検索
 	 */
-	public ArrayList<SerchDTO> ByProductCategory(int categoryId){
+	public ArrayList<SearchDTO> ByProductCategory(int categoryId){
 		String sql="SELECT*FROM product_info WHERE category_id=?";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
@@ -136,7 +136,7 @@ public class SerchDAO {
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
-				SerchDTO serchDTO=new SerchDTO();
+				SearchDTO serchDTO=new SearchDTO();
 				serchDTO.setId(rs.getInt("id"));
 				serchDTO.setProductId(rs.getInt("product_id"));
 				serchDTO.setProductName(rs.getString("product_name"));
@@ -167,7 +167,7 @@ public class SerchDAO {
 	カテゴリと検索ワード
 	*/
 
-	public ArrayList<SerchDTO> ByCategoryANDSerchWord(int categoryId,String serchWord){
+	public ArrayList<SearchDTO> ByCategoryANDSerchWord(int categoryId,String serchWord){
 		String sql="SELECT*FROM product_info WHERE product_name LIKE \'%' ? \'%' AND category_id=?";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
@@ -176,7 +176,7 @@ public class SerchDAO {
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
-				SerchDTO serchDTO=new SerchDTO();
+				SearchDTO serchDTO=new SearchDTO();
 				serchDTO.setId(rs.getInt("id"));
 				serchDTO.setProductId(rs.getInt("product_id"));
 				serchDTO.setProductName(rs.getString("product_name"));
@@ -206,7 +206,7 @@ public class SerchDAO {
 	/*
 	ひらがな検索
 	*/
-	public ArrayList<SerchDTO> BySerchWordKana(String serchWord){
+	public ArrayList<SearchDTO> BySerchWordKana(String serchWord){
 		String sql="SELECT*FROM product_info WHERE product_name_kana LIKE \'%' ? \'%'";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
@@ -214,7 +214,7 @@ public class SerchDAO {
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
-				SerchDTO serchDTO=new SerchDTO();
+				SearchDTO serchDTO=new SearchDTO();
 				serchDTO.setId(rs.getInt("id"));
 				serchDTO.setProductId(rs.getInt("product_id"));
 				serchDTO.setProductName(rs.getString("product_name"));
@@ -240,7 +240,7 @@ public class SerchDAO {
 		return serchDTOList;
 
 	}
-	public ArrayList<SerchDTO> ByCategoryANDSerchWordKana(int categoryId,String serchWord){
+	public ArrayList<SearchDTO> ByCategoryANDSerchWordKana(int categoryId,String serchWord){
 		String sql="SELECT*FROM product_info WHERE product_name_kana LIKE \'%' ? \'%' AND category_id=?";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
@@ -249,7 +249,7 @@ public class SerchDAO {
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
-				SerchDTO serchDTO=new SerchDTO();
+				SearchDTO serchDTO=new SearchDTO();
 				serchDTO.setId(rs.getInt("id"));
 				serchDTO.setProductId(rs.getInt("product_id"));
 				serchDTO.setProductName(rs.getString("product_name"));
@@ -315,14 +315,14 @@ public class SerchDAO {
 	/*
 	複数のキーワードで検索
 	*/
-	public ArrayList<SerchDTO> ByCategoryANDSerchWords(){
+	public ArrayList<SearchDTO> ByCategoryANDSerchWords(){
 		String sql="SELECT*FROM product_info_transaction WHERE product_id=?";
 		try{
 			PreparedStatement ps=con.prepareStatement(sql);
 			ResultSet rs=ps.executeQuery();
 
 			while(rs.next()){
-				SerchDTO serchDTO=new SerchDTO();
+				SearchDTO serchDTO=new SearchDTO();
 				serchDTO.setId(rs.getInt("id"));
 				serchDTO.setProductId(rs.getInt("product_id"));
 				serchDTO.setProductName(rs.getString("product_name"));

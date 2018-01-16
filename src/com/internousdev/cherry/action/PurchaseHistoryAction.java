@@ -3,6 +3,7 @@ package com.internousdev.cherry.action;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -37,6 +38,9 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 	/*
 	 * 削除フラグ
+	 * 1 = 全件削除
+	 * 2 = 個別ボタン削除
+	 * 3 = チェックボックス削除
 	 */
 	private String deleteFlg;
 
@@ -50,6 +54,11 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	 */
 	private int id;
 
+	/*
+	 * checkBoxの値
+	 */
+	private  List<String> chooseList;
+
 
 
 
@@ -60,7 +69,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		String result = SUCCESS;
 
 		//sessionからもってこれるようにする
-		String user_id = "a";
+		String user_id = (String) session.get("user_id");
 
 		if(deleteFlg == null){
 
@@ -92,6 +101,16 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 			deletePart(id);
 
 			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
+
+		}	else if(deleteFlg.equals("3")){
+			/*
+			 * 選択した項目を削除
+			 */
+			System.out.println("chooseList:"+ chooseList);
+			//deleteChoose(chooseList);
+
+			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
+
 		}
 
 		historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
@@ -99,12 +118,18 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		return result;
 	}
 
+
+
+
+
+
+
 	/*
 	 * 購入履歴削除メソッド
 	 */
 	public void delete() throws SQLException{
 		//sessionからもってこれるようにする
-		String user_id = "a";
+		String user_id = session.get("user_id").toString();;
 
 
 		int res = purchaseHistoryDAO.deleteHistory(user_id);
@@ -120,8 +145,11 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 	}
 
+
+
+
 	/*
-	 * 履歴個別削除メソッド
+	 * 個別削除メソッド
 	 */
 	public void deletePart(int id) throws SQLException{
 		//jspからもってきた
@@ -129,6 +157,27 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 		purchaseHistoryDAO.deletePart(id);
 	}
+
+
+
+
+	/*
+	 * 選択削除メソッド
+
+	public void deleteChoose(List<String> chooseList) throws SQLException{
+		//jspからもってきたchooseList
+			chooseList = this.chooseList;
+
+		//何件削除したかもらう
+			int res = purchaseHistoryDAO.deleteChoose(chooseList);
+
+		//削除したときのメッセージ
+			if(res > 0){
+				setMessage(res + "件削除しました");
+			} else if(res == 0){
+				setMessage("削除しっぱぁぁぁぁぁい！！！");
+			}
+	}*/
 
 
 
@@ -168,10 +217,22 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	/*
 	 * session
 	 */
+	public Map<String, Object> getSession() {
+		return session;
+	}
 	public void setSession(Map<String, Object> session){
 		this.session = session;
 	}
 
+	/*
+	 * checkBoxの値
+	 */
+	public List<String> getChooseList(){
+		return chooseList;
+	}
+	public void setChooseList(List<String> chooseList){
+		this.chooseList = chooseList;
+	}
 
 }
 

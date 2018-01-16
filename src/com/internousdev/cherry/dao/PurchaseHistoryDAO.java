@@ -40,7 +40,7 @@ public class PurchaseHistoryDAO {
 
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, "a");
+			ps.setString(1, user_id);
 						//user_id
 
 			ResultSet rs = ps.executeQuery();
@@ -77,7 +77,7 @@ public class PurchaseHistoryDAO {
 		int result = 0;
 		try{
 			ps = con.prepareStatement(sql);
-			ps.setString(1, "a");
+			ps.setString(1, user_id);
 			//user_id
 
 			result = ps.executeUpdate();
@@ -114,6 +114,36 @@ public class PurchaseHistoryDAO {
 		}
 		return result2;
 	}
+
+	/*
+	 * 選択削除メソッド
+	 * jspからのcheckBoxのchooseListを取得
+
+	public int deleteChoose(List<String> chooseList) throws SQLException{
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+
+		String sql = "DELETE  FROM purchase_history_info where id = ?";
+
+		PreparedStatement ps;
+		int result3 = 0;
+		try{
+			ps = con.prepareStatement(sql);
+
+			for(int i = 0;i < chooseList.size();i++){
+				String chooseId = chooseList.get(i);
+				ps.setString(1, chooseId);
+				result3 += ps.executeUpdate();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		} finally {
+			con.close();
+		}
+		return result3;
+	}
+	*/
+
 }
 
 

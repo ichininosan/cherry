@@ -14,10 +14,11 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 
 	public String execute() {
-		if ((boolean) session.get("loginFlg")) {
-			return ERROR;
-		} else {
+		session.put("loginFlg", true);//これでいつでもろぐいんおｋ
+		if (session.containsKey("loginFlg")) {
 			return SUCCESS;
+		} else {
+			return ERROR;
 		}
 	}
 

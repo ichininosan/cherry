@@ -17,11 +17,13 @@
 			<result name="success">mypage.jsp</result>
 			<result name="error">login.jsp</result>
 		</action>
+
+
 		<!-- 櫻井担当アクション -->
-		<action name="PurchaseHistoryAction" class="com.internousdev.cherry.action.PurchaseHistoryAction" method="execute">
-			<result name="success">purchaseHistory.jsp</result>
-			<result name="error">testError.jsp</result>
+		<action name="SearchAction" class="com.internousdev.cherry.action.SearchAction" method="execute">
+			<result name="success">searchResult.jsp</result>
 		</action>
+
 
 
 		<!-- 工藤担当アクション -->
@@ -55,18 +57,6 @@
 		class="com.internousdev.cherry.action.PurchaseCompleteAction" method="execute">
 			<result name="success">purchaseComplete.jsp</result>
 			<result name="error">cart.jsp</result>
-		</action>
-
-
-		<!-- 工藤担当アクション -->
-		<action name="ResetPasswordAction" class="com.internousdev.cherry.action.ResetPasswordAction" method="execute">
-			<result name="success">resetPasswordConfirm.jsp</result>
-		</action>
-		<action name="ResetPasswordConfirmAction" class="com.internousdev.cherry.action.ResetPasswordConfirmAction" method="execute">
-			<result name="success">resetPasswordComplete.jsp</result>
-		</action>
-		<action name="ResetPasswordCompleteAction" class="com.internousdev.cherry.action.ResetPasswordCompleteAction" method="execute">
-			<result name="success"></result>
 		</action>
 
 		<!-- 松田アクション -->
@@ -110,7 +100,6 @@
 		</action>
 		<action name="RegisterUserInfoAction" class="com.internousdev.cherry.action.RegisterUserInfoAction" method="execute">
 			<result name="success">userRegisterCompletion.jsp</result>
-			<result name="error">home.jsp</result>
 		</action>
 		<action name="GoHomeAction" class="com.internousdev.cherry.action.GoHomeAction" method="execute">
 			<result name="success">home.jsp</result>

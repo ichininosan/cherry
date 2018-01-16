@@ -10,6 +10,7 @@
 	<title>パスワード再設定</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sato_style.css">
 </head>
 
@@ -19,11 +20,10 @@
 <jsp:include page="include_header.jsp" />
 
 
+
 <!-- メインコンテンツ -->
-	<div id="main">
-		<div id="top">
-			<h1>ResetPassword</h1>
-		</div>
+	<div class="box">
+			<a>パスワード再設定</a>
 		<div>
 			<table>
 			<s:form action="ResetPasswordConfirmAction">

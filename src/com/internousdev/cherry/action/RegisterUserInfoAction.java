@@ -33,7 +33,7 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 	private String email;
 
 	public String execute() throws SQLException {
-
+		System.out.println("RegisterUserInfoAction");
 		UserInfoDAO dao = new UserInfoDAO();
 		UserInfoDTO dto = new UserInfoDTO();
 		dto.setUserName(familyName, firstName, familyNameKana, firstNameKana);
@@ -53,7 +53,7 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 			return SUCCESS;
 
 		} else {
-			return ERROR;
+			return SUCCESS;
 		}
 	}
 
@@ -93,7 +93,7 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 		return firstNameKana;
 	}
 
-	public void setFristNameKana(String firstNameKana) {
+	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
 	}
 
