@@ -21,10 +21,8 @@
 
 
 <!-- メインコンテンツ -->
-	<div id="main">
-		<div id="top">
-			<h1>ResetPasswordComplete</h1>
-		</div>
+	<div class="box">
+			<h1>完了画面</h1>
 		<div><br>
 			<h3>パスワードの再設定が完了致しました。</h3>
 
