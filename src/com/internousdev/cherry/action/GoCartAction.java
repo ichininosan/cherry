@@ -19,7 +19,7 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 	int totalPrice;
 
 	public String execute() throws SQLException{
-		String result=null;
+		String result;
 		//login画面遷移時にメッセージを出す
          if(!(session.containsKey("userId"))){
              setMessage("ログインしてください");
