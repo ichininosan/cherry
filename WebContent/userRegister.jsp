@@ -5,18 +5,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/or_style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
 <script type="text/javascript" src="script.js"></script>
 <title>ユーザー情報入力画面</title>
 </head>
 <body>
-	<div id="main">
-		</div>
-		<header><h2 class="title">新規ユーザー登録</h2></header>
-		<div class="register_box">
-			<div class="member" align="center">
-				<br><br><br><br>
+	<div id="main" align="center">
+		<header><a class="logo" href="/cherry/TopAction" >cherry</a></header>
 
+		<br><br><br>
+
+		<h2>新規ユーザー登録</h2>
+		<div class="register_box">
+			<div class="member" >
 				<h5>
 					<s:iterator value="errorMessageList">
 						<s:div>
@@ -93,6 +95,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 		<!-- フッター -->
 <jsp:include page="include_footer.jsp" />
 </body>

@@ -5,15 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/or_style.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script type="text/javascript">
 	history.forward();
 </script>
 <title>登録内容確認画面</title>
 </head>
 <body>
+	<header><a class="logo" href="/cherry/TopAction" >cherry</a></header>
 	<div id="main" align="center">
-		<header><h2 class="title">新規ユーザー登録確認</h2></header>
+		<h2 class="title">新規ユーザー登録確認</h2>
 		<div class="register_box">
 			<div class="member">
 				<div class="member_form">

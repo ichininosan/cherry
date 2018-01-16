@@ -35,15 +35,19 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 //		CartInfoDAO cartInfoDAO = new CartInfoDAO();
 //		int updateCount = 0;
 		LoginDAO loginDAO = new LoginDAO();
+
+
+
 		System.out.println(userId);
+
 		if(userId==null){
 			return "login";
 		}
 		if (userId.equals("")) {
-			errorMessageList.add("ユーザーIDを入力してください。");
+			errorMessageList.add("ユーザーIDを入力してください");
 
 		} else if (userId.length() < 1 || userId.length() > 16) {
-			errorMessageList.add("ユーザーIDは1文字以上16文字以下で入力してください。");
+			errorMessageList.add("ユーザーIDは1文字以上16文字以下で入力してください");
 
 		} else if (!userId.matches("^[a-zA-Z0-9]+$")) {
 			errorMessageList.add("ユーザーIDは半角英数字で入力してください");
@@ -70,7 +74,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 
 		if (!userId.equals("") && !password.equals("")) {
 			if (!loginDAO.existsUserId(userId)) {
-				errorMessageList.add("IDが正しくありません。");
+				errorMessageList.add("IDが正しくありません");
 				result = ERROR;
 			} else {
 				userInfoDTO = loginDAO.select(userId, password);
