@@ -4,13 +4,14 @@ public class ResetPasswordDTO {
 
 	private String userId;
 	private String password;
+	private String passworc;
 	private String s;
 
 
-	public String getuserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setuserId(String userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
@@ -19,6 +20,12 @@ public class ResetPasswordDTO {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getPassworc() {
+		return passworc;
+	}
+	public void setPassworc(String passworc) {
+		this.passworc = passworc;
 	}
 	public String getS() {
 		return s;

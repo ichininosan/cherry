@@ -1,22 +1,29 @@
 package com.internousdev.cherry.action;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.cherry.dao.ResetPasswordDAO;
-import com.internousdev.cherry.dto.ResetPasswordDTO;
+import com.internousdev.cherry.dao.LoginDAO;
+import com.internousdev.cherry.dto.UserInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordAction extends ActionSupport implements SessionAware{
 	private Map<String, Object> session;
 	private String userId;
 
-	public String execute(){
+	public String execute() throws SQLException{
+
 		//DAO,DTOのインスタンス作成
-		ResetPasswordDAO dao = new ResetPasswordDAO();
-		ResetPasswordDTO dto = new ResetPasswordDTO();
-		session.put("userId",userId);
+		LoginDAO dao = new LoginDAO();
+		UserInfoDTO userInfoDTO = new UserInfoDTO();
+
+		//Loginされているかチェック
+		dao.login(userInfoDTO);
+
+		//userIdをDBから探す
+		session.put("userId", dao.existsUserId(userId));
 		return SUCCESS;
 	}
 
