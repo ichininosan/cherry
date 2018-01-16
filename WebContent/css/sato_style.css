@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+
+
+/* メインコンテンツ */
+.home .box{
+	width: 1000px;
+    text-align: center;
+    vertical-align:-50%;
+}
+
+.home .top_main h1{
+	text-align: center;
+    font-size: 2rem;
+    margin: 40px 0;
+}
+
+
+

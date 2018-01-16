@@ -15,32 +15,22 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	private String userId;
 	private String password;
 	private String passwordc;
+
+	//パスワードの先頭2文字
 	private String confirmpass;
-	private String confirmpass1;
-	private String confirmpass2;
+	//パスワードの3文字目以降
+	private String confirmpass3;
+	//確認画面で表示するパスワード
 	private String s;
 
-
 	private ArrayList<String> errMsgList = new ArrayList<>();
-
 	public Map<String,Object> session;
-
-
-/**
- * public char confirmId1 = user_id.charAt(0);
-	public String confirmId2 = user_id.substring(1);
-	public String confirmId = confirmId1 + confirmId2.replaceAll("^[0-9a-zA-Z]+$","*");
-
-	public char confirmPass1 = password.charAt(0);
-	public String confirmPass2 = password.substring(1);
-	public String confirmPass = confirmPass1 + confirmPass2.replaceAll("^[0-9a-zA-Z]+$","*");
- */
 
 
 	//エラーメッセージ表示
 	public String execute(){
 		String result = SUCCESS;
-
+		//インプットチェッカー利用して条件判定とエラーメッセージ表示
 		InputChecker i = new InputChecker();
 		if(!i.userIdChk(userId).equals("OK")){
 			errMsgList.add(i.userIdChk(userId));
@@ -57,8 +47,8 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		//パスワードが4文字以上のとき、最初の2文字のみ表示して、3文字以降を*で表示する
 		if(password.length() > 3){
 			confirmpass = password.substring(0,2);
-			confirmpass1 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*");
-			s = confirmpass + confirmpass1;
+			confirmpass3 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*");
+			s = confirmpass + confirmpass3;
 		//パスワードが3文字以下のとき、*で表示する
 		}else{
 			s = password.replaceAll("^[0-9a-zA-Z]+$","*");
@@ -67,6 +57,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	}
 
 
+	//ゲッター、セッター
 	public String getUserId() {
 		return userId;
 	}
@@ -100,24 +91,14 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		this.confirmpass = confirmpass;
 	}
 
-	public String getConfirmpass1() {
-		return confirmpass1;
+	public String getConfirmpass3() {
+		return confirmpass3;
 	}
 
 
-	public void setConfirmpass1(String confirmpass1) {
-		this.confirmpass1 = confirmpass1;
+	public void setConfirmpass3(String confirmpass1) {
+		this.confirmpass3 = confirmpass1;
 	}
-
-	public String getConfirmpass2() {
-		return confirmpass2;
-	}
-
-
-	public void setConfirmpass2(String confirmpass2) {
-		this.confirmpass2 = confirmpass2;
-	}
-
 
 	public String getS() {
 		return s;
@@ -127,7 +108,6 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	public void setS(String s) {
 		this.s = s;
 	}
-
 
 	public ArrayList<String> getErrMsgList() {
 		return errMsgList;

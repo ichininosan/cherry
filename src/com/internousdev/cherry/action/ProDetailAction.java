@@ -18,7 +18,6 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 
 	public String execute(){
 		Product_InfoDAO dao=new Product_InfoDAO();
-//		int pro_id = 1;
 		int pro_id = Integer.parseInt(id.toString());
 
 		try {

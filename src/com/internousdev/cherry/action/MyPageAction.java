@@ -40,20 +40,17 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 	 * userListにセッションの情報が移っており、存在していたらSUCCESS
 	 */
 	public String execute(){
-
+         //login画面遷移時にメッセージをだす
 		if(!(session.containsKey("userId"))){
-				myPageList=null;
+
 				setMessage("ログインしてください");
 
      	}
 
 		String result=ERROR;
-		//暫定でセッション値セット//
-		session.put("loginFlg",true);
-		session.put("userId", "1");
 
-		//if (session.containsKey("loginDTO")){
-		if (session.containsKey("loginFlg")&& (boolean) session.get("loginFlg")){
+		if (session.containsKey("userId")){
+
 			     userId = session.get("userId").toString();
 
 		//ログイン情報取得DAO
