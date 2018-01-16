@@ -69,14 +69,13 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		String result = SUCCESS;
 
 		//sessionからもってこれるようにする
-		String user_id = "a";
+		String user_id = (String) session.get("user_id");
 
 		if(deleteFlg == null){
 
 			//session.get("user_id").toString()せっっしょンの名前！
 			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
 
-			//session.put("historyList",historyList);
 
 			System.out.println("List = "+ historyList);
 
@@ -108,7 +107,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 			 * 選択した項目を削除
 			 */
 			System.out.println("chooseList:"+ chooseList);
-			deleteChoose(chooseList);
+			//deleteChoose(chooseList);
 
 			historyList = purchaseHistoryDAO.getPurchaseHistory(user_id);
 
@@ -130,7 +129,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	 */
 	public void delete() throws SQLException{
 		//sessionからもってこれるようにする
-		String user_id = "a";
+		String user_id = session.get("user_id").toString();;
 
 
 		int res = purchaseHistoryDAO.deleteHistory(user_id);
@@ -164,7 +163,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 	/*
 	 * 選択削除メソッド
-	 */
+
 	public void deleteChoose(List<String> chooseList) throws SQLException{
 		//jspからもってきたchooseList
 			chooseList = this.chooseList;
@@ -178,7 +177,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 			} else if(res == 0){
 				setMessage("削除しっぱぁぁぁぁぁい！！！");
 			}
-	}
+	}*/
 
 
 
@@ -218,6 +217,9 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	/*
 	 * session
 	 */
+	public Map<String, Object> getSession() {
+		return session;
+	}
 	public void setSession(Map<String, Object> session){
 		this.session = session;
 	}

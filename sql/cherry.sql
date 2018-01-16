@@ -42,6 +42,7 @@ product_name_kana varchar(100) UNIQUE KEY NOT NULL,-- 商品名かな
 product_description varchar(255) NOT NULL,-- 商品詳細
 category_id int NOT NULL,-- カテゴリID
 price int ,-- 価格
+stock int,-- 在庫
 image_file_name varchar(255),-- 画像ファイル名
 release_date datetime NOT NULL, -- 発売年月
 release_company varchar(50), -- 発売会社
@@ -188,6 +189,7 @@ INSERT INTO product_info(-- ------商品情報テーブルへ--------------
     product_description,-- 商品詳細
     category_id,-- カテゴリID
     price,-- 値段
+    stock,
 	image_file_name, -- 画像ファイル名
 	release_date,-- 発売年月
 	release_company,-- 発売会社
@@ -201,6 +203,7 @@ INSERT INTO product_info(-- ------商品情報テーブルへ--------------
 	"おもしろいゲーム", -- 商品詳細
 	4,-- カテゴリID
 	2000, -- 値段
+	5,-- 在庫
 	"/cherry/img/test_game.jpeg",-- 画像ファイル名
 	cast('2017-12-31' as date),-- 発売年月
 	"ファルファル",-- 発売会社
@@ -214,6 +217,7 @@ INSERT INTO product_info(-- ------商品情報テーブルへ--------------
 	"デデンネのかわいいぬいぐるみです！！",
 	4,
 	1000,
+	5,-- 在庫
 	"/cherry/img/test_dede.jpg",-- 画像ファイル名
 	cast('2017-08-01' as date),
 	"ポケモンの会社",
