@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dao.Product_InfoDAO;
 import com.internousdev.cherry.dto.ProductDTO;
 import com.opensymphony.xwork2.ActionSupport;
@@ -49,19 +48,19 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 //		session.put("loginFlg",true);
 //		session.put("userId","a");
 
-		if(!(session.containsKey("userId"))){
+		/*if(!(session.containsKey("userId"))){
 			return ERROR;
- 	}
+ 	}*/
 
 
 
 		//ここから、目標の商品がすでにカートに入っているかどうか確認
-		CartInfoDAO cartInfoDAO = new CartInfoDAO();
-		if((boolean)session.get("loginFlg")) {
+		/*CartInfoDAO cartInfoDAO = new CartInfoDAO();
+		if(session.containsKey("loginFlg")) {
 			duplicationFlg = cartInfoDAO.isAlreadyIntoCart(session.get("userId").toString(), productId);
 		} else {
 			duplicationFlg = cartInfoDAO.isAlreadyIntoTempCart(session.get("userId").toString(), productId);
-		}
+		}*/
 
 		//ここから、購入個数を在庫に応じて変えるよう記述
 		for(int i = 1; i <= 5; i++) {

@@ -37,11 +37,11 @@
 						<tbody>
 							<tr>
 								<td><img src='<s:property value="image_file_name"/>' alt="画像なし"/></td>
-								<td><s:property value="productName" /></td>
-								<td><s:property value="productNameKana" /></td>
+								<td><s:property value="product_name" /></td>
+								<td><s:property value="product_name_kana" /></td>
 								<td><s:property value="price" />円</td>
 								<td><s:property value="productCount" /></td>
-								<td><s:property value="releaseCompany" /></td>
+								<td><s:property value="release_company" /></td>
 								<td><s:date name="releaseDate" format="yyyy年MM月dd日" /></td>
 								<td><a href='<s:url action="CartDeleteAction"><s:param name="productId" value="productId"></s:param></s:url>'>削除</a></td>
 							</tr>
