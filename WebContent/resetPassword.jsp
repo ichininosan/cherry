@@ -12,6 +12,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sato_style.css">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 </head>
 
 <body class="home">
@@ -62,9 +63,6 @@
 				<s:submit value="登録" />
 			</s:form>
 			</table>
-			<div>
-				<span>前画面に戻る場合は</span><a href='<s:url action="LoginAction" />'>こちら</a>
-			</div>
 		</div>
 	</div>
 	</s:if>
