@@ -36,48 +36,50 @@
         			<tbody>
         			<s:iterator value="myPageList">
 					 <tr>
-						<th>基本情報</th>
-						 <td>
-						      <p><s:property value="familyNameKana" /><s:property value="firstNameKana" /><p>
-						<p><s:property value="familyName" /> <s:property value="firstName" /><p>
-						<p><s:if test="sex==0">男性</s:if> <s:else>女性</s:else><p>
-						</td>
-					    <td class="change">
-					    <a class="btn">変更</a>
-					 <!-- <a href="アクション"></> -->
-					    </td>
+						<th>氏名</th>
+						     <td> <p><s:property value="familyNameKana" /><s:property value="firstNameKana" /><p></td>
+						      <td class="change"><!-- <a href="アクション"></> --></td>
+				    </tr>
+
+				    <tr>
+						<th>ふりがな</th>
+						<td><p><s:property value="familyName" /> <s:property value="firstName" /><p></td>
+						 <td class="change"><!-- <a href="アクション"></> --></td>
+					</tr>
+
+					<tr>
+						<th>性別</th>
+						<td><p><s:if test="sex==0">男性</s:if> <s:else>女性</s:else><p></td>
+						 <td class="change"><!-- <a href="アクション"></> --></td>
 					 </tr>
+
 					 <tr>
 					    <th>メールアドレス</th>
 						<td><s:property value="email" /></td>
-					    <td class="change">
-					      <a class="btn">変更</a>
-					      <!-- <a href="アクション"></> -->
-					    </td>
+					    <td class="change">変更<!-- <a href="アクション"></> --></td>
 				   	</tr>
+
 					<tr>
 					    <th>cheryyID</th>
 						<td><p><s:property value="#session.userId" /></p></td>
-						<td class="change">
-					      <p><a href="/cherry/ResetPasswordAction"></a></p>
-					    </td>
+						 <td class="change"><!-- <a href="アクション"></> --></td>
 					</tr>
+
 					<tr>
 					    <th>パスワード</th>
 						<td><p><s:property value="#session.password" /></p></td>
-					    <td class="change">
-					      <p><a href="/cherry/ResetPasswordAction" class="btn">変更</a></p>
-					    </td>
+					    <td class="change"><a href="/cherry/ResetPasswordAction" class="btn">変更</a></td>
 					</tr>
                    </s:iterator>
 				   </tbody>
  			   </table>
+ 			    <div class="btnn">
+				<a href="/cherry/PurchaseHistoryAction" type="button">注文履歴確認</a>
+			  </div>
               </div>
             </div>
            </div>
-          <div class="btnn">
-				<a href="/cherry/PurchaseHistoryAction" type="button">注文履歴確認</a>
-			</div>
+
 	</div>
 
 
