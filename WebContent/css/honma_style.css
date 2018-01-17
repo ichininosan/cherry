@@ -31,6 +31,7 @@ header{
 
 header .wrap{
 	width: 1000px;
+
 	overflow: hidden;
     margin: 0 auto;
     position: relative;
@@ -152,8 +153,8 @@ header li a i{
 .title{
 	margin-top: 10px;
 	position:absolute;
-	top: 127px;
-    left: 37px;
+	top: 197px;
+    left: 80px;
 }
 
 .top{
@@ -209,10 +210,9 @@ footer{
 
 /*----------------移植CSS--------------------------------------*/
 .main_content {
-    width: 90%;
-    height: 427px;
+    width: 95%;
+    height: 330px;
     margin: 0 auto;
-    border-bottom: solid 1px;
 }
 
 .date{
@@ -220,6 +220,7 @@ footer{
     border-top:solid 1px;
     border-bottom: solid 1px;
     line-height: 20px;
+    background: #D3D3D3;
 
 
 }
@@ -276,9 +277,22 @@ footer{
             削除ボタン
 ----------------------------------*/
 .delete{
-
     float: right;
 
+	position: relative;
+    display: inline-block;
+    font-weight: bold;
+   /*  padding: 0.25em 0.5em; */
+    text-decoration: none;
+    color: #00BCD4;
+    background: #ECECEC;
+    transition: .4s;
+}
+
+
+#deletePart:hover{
+	 background: #00bcd4;
+    color: white;
 }
 
 /*----------------移植CSSここまで--------------------------------------*/

@@ -43,12 +43,13 @@
 
 <!----------------------ここから------------------------------->
 				<s:iterator value = "historyList">
-				<div class="main_content">
+
         			<div class="date">
             			<p>注文日</p>
             			<p><s:property value="registDate"/></p>
             		</div>
 
+				<div class="main_content">
 					<div class="pro_image">
 						<img src="<s:property value="productImage"/>">
 					</div>
@@ -75,18 +76,13 @@
 							<s:form action = "PurchaseHistoryAction">
 								<input type="hidden" name="deleteFlg" value="2">
 								<input type="hidden" name="id" value="${id}">
-								<s:submit value="削除" method="deletePart"/>
+								<s:submit id="deletePart" value="削除" method="deletePart"/>
 							</s:form>
 						<!--  履歴個別削除ボタンここまで-->
 					 </div>
     			</div>
     		</s:iterator>
 <!----------------------ここまで------------------------------->
-
-
-
-
-
 
 
 			<!-- 全件削除ボタン -->
