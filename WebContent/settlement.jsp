@@ -35,7 +35,7 @@
 					<!-- <td>ここに商品画像挿入</td> -->
 					<td><s:property value="productName"/></td>
 					<td><s:property value="productNameKana"/></td>
-					<td><fmt:formatNumber value="${price}"/>円</td>
+					<td><s:property value="price"/>円</td>
 					<td><s:property value="count"/></td>
 					<td><s:property value="releaseCompany"/></td>
 					<td><s:date name="releaseDate" format="yyyy年MM月dd日"/></td>
@@ -46,7 +46,7 @@
 		<br>
 		<br>
 		<div class="totalprice">
-			合計金額:<fmt:formatNumber value="${totalPrice}"/><span>円</span>
+			合計金額:<s:property value="totalPrice"/><span>円</span>
 		</div>
 		<br>
 
