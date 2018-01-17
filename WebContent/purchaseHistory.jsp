@@ -103,10 +103,10 @@
 			<!-- MyPageに戻る-->
 				<a href='<s:url action="MyPageAction" />'>マイページに戻る</a>
 		</div>
-		<!-- あとで消す！！！！！ -->
+		<%-- <!-- あとで消す！！！！！ -->
 			<a href='<s:url action="PurchaseHistoryAction" />'>テスト用リンク</a>
 
-
+ --%>
 <!-- ページリンクここまで -->
 
 		</div>

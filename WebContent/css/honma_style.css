@@ -35,7 +35,7 @@ body{
 .title{
 	margin-top: 10px;
 	position:absolute;
-	top: 197px;
+	top: 142px;
     left: 80px;
 }
 
@@ -45,7 +45,7 @@ body{
 h2{
 	height: 186px;
     text-align: center;
-    font-size: 30px;
+    font-size: 23px;
     background: url(/cherry/img/signboard.png) no-repeat;
     background-size: 409px;
     padding-top: 160px;
@@ -53,11 +53,11 @@ h2{
     animation: font infinite linear 2s;
 }
 
-@keyframes font
+/* @keyframes font
 {
 	0%{font-size:30px;}
 	100%{font-size:50px;}
-}
+} */
 
 
 
