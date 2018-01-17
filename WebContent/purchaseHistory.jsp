@@ -41,53 +41,52 @@
 					<h2>購入情報は以下になります</h2>
 		<!-- リストに応じたトップメッセージここまで -->
 
-
-
-
-
-			<table border = "1">
-				<!-- <tr>
-					<th>商品名</th>
-					<th>ふりがな</th>
-					<th>商品画像</th>
-					<th>値段</th>
-					<th>個数</th>
-					<th>発売会社</th>
-					<th>発売年月日</th>
-					<th>注文日</th>
-					<th>削除ボタン</th>
-				</tr> -->
-
-
+<!----------------------ここから------------------------------->
 				<s:iterator value = "historyList">
-				<tr>
-					<td><s:property value="registDate"/></td>
-				</tr>
+				<div class="main_content">
+        			<div class="date">
+            			<p>注文日</p>
+            			<p><s:property value="registDate"/></p>
+            		</div>
+
+					<div class="pro_image">
+						<img src="<s:property value="productImage"/>">
+					</div>
+
+					 <div class="name">
+           				 <div class="kana"><s:property value="productNameKana"/></div>
+           				 <div class="pro_name"><s:property value="productName"/></div>
+        			</div>
+
+					<div class="price_count">
+            			<div class="price"><s:property value="price"/><span>円</span></div>
+            			<div class="count">(購入数:<s:property value="count"/>点)</div>
+       				 </div>
 
 
-						<tr>
-							<td style="width:300px;height:300px;"rowspan="6"><img src="<s:property value="productImage"/>"></td>
-							<td><s:property value="productNameKana"/></td>
-						</tr>
+					 <div class="comp_info">
+           				 <div class="company">発売会社:<s:property value="releaseCompany"/></div>
+           				 <div class="release_date">発売日:<s:property value="releaseDate"/>
+           				 </div>
+        			</div>
 
-						<tr><td><s:property value="productName"/></td></tr>
-						<tr><td><s:property value="price"/><span>円</span></td></tr>
-						<tr><td><s:property value="count"/><span>個</span></td></tr>
-						<tr><td><s:property value="releaseCompany"/></td></tr>
-						<tr><td><s:property value="releaseDate"/></td></tr>
-<%--
-						<tr><td>
-					<!--  履歴個別削除ボタン-->
+					 <div class="delete">
+					 	<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
 								<input type="hidden" name="deleteFlg" value="2">
 								<input type="hidden" name="id" value="${id}">
 								<s:submit value="削除" method="deletePart"/>
 							</s:form>
-					<!--  履歴個別削除ボタンここまで-->
-						</td></tr> --%>
+						<!--  履歴個別削除ボタンここまで-->
+					 </div>
+    			</div>
+    		</s:iterator>
+<!----------------------ここまで------------------------------->
 
-				</s:iterator>
-			</table>
+
+
+
+
 
 
 			<!-- 全件削除ボタン -->
