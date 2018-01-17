@@ -80,13 +80,16 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 				cartList.add(cartInfoDTO);
 			}
 		} else {
-			dto.setTempUserId(session.get("userId").toString());
+
 			if (duplicationFlg) {
+
 				count=dao.updateTempUsersCount(productCount,session.get("tempUserId").toString());
 			} else {
-				count=dao.putProductIntoCartOfGuestUser(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
+				System.out.println("テスト結果は"+session.get("tempUserId").toString());
+				count=dao.putProductIntoCartOfGuestUser(session.get("tempUserId").toString(),Integer.parseInt(productId),iPrice,productCount);
 			}
-			cartList = dao.showTempUserCartList(session.get("userId").toString());
+
+			cartList = dao.showTempUserCartList(session.get("tempUserId").toString());
 		}
 
 		totalPrice = calcTotalPrice(cartList);

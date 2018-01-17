@@ -24,6 +24,7 @@ public class TopAction extends ActionSupport implements SessionAware {
 			session.put("proList",proList);
 			session.put("loginFlg", false);
 			session.put("tempUserId", "a");
+			session.put("userId","kari");
 			System.out.println(session.get("tempUserId").toString());
 		} catch (Exception e) {
 			e.printStackTrace();

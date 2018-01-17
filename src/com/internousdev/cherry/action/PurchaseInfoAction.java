@@ -47,6 +47,24 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 	public String execute() throws SQLException{
 		String result = ERROR;
 
+		/**
+		 * 宛先情報取得メソッド
+		 */
+		DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
+		destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
+
+		if(destinationInfoListDTO.size() > 0) {
+			result = SUCCESS;
+
+		} else if(!(boolean) session.get("loginFlg")) {
+			result=ERROR;
+			return result;
+
+		} else {
+			result = "DESTINATION";
+
+		}
+
 		CartInfoDAO cartInfoDAO = new CartInfoDAO();
 		cartInfoDTOList = cartInfoDAO.showUserCartList(session.get("userId").toString());
 
@@ -62,22 +80,7 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 			result = ERROR;
 		}
 
-		/**
-		 * 宛先情報取得メソッド
-		 */
-		DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
-		destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
 
-		if(destinationInfoListDTO.size() > 0) {
-			result = SUCCESS;
-
-		} else if(!(boolean) session.get("loginFlg")) {
-			result=ERROR;
-
-		} else {
-			result = "DESTINATION";
-
-		}
 
 		return result;
 

@@ -2,7 +2,6 @@ package com.internousdev.cherry.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -41,7 +40,11 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
     /**
      * 　検索したカート内の商品の情報を入れるリスト
      */
-    private List<CartInfoDTO> cartList = new ArrayList<>();
+    private ArrayList<CartInfoDTO> cartList = new ArrayList<CartInfoDTO>();
+
+
+
+    int totalPrice;
 
 
 
@@ -69,11 +72,17 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
 
 
 
+
 /*        if (session.containsKey("userId")) {*/
             userId = session.get("userId").toString();//ログインしているuserId
             CartDeleteDAO deletedao=new CartDeleteDAO();//
             deletedao.deleteSeparate(userId,productId);
             cartList=dao.showUserCartList(session.get("userId").toString());
+            /*for(CartInfoDTO dto: dao.showUserCartList(session.get("userId").toString())){
+				cartList.add(dto);
+			}*/
+
+    		totalPrice = calcTotalPrice(cartList);
 
     		//暫定でセッション値セット//
 /*    		session.put("loginFlg",true);
@@ -164,17 +173,7 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
      * カート内の商品情報を取得するためのメソッド
      * @return cartList カート内の商品情報
      */
-    public List<CartInfoDTO> getCartList() {
-        return cartList;
-    }
 
-    /**
-     * カート内の商品情報を格納するためのメソッド
-     * @param cartList セットする cartList
-     */
-    public void setCartList(List<CartInfoDTO> cartList) {
-        this.cartList = cartList;
-    }
 
 
 	public String getProductId() {
@@ -182,8 +181,27 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
 	}
 
 
+	public ArrayList<CartInfoDTO> getCartList() {
+		return cartList;
+	}
+
+
+	public void setCartList(ArrayList<CartInfoDTO> cartList) {
+		this.cartList = cartList;
+	}
+
+
 	public void setProductId(String productId) {
 		this.productId = productId;
+	}
+
+	public int calcTotalPrice(ArrayList<CartInfoDTO> cartList) {
+		int totalPrice = 0;
+		for(CartInfoDTO dto: cartList) {
+			totalPrice += dto.getPrice() * dto.getProductCount();
+			System.out.println("合計" + totalPrice + "円");
+		}
+		return totalPrice;
 	}
 
 

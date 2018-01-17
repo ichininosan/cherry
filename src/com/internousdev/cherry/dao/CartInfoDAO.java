@@ -62,16 +62,17 @@ public class CartInfoDAO extends ActionSupport{
 		System.out.println("putProductIntoCartOfGuestUser");
 		int count = 0;
 
-		String sql = "INSERT INTO cart_info(temp_user_id, product_id, product_count, price, regist_date)"
-						+ "VALUES(?, ?, ?, ?, NOW())";
+		String sql = "INSERT INTO cart_info(user_id,temp_user_id, product_id, product_count, price, regist_date)"
+						+ "VALUES(?,?, ?, ?, ?, NOW())";
 
 		try{
 			con = db.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, tempUserId);
-			ps.setInt(2, productId);
-			ps.setInt(3, productCount);
-			ps.setInt(4, price);
+			ps.setString(2, tempUserId);
+			ps.setInt(3, productId);
+			ps.setInt(4, productCount);
+			ps.setInt(5, price);
 			count = ps.executeUpdate();
 		}catch (SQLException e){
 			e.printStackTrace();
