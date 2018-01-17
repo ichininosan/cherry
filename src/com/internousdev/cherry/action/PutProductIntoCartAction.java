@@ -43,12 +43,12 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 
 
 		//暫定でセッション値セット//
-		session.put("loginFlg",true);
-		session.put("userId", "a");
+		/*session.put("loginFlg",true);
+		session.put("userId", "a");*/
 		//productCount=0;
-		String tempUserId="1";
+		//String tempUserId="1";
 
-		dto.setUserId(session.get("userId").toString());
+		//dto.setUserId(session.get("userId").toString());
 		dto.setProductId(Integer.parseInt(productId.toString()));
 		dto.setProductCount(productCount);
 
@@ -65,7 +65,7 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		System.out.println("duplicationFlg:"+duplicationFlg);
 		System.out.println("-----------------------------");
 
-		int count=0;
+		//int count=0;
 		int iPrice = Integer.parseInt(price);
 		if (session.containsKey("loginFlg") && (boolean) session.get("loginFlg")) {
 			dto.setUserId(session.get("userId").toString());
@@ -82,9 +82,9 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		} else {
 			dto.setTempUserId(session.get("userId").toString());
 			if (duplicationFlg) {
-				dao.updateTempUsersCount(productCount,session.get("userId").toString());
+				count=dao.updateTempUsersCount(productCount,session.get("tempUserId").toString());
 			} else {
-				dao.putProductIntoCartOfGuestUser(tempUserId,Integer.parseInt(productId),productCount,iPrice);
+				count=dao.putProductIntoCartOfGuestUser(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
 			}
 			cartList = dao.showTempUserCartList(session.get("userId").toString());
 		}

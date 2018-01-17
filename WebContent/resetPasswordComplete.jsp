@@ -23,8 +23,10 @@
 
 <!-- メインコンテンツ -->
 	<div class="box">
+	    <div class="sectionHeader">
 			<h1>完了画面</h1>
-		<div><br>
+		</div>
+		<div class="contBody"><br>
 			<h3>パスワードの再設定が完了致しました。</h3>
 
 			<div>

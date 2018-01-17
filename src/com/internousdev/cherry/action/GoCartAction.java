@@ -17,7 +17,6 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 
 	Map<String, Object> session;
 	ArrayList<CartInfoDTO> cartList = new ArrayList<>();
-   // private String message;
 	int totalPrice;
 
 	public String execute() throws SQLException{
@@ -36,14 +35,15 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 		CartInfoDAO dao = new CartInfoDAO();
 
 		//暫定でセッション値セット//
-		session.put("loginFlg",true);
-		session.put("userId", "a");
+		//session.put("loginFlg",true);
+		//session.put("userId", "a");
+		//session.put("tempUserId", "a");
 
 		//ログインユーザーのカート情報を引き出す
-		if(session.containsKey("loginFlg") && (boolean) session.get("loginFlg")){
-		//  if(session.containsKey("userId")){
+		if(session.containsKey("loginFlg")){
 			for(CartInfoDTO dto: dao.showUserCartList(session.get("userId").toString())){
 				cartList.add(dto);
+				System.out.println("ログインユーザー");
 			}
 		//非ログインユーザーのカート情報を引き出す
 		}else{
