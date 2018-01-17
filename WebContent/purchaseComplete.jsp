@@ -5,25 +5,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ochiai_style.css">
+	<link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+
 <title>決済完了画面</title>
 </head>
 <body>
-<div class="header">
-</div>
+
+<!-- ヘッダー -->
+<jsp:include page="include_header.jsp" />
+
 
 <div class="main">
-  <div class="top"><h2>購入が完了いたしました</h2></div>
-  <div>
-      <a href='<s:url action="MyPageAction"/>'class ="btnn">購入履歴</a><span>の確認が可能です。</span>
-      <p>Homeへ戻る場合は<a href='<s:url action="HomeAction"/>'class ="btnn">こちら</a></p>
-    </div>
+  <div class="message">
+     <h2 >購入が完了いたしました</h2>
+  </div>
+  <div class="submit">
+      <a href='<s:url action="MyPageAction"/>'>購入履歴</a><span>の確認が可能です。</span>
+      <p>Homeへ戻る場合は<a href='<s:url action="HomeAction"/>'>こちら</a></p>
+  </div>
 </div>
 
-<div class="footer"></div>
+<!-- フッター -->
+<jsp:include page="include_footer.jsp" />
+
 
 </body>
 </html>

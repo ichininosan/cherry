@@ -27,6 +27,11 @@
 	height: 600px;
     vertical-align:-50%;
 }
+.sectionHeader{
+	width:133px;
+	margin:0 auto;
+
+	}
 .sectionHeader h1{
 	position: relative;
     padding-left: 25px;
@@ -42,7 +47,7 @@
 	height: 0;
 	border: none;
 	border-left: solid 15px transparent;
-	border-bottom: solid 15px rgb(119, 195, 223);
+	border-bottom: solid 15px rgb(255,239,204);
 }
 
 
@@ -52,11 +57,15 @@
 	bottom: -3px;
 	left: 10px;
 	width: 100%;
-	border-bottom: solid 3px rgb(119, 195, 223);
+	border-bottom: solid 3px rgb(255,239,204);
 }
 
 .contBody{
 		width:580px;
+		margin:0 auto;
+}
+.contBody h3{
+		text-align:center;
 }
 
 
@@ -78,7 +87,7 @@ table th,table td {
 }
 
 table th {
-    background: #77c3df;
+    background: #ffefcc;
     vertical-align: middle;
     text-align: left;
     width: 120px;
@@ -98,8 +107,8 @@ table th:after {
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-color:rgba(119, 195, 223,0);
-    border-left-color:  #77c3df;
+    border-color:rgba(255,239,204,0);
+    border-left-color:  #ffefcc;
     border-width: 10px;
     margin-top: -10px;
 }

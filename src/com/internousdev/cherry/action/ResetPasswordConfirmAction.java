@@ -34,7 +34,8 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 
 	//メソッドの実行
 	public String execute(){
-		String result = SUCCESS;
+		String result;
+
 		//インプットチェッカー利用して条件判定とエラーメッセージ表示
 		InputChecker i = new InputChecker();
 		if(!i.userIdChk(userId).equals("OK")){
@@ -60,6 +61,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		}else{
 			s = password.replaceAll("^[0-9a-zA-Z]+$","*");
 		}
+	result = SUCCESS;
 		return result;
 	}
 
