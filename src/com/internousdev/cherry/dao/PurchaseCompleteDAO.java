@@ -28,7 +28,7 @@ public class PurchaseCompleteDAO {
 
 		CartInfoDTO dto = new CartInfoDTO();
 		ArrayList<CartInfoDTO> cartList = new ArrayList<CartInfoDTO>();
-		String sql = "SELECT * from cart_info wehere user_id=?";
+		String sql = "SELECT * from cart_info where user_id=?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
