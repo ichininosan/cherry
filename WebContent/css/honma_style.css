@@ -14,8 +14,8 @@ html {
 }
 
 img{
-	width: 300px;
-	height: 300px;
+	width: 200px;
+	height: 200px;
 }
 body{
 	margin-bottom: 100px;
@@ -76,15 +76,15 @@ h2{
 /*----------------移植CSS--------------------------------------*/
 .main_content {
     width: 95%;
-    height: 330px;
+    height: 286px;
     margin: 0 auto;
 }
 
 .date{
     border-top:solid 1px;
     border-bottom: solid 1px;
-    padding: 20px;
-    line-height: 20px;
+    padding: 15px;
+    line-height: 24px;
     background: #F48FB1;
     color: #fff;
 
@@ -97,21 +97,21 @@ h2{
             画像
 ----------------------------------*/
 .pro_image{
-    width: 300px;
-    height: 300px;
+    width: 200px;
+	height: 200px;
     float: left;
     padding-right: 50px;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 /*---------------------------------
             名前
 ----------------------------------*/
 .name{
-    padding-top: 10px;
+    padding-top: 40px;
 
 }
 .pro_kana{
-
+	font-size: 11px;
 }
 
 .pro_name{
@@ -121,21 +121,22 @@ h2{
             値段と個数
 ----------------------------------*/
 .price_count{
-    padding: 20px;
+    padding-top: 40px;
 
 }
 .price{
-
+	color: #4169E1;
+	font-size: 20px;
 }
 
 .count{
-
+	font-size: 15px;
 }
 /*---------------------------------
             会社
 ----------------------------------*/
 .company{
-
+	padding-top: 40px;
 }
 
 .release_date{
@@ -146,20 +147,20 @@ h2{
 ----------------------------------*/
 .delete{
     float: right;
-
-	position: relative;
+	top: 10px;
     display: inline-block;
     font-weight: bold;
    /*  padding: 0.25em 0.5em; */
     text-decoration: none;
-    color: #00BCD4;
-    background: #ECECEC;
     transition: .4s;
 }
-
+#deletePart{
+	position: relative;
+    top: -98px;
+}
 
 #deletePart:hover{
-	 background: #00bcd4;
+	background: #00bcd4;
     color: white;
 }
 

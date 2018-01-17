@@ -57,7 +57,7 @@ FOREIGN KEY(category_id) REFERENCES m_category(category_id) ON UPDATE CASCADE
 CREATE TABLE cart_info(
 id int PRIMARY KEY NOT NULL AUTO_INCREMENT,-- ID
 user_id varchar(16) NOT NULL,-- ユーザーID
-temp_user_id varchar(128) UNIQUE KEY,-- 仮ユーザーID
+temp_user_id varchar(128),-- 仮ユーザーID
 product_id int NOT NULL ,-- 商品ID
 product_count int NOT NULL,-- 個数
 price int NOT NULL,-- 金額

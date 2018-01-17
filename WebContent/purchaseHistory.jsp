@@ -3,6 +3,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -65,7 +66,7 @@
 
 					<div class="price_count">
             			<div class="price"><span>\</span><s:property value="price"/></div>
-            			<div class="count">(購入数:<s:property value="count"/>点)</div>
+            			<div class="count">(購入数:  <s:property value="count"/>点)</div>
        				 </div>
 
 
