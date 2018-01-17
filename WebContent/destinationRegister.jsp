@@ -5,9 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
 <title>ユーザー情報入力画面</title>
 </head>
 <body>
+
+<!-- ここからヘッダー -->
+	<jsp:include page="include_header.jsp" />
+<!-- ヘッダーここまで -->
 
 <!-- ここからメイン -->
 <div class="main">
@@ -80,6 +87,10 @@
 	</div>
 </div>
 <!-- ここまでメイン -->
+
+<!-- フッター -->
+	<span><jsp:include page="include_footer.jsp" /></span>
+<!-- フッターここまで -->
 
 </body>
 </html>

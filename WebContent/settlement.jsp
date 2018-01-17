@@ -5,11 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
+
 <title>決済確認画面</title>
 </head>
 <body>
 
-<!-- ここからSメイン -->
+<!-- ここからヘッダー -->
+	<jsp:include page="include_header.jsp" />
+<!-- ヘッダーここまで -->
+
+<!-- ここからメイン -->
 <div id="main">
 	<br>
 	<h2 class="title">決済確認</h2>
@@ -93,7 +101,18 @@
 </div>
 <br>
 <br>
+
+<!-- ページリンク -->
+		<div class= "back">
+			<a href='<s:url action="GoCartAction" />'>カートに戻る</a>
+		</div>
+<!-- ページリンクここまで -->
+
 <!-- メインここまで -->
+
+<!-- フッター -->
+	<span><jsp:include page="include_footer.jsp" /></span>
+<!-- フッターここまで -->
 
 </body>
 </html>

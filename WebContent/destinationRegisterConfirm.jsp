@@ -5,10 +5,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
+
 <title>購入情報確認画面</title>
 </head>
 <body>
 
+<!-- ここからヘッダー -->
+	<jsp:include page="include_header.jsp" />
+<!-- ヘッダーここまで -->
+
+
+<!-- ここからメイン -->
 <h2 class="title">宛先情報確認</h2>
 
 <s:form action="DestinationRegisterCompleteAction" theme="simple">
@@ -40,6 +50,11 @@
 							</div>
 						</div>
 					</s:form>
+<!-- メインここまで -->
+
+<!-- フッター -->
+	<span><jsp:include page="include_footer.jsp" /></span>
+<!-- フッターここまで -->
 
 </body>
 </html>
