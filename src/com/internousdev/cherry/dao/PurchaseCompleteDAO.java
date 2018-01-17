@@ -72,12 +72,14 @@ public class PurchaseCompleteDAO {
         //for文でcatListを回し、カート情報の件数ぶん検索をかける→件数処理がretに入る
 		try {
 			for (int i = 0; i < cartList.size(); i++) {
-				sql = "INSERT INTO purchase_history_info(user_id,product_id,product_count,update_date) VALUES(?,?,?,NOW())";
+				sql = "INSERT INTO purchase_history_info(user_id,price,product_id,product_count,regist_date,update_date) VALUES(?,?,?,?,NOW(),NOW())";
 
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, cartList.get(i).getUserId());
-				ps.setInt(2, cartList.get(i).getProduct_id());
-				ps.setInt(3, cartList.get(i).getProductCount());
+				ps.setInt(2,cartList.get(i).getPrice());
+				ps.setInt(3, cartList.get(i).getProduct_id());
+				ps.setInt(4, cartList.get(i).getProductCount());
+
 				//+= 以上が実行され登録されるたびに足す処理
 				ret += ps.executeUpdate();
 			}

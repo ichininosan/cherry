@@ -26,8 +26,8 @@
      <h2 >購入が完了いたしました</h2>
   </div>
   <div class="submit">
-      <a href='<s:url action="MyPageAction"/>'>購入履歴</a><span>の確認が可能です。</span>
-      <p>Homeへ戻る場合は<a href='<s:url action="HomeAction"/>'>こちら</a></p>
+      <a href='<s:url action="MyPageAction"/>' class="button">購入履歴</a>
+      <a href='<s:url action="HomeAction"/>' class="s_button">HOME</a>
   </div>
 </div>
 
