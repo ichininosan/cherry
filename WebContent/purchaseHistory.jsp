@@ -60,19 +60,20 @@
 					 <div class="name">
            				 <div class="kana"><s:property value="productNameKana"/></div>
            				 <div class="pro_name">
-           				 	<s:property value="productName"/>
+           				 	商品名: <s:property value="productName"/>
            				 </div>
         			</div>
 
 					<div class="price_count">
-            			<div class="price"><span>\</span><s:property value="price"/></div>
+            			<div class="price"><span>金額:\</span><s:property value="price"/></div>
             			<div class="count">(購入数:  <s:property value="count"/>点)</div>
        				 </div>
 
 
 					 <div class="comp_info">
            				 <div class="company">発売会社:<s:property value="releaseCompany"/></div>
-           				 <div class="release_date">発売日:<s:property value="releaseDate"/>
+           				 <div class="release_date">
+           				 	発売日:<s:property value="releaseDate"/>
            				 </div>
         			</div>
 
