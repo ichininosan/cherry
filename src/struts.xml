@@ -52,6 +52,7 @@
 		</action>
 		<action name="DestinationRegisterCompleteAction" class="com.internousdev.cherry.action.DestinationRegisterCompleteAction" method="execute">
 			<result name="success">destinationRegisterComplete.jsp</result>
+			<result name="error">home.jsp</result>
 		</action>
 
 		<!-- 落合担当アクションPurchaseCompletionAction -->
