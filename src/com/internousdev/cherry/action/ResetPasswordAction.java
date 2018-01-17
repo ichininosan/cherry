@@ -1,15 +1,10 @@
 package com.internousdev.cherry.action;
 
-import java.sql.SQLException;
-import java.util.Map;
-
-import org.apache.struts2.interceptor.SessionAware;
-
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ResetPasswordAction extends ActionSupport implements SessionAware{
-	public Map<String, Object> session;
-	private String userId;
+public class ResetPasswordAction extends ActionSupport/* implements SessionAware*/{
+/*	public Map<String, Object> session;
+*/	private String userId;
 	private boolean saveLogin;
 	private String saveId;
 
@@ -17,8 +12,11 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 	//LoginDAO loginDAO = new LoginDAO();
 	//UserInfoDTO userInfoDTO = new UserInfoDTO();
 
-	public String execute() throws SQLException{
-		return SUCCESS;
+	public String execute(){
+
+		System.out.println(userId);
+		String ret=SUCCESS;
+		return ret;
 	}
 /**
 		//ログイン画面で入力されたuserIdをsessioに保管
@@ -35,7 +33,7 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 		//DAOのインスタンス作成
 			ResetPasswordDAO dao = new ResetPasswordDAO();
 
-		//IDチェックボックスかつID入力時→再設定画面でuserID表示
+		//チェックボックスかつID入力時→再設定画面でuserID表示
 			if((!(userId.equals("")))&&saveLogin){
 			//userIdをDBから探す
 			session.put("userId", dao.getUserId(userId));
@@ -46,13 +44,13 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 */
 
 	//ゲッター、セッター
-	public Map<String, Object> getSession() {
+/*	public Map<String, Object> getSession() {
 		return session;
 	}
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
+*/
 	public String getUserId() {
 		return userId;
 	}

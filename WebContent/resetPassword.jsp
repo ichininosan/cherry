@@ -20,7 +20,6 @@
 <!-- ヘッダー -->
 <jsp:include page="include_header.jsp" />
 
-<s:if test="session.loginFlg">
 <!-- メインコンテンツ -->
 	<div class="box">
 			<h1>パスワード再設定</h1>
@@ -41,7 +40,7 @@
 						<label>ログインID:</label>
 					</td>
 					<td>
-						<input type="text" name="userId" value=<s:param value="%{userId}"/>>
+						<input type="text" name="userId" value=""/>
 					</td>
 				</tr>
 				<tr>
@@ -65,7 +64,6 @@
 			</table>
 		</div>
 	</div>
-	</s:if>
 
 
 <!-- フッター -->
