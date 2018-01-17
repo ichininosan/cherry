@@ -8,26 +8,27 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 <script type="text/javascript" src="script.js"></script>
 <title>ユーザー情報入力画面</title>
 </head>
 <body>
-	<div id="main" align="center">
+	<div id="main">
 		<jsp:include page="include_header.jsp" />
 
 		<br><br>
 
-		<h2>新規ユーザー登録</h2>
+       <div class="title">新規ユーザー登録</div>
 		<br>
 		<div class="register_box">
-			<div class="member" >
-				<h5>
+			<div class="member">
+				<div class="error" align="center">
 					<s:iterator value="errorMessageList">
 						<s:div>
 							<s:property />
 						</s:div>
 					</s:iterator>
-				</h5>
+				</div>
 				<br>
 				<div class="member_form">
 					<s:form action="CheckUserInfoAction" theme="simple"

@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 <title>ログイン画面</title>
 
 </head>
@@ -17,20 +18,21 @@
 		<jsp:include page="include_header.jsp" />
 
 <!-- メイン -->
-	<div id="main" align="center" >
+	<div id="main">
 
         <br><br>
-        <div class="title" >ログイン</div>
-        <br>
-			<s:if test="message !=null">
-          		<strong><s:property value="message"/></strong>
-          	</s:if>
-          	<br><br>
+        <div class="title">ログイン</div>
+          	<br>
 		<div class="login_box">
 			<div class="member">
-				<s:if test="errorMessageList !=null">
-          			<s:property value="errorMessageList"/>
-          		</s:if>
+				<div class="error" align="center">
+					<s:if test="message !=null">
+	          			<strong><s:property value="message"/></strong>
+	          		</s:if>
+					<s:if test="errorMessageList !=null">
+	          			<s:property value="errorMessageList"/>
+	          		</s:if>
+          		</div>
 
 				<div class="member_form">
 					<s:form action="LoginAction" theme="simple" id="LoginForm">
@@ -59,17 +61,17 @@
 						<div class="member_btn">
 							<button type="submit" class="">ログイン</button>
 						</div>
-						<br><br>
+						<br>
 						<div class="member_btn">
 					<a href='<s:url action="ResetPasswordAction"/>'>パスワード再設定</a>
 				</div>
 					</s:form>
 				</div>
 			</div>
-
+			<br><br>
 			<div class="nomember">
-				商品購入の際はユーザー登録をお願いします。<br>
-				<br><br>
+				商品購入の際はユーザー登録をお願いします<br>
+
 				<div class="nomember_btn">
 					<a href='<s:url action="UserCreateAction"/>'>新規ユーザー登録</a>
 				</div>

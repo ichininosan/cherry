@@ -126,21 +126,39 @@ header li a i{
 }
 
 /* メインコンテンツ */
-main.title{
-	font-size:30px;
+.main{
+	width: 100%;
+	height: 500px;
+    text-align: center;
+    vertical-align:-50%;
+}
+
+.title{
+	width:270px;
+	margin:auto;
+	font-size:20px;
+	padding: 0.25em 0.5em;
+	background: transparent;
+	border-left: solid 8px #f48fb1;
+}
+
+
+.member_form{
+	width:270px;
+	padding:15px;
+	margin:auto;
+	background: #f48fb12b;
+}
+.nomember{
+	width:300px;
+	margin:auto;
+	font-size:15px;
+}
+
+.kan{
+	font-size:50px;
 	font-weight:bold;
-
 }
-
-main .login_box{
-
-}
-
-main .{
-}
-
-
-
 /* フッター */
 footer{
 	background: #F48FB1;
