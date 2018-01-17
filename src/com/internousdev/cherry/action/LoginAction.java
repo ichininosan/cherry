@@ -2,7 +2,6 @@ package com.internousdev.cherry.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -16,30 +15,38 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware, ErrorMessageConstants {
 
-
+	/**
+	 * ユーザーID
+	 */
 	private String userId;
 
+	/**
+	 * パスワード
+	 */
 	private String password;
 
+	/**
+	 * ID保持
+	 */
 	private boolean saveLogin;
 
-	private Map<Integer, String> categoryMap = new HashMap<>();
-
+	/**
+	 * セッション
+	 */
 	private Map<String, Object> session;
 
+	/**
+	 * エラーメッセージ
+	 */
 	private ArrayList<String> errorMessageList = new ArrayList<>();
 
 	public String execute() throws SQLException {
 		String result = ERROR;
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
-//		CartInfoDAO cartInfoDAO = new CartInfoDAO();
-//		int updateCount = 0;
 		LoginDAO loginDAO = new LoginDAO();
 
-
-
 		System.out.println(userId);
-
+		//ユーザーID入力チェック
 		if(userId==null){
 			return "login";
 		}
@@ -51,9 +58,9 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 
 		} else if (!userId.matches("^[a-zA-Z0-9]+$")) {
 			errorMessageList.add("ユーザーIDは半角英数字で入力してください");
-
 		}
 
+		//パスワード入力チェック
 		if (password.equals("")) {
 			errorMessageList.add("パスワードを入力してください。");
 
@@ -62,9 +69,9 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 
 		} else if (!password.matches("^[a-zA-Z0-9]+$")) {
 			errorMessageList.add("パスワードは半角英数字で入力してください");
-
 		}
 
+		//ID保存
 		if (saveLogin) {
 			session.put("saveId", userId);
 
@@ -73,25 +80,19 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 		}
 
 		if (!userId.equals("") && !password.equals("")) {
+			// ユーザーIDがDBに存在するか確認
 			if (!loginDAO.existsUserId(userId)) {
 				errorMessageList.add("IDが正しくありません");
 				result = ERROR;
 			} else {
 				userInfoDTO = loginDAO.select(userId, password);
-
+				// ログイン判定
 				if (userId.equals(userInfoDTO.getUserId()) && password.equals(userInfoDTO.getPassword())) {
 					loginDAO.login(userInfoDTO);
 
-//					for (CartInfoDTO cartInfoDTO : cartInfoDAO.showTempUserCartList(session.get("userId").toString())) {
-//						if (cartInfoDAO.isAlreadyIntoCart(userInfoDTO.getUserId(), cartInfoDTO.getProductId())) {
-//							cartInfoDAO.deleteProductFromTempUserCart(session.get("userId").toString(),
-//									cartInfoDTO.getProductId());
-//						}
-//				}
-//				updateCount = cartInfoDAO.integrateCart(session.get("userId").toString(), userInfoDTO.getUserId());
-//				System.out.println(updateCount + "件統合しました。");
 					result = SUCCESS;
 
+					// セッション情報の更新をする
 					session.put("userId", userInfoDTO.getUserId());
 					session.put("loginFlg", true);
 				} else {
@@ -132,16 +133,6 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 
 	public void setSaveLogin(boolean saveLogin) {
 		this.saveLogin = saveLogin;
-	}
-
-
-	public Map<Integer, String> getCategoryMap() {
-		return categoryMap;
-	}
-
-
-	public void setCategoryMap(Map<Integer, String> categoryMap) {
-		this.categoryMap = categoryMap;
 	}
 
 

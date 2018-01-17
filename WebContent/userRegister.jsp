@@ -62,14 +62,14 @@
 						</div>
 
 						<br>
-						<div class="member_form_title">ユーザーID＜半角英数字　８字以内＞</div>
+						<div class="member_form_title">ユーザーID＜半角英数字＞</div>
 						<div class="member_form_text">
 							<s:textfield type="text" name="userId" value="%{userId}" />
 							<br>
 						</div>
 
 						<br>
-						<div class="member_form_title">パスワード＜半角英数字　８字以内＞</div>
+						<div class="member_form_title">パスワード＜半角英数字＞</div>
 						<div class="member_form_text">
 							<s:password name="password" value="%{password}" />
 							<br>

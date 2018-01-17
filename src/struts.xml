@@ -65,6 +65,7 @@
 		<!-- 松田アクション -->
 		<action name="ProDetailAction" class="com.internousdev.cherry.action.ProDetailAction">
 			<result name="success">pro_detail.jsp</result>
+			<result name="error">pro_detail.jsp</result>
 		</action>
 
 		<action name="TopAction" class="com.internousdev.cherry.action.TopAction">

@@ -33,6 +33,7 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 	//商品重複フラグ
 	private boolean duplicationFlg;
 
+
 	public String execute() throws SQLException{
 		Product_InfoDAO dao=new Product_InfoDAO();
 		int pro_id = Integer.parseInt(id.toString());
@@ -45,8 +46,14 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 		session.put("pro_detail", pro_detail);
 
 		//暫定でセッション値セット//
-		session.put("loginFlg",true);
-		session.put("userId", "a");
+//		session.put("loginFlg",true);
+//		session.put("userId","a");
+
+		if(!(session.containsKey("userId"))){
+			return ERROR;
+ 	}
+
+
 
 		//ここから、目標の商品がすでにカートに入っているかどうか確認
 		CartInfoDAO cartInfoDAO = new CartInfoDAO();
