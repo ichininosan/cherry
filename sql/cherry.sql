@@ -84,7 +84,7 @@ FOREIGN KEY(product_id) REFERENCES product_info(product_id) ON UPDATE CASCADE
 -- -----------↓宛先情報テーブル↓-----------------------------------
 CREATE TABLE destination_info(
 id int PRIMARY KEY NOT NULL AUTO_INCREMENT,-- ID
-user_id varchar(16) NOT NULL UNIQUE KEY,-- ユーザーID
+user_id varchar(16) NOT NULL,-- ユーザーID
 family_name varchar(32) NOT NULL,-- 姓
 first_name varchar(32) NOT NULL,-- 名
 family_name_kana varchar(32) NOT NULL,-- 姓かな

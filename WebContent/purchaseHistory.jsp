@@ -58,11 +58,13 @@
 
 					 <div class="name">
            				 <div class="kana"><s:property value="productNameKana"/></div>
-           				 <div class="pro_name"><s:property value="productName"/></div>
+           				 <div class="pro_name">
+           				 	<s:property value="productName"/>
+           				 </div>
         			</div>
 
 					<div class="price_count">
-            			<div class="price"><s:property value="price"/><span>円</span></div>
+            			<div class="price"><span>\</span><s:property value="price"/></div>
             			<div class="count">(購入数:<s:property value="count"/>点)</div>
        				 </div>
 
