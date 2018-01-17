@@ -3,7 +3,7 @@
 
 
 /* メインコンテンツ */
-.home .box{
+.box{
 	top:120px;
 	height:300px;
 	width: 1000px;
@@ -12,7 +12,10 @@
 	margin-bottom:100px;
 }
 
-.home .box table{
+
+
+
+.box table{
 	margin-left: auto;
 	margin-right: auto;
 }

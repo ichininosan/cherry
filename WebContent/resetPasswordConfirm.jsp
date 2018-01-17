@@ -24,8 +24,9 @@
 <!-- メインコンテンツ -->
 	<div class="box">
 	  <div class="sectionHeader">
-			<h1>確認画面</h1>
+			<h1>確認画面</h1><br>
 	  </div>
+	  <br>
 		<div class="contBody">
 			<h3>登録する内容は以下でよろしいですか。</h3>
 
