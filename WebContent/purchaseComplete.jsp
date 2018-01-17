@@ -16,10 +16,10 @@
 </div>
 
 <div class="main">
-  <div class="top"><p>購入完了<p></div>
+  <div class="top"><h2>購入が完了いたしました</h2></div>
   <div>
-      <a href='<s:url action="MyPageAction"/>'class ="square_btn">購入履歴</a><span>の確認が可能です。</span>
-      <p>Homeへ戻る場合は<a href='<s:url action="HomeAction"/>'class ="square_btn">こちら</a></p>
+      <a href='<s:url action="MyPageAction"/>'class ="btnn">購入履歴</a><span>の確認が可能です。</span>
+      <p>Homeへ戻る場合は<a href='<s:url action="HomeAction"/>'class ="btnn">こちら</a></p>
     </div>
 </div>
 
