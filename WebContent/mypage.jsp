@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ochiai_style.css">
 <title>マイページ画面</title>
 </head>

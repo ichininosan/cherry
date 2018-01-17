@@ -35,7 +35,7 @@ public class PurchaseHistoryDAO {
 		 * piはproduct_infoの略
 		 * phiはpurchase_history_infoの略
 		 */
-		String sql = "SELECT phi.id, pi.product_name, pi.product_name_kana, pi.image_file_name,  phi.price, phi.product_count, pi.release_company, pi.release_date, phi.regist_date  FROM purchase_history_info phi LEFT JOIN product_info pi ON phi.product_id = pi.product_id  WHERE phi.user_id = ?";
+		String sql = "SELECT phi.id, pi.product_name, pi.product_name_kana, pi.image_file_name,  phi.price, phi.product_count, pi.release_company, pi.release_date, phi.regist_date  FROM purchase_history_info phi LEFT JOIN product_info pi ON phi.product_id = pi.product_id  WHERE phi.user_id = ? ORDER BY regist_date DESC";
 
 
 		try{

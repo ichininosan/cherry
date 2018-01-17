@@ -7,83 +7,6 @@
   height: 0;
   visibility: hidden;
 }
-/* ヘッダー */
-header{
-	background: #F48FB1;
-}
-
-header .wrap{
-	width: 1000px;
-	overflow: hidden;
-    margin: 0 auto;
-    position: relative;
-}
-
- header ul,
- header li,
- header form,
- header a.logo{
-	float: left;
-}
-
-header form{
-	width: 100%;
-	position: relative;
-
-}
-
-header input{
-    width: 100%;
-    height: 36px;
-    padding-left: 5px;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-header form button{
-	position: absolute;
-    top: 0;
-    right: 0;
-    height: 36px;
-    cursor: pointer;
-}
-
-
-
-header a.logo{
-    padding: 12px 0 12px 60px;
-    font-size: 2.5rem;
-    color: #fff;
-}
-
-header ul{
-    margin-left: 389px;
-}
-
-header li{
-	margin: 20px 0 20px 40px;
-	margin-top: 20px;
-	font-weight: bold;
-	font-size: 1.1rem;
-	position: relative;
-
-}
-
-
-header li a{
-	color: #fff;
-	transition: 0.4s;
-}
-
-header li a:hover{
-	color: #FFEB3B;
-}
-
-header li a i{
-	vertical-align: -5px;
-	margin-right: 5px;
-}
-
 
 /*-------------------------------------
 	メインコンテンツ
@@ -108,18 +31,23 @@ header li a i{
 
 }
 .sectionHeader{
-	width:582px;
-	height:39px;
-	margin:10px 0 10px 0;
+	width: 133px;
+    height: 39px;
+    margin: 10px 0 10px 0;
     text-align: center;
     font-weight: bold;
+    background: #ffefcc;
+    box-shadow: 0px 0px 0px 5px#ffefcc;
+    border: dashed 2px white;
+    padding: 0.2em 0.5em;
+    margin: 30px 0px 30px 200px;
+
 
 }
 .sectionHeader h3{
     text-align: center;
     margin:0 auto;
     line-height:50px;
-
 }
 .contBody{
 		width:582px;
@@ -185,7 +113,7 @@ td.change{
 
 .btnn{
 	margin-top:60px;
-	margin-left: 239px;
+	margin-left: 219px;
     padding: 0.5em 1em;
     text-decoration: none;
     color: #353535;
