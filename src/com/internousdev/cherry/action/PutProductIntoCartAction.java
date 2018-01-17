@@ -27,6 +27,7 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 	private String price;
 	private String imageFileName;
 	private String releaseCompany;
+	private int count;
 
 	// カートの商品個数
 	private int productCount;
@@ -35,8 +36,11 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 	private int totalPrice = 0;
 
 	public String execute() throws SQLException{
+		System.out.println("countは"+count);
 		CartInfoDTO dto = new CartInfoDTO();
 		CartInfoDAO dao = new CartInfoDAO();
+
+
 
 		//暫定でセッション値セット//
 		session.put("loginFlg",true);
@@ -246,6 +250,16 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 
 	public void setProductCount(int productCount) {
 		this.productCount = productCount;
+	}
+
+
+	public int getCount() {
+		return count;
+	}
+
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 
