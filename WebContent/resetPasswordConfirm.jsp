@@ -21,10 +21,8 @@
 
 
 <!-- メインコンテンツ -->
-	<div id="main">
-		<div id="top">
-			<p>ResetPasswordConfirm</p>
-		</div>
+	<div class="box">
+			<p>確認画面</p>
 		<div>
 			<h3>登録する内容は以下でよろしいですか。</h3>
 			<table>

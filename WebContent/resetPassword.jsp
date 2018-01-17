@@ -40,7 +40,7 @@
 						<label>ログインID:</label>
 					</td>
 					<td>
-						<input type="text" name="userId" value='<s:property value="#session.userId"/>' />
+						<input type="text" name="userId" value=<s:param value="%{userId}"/>>
 					</td>
 				</tr>
 				<tr>
@@ -68,55 +68,6 @@
 		</div>
 	</div>
 	</s:if>
-<!-- メインコンテンツ -->
-	<div class="box">
-			<h1>パスワード再設定</h1>
-		<div>
-			<table>
-			<s:form action="ResetPasswordConfirmAction">
-
-				<!-- ここから入力エラーメッセージ表示 -->
-				<h5>
-					<s:iterator value="errMsgList">
-						<s:property/>
-					</s:iterator>
-				</h5>
-				<!-- ここまで入力エラーメッセージ表示 -->
-
-				<tr>
-					<td>
-						<label>ログインID:</label>
-					</td>
-					<td>
-						<input type="text" name="userId"/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>パスワード:</label>
-					</td>
-					<td>
-						<input type="password" name="password" value="">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>再確認パスワード:</label>
-					</td>
-					<td>
-						<input type="password" name="passwordc" value="">
-					</td>
-				</tr>
-				<s:submit value="登録" />
-			</s:form>
-			</table>
-			<div>
-				<span>前画面に戻る場合は</span><a href='<s:url action="LoginAction" />'>こちら</a>
-			</div>
-		</div>
-	</div>
-
-
 
 
 <!-- フッター -->

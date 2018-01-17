@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.dao.LoginDAO;
-import com.internousdev.cherry.dao.ResetPasswordDAO;
 import com.internousdev.cherry.dto.UserInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -21,8 +20,8 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 	UserInfoDTO userInfoDTO = new UserInfoDTO();
 
 	public String execute() throws SQLException{
-		result = SUCCESS;
-
+		return SUCCESS;
+/**
 		//ログイン画面で入力されたuserIdをsessioに保管
 		if ((!userId.equals("")) && loginDAO.existsUserId(userId)) {
 
@@ -45,6 +44,7 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 		}else{
 			return ERROR;
 		}
+*/
 	}
 
 	//ゲッター、セッター
@@ -62,6 +62,14 @@ public class ResetPasswordAction extends ActionSupport implements SessionAware{
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public boolean isSaveLogin() {

@@ -4,12 +4,12 @@
 
 /* メインコンテンツ */
 .home .box{
-	position:absolute;
 	top:120px;
 	height:300px;
 	width: 1000px;
-    text-align: center;
-
+	text-align: center;
+	margin-top:100px;
+	margin-bottom:100px;
 }
 
 .home .box table{
@@ -17,8 +17,6 @@
 	margin-right: auto;
 }
 
-.home .box h1{
-	vertical-align:-50px;
-}
+
 
 
