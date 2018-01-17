@@ -9,7 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/honma_style.css">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 <title>注文履歴</title>
 </head>
 <body>
