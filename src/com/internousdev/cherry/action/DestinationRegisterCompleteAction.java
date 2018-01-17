@@ -23,6 +23,7 @@ public class DestinationRegisterCompleteAction extends ActionSupport implements 
 	public String execute() throws SQLException{
 
 		String result = ERROR;
+		System.out.println("エラーです。ホームへ");
 
 		DestinationInfoDTO dto = new DestinationInfoDTO();
 		dto.setUserId(session.get("userId").toString());
@@ -30,9 +31,11 @@ public class DestinationRegisterCompleteAction extends ActionSupport implements 
 		dto.setEmail(email);
 		dto.setTelNumber(telNumber);
 		dto.setUserAddress(userAddress);
+		System.out.println("宛先情報セット完了");
 
 		DestinationInfoDAO dao = new DestinationInfoDAO();
 		if(dao.registerDestination(dto)){
+			System.out.println("宛先DBに登録完了");
 			result = SUCCESS;
 		}
 		return result;

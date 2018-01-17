@@ -32,7 +32,7 @@ public class DestinationInfoDAO {
 												    + "email, "
 												    + "tel_number, "
 												    + "user_address, "
-												    + "insert_date) "
+												    + "regist_date) "
 					 + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
 		try {

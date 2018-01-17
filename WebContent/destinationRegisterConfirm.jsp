@@ -21,7 +21,7 @@
 <!-- ここからメイン -->
 <h2 class="title">宛先情報確認</h2>
 
-<s:form action="DestinationRegisterCompleteAction" theme="simple">
+<s:form action="DestinationRegisterCompleteAction" >
 
 						<div class="member-form-title">
 							<br>ふりがな:

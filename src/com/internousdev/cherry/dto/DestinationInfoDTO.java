@@ -16,7 +16,7 @@ public class DestinationInfoDTO {
 	private String email;
 	private String telNumber;
 	private String userAddress;
-	private Date insertDate;
+	private Date registDate;
 	private Date updateDate;
 
 	public int getId() {
@@ -91,13 +91,7 @@ public class DestinationInfoDTO {
 		this.userAddress = userAddress;
 	}
 
-	public Date getInsertDate() {
-		return insertDate;
-	}
 
-	public void setInsertDate(Date insertDate) {
-		this.insertDate = insertDate;
-	}
 
 	public Date getUpdateDate() {
 		return updateDate;
@@ -119,6 +113,14 @@ public class DestinationInfoDTO {
 		this.firstName = firstName;
 		this.familyNameKana = familyNameKana;
 		this.firstNameKana = firstNameKana;
+	}
+
+	public Date getRegistDate() {
+		return registDate;
+	}
+
+	public void setRegistDate(Date registDate) {
+		this.registDate = registDate;
 	}
 
 
