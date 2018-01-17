@@ -26,6 +26,7 @@
 					<h2><s:property value="message"/></h2>
 				</s:if> --%>
 			</div>
+
 		<!-- メインのトップここまで -->
 
 
