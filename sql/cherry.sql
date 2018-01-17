@@ -90,7 +90,7 @@ first_name varchar(32) NOT NULL,-- 名
 family_name_kana varchar(32) NOT NULL,-- 姓かな
 first_name_kana varchar(32) NOT NULL,-- 名かな
 email varchar(32) NOT NULL,-- メールアドレス
-tell_number varchar(13) NOT NULL,-- 電話番号
+tel_number varchar(13) NOT NULL,-- 電話番号
 user_address varchar(50) NOT NULL,-- 住所
 regist_date datetime NOT NULL,-- 登録日
 update_date datetime-- 更新日
@@ -130,7 +130,7 @@ INSERT INTO destination_info(-- -----------宛先情報テーブルへ----------
 	family_name_kana,-- 姓かな
 	first_name_kana,-- 名かな
 	email,-- メールアドレス
-	tell_number,-- 電話番号
+	tel_number,-- 電話番号
 	user_address,-- 住所
 	regist_date-- 登録日
 )VALUES(
