@@ -22,34 +22,35 @@
 
 <!-- メインコンテンツ -->
 	<div class="box">
-			<p>確認画面</p>
-		<div>
+	  <div class="sectionHeader">
+			<h1>確認画面</h1>
+	  </div>
+		<div class="contBody">
 			<h3>登録する内容は以下でよろしいですか。</h3>
-			<table>
+
 				<s:form action="ResetPasswordCompleteAction">
+				<table>
 					<tr id="box">
-						<td>
+						<th>
 							<label>ログインID:</label>
-						</td>
+						</th>
 						<td>
 							<s:property value="userId" escape="false" />
 						</td>
 					</tr>
 					<tr id="box">
-						<td>
+						<th>
 							<label>パスワード:</label>
-						</td>
+						</th>
 						<td>
 							<s:property value="s" escape="false" />
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<s:submit value="完了" />
-						</td>
-					</tr>
+					</table>
 				</s:form>
-			</table>
+			   <div class="btnn">
+				  <s:submit value="完了" />
+			   </div>
 		</div>
 	</div>
 
