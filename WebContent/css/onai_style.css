@@ -135,7 +135,7 @@ header li a i{
 
 
 .title{
-	width:270px;
+	width:460px;
 	margin:auto;
 	font-size:20px;
 	padding: 0.25em 0.5em;
@@ -157,16 +157,11 @@ header li a i{
 	font-size:15px;
 }
 
-.member_textbox userId{
-	width: 442px;
-    height: 23px;
+input:not([type]), input[type="email" i], input[type="number" i], input[type="password" i], input[type="tel" i], input[type="url" i], input[type="text" i] {
+	width: 445px;
+    margin: 3px;
     border: none;
-}
-
-.member_textbox password{
-	width: 442px;
-    height: 23px;
-    border: none;
+    height: 26px;
 }
 
 .kan{
