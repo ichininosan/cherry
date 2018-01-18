@@ -48,11 +48,12 @@
 							<s:property value="s" escape="false" />
 						</td>
 					</tr>
-					</table>
+				</table>
+					<div class="btnn">
+					<s:submit value="完了" />
+					</div>
 				</s:form>
-			   <div class="btnn">
-				  <s:submit value="完了" />
-			   </div>
+
 		</div>
 	</div>
 

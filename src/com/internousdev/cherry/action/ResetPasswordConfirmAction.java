@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.cherry.dao.ResetPasswordDAO;
+import com.internousdev.cherry.dto.UserInfoDTO;
 import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.internousdev.cherry.util.InputChecker;
 import com.opensymphony.xwork2.ActionSupport;
@@ -30,11 +32,16 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	private ArrayList<String> errMsgList = new ArrayList<>();
 	//セッション
 	public Map<String,Object> session;
+	//DAO,DTO
+	private ResetPasswordDAO DAO = new ResetPasswordDAO();
+	private UserInfoDTO userInfoDTO = new UserInfoDTO();
 
 
 	//メソッドの実行
 	public String execute(){
 		String result =SUCCESS;
+		userInfoDTO=DAO.UserInfoByUserId(userId);
+		String str=userInfoDTO.getUserId();
 
 		//インプットチェッカー利用して条件判定とエラーメッセージ表示
 		InputChecker i = new InputChecker();
@@ -50,6 +57,14 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			errMsgList.add(i.passwordcChk(passwordc,password));
 			result = ERROR;
 		}
+
+		//入力されたuserIdがDBにあるか(会員登録済みか)チェック
+		if(str==null || str.isEmpty()){
+			String error="Userがいません";
+			System.out.println(error);
+			result = ERROR;
+		}
+
 		//パスワードが4文字以上のとき、最初の2文字のみ表示して、3文字以降を*で表示する
 		if(password.length() > 3){
 			session.put("userId", userId);
@@ -59,8 +74,14 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			s = confirmpass + confirmpass3;
 		//パスワードが3文字以下のとき、*で表示する
 		}else{
+			session.put("userId", userId);
+			session.put("password", password);
 			s = password.replaceAll("^[0-9a-zA-Z]+$","*");
 		}
+
+
+		 System.out.println("userIDは"+userInfoDTO.getUserId());
+
 		return result;
 	}
 
@@ -88,6 +109,21 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	public void setPasswordc(String passwordc) {
 		this.passwordc = passwordc;
 	}
+
+	//DAO,DTOのゲッター、セッター
+	public ResetPasswordDAO getDAO() {
+		return DAO;
+	}
+	public void setDAO(ResetPasswordDAO dAO) {
+		DAO = dAO;
+	}
+	public UserInfoDTO getUserInfoDTO() {
+		return userInfoDTO;
+	}
+	public void setUserInfoDTO(UserInfoDTO userInfoDTO) {
+		this.userInfoDTO = userInfoDTO;
+	}
+
 
 	//パスワード先頭二文字のゲッターセッター
 	public String getConfirmpass() {

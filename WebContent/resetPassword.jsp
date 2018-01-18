@@ -30,6 +30,7 @@
 						<s:property/>
 					</s:iterator>
 
+
 			<!-- ここまで入力エラーメッセージ表示 -->
 
 			<s:form action="ResetPasswordConfirmAction">

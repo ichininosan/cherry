@@ -14,7 +14,7 @@ public class ResetPasswordDAO  {
 	Connection con = db.getConnection();
 
 	//userIdをDBから取得する
-	public boolean getUserId(String userId){
+	public UserInfoDTO UserInfoByUserId(String userId){
 
 	String sql="SELECT * FROM user_info where user_id=?";
 
@@ -25,14 +25,14 @@ public class ResetPasswordDAO  {
 			ResultSet resultSet=ps.executeQuery();
 
 		if(resultSet.next()){
-			userInfoDTO.setUserId(resultSet.getString("userId"));
-			return true;
+			userInfoDTO.setUserId(resultSet.getString("user_id"));
+			return userInfoDTO;
 		}
 
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-			return false;
+			return userInfoDTO;
 		}
 
 	//ユーザーIDを元にして新しいパスワードをDBにセットする

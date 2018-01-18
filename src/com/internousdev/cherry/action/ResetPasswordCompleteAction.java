@@ -11,8 +11,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordCompleteAction  extends ActionSupport implements SessionAware{
 
+	//Id
 	private String userId;
-
 	//新規パスワード
 	private String password;
 
@@ -23,25 +23,12 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 	//実行メソッド
 	public String execute() throws SQLException {
 		String ret=SUCCESS;
-		//password=session.get("password").toString();
-		//userId=session.get("userId").toString();
 
-/*		//ログインIDをDBから取得
-		if(DAO.getUserId(userId)){
-			return SUCCESS;
-		}
-
-		//ユーザーIDを元にして新しいパスワードをDBにセット
-		if(DAO.updatePassword(password,userId)){
-			return SUCCESS;
-		}*/
-
+		//パスワードを変更
 		DAO.updatePassword(session.get("userId").toString(),
 						session.get("password").toString());
-
 		return ret;
 	}
-
 
 	//ユーザーIDのゲッター、セッター
 	public String getUserId() {
