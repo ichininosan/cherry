@@ -28,22 +28,33 @@
 
 
 <!-- ここからメイン -->
-	<br>
-	<h2 class="title">カート</h2><br>
+
+
 
 <div class="main">
-		<s:property value="errMsg"/>
-		<s:if test="! cartList.isEmpty()">
-			<p class="message">カートの中には以下の商品が入っています。</p>
 
+	<h2 class="title">カート</h2><br>
+
+		<s:property value="errMsg"/>
+		<!-- カートが殻のときのメッセージ！！ -->
+			<s:if test="cartList.isEmpty()">
+				<p class="message">カートの中は空です</p>
+			</s:if>
+		<!-- カートが殻のときのメッセージここまで -->
+
+			<s:else>
+				<p class="message">カートには以下の商品が入っています</p>
 
 <!----------------- カート内容ここから --------------------------------------->
 
 			<s:iterator value="cartList">
-				<s:form action="GoCartAction">
-<div class="cart_info">
+
+	<div class="cart_info">
 		<!-- 画像 --><div class="pro_img">
-							<img class="pro_img" src='<s:property value="image_file_name"/>' alt="画像なし"/>
+
+							<a href="/cherry/ProDetailAction.action?id=">
+								<img class="pro_img" src='<s:property value="image_file_name"/>' alt="画像なし"/>
+							</a>
 						</div>
 
 		<!-- 商品名 --><div class="pro_name">
@@ -69,24 +80,22 @@
 		<!-- 年月日 --><div class="date">
 							発売年月日<s:date name="releaseDate" format="yyyy年MM月dd日" />
 						</div>
-
-		<!-- 削除 --><div class="delete">
-							<a href='<s:url action="CartDeleteAction"><s:param name="productId" value="productId"></s:param></s:url>'>削除</a>
-						</div>
-</div>
+			<!-- 削除 -->
+				<s:form action="GoCartAction">
+					<div class="delete">
+						<a href='<s:url action="CartDeleteAction"><s:param name="productId" value="productId"></s:param></s:url>'>削除</a>
+					</div>
 				</s:form>
+				</div>
 			</s:iterator>
-		</s:if>
+		</s:else>
+	</div>
+
 
 <!----------------- カート内容ここまで --------------------------------------->
 
 
-		<!-- カートが殻のときのメッセージ！！ -->
-			<s:else>
-				<p class="message">カートの中は空です</p>
-			</s:else>
-		<!-- カートが殻のときのメッセージここまで -->
-	</div>
+
 
 
 	<!-- 合計金額を表示 -->
