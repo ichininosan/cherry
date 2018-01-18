@@ -52,7 +52,7 @@
 	<div class="cart_info">
 		<!-- 画像 --><div class="pro_img">
 
-							<a href="/cherry/ProDetailAction.action?id=">
+							<a href="/cherry/ProDetailAction.action?id=#product_id">
 								<img class="pro_img" src='<s:property value="image_file_name"/>' alt="画像なし"/>
 							</a>
 						</div>
