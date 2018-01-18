@@ -63,7 +63,7 @@ product_count int NOT NULL,-- 個数
 price int NOT NULL,-- 金額
 regist_date datetime NOT NULL,-- 登録日
 update_date datetime,-- 更新日
-FOREIGN KEY(user_id) REFERENCES user_info(user_id) ON UPDATE CASCADE,
+/*FOREIGN KEY(user_id) REFERENCES user_info(user_id) ON UPDATE CASCADE,*/
 FOREIGN KEY(product_id) REFERENCES product_info(product_id) ON UPDATE CASCADE
 );
 
