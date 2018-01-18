@@ -145,21 +145,43 @@ header li a i{
 
 
 .member_form{
-	width:270px;
-	padding:15px;
+	width:450px;
+	padding:20px;
 	margin:auto;
 	background: #f48fb12b;
 }
+
 .nomember{
 	width:300px;
 	margin:auto;
 	font-size:15px;
 }
 
+.member_textbox userId{
+	width: 442px;
+    height: 23px;
+    border: none;
+}
+
+.member_textbox password{
+	width: 442px;
+    height: 23px;
+    border: none;
+}
+
 .kan{
 	font-size:50px;
 	font-weight:bold;
 }
+.member_btn button{
+	width: 448px;
+    background-color: #f48fb1a8;
+    height: 30px;
+    font-weight: bold;
+    border: none;
+}
+
+
 /* フッター */
 footer{
 	background: #F48FB1;
