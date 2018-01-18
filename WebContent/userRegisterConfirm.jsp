@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 <script type="text/javascript">
 	history.forward();
 </script>
@@ -17,9 +18,9 @@
 <body>
 	<jsp:include page="include_header.jsp" />
 	<div id="main">
-	<br>
+	<br><br>
 		<div class="title">新規ユーザー登録確認</div>
-		<br>
+		<br><br>
 		<div class="register_box">
 			<div class="member">
 				<div class="member_form">
@@ -52,7 +53,7 @@
 							<br><br> メールアドレス:
 							<s:property value="email" />
 							<s:hidden name="email" value="%{email}" />
-							<br> <br>
+							<br> <br><br>
 							<div class="member_btn">
 								<button type="submit" class="">登録情報完了</button>
 							</div>
