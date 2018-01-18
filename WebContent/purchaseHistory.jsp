@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-
+<!-- 金額表示でカンマを出すやつ -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -49,7 +50,8 @@
 
         			<div class="date">
             			<p>注文日</p>
-            			<p><s:property value="registDate"/></p>
+            			<p><s:property value="registDate"/>
+            			</p>
             		</div>
 
 				<div class="main_content">
@@ -65,7 +67,11 @@
         			</div>
 
 					<div class="price_count">
-            			<div class="price"><span>金額:\</span><s:property value="price"/></div>
+            			<div class="price">
+            			<span>金額:\</span>
+            			<%-- <s:property value="price"/> --%>
+            			<fmt:formatNumber value="${price}" />
+            			</div>
             			<div class="count">(購入数:  <s:property value="count"/>点)</div>
        				 </div>
 
@@ -73,7 +79,7 @@
 					 <div class="comp_info">
            				 <div class="company">発売会社:<s:property value="releaseCompany"/></div>
            				 <div class="release_date">
-           				 	発売日:<s:property value="releaseDate"/>
+           				 	<%-- 発売日:<s:property value="releaseDate"/> --%>
            				 </div>
         			</div>
 
