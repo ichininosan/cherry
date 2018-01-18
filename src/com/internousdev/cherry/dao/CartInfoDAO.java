@@ -276,16 +276,17 @@ public class CartInfoDAO extends ActionSupport{
 	 * @return
 	 * @throws SQLException
 	 */
-	public int updateUsersCount(int productCount, String userId) throws SQLException {
+	public int updateUsersCount(int productCount, String userId,String productId) throws SQLException {
 		System.out.println("updateUsersCount");
 		int count = 0;
-		String sql = "UPDATE cart_info SET product_count = ? WHERE user_id = ?";
+		String sql = "UPDATE cart_info SET product_count = +"+productCount+" WHERE user_id = ? AND product_id=?";
 
 		try {
 			con = db.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, productCount);
 			ps.setString(2, userId);
+			ps.setString(3, productId);
 
 			count = ps.executeUpdate();
 		} catch (SQLException e) {
