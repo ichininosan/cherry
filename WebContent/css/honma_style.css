@@ -33,24 +33,24 @@ body{
     margin-bottom: 100px;
 }
 .title{
-	margin-top: 10px;
-	position:absolute;
-	top: 142px;
-    left: 80px;
+	text-align: center;
+    font-size: 2rem;
+    margin: 40px 0 20px;
 }
 
 .top{
 	font-size: 30px;
 }
 h2{
-	height: 186px;
     text-align: center;
     font-size: 23px;
-    background: url(/cherry/img/signboard.png) no-repeat;
+    padding-top: 20px;
+    padding-bottom: 20px;
+   /*  background: url(/cherry/img/signboard.png) no-repeat;
     background-size: 409px;
-    padding-top: 160px;
     background-position: 50% -78px;
-    animation: font infinite linear 2s;
+    animation: font infinite linear 2s; */
+
 }
 
 /* @keyframes font
@@ -115,7 +115,7 @@ h2{
 }
 
 .pro_name{
-
+	font-size: 20px;
 }
 /*---------------------------------
             値段と個数
@@ -125,8 +125,8 @@ h2{
 
 }
 .price{
-	color: #4169E1;
-	font-size: 20px;
+	color: #E91E63;
+	font-size: 1.4rem;
 }
 
 .count{
@@ -136,7 +136,7 @@ h2{
             会社
 ----------------------------------*/
 .company{
-	padding-top: 40px;
+	padding-top: 70px;
 }
 
 .release_date{
@@ -156,11 +156,21 @@ h2{
 }
 #deletePart{
 	position: relative;
-    top: -98px;
+    top: -120px;
+    width: 50px;
+    height: 30px;
+
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
 }
 
 #deletePart:hover{
-	background: #00bcd4;
+	background: #67c5ff;
     color: white;
 }
 

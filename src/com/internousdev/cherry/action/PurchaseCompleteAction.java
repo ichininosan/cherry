@@ -38,7 +38,12 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 
 		    //1.取得メソッド －PurchaseDAOでList型でcartInfoのデータを格納　DTOListで渡す→ActionでList型の箱を作りデータを受け取り
 		    cartList=purchaseCompleteDAO.getCartInfo(session.get("userId").toString());
-
+			System.out.println("----PurchaseCompleteAction:execute");
+			System.out.println(cartList.get(0).getUserId());
+			System.out.println(cartList.get(0).getPrice());
+			System.out.println(cartList.get(0).getProductId());
+			System.out.println(cartList.get(0).getProductCount());
+			System.out.println("------------------------");
 		    //2.登録メソッド
 	    	int i=purchaseCompleteDAO.setPurchseHistory(cartList);
 

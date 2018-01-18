@@ -76,7 +76,7 @@
 				   </tbody>
  			   </table>
  			    <div class="btnn">
-				<a href="/cherry/PurchaseHistoryAction" type="button">注文履歴確認</a>
+				<a href="/cherry/PurchaseHistoryAction" type="btnn">注文履歴確認</a>
 			  </div>
               </div>
             </div>
