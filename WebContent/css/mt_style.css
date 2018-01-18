@@ -167,12 +167,12 @@ header li a i{
 .home .top_main ul li a{
 	color: #1f1f1f;
 	display: block;
-	padding: 19px 15px;
+	padding: 19px 15px 15px;
 }
 
 
 .home .top_main ul li a div{
-	height: 257px;
+	height: 245px;
 }
 
 .home .top_main ul li a .category{
