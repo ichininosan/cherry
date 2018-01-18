@@ -76,12 +76,11 @@
 				   </tbody>
  			   </table>
 
- 			    <div class="button">
+ 			    <div class="buttonBox">
 					  <div class="btnn">
-					     <a href="/cherry/PurchaseHistoryAction"><span>Purchse History</span></a>
-					  </div>
- 			      <!-- -->
- 			      </div>
+					   <a href="/cherry/PurchaseHistoryAction" class="button">HISTORY</a>
+					   </div>
+			    </div>
  			    </div>
 
 

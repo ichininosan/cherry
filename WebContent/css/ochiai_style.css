@@ -15,43 +15,44 @@
 
 .main{
 	width: 100%;
-	height: 500px;
-    vertical-align:-50%;
 
 }
 
-.secRegist{
-	width:780px;
+#secRegist{
+	width:100%;
 	margin:0;
 	padding:0;
 }
 .sectionInner{
-	width:600px;
+	width:100%;
+	height:500px;
 	margin-right:auto;
 	margin-left:auto;
+	margin-top:20px;
+
 
 }
 .sectionHeader{
 	width: 133px;
-    height: 39px;
-    margin: 10px 0 10px 0;
+    height: 20px;
+    margin: 20px 0 10px 0;
     text-align: center;
     font-weight: bold;
-    background: #ffefcc;
-    box-shadow: 0px 0px 0px 5px#ffefcc;
+    background: #ffe6ea;
+    box-shadow: 0px 0px 0px 5px#ffe6ea;
     border: dashed 2px white;
     padding: 0.2em 0.5em;
-    margin: 30px 0px 30px 200px;
+    margin:0 auto;
 
 
 }
 .sectionHeader h3{
     text-align: center;
     margin:0 auto;
-    line-height:50px;
+    line-height:22px;
 }
 .contBody{
-		width:582px;
+		width:100%
 }
 .message{
     width: 100%;
@@ -81,7 +82,7 @@ table th,table td {
 }
 
 table th {
-    background: #ffefcc;
+    background: #ffe6ea;
     vertical-align: middle;
     text-align: left;
     width: 120px;
@@ -102,7 +103,7 @@ table th:after {
     position: absolute;
     pointer-events: none;
     border-color:rgba(255,239,204,0);
-    border-left-color:  #ffefcc;
+    border-left-color: #ffe6ea;
     border-width: 10px;
     margin-top: -10px;
 }
@@ -114,74 +115,78 @@ td{
 td.change{
 	text-align: right;
 }
+a{
+	color:black;
+}
 
 
 /*-------------------------------------
 	button
 -------------------------------------*/
+.buttonBox{
+	width:100%;
+
+}
 
 .btnn {
-    display: inline-block;
-    float: left;
-    text-decoration: underline;
-    /* color: chocolate; */
-    width: 176px;
-    height: 27px;
-    line-height: 30px;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    /* overflow: hidden; */
-    background-image: -webkit-linear-gradient(45deg, #709dff 0%, #91fdb7 100%);
-    background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
-    transition: .4s;
-
+    width: 193px;
+    margin: 0 auto;
+    z-index: 2;
+    color: #fff;
+    line-height: 50px;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
-.btnn:hover{
-  -webkit-transform: rotate(10deg);
-  -ms-transform: rotate(10deg);
-  transform: rotate(10deg);
+.btnn a {
+    color: #808080;
+    font-family: 'Covered By Your Grace', cursive;
+    font-size: 15px;
+    line-height: 11px;
 }
-/*.btnn {
-  width:120px;
+
+
+
+/*------*/
+.button {
   position: relative;
-  z-index: 2;
-  border: 2px solid #333;
-  color: #fff;
-  line-height: 50px;
-  -webkit-perspective: 300px;
-  perspective: 300px;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-*/
-.bttn a{
-	  color:gray;
-	  background:url(/cherry/img/logo.png) no-repeat;
-}
-
-/*.btnn:hover {
+  display: inline-block;
+  padding: .65em 4em;
+  border: 2px solid #e6e6e6;
   color: #333;
+  text-decoration: none;
+  text-align: center;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
 }
-
-.btnn::after {
+.button::after {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: -1;
+  content: '';
+  width: 102%;
+  height: 102%;
+  background-color: #ffe6ea;
+  -webkit-transform: rotate(1deg);
+  transform: rotate(1deg);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.button:hover {
+  color: #b3b3b3;
+}
+.button:hover::after {
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #333;
-  -webkit-transform-origin: center bottom;
-  transform-origin: center bottom;
-  -webkit-transform: rotateX(0);
-  transform: rotateX(0);
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
 }
 
-.btnn:hover::after {
-  -webkit-transform: rotateX(-180deg);
-  transform: rotateX(-180deg);
-}
-*/
 /*-------------------------------------
 	マウスオン
 -------------------------------------*/
