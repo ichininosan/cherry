@@ -50,8 +50,12 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 		/**
 		 * 宛先情報取得メソッド
 		 */
+
+		if((boolean) session.get("loginFlg")){
 		DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 		destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
+		}
+
 
 		if(destinationInfoListDTO.size() > 0) {
 			result = SUCCESS;

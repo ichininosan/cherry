@@ -25,10 +25,11 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 		//session.put("loginFlg",true);
 		//session.put("userId", "a");
 		//session.put("tempUserId", "a");
+
+
 		/*
 		loginFlgが存在しているか判定
 		*/
-
 		if((boolean) session.containsKey("loginFlg")){
 
 
@@ -44,6 +45,7 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 			}
 
 		}else{
+			session.put("loginFlg", false);
 			for(CartInfoDTO dto: dao.showTempUserCartList(session.get("tempUserId").toString())){
 				cartList.add(dto);
 			}
