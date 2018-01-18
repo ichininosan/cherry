@@ -5,6 +5,7 @@
 <!-- 金額表示でカンマを出すやつ -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,10 +48,11 @@
 
 <!----------------------ここから------------------------------->
 				<s:iterator value = "historyList">
-
         			<div class="date">
             			<p>注文日</p>
-            			<p><s:property value="registDate"/>
+            			<p>
+            				<fmt:parseDate var="date" value="${registDate}" pattern="yyyy-MM-dd HH:mm:ss.SS" />
+            				<fmt:formatDate value="${date}" pattern="yyyy年M月d日" />
             			</p>
             		</div>
 
@@ -79,7 +81,8 @@
 					 <div class="comp_info">
            				 <div class="company">発売会社:<s:property value="releaseCompany"/></div>
            				 <div class="release_date">
-           				 	<%-- 発売日:<s:property value="releaseDate"/> --%>
+           				 	発売日:<fmt:parseDate var="date2" value="${releaseDate}" pattern="yyyy-MM-dd HH:mm:ss.SS" />
+            						<fmt:formatDate value="${date2}" pattern="yyyy年M月d日" />
            				 </div>
         			</div>
 
