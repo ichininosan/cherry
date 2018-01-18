@@ -50,6 +50,21 @@
 
 <!-- フッター -->
 <jsp:include page="include_footer.jsp" />
+<script>
+$(function() {
 
+	for(var i = 0; i < $(".home .top_main ul li img").length; i++){
+	var arra_w = $('.home .top_main ul li img').eq(i).width() - 14;
+
+	var arra_h = $('.home .top_main ul li img').eq(i).height();
+	if(arra_w < arra_h || arra_w == arra_h){
+		$('.home .top_main ul li img').eq(i).css('max-height','245px');
+	}else{
+		$('.home .top_main ul li img').eq(i).css('max-width','281px');
+	}
+	};	//配列をまわす
+
+});	//function
+</script>
 </body>
 </html>

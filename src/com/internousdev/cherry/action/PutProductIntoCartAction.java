@@ -67,13 +67,19 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 
 		//int count=0;
 		int iPrice = Integer.parseInt(price);
+		if (!(session.containsKey("loginFlg"))){
+			session.put("loginFlg", false);
+		}
+
+
 		if (session.containsKey("loginFlg") && (boolean) session.get("loginFlg")) {
 			dto.setUserId(session.get("userId").toString());
 			if (duplicationFlg) {
-				count=dao.updateUsersCount(productCount,session.get("userId").toString());
+				count=dao.updateUsersCount(productCount,session.get("userId").toString(),session.get("productId").toString());
 				System.out.println("更新；"+ count + "件");
 			} else {
 				count=dao.putProductIntoCart(session.get("userId").toString(),Integer.parseInt(productId),productCount,iPrice);
+				/*count=dao.updateUsersCount(productCount,session.get("userId").toString(),session.get("productId").toString());*/
 				System.out.println("追加；"+ count + "件");
 			}
 			for (CartInfoDTO cartInfoDTO: dao.showUserCartList(session.get("userId").toString())) {
