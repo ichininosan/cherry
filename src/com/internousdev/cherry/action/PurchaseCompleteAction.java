@@ -28,7 +28,7 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 	 * 2.カートテーブルの情報を削除する
 	 */
 
-	public String execute () throws SQLException {
+	public String execute() throws SQLException {
 		String result = ERROR;
 
 	    PurchaseCompleteDAO purchaseCompleteDAO= new PurchaseCompleteDAO();
@@ -38,6 +38,11 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 
 		    //1.取得メソッド －PurchaseDAOでList型でcartInfoのデータを格納　DTOListで渡す→ActionでList型の箱を作りデータを受け取り
 		    cartList=purchaseCompleteDAO.getCartInfo(session.get("userId").toString());
+		    if(cartList.size()==0){
+				return "other";
+		    }
+
+		    
 			System.out.println("----PurchaseCompleteAction:execute");
 			System.out.println(cartList.get(0).getUserId());
 			System.out.println(cartList.get(0).getPrice());
@@ -47,20 +52,17 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 		    //2.登録メソッド
 	    	int i=purchaseCompleteDAO.setPurchseHistory(cartList);
 
-	    	if(cartList.size()==i){
+			if(cartList.size()==i){
 			    //2 削除メソッド
 			    CartDeleteDAO delete=new CartDeleteDAO();
 				delete.deleteCartInfo(session.get("userId").toString());
-
-					result=SUCCESS;
-	    	}
-	    }
-
-		return result;
-
+				result=SUCCESS;
+			}
+    	}
+	    return result;
+    }
 
 
-	}
 
 
 public String getUserId() {

@@ -59,6 +59,7 @@
 		<action name="PurchaseCompleteAction"
 		class="com.internousdev.cherry.action.PurchaseCompleteAction" method="execute">
 			<result name="success">purchaseComplete.jsp</result>
+			<result name="other">cart.jsp</result>
 			<result name="error">cart.jsp</result>
 		</action>
 
