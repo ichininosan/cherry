@@ -72,14 +72,14 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		}
 
 
-		if (session.containsKey("loginFlg") && (boolean) session.get("loginFlg")) {
+		/*if (session.containsKey("loginFlg") && (boolean) session.get("loginFlg")) {
 			dto.setUserId(session.get("userId").toString());
 			if (duplicationFlg) {
 				count=dao.updateUsersCount(productCount,session.get("userId").toString(),session.get("productId").toString());
 				System.out.println("更新；"+ count + "件");
 			} else {
-				count=dao.putProductIntoCart(session.get("userId").toString(),Integer.parseInt(productId),productCount,iPrice);
-				/*count=dao.updateUsersCount(productCount,session.get("userId").toString(),session.get("productId").toString());*/
+				count=dao.putProductIntoCart(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
+				count=dao.updateUsersCount(productCount,session.get("userId").toString(),productId);
 				System.out.println("追加；"+ count + "件");
 			}
 			for (CartInfoDTO cartInfoDTO: dao.showUserCartList(session.get("userId").toString())) {
@@ -96,7 +96,67 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 			}
 
 			cartList = dao.showTempUserCartList(session.get("tempUserId").toString());
+		}*/
+
+		/*
+		商品重複確認メソッド
+		 */
+
+
+
+
+
+
+		/*櫻井作成メソッド*/
+
+		/*
+		ログインしている際にカートに入れた場合
+		*/
+
+		if(session.containsKey("loginFlg") && (boolean) session.get("loginFlg")){
+			/*カート内の商品の重複を確認
+			*/
+
+			boolean dupFlg = dao.isAlreadyIntoCart(session.get("userId").toString(),Integer.parseInt(productId));
+			if(!dupFlg){
+			count=dao.putProductIntoCart(session.get("userId").toString(),Integer.parseInt(productId),productCount,iPrice);
+			cartList = dao.showUserCartList(session.get("userId").toString());
+			}else{
+				count=dao.UpdateProductCount(session.get("userId").toString(),Integer.parseInt(productId),productCount,iPrice);
+				cartList = dao.showUserCartList(session.get("userId").toString());
+
+			}
+
+
 		}
+
+
+		/*
+		ログインしていないときにカートに入れた場合。
+		上記と同様のメソッドにしたらよいと思う。
+		現在、sqlの制限によりERROR(18/01/18)
+		*/
+		else{
+			/*count=dao.putProductIntoCart(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
+			cartList = dao.showUserCartList(session.get("tempUserId").toString());
+
+			System.out.println("OK,TEST"+session.get("tempUserId").toString());*/
+			boolean dupFlg = dao.isAlreadyIntoCart(session.get("tempUserId").toString(),Integer.parseInt(productId));
+			if(!dupFlg){
+				count=dao.putProductIntoCart(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
+				cartList = dao.showUserCartList(session.get("tempUserId").toString());
+				}else{
+					count=dao.UpdateProductCount(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
+					cartList = dao.showUserCartList(session.get("tempUserId").toString());
+
+				}
+
+
+		}
+
+
+
+
 
 		totalPrice = calcTotalPrice(cartList);
 		return SUCCESS;

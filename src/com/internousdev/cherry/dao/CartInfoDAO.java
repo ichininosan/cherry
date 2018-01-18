@@ -31,16 +31,17 @@ public class CartInfoDAO extends ActionSupport{
 
 		System.out.println(productCount);
 
-		String sql = "INSERT INTO cart_info(user_id, product_id, product_count, price, regist_date)"
-						+ " VALUES(?, ?, ?, ?, NOW())";
+		String sql = "INSERT INTO cart_info(user_id,temp_user_id, product_id, product_count, price, regist_date)"
+						+ " VALUES(?, ?, ?,?, ?, NOW())";
 
 		try{
 			con = db.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
-			ps.setInt(2, productId);
-			ps.setInt(3, productCount);
-			ps.setInt(4, price);
+			ps.setString(2, userId);
+			ps.setInt(3, productId);
+			ps.setInt(4, productCount);
+			ps.setInt(5, price);
 			count = ps.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -279,7 +280,7 @@ public class CartInfoDAO extends ActionSupport{
 	public int updateUsersCount(int productCount, String userId,String productId) throws SQLException {
 		System.out.println("updateUsersCount");
 		int count = 0;
-		String sql = "UPDATE cart_info SET product_count = +"+productCount+" WHERE user_id = ? AND product_id=?";
+		String sql = "UPDATE cart_info SET product_count = product_count +"+productCount+" WHERE user_id = ? AND product_id=?";
 
 		try {
 			con = db.getConnection();
@@ -328,6 +329,54 @@ public class CartInfoDAO extends ActionSupport{
 
 		return count;
 	}
+
+	public int UpdateProductCount(String userId,int productId, int productCount,int price) throws SQLException{
+		System.out.println("UpdateProductCount");
+		int count = 0;
+
+		System.out.println(userId);
+
+		System.out.println(productId);
+
+		System.out.println(productCount);
+
+		String sql = "UPDATE cart_info SET product_count=product_count +" +productCount+ " WHERE user_id=? AND product_id=?";
+
+		try{
+			con = db.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.setInt(2, productId);
+			count = ps.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			con.close();
+		}
+		return count;
+	}
+
+	/*
+	ログインをした際にカート内のユーザー状態を引き継ぐメソッド
+	*/
+	public void changeUserId(String tempUserId,String userId) throws SQLException{
+		String sql="UPDATE cart_info SET user_id=? where temp_user_id=?";
+		try{
+			con=db.getConnection();
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.setString(2, tempUserId);
+
+			ps.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			con.close();
+		}
+	}
+
+
+	/*UPDATE cart_info SET product_count=product_count + 10 WHERE user_id=? AND product_id=?;*/
 
 
 

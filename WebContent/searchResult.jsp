@@ -38,6 +38,17 @@
 			</s:url>
 
 			<s:a href="%{url}">
+				<s:if test="categoryId == 2">
+					<span class="category orange">&nbsp;&nbsp;本</span>
+				</s:if>
+				<s:if test="categoryId == 3">
+					<span class="category blue">&nbsp;&nbsp;家電&amp;パソコン</span>
+				</s:if>
+				<s:if test="categoryId == 4">
+					<span class="category green">&nbsp;&nbsp;おもちゃ&amp;ゲーム</span>
+				</s:if>
+
+
 				<div><img src='<s:property value="imageFileName"/>' alt="画像なし"/></div>
 					<p class="name"><s:property value="productName"/></p>
 					<p class="price">\<span><s:property value="price"/></span></p>

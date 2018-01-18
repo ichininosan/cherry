@@ -23,7 +23,8 @@ public class TopAction extends ActionSupport implements SessionAware {
 			proList = dao.pro_list();
 			session.put("proList",proList);
 			//session.put("loginFlg", false);
-			session.put("tempUserId", "a");
+			String userId="b";
+			session.put("tempUserId", userId);
 			System.out.println(session.get("tempUserId").toString());
 		} catch (Exception e) {
 			e.printStackTrace();
