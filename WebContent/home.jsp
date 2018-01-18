@@ -33,7 +33,7 @@
 
 			<s:a href="%{url}">
 
-							<s:if test="category_id == 2">
+				<s:if test="category_id == 2">
 					<span class="category orange">&nbsp;&nbsp;本</span>
 				</s:if>
 				<s:if test="category_id == 3">
