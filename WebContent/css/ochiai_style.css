@@ -120,18 +120,40 @@ td.change{
 	button
 -------------------------------------*/
 
-.btnn{
-	margin-top:60px;
-	margin-left: 219px;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    color: #353535;
-    border: double 2px#ffefcc;
-    border-radius: 2px;
-    transition: .4s;
-    width:97px;
+.btnn {
+  width:120px;
+  position: relative;
+  z-index: 2;
+  border: 2px solid #333;
+  color: #fff;
+  line-height: 50px;
+  -webkit-perspective: 300px;
+  perspective: 300px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
 
-    }
+.btnn:hover {
+  color: #333;
+}
+
+.btnn::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+  -webkit-transform: rotateX(0);
+  transform: rotateX(0);
+}
+
+.btnn:hover::after {
+  -webkit-transform: rotateX(-180deg);
+  transform: rotateX(-180deg);
+}
+
 /*-------------------------------------
 	マウスオン
 -------------------------------------*/
