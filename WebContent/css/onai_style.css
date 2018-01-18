@@ -135,7 +135,7 @@ header li a i{
 
 
 .title{
-	width:270px;
+	width:460px;
 	margin:auto;
 	font-size:20px;
 	padding: 0.25em 0.5em;
@@ -145,21 +145,38 @@ header li a i{
 
 
 .member_form{
-	width:270px;
-	padding:15px;
+	width:450px;
+	padding:20px;
 	margin:auto;
 	background: #f48fb12b;
 }
+
 .nomember{
 	width:300px;
 	margin:auto;
 	font-size:15px;
 }
 
+input:not([type]), input[type="email" i], input[type="number" i], input[type="password" i], input[type="tel" i], input[type="url" i], input[type="text" i] {
+	width: 445px;
+    margin: 3px;
+    border: none;
+    height: 26px;
+}
+
 .kan{
 	font-size:50px;
 	font-weight:bold;
 }
+.member_btn button{
+	width: 448px;
+    background-color: #f48fb1a8;
+    height: 30px;
+    font-weight: bold;
+    border: none;
+}
+
+
 /* フッター */
 footer{
 	background: #F48FB1;

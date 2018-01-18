@@ -24,6 +24,7 @@ public class LogoutAction extends ActionSupport implements SessionAware {
     public String execute() throws Exception {
         Map<String, Object> session = getSession();
         session.remove("userId");
+        session.put("loginFlg", false);
         return SUCCESS;
     }
 
