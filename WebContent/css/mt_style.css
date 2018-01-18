@@ -72,11 +72,10 @@ header .h_button{
     border-left: 1px solid #9E9E9E;
 	background: #FFC107;
     width: 60px;
-    transition: 0.4s;
 }
 
 header .h_button:hover{
-	background: #FFCA28;
+	background: #FFEB3B;
 }
 
 
