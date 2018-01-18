@@ -1,7 +1,5 @@
 package com.internousdev.cherry.action;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -21,17 +19,6 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 
 	public String execute() throws SQLException{
 
-		try {
-		      InetAddress addr = InetAddress.getLocalHost();
-		      InetAddress addr2 = InetAddress.getLocalHost();
-		      if (addr.equals(addr2)) System.out.println("addrとaddr2は同じインスタンス");
-		      System.out.println("Local Host Name: " + addr.getHostName());
-		      System.out.println("IP Address     : " + addr.getHostAddress());
-		    } catch (UnknownHostException e) {
-		      e.printStackTrace();
-		    }
-
-
 		CartInfoDAO dao = new CartInfoDAO();
 
 		//暫定でセッション値セット//
@@ -39,8 +26,37 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 		//session.put("userId", "a");
 		//session.put("tempUserId", "a");
 
+
+		/*
+		loginFlgが存在しているか判定
+		*/
+		if((boolean) session.containsKey("loginFlg")){
+
+
+			if((boolean) session.get("loginFlg")){
+				for(CartInfoDTO dto: dao.showUserCartList(session.get("userId").toString())){
+					cartList.add(dto);
+				}
+
+			}else{
+				for(CartInfoDTO dto: dao.showTempUserCartList(session.get("tempUserId").toString())){
+					cartList.add(dto);
+				}
+			}
+
+		}else{
+			session.put("loginFlg", false);
+			for(CartInfoDTO dto: dao.showTempUserCartList(session.get("tempUserId").toString())){
+				cartList.add(dto);
+			}
+
+		}
+
+
+
+
 		//ログインユーザーのカート情報を引き出す
-		if(session.containsKey("loginFlg")){
+		/*if((boolean) session.get("loginFlg")){
 			for(CartInfoDTO dto: dao.showUserCartList(session.get("userId").toString())){
 				cartList.add(dto);
 				System.out.println("ログインユーザー");
@@ -50,7 +66,7 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 			for(CartInfoDTO dto: dao.showTempUserCartList(session.get("tempUserId").toString())){
 				cartList.add(dto);
 			}
-		}
+		}*/
 		//合計金額の計算
 		totalPrice = calcTotalPrice(cartList);
 
