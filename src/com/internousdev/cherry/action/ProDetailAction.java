@@ -51,7 +51,13 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 		/*if(!(session.containsKey("userId"))){
 			return ERROR;
  	}*/
+		/*if(!(session.containsKey("loginFlg"))){
+			session.put("loginFlg", false);
 
+			if(!(boolean) (session.get("loginFlg"))&&session.containsKey("userId")){
+				session.put("userId", session.get("tempUserId").toString());
+			}
+		}*/
 
 
 		//ここから、目標の商品がすでにカートに入っているかどうか確認

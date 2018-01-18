@@ -10,9 +10,23 @@
 <s:property value="pro_detail.product_name"/>の詳細ページ
 
 
+
 </title>
+
+
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
 <body>
+
+<!-- ヘッダー -->
+<jsp:include page="include_header.jsp" />
+
+
+<!-- メインコンテンツ -->
 
 <s:form action="PutProductIntoCartAction">
 	<s:hidden name="productId" value="%{pro_detail.product_id}"/>
@@ -49,6 +63,10 @@
 
 	<s:submit value="カートに追加"/>
 </s:form>
+
+<!-- フッター -->
+<jsp:include page="include_footer.jsp" />
+
 
 </body>
 </html>
