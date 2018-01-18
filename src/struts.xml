@@ -96,6 +96,7 @@
 			<result name="success">home.jsp</result>
 			<result name="error">login.jsp</result>
 			<result name="login">home.jsp</result>
+			<result name="kessai">destinationRegisterConfirm.jsp</result>
 		</action>
 		<action name="UserCreateAction" class="com.internousdev.cherry.action.UserCreateAction" method="execute">
 			<result name="success">userRegister.jsp</result>

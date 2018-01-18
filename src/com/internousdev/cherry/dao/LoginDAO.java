@@ -27,6 +27,11 @@ public class LoginDAO {
 			if(rs.next()) {
 				userInfoDTO.setUserId(rs.getString("user_id"));
 				userInfoDTO.setPassword(rs.getString("password"));
+				userInfoDTO.setFamilyNameKana(rs.getString("family_name_kana"));
+				userInfoDTO.setFirstNameKana(rs.getString("first_name_kana"));
+				userInfoDTO.setFamilyName(rs.getString("family_name"));
+				userInfoDTO.setFirstName(rs.getString("first_name"));
+				userInfoDTO.setEmail(rs.getString("email"));
 
 			}
 

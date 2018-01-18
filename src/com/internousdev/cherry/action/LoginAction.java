@@ -15,6 +15,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport implements SessionAware, ErrorMessageConstants {
 
+	private static final String KESSAI = "kessai";
+
 	/**
 	 * ユーザーID
 	 */
@@ -39,6 +41,17 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 	 * エラーメッセージ
 	 */
 	private ArrayList<String> errorMessageList = new ArrayList<>();
+
+	private int kessai;
+
+	private String familyNameKana;
+	private String firstNameKana;
+	private String familyName;
+	private String firstName;
+	private String email;
+	private String telNumber;
+	private String userAddress;
+
 
 	public String execute() throws SQLException {
 		String result = ERROR;
@@ -86,6 +99,19 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 				result = ERROR;
 			} else {
 				userInfoDTO = loginDAO.select(userId, password);
+
+
+				familyNameKana=userInfoDTO.getFamilyNameKana();
+				firstNameKana=userInfoDTO.getFirstNameKana();
+				familyName=userInfoDTO.getFamilyName();
+				firstName=userInfoDTO.getFirstName();
+				email=userInfoDTO.getEmail();
+				telNumber="データなし";
+//				telNumber=userInfoDTO.get;
+				userAddress="データなし";
+//				userAddress=userInfoDTO.get;
+
+
 				// ログイン判定
 				if (userId.equals(userInfoDTO.getUserId()) && password.equals(userInfoDTO.getPassword())) {
 					loginDAO.login(userInfoDTO);
@@ -95,6 +121,13 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 					// セッション情報の更新をする
 					session.put("userId", userInfoDTO.getUserId());
 					session.put("loginFlg", true);
+
+					System.out.println("kessai:"+kessai);
+					if(kessai==1){
+						System.out.println("LoginAction:kessaiは1");
+//						session.put("kessai", 1);
+						return KESSAI;
+					}
 				} else {
 					errorMessageList.add("入力されたパスワードが異なります。");
 					result = ERROR;
@@ -154,5 +187,86 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 	public void setErrorMessageList(ArrayList<String> errorMessageList) {
 		this.errorMessageList = errorMessageList;
 	}
+
+	public int getKessai() {
+		return kessai;
+	}
+
+
+	public void setKessai(int kessai) {
+		this.kessai = kessai;
+	}
+
+
+	public String getFamilyNameKana() {
+		return familyNameKana;
+	}
+
+
+	public void setFamilyNameKana(String familyNameKana) {
+		this.familyNameKana = familyNameKana;
+	}
+
+
+	public String getFirstNameKana() {
+		return firstNameKana;
+	}
+
+
+	public void setFirstNameKana(String firstNameKana) {
+		this.firstNameKana = firstNameKana;
+	}
+
+
+	public String getFamilyName() {
+		return familyName;
+	}
+
+
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getTelNumber() {
+		return telNumber;
+	}
+
+
+	public void setTelNumber(String telNumber) {
+		this.telNumber = telNumber;
+	}
+
+
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+
 
 }

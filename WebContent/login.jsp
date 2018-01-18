@@ -61,6 +61,7 @@
 							次回からIDの入力を省略
 						</p>
 						<br><br>
+						<s:hidden name="kessai" value="%{kessai}"/>
 						<div class="member_btn">
 							<button type="submit" class="">
 								<span>L O G I N</span>

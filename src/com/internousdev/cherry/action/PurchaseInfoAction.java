@@ -41,12 +41,16 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 	 */
 	private ArrayList<DestinationInfoDTO> destinationInfoListDTO = new ArrayList<DestinationInfoDTO>();
 
+
+	private int kessai;
+
+
 	/**
 	 * 決済情報取得メソッド
 	 */
 	public String execute() throws SQLException{
 		String result = ERROR;
-
+		System.out.println("PurchaseInfoAction--------------");
 		/**
 		 * 宛先情報取得メソッド
 		 */
@@ -62,6 +66,7 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 
 		} else if(!(boolean) session.get("loginFlg")) {
 			result=ERROR;
+			kessai=1;
 			return result;
 
 		} else {
@@ -77,14 +82,18 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 
 		}
 
-		if (cartInfoDTOList.size() > 0) {
-			result = SUCCESS;
+//		if (cartInfoDTOList.size() > 0) {
+//			System.out.println("kessaiは0");
+//			result = SUCCESS;
+//
+//		} else {
+//			System.out.println("kessaiを１");
+//			kessai=1;
+////			session.put("kessai",1);
+//			result = ERROR;
+//		}
 
-		} else {
-			result = ERROR;
-		}
-
-
+		System.out.println("-----------------------");
 
 		return result;
 
@@ -158,5 +167,16 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 		 */
 		public void setProductCount(int productCount) {
 			this.productCount = productCount;
+		}
+
+
+
+		public int getKessai() {
+			return kessai;
+		}
+
+
+		public void setKessai(int kessai) {
+			this.kessai = kessai;
 		}
 	}

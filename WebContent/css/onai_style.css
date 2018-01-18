@@ -99,7 +99,7 @@ input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,in
     padding: 8px 10px 10px 10px;
     text-decoration: none;
     color: #FFF;
-    background: #ec407ac9;
+    background: #f48fb1;
     transition: .4s;
     width: 433px;
     height: 36px;
@@ -109,7 +109,7 @@ input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,in
 	border-bottom: solid 2px #FFF;
 }
 .member_btn button:hover {
-    background: #ff0080;
+    background: #ec407aba;
 }
 
 .hissu{
