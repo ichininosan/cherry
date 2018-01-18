@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -33,9 +32,23 @@
 			</s:url>
 
 			<s:a href="%{url}">
+
+							<s:if test="category_id == 2">
+					<span class="category orange">&nbsp;&nbsp;本</span>
+				</s:if>
+				<s:if test="category_id == 3">
+					<span class="category blue">&nbsp;&nbsp;家電&amp;パソコン</span>
+				</s:if>
+				<s:if test="category_id == 4">
+					<span class="category green">&nbsp;&nbsp;おもちゃ&amp;ゲーム</span>
+				</s:if>
+
 				<div><img src='<s:property value="image_file_name"/>' alt="画像なし"/></div>
-					<p class="name"><s:property value="product_name"/></p>
-					<p class="price">\<span><s:property value="price"/></span></p>
+
+
+
+				<p class="name"><s:property value="product_name"/></p>
+				<p class="price">\<span><s:property value="price"/></span></p>
 			</s:a>
 		</li>
 		</s:iterator>
@@ -56,7 +69,7 @@ $(function() {
 	if(arra_w < arra_h || arra_w == arra_h){
 		$('.home .top_main ul li img').eq(i).css('max-height','245px');
 	}else{
-		$('.home .top_main ul li img').eq(i).css('max-width','281px');
+		$('.home .top_main ul li img').eq(i).css('max-width','288px');
 	}
 	};	//配列をまわす
 
