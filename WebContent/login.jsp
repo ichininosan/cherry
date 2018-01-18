@@ -10,6 +10,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 <title>ログイン画面</title>
 
 </head>
@@ -33,7 +34,7 @@
 	          			<s:property value="errorMessageList"/>
 	          		</s:if>
           		</div>
-
+				<br>
 				<div class="member_form">
 					<s:form action="LoginAction" theme="simple" id="LoginForm">
 
@@ -47,7 +48,9 @@
 
 						<br>
 						<div class="member_form_title">
-							パスワード<br>
+							パスワード
+							<a href='<s:url action="ResetPasswordAction"/>'>パスワード再設定</a>
+							<br>
 						</div>
 						<div class="member_textbox">
 							<s:password name="password"/>
@@ -57,13 +60,13 @@
 							<s:checkbox name="saveLogin" />
 							次回からIDの入力を省略
 						</p>
-						<br>
+						<br><br>
 						<div class="member_btn">
-							<button type="submit" class="">ログイン</button>
+							<button type="submit" class="">
+								<span>L O G I N</span>
+							</button>
 						</div>
-						<br>
 						<div>
-					<a href='<s:url action="ResetPasswordAction"/>'>パスワード再設定</a>
 				</div>
 					</s:form>
 				</div>

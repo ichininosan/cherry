@@ -64,12 +64,22 @@ h2{
 
 
 .all_delete{
+	width: 100%;
+	height: 40px;
+	border-top: solid 1px;
 	text-align: center;
+	margin-top: 30px;
+}
+
+#all_delete{
+	margin-top: 20px;
 }
 
 .back{
+	margin-top: 30px;
 	text-align: center;
 	margin: 20px;
+	background: #f48fb12b;
 }
 
 
@@ -78,6 +88,7 @@ h2{
     width: 95%;
     height: 286px;
     margin: 0 auto;
+
 }
 
 .date{
@@ -157,20 +168,22 @@ h2{
 #deletePart{
 	position: relative;
     top: -120px;
-    width: 50px;
+    width: 56px;
     height: 30px;
 
     display: inline-block;
-    padding: 0.3em 1em;
+    padding: -0.7em 1em;
     text-decoration: none;
     color: #67c5ff;
-    border: solid 2px #67c5ff;
+    font-size: 16px;
+    background-color: #fff;
+    border: solid 2px #F48FB1;
     border-radius: 3px;
     transition: .4s;
 }
 
 #deletePart:hover{
-	background: #67c5ff;
+	background: #F48FB1;
     color: white;
 }
 

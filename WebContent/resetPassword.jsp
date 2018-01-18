@@ -14,26 +14,27 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sato_style.css">
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 </head>
-
-<body class="home">
+<body>
 
 <!-- ヘッダー -->
 <jsp:include page="include_header.jsp" />
 
 <!-- メインコンテンツ -->
 	<div class="box">
-			<h1>パスワード再設定</h1>
-		<div>
+		<div class="title">パスワード再設定</div>
 			<table>
-			<s:form action="ResetPasswordConfirmAction">
 
-				<!-- ここから入力エラーメッセージ表示 -->
-				<h5>
+			<!-- ここから入力エラーメッセージ表示 -->
+
 					<s:iterator value="errMsgList">
 						<s:property/>
 					</s:iterator>
-				</h5>
-				<!-- ここまで入力エラーメッセージ表示 -->
+
+
+			<!-- ここまで入力エラーメッセージ表示 -->
+
+			<s:form action="ResetPasswordConfirmAction">
+
 
 				<tr>
 					<td>
@@ -62,7 +63,6 @@
 				<s:submit value="登録" />
 			</s:form>
 			</table>
-		</div>
 	</div>
 
 

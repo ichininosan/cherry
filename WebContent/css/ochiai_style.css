@@ -121,6 +121,29 @@ td.change{
 -------------------------------------*/
 
 .btnn {
+    display: inline-block;
+    float: left;
+    text-decoration: underline;
+    /* color: chocolate; */
+    width: 176px;
+    height: 27px;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    /* overflow: hidden; */
+    background-image: -webkit-linear-gradient(45deg, #709dff 0%, #91fdb7 100%);
+    background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+    transition: .4s;
+
+}
+
+.btnn:hover{
+  -webkit-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
+/*.btnn {
   width:120px;
   position: relative;
   z-index: 2;
@@ -132,8 +155,13 @@ td.change{
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
+*/
+.bttn a{
+	  color:gray;
+	  background:url(/cherry/img/logo.png) no-repeat;
+}
 
-.btnn:hover {
+/*.btnn:hover {
   color: #333;
 }
 
@@ -153,7 +181,7 @@ td.change{
   -webkit-transform: rotateX(-180deg);
   transform: rotateX(-180deg);
 }
-
+*/
 /*-------------------------------------
 	マウスオン
 -------------------------------------*/

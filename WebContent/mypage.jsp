@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ochiai_style.css">
-	<link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
+
 <title>マイページ画面</title>
 </head>
 <body>
@@ -75,14 +75,21 @@
                    </s:iterator>
 				   </tbody>
  			   </table>
- 			    <div class="btnn">
-				<a href="/cherry/PurchaseHistoryAction" type="btnn">注文履歴確認</a>
-			  </div>
+
+ 			    <div class="button">
+					  <div class="btnn">
+					     <a href="/cherry/PurchaseHistoryAction"><span>Purchse History</span></a>
+					  </div>
+ 			      <!-- -->
+ 			      </div>
+ 			    </div>
+
+
               </div>
             </div>
            </div>
 
-	</div>
+
 
 
 

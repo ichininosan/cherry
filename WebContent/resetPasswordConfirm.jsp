@@ -24,8 +24,9 @@
 <!-- メインコンテンツ -->
 	<div class="box">
 	  <div class="sectionHeader">
-			<h1>確認画面</h1>
+			<h1>確認画面</h1><br>
 	  </div>
+	  <br>
 		<div class="contBody">
 			<h3>登録する内容は以下でよろしいですか。</h3>
 
@@ -47,11 +48,12 @@
 							<s:property value="s" escape="false" />
 						</td>
 					</tr>
-					</table>
+				</table>
+					<div class="btnn">
+					<s:submit value="完了" />
+					</div>
 				</s:form>
-			   <div class="btnn">
-				  <s:submit value="完了" />
-			   </div>
+
 		</div>
 	</div>
 
