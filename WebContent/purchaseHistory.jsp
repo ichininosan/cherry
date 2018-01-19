@@ -47,10 +47,6 @@
 
 
 
-
-
-
-
 			<!-- 全件削除ボタン -->
 				<div class="all_delete">
 					<s:form action = "PurchaseHistoryAction">
@@ -100,6 +96,8 @@
            				 	発売日：<fmt:parseDate var="date2" value="${releaseDate}" pattern="yyyy-MM-dd HH:mm:ss.SS" /><fmt:formatDate value="${date2}" pattern="yyyy年M月d日" />
            				 </div>
         			</div>
+
+
         			<div class="delete">
 					 	<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
@@ -108,9 +106,8 @@
 								<s:submit id="deletePart" value="×削除" method="deletePart"/>
 							</s:form>
 						<!--  履歴個別削除ボタンここまで-->
-				 </div>
-			</div>
-<!-------------------------------------------------------------- jklfsdg -->
+					 </div>
+				</div>
     		</div>
 
     			<!-- test -->
