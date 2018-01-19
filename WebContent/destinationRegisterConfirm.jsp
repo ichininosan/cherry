@@ -20,34 +20,34 @@
 
 
 <!-- ここからメイン -->
+<br><br>
 <h2 class="title">宛先情報確認</h2>
 
 <s:form action="DestinationRegisterCompleteAction" >
 
 						<div class="member-form-title">
-							<br>ふりがな:
+							<br><br>ふりがな　　　　:
 							<s:property value="familyNameKana" />
 							<s:hidden name="familyNameKana" value="%{familyNameKana}" />
 							<s:property value="firstNameKana" />
 							<s:hidden name="firstNameKana" value="%{firstNameKana}" />
-							<br>名前:
+							<br><br>名前　　　　　　:
 							<s:property value="familyName" />
 							<s:hidden name="familyName" value="%{familyName}" />
 							<s:property value="firstName" />
 							<s:hidden name="firstName" value="%{firstName}" />
-							<br>メールアドレス:
+							<br><br>メールアドレス　:
 							<s:property value="email" />
 							<s:hidden name="email" value="%{email}" />
-							<br>電話番号:
+							<br><br>電話番号　　　　:
 							<s:property value="telNumber" />
 							<s:hidden name="telNumber" value="%{telNumber}" />
-							<br>住所:
+							<br><br>住所　　　　　　:
 							<s:property value="userAddress" />
 							<s:hidden name="userAddress" value="%{userAddress}" />
-							<br>
-							<br>
+							<br><br><br>
 							<div class="member_btn">
-								<button type="submit" class="">確定</button>
+								<button type="submit" class="">確 定</button>
 							</div>
 						</div>
 					</s:form>

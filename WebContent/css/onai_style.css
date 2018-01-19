@@ -100,7 +100,7 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
     padding: 8px 10px 10px 10px;
     text-decoration: none;
     color: #FFF;
-    background: #f48fb1;
+    background: #f48fb1d4;;
     transition: .4s;
     width: 433px;
     height: 36px;
@@ -111,10 +111,11 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
 	border-bottom: solid 2px #FFF;
 }
 .member_btn button:hover {
-    background: #ec407acc;
-    width:477px;
-    margin-left:-13px;
+    background: #ec407ac4;
+    width:470px;
+    margin-left:-10px;
     letter-spacing: 1px;
+    font-size:17px;
 }
 
 .hissu{
@@ -159,7 +160,7 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
 	position: relative;
 	display: inline-block;
 	margin: 10px;
-	padding: 10px 30px;
+	padding: 12px 30px;
 	min-width: 120px;
 	max-width: 100%;
 	font-size: 15px;
@@ -180,11 +181,20 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
 .nomember_btn a {
 	margin: 0;
 	padding: 0;
-	color:#555;
+	color: #1f1f1fa6;
+    font-weight: bold;
 }
 
 .member h5{
 	font-weight:bold;
+}
+
+.member-form-title{
+	width:510px;
+	margin:auto;
+	padding-left: 12px;
+    font-size: 15px;
+    letter-spacing: 1px;
 }
 
 /* フッター */
