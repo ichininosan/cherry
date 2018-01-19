@@ -45,16 +45,14 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 	private int kessai;
 
 
-	/**
-	 * 決済情報取得メソッド
-	 */
+
 	public String execute() throws SQLException{
 		String result = ERROR;
 		System.out.println("PurchaseInfoAction--------------");
+
 		/**
 		 * 宛先情報取得メソッド
 		 */
-
 		if((boolean) session.get("loginFlg")){
 		DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 		destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
@@ -74,6 +72,9 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 
 		}
 
+		/**
+		 * 決済情報取得メソッド
+		 */
 		CartInfoDAO cartInfoDAO = new CartInfoDAO();
 		cartList = cartInfoDAO.showUserCartList(session.get("userId").toString());
 

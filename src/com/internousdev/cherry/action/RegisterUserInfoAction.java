@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dao.UserInfoDAO;
 import com.internousdev.cherry.dto.UserInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
@@ -48,7 +49,10 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 
 		if (dao.registerUser(dto)) {
 			session.put("userId", userId);
-			session.put("logined", true);
+			session.put("loginFlg", true);
+			//カーとの情報を引き継ぐ
+			CartInfoDAO cartInfoDAO = new CartInfoDAO();
+			cartInfoDAO.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
 
 			return SUCCESS;
 

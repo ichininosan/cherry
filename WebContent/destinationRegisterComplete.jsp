@@ -24,7 +24,7 @@
 	<jsp:include page="include_header.jsp" />
 <!-- ヘッダーここまで -->
 
-<h2 class="title">宛先情報確認</h2>
+<h2 class="title">宛先情報完了</h2>
 
 <div class="main">
 	<h3>宛先登録しました</h3>

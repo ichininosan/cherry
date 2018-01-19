@@ -23,7 +23,10 @@
 		<br><br>
 		<div class="nomember_btn">
 			<a href='<s:url action="GoHomeAction"/>'>Home画面へ</a>
+			<br>
+			<a href='<s:url action="GoCartAction"/>'>カート画面へ</a>
 		</div>
+
 	</div>
 	<!-- フッター -->
 <jsp:include page="include_footer.jsp" />
