@@ -43,6 +43,7 @@
 
 .member_form_title{
     padding-left: 12px;
+    font-size: 15px;
 }
 
 .member_form p{
@@ -51,13 +52,18 @@
 }
 
 .member_form a{
-	color:#e91e63;
-	font-size: 14px;
+	color: #ec407ac9;
+    font-size: 15px;
+    font-weight: bold;
     padding-left: 223px;
 }
 
 .member_form_radio{
 	margin: 14px;
+}
+
+.member_form_radio userRegister_sex1{
+	margin-left: 46px;
 }
 
 .nomember{
@@ -109,7 +115,7 @@ input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,in
 	border-bottom: solid 2px #FFF;
 }
 .member_btn button:hover {
-    background: #ec407aba;
+    background: #ec407ac2;
 }
 
 .hissu{
