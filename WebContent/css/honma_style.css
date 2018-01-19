@@ -17,7 +17,6 @@ img{
 	margin: auto;
 }
 body{
-	margin-bottom: 100px;
 	height: 100%;
 }
 
@@ -104,6 +103,10 @@ h2{
 	color: #F48FB1;
 	transition: 0.4s;
 }
+
+.material-icons{
+	vertical-align: -4px;
+}
 /*----------------移植CSS--------------------------------------*/
 /*---------------------------------
            全部削除ボタン！
@@ -135,8 +138,9 @@ h2{
 ----------------------------------*/
 .main_content {
     width: 100%;
-	min-height: 220px;
+	min-height: 240px;
     margin: 0 auto;
+    margin-top:23px;
 
 }
 

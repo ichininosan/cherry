@@ -85,9 +85,11 @@
 		<!-- 個数 --><div class="count">
 							(購入数:  <s:property value="productCount" />点)
 						</div>
+		<%-- <!-- 小計 --><div class="subtotal">
+						小計
+							${price * productCount}
+						</div> --%>
 				</div>
-
-
 					 <div class="comp_info">
 		<!-- 発売会社 --><div class="company">
 							発売会社：<s:property value="release_company" />
@@ -95,9 +97,10 @@
 
 		<!-- 年月日 --><div class="release_date">
 							発売日：<%-- <s:date name="releaseDate" format="yyyy年MM月dd日" /> --%>
-									<fmt:parseDate var="date2" value="${releaseDate}" pattern="yyyy-MM-dd HH:mm:ss.SS" /><fmt:formatDate value="${date2}" pattern="yyyy年M月d日" />
+									<fmt:parseDate var="date2" value="${release_date}" pattern="yyyy-MM-dd HH:mm:ss.SS" /><fmt:formatDate value="${date2}" pattern="yyyy年M月d日" />
 						</div>
 					</div>
+
 
 
 			<!-- 削除ボタンここから -->
