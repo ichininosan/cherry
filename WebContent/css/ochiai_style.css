@@ -59,9 +59,18 @@
     margin-top: 10px;
     text-align: center;
 }
-.submit{
-	width:100%;
-	margin:20px 60px 0 60px;
+
+
+#ph {
+	width:200px;
+	height:100px;
+
+}
+
+#gh {
+	width:200px;
+	height:100px;
+
 }
 
 /*-------------------------------------

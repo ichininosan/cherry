@@ -10,8 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ochiai_style.css">
-	<link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
 
 <title>決済完了画面</title>
 </head>
@@ -23,13 +21,14 @@
 
 <div class="main">
   <div class="message">
-     <h2 >購入が完了いたしました</h2>
+  <br><br><br>
+     <h1 >購入が完了いたしました</h1>
   </div>
-  <div class="submit">
-      <a href='<s:url action="MyPageAction"/>' class="button">購入履歴</a>
-      <a href='<s:url action="HomeAction"/>' class="s_button">HOME</a>
-  </div>
-</div>
+ <!-- <div class="submit">-->
+        <div id="ph"><a href='<s:url action="PurchaseHistoryAction"/>' class="button">購入履歴</a></div>
+        <div id="gh"><a href='<s:url action="GoHomeAction"/>' class="button">HOME</a></div>
+  <!--</div>-->
+ </div>
 
 <!-- フッター -->
 <jsp:include page="include_footer.jsp" />
