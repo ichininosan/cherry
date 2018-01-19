@@ -64,7 +64,7 @@
 			    </td>
 			    </tr>
 			    <tr>
-			    <th>カテゴリー</th>
+			    <th>商品詳細</th>
 			    <td>
 			    <s:hidden name="productDescription" value="%{pro_detail.product_description}"/>
                 <s:property value="pro_detail.product_description"/>
@@ -83,24 +83,9 @@
                 <s:property value="pro_detail.release_company"/></td>
 			    </tr>
 			    <tr>
-			    <th>購入個数:</th>
+			    <th>購入個数</th>
 			    <td><s:select list="count" name="productCount" value="1" /></td>
 			    </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			<%-- 	<br><br>
 				<s:hidden name="productId" value="%{pro_detail.product_id}" />
 				<s:hidden name="duplicationFlg" value="%{duplicationFlg}" />
@@ -111,14 +96,11 @@
 				<input type="submit" value="カートに追加">
 				</s:else> --%>
 				<tr>
-				<td class="cartbutton">
-				</td>
-				<td class="cartbutton">
-				<s:submit value="カートに追加"/>
-				</td>
-				</tr>
 				</table>
 			</div>
+				<div class="cartbutton">
+					<s:submit class="cartB" value="カートに追加"/>
+				</div>
 			</div>
 		</s:form>
 </div>

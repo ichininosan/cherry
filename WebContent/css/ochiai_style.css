@@ -248,23 +248,12 @@ body {
 	pro-detail
 -------------------------------------*/
 .leftCol{
-	width:70%;
+	width:55%;
 	float:left;
 	display:inline-block;
-	height:700px;
-}
-.leftCol h1{
-	line-height: 70px;
-
-}
-.rightCol h1{
-	line-height: 70px;
-
-
 }
 .rightCol{
-	width:30%;
-	height:700px;
+	width:40%;
 	display:inline-block;
 }
 .underCol{
@@ -272,21 +261,55 @@ body {
 	height:700px;
 	display:inline-block;
 }
+.leftCol h1{
+	line-height: 70px;
+    position: relative;
+    padding: 1.25em 0;
+    margin-left: 40px;
+}
+
+.leftCol h1:after {
+	content: "";
+	display: block;
+	height: 4px;
+	background: -moz-linear-gradient(to right, rgb(230, 90, 90), transparent);
+	background: -webkit-linear-gradient(to right, rgb(230, 90, 90), transparent);
+	background: linear-gradient(to right, rgb(230, 90, 90), transparent);
+}
+.rightCol h1{
+	line-height: 70px;
+    position: relative;
+    padding: 6.25em 0;
+}
+
+.rightCol h1:after {
+	content: "";
+	display: block;
+	height: 4px;
+	background: -moz-linear-gradient(to right, rgb(230, 90, 90), transparent);
+	background: -webkit-linear-gradient(to right, rgb(230, 90, 90), transparent);
+	background: linear-gradient(to right, rgb(230, 90, 90), transparent);
+}
+
+
 .table{
-	width:325px;
+	width:400px;
 }
 .table th{
     background: #ffe6ea;
     vertical-align: middle;
     text-align: left;
-    width: 80pxpx;
+    width: 75px;
     overflow: visible;
     position: relative;
     color: #4d4545;
     font-weight: normal;
     font-size: 15px;
 }
+
 .cartbutton{
-	textalign:center;
 	background-color: white;
+    width: 40%;
+    float: right;
+    margin-top: 10px;
 }
