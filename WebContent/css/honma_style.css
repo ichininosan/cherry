@@ -75,13 +75,9 @@ h2{
 }
 
 .back{
-	margin-top: 30px;
 	text-align: center;
-	margin: 20px;
 	border-top: solid 2px;
 	border-top-color: #F48FB1;
-
-	margin: 20px 0 20px 40px;
 	margin-top: 20px;
 	font-weight: bold;
 	font-size: 1.1rem;
@@ -94,9 +90,43 @@ h2{
 	color: #F48FB1;
 	transition: 0.4s;
 }
-
-
+/*トップにもどるやつ*/
+#pageTop{
+    text-align: center;
+    color: #111;
+    padding: 15px 0;
+    line-height: 19px;
+    font-size: 13px;
+}
 /*----------------移植CSS--------------------------------------*/
+/*---------------------------------
+           全部削除ボタン！
+----------------------------------*/
+.all_delete{
+
+}
+
+#all_delete{
+	padding: -0.7em 1em;
+    text-decoration: none;
+    color: #3F51B5;
+    /*font-weight: bold; */
+    font-size: 16px;
+    background-color: #fff;
+    border: solid 2px #F48FB1;
+    border-radius: 3px;
+    transition: .4s;
+}
+
+#all_delete:hover{
+	/* background: #F48FB1; */
+	background: #FFC107;
+    color: #111111;
+}
+
+/*---------------------------------
+           メイン
+----------------------------------*/
 .main_content {
     width: 100%;
 	min-height: 220px;
@@ -176,7 +206,7 @@ h2{
 
 }
 /*---------------------------------
-            削除ボタン
+            個別削除ボタン！
 ----------------------------------*/
 .delete{
 	width: 50px;
