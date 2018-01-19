@@ -21,7 +21,7 @@
 
 
 .title{
-	width: 471px;
+	width: 505px;
 	margin: auto;
 	font-size: 20px;
 	padding: 0.25em 0.5em;
@@ -35,7 +35,7 @@
 
 .member_form{
 	width:450px;
-	padding:25px 25px 40px 25px;
+	padding:35px 45px 45px 45px;
 	margin:auto;
 	background: #f48fb12b;
 	border-radius: 5px;
@@ -189,13 +189,7 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
 	font-weight:bold;
 }
 
-.member-form-title{
-	width:510px;
-	margin:auto;
-	padding-left: 12px;
-    font-size: 15px;
-    letter-spacing: 1px;
-}
+
 
 /* フッター */
 footer{

@@ -9,6 +9,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/kudo_style.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 
 <title>購入情報確認画面</title>
 </head>
@@ -22,9 +23,10 @@
 <!-- ここからメイン -->
 <br><br>
 <h2 class="title">宛先情報確認</h2>
-
+<br><br>
 <s:form action="DestinationRegisterCompleteAction" >
 
+					<div class="member_form">
 						<div class="member-form-title">
 							<br><br>ふりがな　　　　:
 							<s:property value="familyNameKana" />
@@ -50,6 +52,7 @@
 								<button type="submit" class="">確 定</button>
 							</div>
 						</div>
+					</div>
 					</s:form>
 <!-- メインここまで -->
 
