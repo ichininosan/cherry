@@ -30,9 +30,11 @@
 					<s:if test="message !=null">
 	          			<strong><s:property value="message"/></strong>
 	          		</s:if>
-					<s:if test="errorMessageList !=null">
-	          			<s:property value="errorMessageList"/>
-	          		</s:if>
+					<s:iterator value="errorMessageList">
+	          			<s:div>
+	          				<s:property/>
+	          			</s:div>
+	          		</s:iterator>
           		</div>
 				<br>
 				<div class="member_form">

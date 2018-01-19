@@ -14,7 +14,7 @@
 /* メインコンテンツ */
 .main{
 	width: 100%;
-	height: 600px;
+	height: 900px;
     text-align: center;
     vertical-align:-50%;
 
@@ -79,7 +79,8 @@
 	text-align:center;
 }
 
-input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,input#userRegister_firstName,input#userRegister_familyNameKana,input#userRegister_firstNameKana,input#userRegister_userId,input#userRegister_password,input#userRegister_email{
+input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,input#userRegister_firstName,input#userRegister_familyNameKana,input#userRegister_firstNameKana,input#userRegister_userId,input#userRegister_password,input#userRegister_email,
+input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfirmAction_firstName,input#DestinationRegisterConfirmAction_familyNameKana,input#DestinationRegisterConfirmAction_firstNameKana,input#DestinationRegisterConfirmAction_telNumber,input#DestinationRegisterConfirmAction_userAddress,input#DestinationRegisterConfirmAction_email{
 	width: 400px;
     margin: 9px;
     border: none;

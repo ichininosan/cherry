@@ -8,6 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 <title>ユーザー情報入力画面</title>
 </head>
 <body>
@@ -18,9 +20,8 @@
 
 <!-- ここからメイン -->
 <div class="main">
-	<br>
-	<h2 class="title">新規宛先情報入力</h2>
-	<br>
+	<br><br>
+	<div class="title">新規宛先情報入力</div>
 	<br>
 	<div class="register_box">
 		<div class="member">
@@ -29,11 +30,13 @@
 				<!-- ここから入力エラーメッセージ表示 -->
 				<h5>
 					<s:iterator value="errMsgList">
-						<s:property/>
+						<s:div align="center">
+							<s:property />
+						</s:div>
 					</s:iterator>
 				</h5>
 				<!-- ここまで入力エラーメッセージ表示 -->
-
+				<br>
 				<h3>下記に必要事項を記入してください</h3>
 					<div class="member_form">
 						<div class="member_form_title">姓</div>
@@ -76,10 +79,10 @@
 						<div class="member_form_text">
 							<s:textfield name="userAddress" value="%{userAddress}"/>
 						</div>
-						<br>
+						<br><br>
 
 						<div class="member_btn">
-							<button type="submit" class="">登録情報確認</button>
+							<button type="submit" class="">登 録 情 報 確 認</button>
 						</div>
 					</div>
 			</s:form>
