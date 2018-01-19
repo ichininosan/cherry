@@ -141,7 +141,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 						CartInfoDAO dao=new CartInfoDAO();
 						DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 						dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
-						cartList = dao.aquireUserCartInfo(session.get("userId").toString());
+						cartList = dao.showUserCartList(session.get("userId").toString());
 						destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
 						System.out.println("LoginAction:kessaiは1");
 //						session.put("kessai", 1);
