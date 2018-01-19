@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<!-- 金額、日付表示カスタムタグ -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +11,11 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/settlement_style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
+
+
 
 <title>決済確認画面</title>
 </head>
@@ -18,6 +25,7 @@
 	<jsp:include page="include_header.jsp" />
 <!-- ヘッダーここまで -->
 
+
 <!-- ここからメイン -->
 <div id="main">
 	<br>
@@ -25,38 +33,76 @@
 	<br>
 
 	<s:form action="PurchaseCompleteAction">
-		<table border="1" style="width: 1100px; background-color: #f5f5f5; text-align: center;">
-		<caption>購入情報は以下になります</caption>
-		<s:iterator value="cartList">
+		<p class="message">購入情報は以下になります</p>
+		<br>
 
-			<thead style="background-color: #F48FB1;">
-				<tr>
-					<th></th>
-					<th>商品名</th>
-					<th>ふりがな</th>
-					<th>値段</th>
-					<th>購入個数</th>
-					<th>発売会社名</th>
-					<th>発売年月日</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><img src='<s:property value="image_file_name"/>' alt="画像なし"/></td>
-					<td><s:property value="product_name" /></td>
-					<td><s:property value="product_name_kana" /></td>
-					<td><s:property value="price" />円</td>
-					<td><s:property value="productCount" /></td>
-					<td><s:property value="release_company" /></td>
-					<td><s:date name="releaseDate" format="yyyy年MM月dd日" /></td>
-				</tr>
-			</tbody>
-		</s:iterator>
-		</table>
+	<s:iterator value="cartList">
+		<div class="border">
+		</div>
+
+		<!-- 画像 -->
+		<div class="main_content clearfix_kudo" style="overflow: hidden;">
+
+			<div class="pro_img">
+				<s:url id="url" action="ProDetailAction"><s:param name="id" value="productId" /></s:url>
+					<s:a href="%{url}">
+						<img src='<s:property value="image_file_name"/>' alt="画像なし"/>
+					</s:a>
+			</div>
+
+			<div class="pro_text">
+				<div class="name">
+					<s:url id="url" action="ProDetailAction"><s:param name="id" value="productId" /></s:url>
+						<s:a href="%{url}">
+							<!-- ふりがな -->
+							<div class="kana">
+								<s:property value="product_name_kana" />
+							</div>
+
+							<!-- 商品名 -->
+							<div class="pro_name">
+								商品名:<s:property value="product_name" />
+							</div>
+						</s:a>
+				</div>
+
+
+			<div class="price_count">
+		    	<!-- 値段 -->
+		    	<div class="price">
+					価格:\<fmt:formatNumber value="${price}" />
+				</div>
+
+				<!-- 個数 -->
+				<div class="count">
+					(購入数:  <s:property value="productCount" />点)
+				</div>
+			</div>
+
+
+			<div class="comp_info">
+				<!-- 発売会社 -->
+				<div class="company">
+					発売会社：<s:property value="release_company" />
+				</div>
+
+				<!-- 年月日 -->
+				<div class="release_date">
+					発売日：
+					<fmt:parseDate var="date2" value="${releaseDate}" pattern="yyyy-MM-dd HH:mm:ss.SS" /><fmt:formatDate value="${date2}" pattern="yyyy年M月d日" />
+				</div>
+			</div>
+		</div>
+		</div>
+	</s:iterator>
+		<div class="border">
+		</div>
+
 		<br>
 		<br>
 		<div class="totalprice">
-			合計金額:<s:property value="totalPrice"/><span>円</span>
+			合計金額:\
+			<fmt:formatNumber value="${totalPrice}" />
 		</div>
 		<br>
 
