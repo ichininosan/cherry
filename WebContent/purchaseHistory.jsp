@@ -47,28 +47,14 @@
 
 
 
-
-
-
-
-					<!-- 全件削除ボタン -->
-			<div class="all_delete">
-				<s:form action = "PurchaseHistoryAction">
-					<input type = "hidden" name="deleteFlg" value= "1">
-					<s:submit id="all_delete" value="履歴をすべて削除" method="delete" />
-				</s:form>
-			</div>
+			<!-- 全件削除ボタン -->
+				<div class="all_delete">
+					<s:form action = "PurchaseHistoryAction">
+						<input type = "hidden" name="deleteFlg" value= "1">
+						<s:submit id="all_delete" value="履歴をすべて削除" method="delete" />
+					</s:form>
+				</div>
 			<!-- 全件削除ボタンここまで -->
-
-
-
-
-
-
-
-
-
-
 
 		<!-- リストに応じたトップメッセージここまで -->
 
@@ -110,6 +96,8 @@
            				 	発売日：<fmt:parseDate var="date2" value="${releaseDate}" pattern="yyyy-MM-dd HH:mm:ss.SS" /><fmt:formatDate value="${date2}" pattern="yyyy年M月d日" />
            				 </div>
         			</div>
+
+
         			<div class="delete">
 					 	<!--  履歴個別削除ボタン-->
 							<s:form action = "PurchaseHistoryAction">
@@ -118,9 +106,8 @@
 								<s:submit id="deletePart" value="×削除" method="deletePart"/>
 							</s:form>
 						<!--  履歴個別削除ボタンここまで-->
-				 </div>
-			</div>
-<!-------------------------------------------------------------- jklfsdg -->
+					 </div>
+				</div>
     		</div>
 
     			<!-- test -->
@@ -143,6 +130,9 @@
 		</div>
 <!-- ページリンクここまで -->
 
+<!-- トップに戻れる！ -->
+ 	<p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i> ＞トップへ＜ </a></p>
+<!-- トップに戻れるここまで -->
 		</div>
 	</div>
 <!-- メインここまで -->
