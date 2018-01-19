@@ -49,16 +49,14 @@
 
 			<s:iterator value="cartList">
 
-			<div class="date">
-            			<p>注文日</p>
-            			<p>わああああああああああああああ</p>
+			<div class="border">
             		</div>
 
 	<div class="main_content clearfix_hon">
 		<!-- 画像 --><div class="pro_img">
 						<s:url id="url" action="ProDetailAction"><s:param name="id" value="productId" /></s:url>
 							<s:a href="%{url}">
-								<img class="pro_img" src='<s:property value="image_file_name"/>' alt="画像なし"/>
+								<img src='<s:property value="image_file_name"/>' alt="画像なし"/>
 							</s:a>
 					</div>
 
@@ -109,7 +107,11 @@
 			<!-- 削除ここまで -->
 		</div>
 				</div>
+
+
 			</s:iterator>
+			<div class="border">
+            		</div>
 		</s:else>
 	</div>
 
