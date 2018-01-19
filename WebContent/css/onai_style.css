@@ -17,16 +17,17 @@
 	height: 600px;
     text-align: center;
     vertical-align:-50%;
+
 }
 
 
 .title{
 	width: 471px;
-    margin: auto;
-    font-size: 20px;
-    padding: 0.25em 0.5em;
-    background: transparent;
-    border-left: solid 10px #f48fb1;
+	margin: auto;
+	font-size: 20px;
+	padding: 0.25em 0.5em;
+	background: transparent;
+	border-left: solid 10px #f48fb1;
 }
 
 .error{
@@ -39,11 +40,13 @@
 	padding:25px 25px 40px 25px;
 	margin:auto;
 	background: #f48fb12b;
+	border-radius: 4px;
 }
 
 .member_form_title{
     padding-left: 12px;
     font-size: 15px;
+    letter-spacing: 1px;
 }
 
 .member_form p{
@@ -67,15 +70,13 @@
 }
 
 .nomember{
-	width:480px;
+	width:340px;
 	margin:auto;
 	font-size:16px;
-
+	    letter-spacing: 1px;
 }
-
-.nomember_btn a{
-	color:#e91e63;
-	margin-top:3px;
+.nomember p{
+	text-align:center;
 }
 
 input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,input#userRegister_firstName,input#userRegister_familyNameKana,input#userRegister_firstNameKana,input#userRegister_userId,input#userRegister_password,input#userRegister_email{
@@ -90,12 +91,6 @@ input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,in
     height: 0;
 }
 
-
-.kan{
-	font-size:50px;
-	font-weight:bold;
-	padding: 58px 0 8px 0;
-}
 .member_btn button{
 	border: none;
     position: relative;
@@ -110,16 +105,20 @@ input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,in
     width: 433px;
     height: 36px;
     margin-left: 10px;
+    border-radius: 4px;
 }
 .member_btn button>span{
 	border-bottom: solid 2px #FFF;
 }
 .member_btn button:hover {
-    background: #ec407ac2;
+    background: #ec407acc;
+    width:477px;
+    margin-left:-13px;
+    letter-spacing: 1px;
 }
 
 .hissu{
-	font-size: 13px;
+	font-size: 11px;
     background-color: red;
     width: 30px;
     text-align: center;
@@ -128,8 +127,62 @@ input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,in
     color: white;
     border-radius: 4px;
     height: 10px;
-    margin-left: 7px;
+    margin-left: 14px;
 }
+
+.heart {
+	font-size: 80px;
+	color: #f8bbd0;
+  margin: 60px 0 0
+}
+.heart:hover {
+  -webkit-animation: heart-anim 1s linear .3s;
+  animation: heart-anim 1s linear .3s;
+}
+
+
+/* Animation setting */
+@-webkit-keyframes heart-anim {
+  to {
+    opacity: 0;
+    -webkit-transform: scale(50);
+  }
+}
+@keyframes heart-anim {
+  to {
+    opacity: 0;
+    transform: scale(50);
+  }
+}
+
+.nomember_btn {
+	position: relative;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px 30px;
+	min-width: 120px;
+	max-width: 100%;
+	font-size: 15px;
+	background: #f8bbd069;
+	border-radius: 4px;
+	margin-left:20px;
+}
+
+.nomember_btn:before{
+	content: "";
+	position: absolute;
+	top: -30px;
+	left:10px;
+	border: 15px solid transparent;
+	border-bottom: 15px solid #f8bbd069;
+}
+
+.nomember_btn a {
+	margin: 0;
+	padding: 0;
+	color:#555;
+}
+
 
 /* フッター */
 footer{

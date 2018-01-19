@@ -17,13 +17,13 @@
 	<jsp:include page="include_header.jsp" />
 	<div id="main" align="center">
 	<br><br>
-		<div class="kan" >
-			新規登録完了しました
-		</div>
-		<br><br>
+		<div class="heart">&#9829;</div>
+		<br>
+		<p>新規ユーザー登録が完了しました</p>
+		<br><br><br><br>
 		<div class="nomember_btn">
 			<a href='<s:url action="GoHomeAction"/>'>Home画面へ</a>
-			<br>
+			<br><br>
 			<a href='<s:url action="GoCartAction"/>'>カート画面へ</a>
 		</div>
 

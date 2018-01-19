@@ -20,7 +20,7 @@
 		<br><br>
 
        <div class="title">新規ユーザー登録</div>
-
+		<br>
 		<div class="register_box">
 			<div class="member">
 				<div class="error" align="center">
@@ -101,7 +101,7 @@
 
 						<br><br>
 						<div class="member_btn">
-							<button type="submit" class="">登録情報確認</button>
+							<button type="submit" class="">登 録 情 報 確 認</button>
 						</div>
 					</s:form>
 

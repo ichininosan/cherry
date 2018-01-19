@@ -26,23 +26,23 @@
 				<div class="member_form">
 					<s:form action="RegisterUserInfoAction" theme="simple">
 						<div class="member-form-title">
-							名前:
+							名前　　　　　　:　
 							<s:property value="familyName" />
 							<s:hidden name="familyName" value="%{familyName}" />
 							<s:property value="firstName" />
 							<s:hidden name="firstName" value="%{firstName}" />
-							<br><br>ふりがな:
+							<br><br>ふりがな　　　　:　
 							<s:property value="familyNameKana" />
 							<s:hidden name="familyNameKana" value="%{familyNameKana}" />
 							<s:property value="firstNameKana" />
 							<s:hidden name="firstNameKana" value="%{firstNameKana}" />
-							<br><br> ユーザーID:
+							<br><br>ユーザーＩＤ　　:　
 							<s:property value="userId" />
 							<s:hidden name="userId" value="%{userId}" />
-							<br><br> パスワード:
+							<br><br> パスワード　　　:　
 							<s:property value="password" />
 							<s:hidden name="password" value="%{password}" />
-							<br><br> 性別:
+							<br><br> 性別　　　　　　:　
 							<s:if test="sex==0">
 								男性
 							</s:if>
@@ -50,12 +50,12 @@
 								女性
 							</s:else>
 							<s:hidden name="sex" value="%{sex}" />
-							<br><br> メールアドレス:
+							<br><br> メールアドレス　:　
 							<s:property value="email" />
 							<s:hidden name="email" value="%{email}" />
 							<br> <br><br>
 							<div class="member_btn">
-								<button type="submit" class="">登録情報完了</button>
+								<button type="submit" class="">登 録 情 報 完 了</button>
 							</div>
 						</div>
 					</s:form>
