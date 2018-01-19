@@ -137,12 +137,10 @@
 <!-- ページリンク -->
 		<div class= "back">
 			<!-- MyPageに戻る-->
-				<a href='<s:url action="MyPageAction" />'>マイページに戻る</a>
+			<div class="link">
+				<a href='<s:url action="MyPageAction" />'><i class="material-icons">&#xE853;</i>マイページに戻る</a>
+			</div>
 		</div>
-		<%-- <!-- あとで消す！！！！！ -->
-			<a href='<s:url action="PurchaseHistoryAction" />'>テスト用リンク</a>
-
- --%>
 <!-- ページリンクここまで -->
 
 		</div>
