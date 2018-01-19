@@ -37,45 +37,46 @@
 				</h5>
 				<!-- ここまで入力エラーメッセージ表示 -->
 				<br>
-				<h3>下記に必要事項を記入してください</h3>
+				<div align="center">下記に必要事項を記入してください</div>
+				<br>
 					<div class="member_form">
-						<div class="member_form_title">姓</div>
+						<span class="member_form_title">姓</span><span class="hissu">必須</span>
 						<div class="member_form_text">
 							<s:textfield name="familyName" value="%{familyName}"/>
 						</div>
 						<br>
 
-						<div class="member_form_title">名</div>
+						<span class="member_form_title">名</span><span class="hissu">必須</span>
 						<div class="member_form_text">
 							<s:textfield name="firstName" value="%{firstName}"/>
 						</div>
 						<br>
 
-						<div class="member_form_title">姓ふりがな</div>
+						<span class="member_form_title">姓ふりがな</span><span class="hissu">必須</span>
 						<div class="member_form_text">
 							<s:textfield name="familyNameKana" value="%{familyNameKana}"/>
 						</div>
 						<br>
 
-						<div class="member_form_title">名ふりがな</div>
+						<span class="member_form_title">名ふりがな</span><span class="hissu">必須</span>
 						<div class="member_form_text">
 							<s:textfield name="firstNameKana" value="%{firstNameKana}"/>
 						</div>
 						<br>
 
-						<div class="member_form_title">メールアドレス</div>
+						<span class="member_form_title">メールアドレス</span><span class="hissu">必須</span>
 						<div class="member_form_text">
 							<s:textfield name="email" value="%{email}"/>
 						</div>
 						<br>
 
-						<div class="member_form_title">電話番号</div>
+						<span class="member_form_title">電話番号</span><span class="hissu">必須</span>
 						<div class="member_form_text">
 							<s:textfield name="telNumber" value="%{telNumber}"/>
 						</div>
 						<br>
 
-						<div class="member_form_title">住所</div>
+						<span class="member_form_title">住所</span><span class="hissu">必須</span>
 						<div class="member_form_text">
 							<s:textfield name="userAddress" value="%{userAddress}"/>
 						</div>
@@ -84,6 +85,7 @@
 						<div class="member_btn">
 							<button type="submit" class="">登 録 情 報 確 認</button>
 						</div>
+						<br>
 					</div>
 			</s:form>
 		</div>

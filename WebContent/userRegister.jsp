@@ -103,6 +103,7 @@
 						<div class="member_btn">
 							<button type="submit" class="">登 録 情 報 確 認</button>
 						</div>
+						<br>
 					</s:form>
 
 				</div>

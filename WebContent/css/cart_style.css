@@ -47,9 +47,9 @@ body{
 
 --------------------------------------------------------*/
 .main_content {
-    width: 100%;
+    width: 95%;
 	min-height: 220px;
-    margin: 0 auto;
+    margin: 5px auto;
 
 }
 
@@ -59,8 +59,18 @@ body{
 }
 
 .delete{
-	float: right;
+	/* float: right; */
+
+	width: 50px;
+    position: absolute;
+    top: 80%;
+    right: -3px;
 }
+.delete a:hover{
+	color: #E47911;
+    text-decoration: underline;
+}
+
 
 
 /*------------------------------------------------------------------------------------------
@@ -107,17 +117,12 @@ h2{
 /*---------------------------------
            メイン
 ----------------------------------*/
-.main_content {
-    width: 100%;
-	min-height: 220px;
-    margin: 0 auto;
 
-}
 
 .border{
 	border-top: solid 1px;
-	height: 25px;
-	padding: 12px;
+	border-color: #F48FB1;
+	padding: 1px;
     line-height: 24px;
 }
 /*---------------------------------
@@ -127,6 +132,10 @@ h2{
     width: 24%;
 	margin: 10px 0 10px auto;
     float: left;
+}
+.pro_img a:hover{
+	opacity: 0.5;
+
 }
 
 /*---------------------------------
@@ -152,6 +161,11 @@ h2{
 .pro_name{
 	font-size: 20px;
 }
+.name :hover{
+	color: #E47911;
+    text-decoration: underline;
+}
+
 /*---------------------------------
             値段と個数
 ----------------------------------*/
@@ -194,6 +208,8 @@ h2{
 	margin-top: 30px;
 	text-align: center;
 	margin: 20px;
+	font-size: 1.4rem;
+	color: #E91E63;
 }
 
 .settlement_btn{
@@ -201,5 +217,8 @@ h2{
 	text-align: center;
 	margin: 20px;
 }
-
+.settlement_btn a:hover{
+	color: #E47911;
+    text-decoration: underline;
+}
 

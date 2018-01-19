@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/kudo_style.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/settlement_style.css">
 
 <title>決済確認画面</title>
 </head>
@@ -25,10 +25,11 @@
 	<br>
 
 	<s:form action="PurchaseCompleteAction">
-		<table>
+		<table border="1" style="width: 1100px; background-color: #f5f5f5; text-align: center;">
 		<caption>購入情報は以下になります</caption>
 		<s:iterator value="cartList">
-			<thead>
+
+			<thead style="background-color: #F48FB1;">
 				<tr>
 					<th></th>
 					<th>商品名</th>
