@@ -62,38 +62,40 @@
 
 	<div class="pro_text">
 					<div class="name">
+					<s:url id="url" action="ProDetailAction"><s:param name="id" value="productId" /></s:url>
+								<s:a href="%{url}">
 		<!-- ふりがな --><div class="kana">
 							<s:property value="product_name_kana" />
 						</div>
 
 		<!-- 商品名 --><div class="pro_name">
 							商品名:
-							<s:url id="url" action="ProDetailAction"><s:param name="id" value="productId" /></s:url>
-								<s:a href="%{url}">
-									<s:property value="product_name" />
-								</s:a>
+								<s:property value="product_name" />
 						</div>
+						</s:a>
 					</div>
 
 
 				<div class="price_count">
 		<!-- 値段 --><div class="price">
-							価格<s:property value="price" />円
+							価格:\
+							<fmt:formatNumber value="${price}" />
 						</div>
 
 		<!-- 個数 --><div class="count">
-							購入個数<s:property value="productCount" />
+							(購入数:  <s:property value="productCount" />点)
 						</div>
 				</div>
 
 
 					 <div class="comp_info">
 		<!-- 発売会社 --><div class="company">
-							発売会社名<s:property value="release_company" />
+							発売会社：<s:property value="release_company" />
 						</div>
 
 		<!-- 年月日 --><div class="release_date">
-							発売年月日<s:date name="releaseDate" format="yyyy年MM月dd日" />
+							発売日：<%-- <s:date name="releaseDate" format="yyyy年MM月dd日" /> --%>
+									<fmt:parseDate var="date2" value="${releaseDate}" pattern="yyyy-MM-dd HH:mm:ss.SS" /><fmt:formatDate value="${date2}" pattern="yyyy年M月d日" />
 						</div>
 					</div>
 
@@ -118,19 +120,12 @@
 
 <!----------------- カート内容ここまで --------------------------------------->
 
-
-
-
-
 	<!-- 合計金額を表示 -->
 		<div class="totalprice">
-			合計金額:
-			<s:property value="totalPrice" />
-			<span>円</span>
+			合計金額:\
+			<fmt:formatNumber value="${totalPrice}" />
 		</div>
 	<!-- 合計金額ここまで -->
-		<br>
-
 
 
 	<!-- 決済にとばす -->
@@ -138,6 +133,7 @@
 		<div class="settlement_btn">
 			<a href='<s:url action="PurchaseInfoAction" />'>決済画面へ</a>
 		</div>
+
 		</s:if>
 	<!-- 決済にとばすここまで -->
 
