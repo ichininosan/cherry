@@ -22,6 +22,13 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+
+	<script>
+    function goPutProductIntoCartAction(){
+        document.getElementById('form').action="PutProductIntoCartAction";
+    }
+	</script>
+
 </head>
 <body>
 
@@ -31,7 +38,7 @@
 
 <!-- メインコンテンツ -->
 <div class="main">
-		<s:form action="PutProductIntoCartAction">
+		<s:form id="form" name="form" action="PutProductIntoCartAction">
   			<div class="detail">
 			<div class="leftCol">
 			    <h1>Product Image</h1>
@@ -77,7 +84,7 @@
 			    <s:property value="pro_detail.price"/>円</td>
 			    </tr>
 			    <tr>
-			    <th>販売会社</th>
+			    <th>発売会社</th>
 			    <td>
 			    <s:hidden name="releaseCompany" value="%{pro_detail.release_company}"/>
                 <s:property value="pro_detail.release_company"/></td>
@@ -99,7 +106,11 @@
 				</table>
 			</div>
 				<div class="cartbutton">
-					<s:submit class="cartB" value="カートに追加"/>
+					<a href="javascript:void(0)" onclick="document.form.submit();return false;" class="button">Add to Cart</a>
+					<!-- a hrefだとnull pointerのerrorがでる -->
+					<!--<a href='<s:url action="PutProductIntoCartAction"/>' class="button">Add to Cart</a>-->
+					<!--<s:submit value="Add to Cart" onclick="goPutProductIntoCartAction();"/>-->
+					<!--<s:submit class="button" value="Add to Cart"/>-->
 				</div>
 			</div>
 		</s:form>

@@ -279,7 +279,8 @@ body {
 .rightCol h1{
 	line-height: 70px;
     position: relative;
-    padding: 6.25em 0;
+    padding: 1.25em 0;
+    margin-left: 20px;
 }
 
 .rightCol h1:after {
@@ -308,7 +309,6 @@ body {
 }
 
 .cartbutton{
-	background-color: white;
     width: 40%;
     float: right;
     margin-top: 10px;
