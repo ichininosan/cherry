@@ -19,7 +19,7 @@
 <!-- ここからメイン -->
 <div class="main">
 	<br>
-	<h2 class="title">新規購入情報入力</h2>
+	<h2 class="title">新規宛先情報入力</h2>
 	<br>
 	<br>
 	<div class="register_box">
