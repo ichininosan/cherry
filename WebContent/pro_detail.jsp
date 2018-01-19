@@ -19,7 +19,9 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ochiai_style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 </head>
 <body>
 
@@ -39,32 +41,66 @@
 
 			<div class="rightCol">
 			    <h1>Details</h1>
-				<s:hidden name="productId" value="%{pro_detail.product_id}"/>
+			    <table class="table">
+			    <tr>
+			    <th>商品番号</th>
+			    <td>
+			    <s:hidden name="productId" value="%{pro_detail.product_id}"/>
 				<s:property value="pro_detail.product_id"/>
-				<br>
-				<s:hidden name="productNameKana" value="%{pro_detail.product_name_kana}"/>
-				<br>
-				<s:property value="pro_detail.product_name_kana"/>
-				<br>
-				<s:hidden name="productName" value="%{pro_detail.product_name}"/>
-				<br>
+				</td>
+			    </tr>
+			    <tr>
+			    <th>ふりがな</th>
+			    <td>
+			    <s:hidden name="productNameKana" value="%{pro_detail.product_name_kana}"/>
+                <s:property value="pro_detail.product_name_kana"/>
+                </td>
+                </tr>
+                <tr>
+                <th>商品名</th>
+                <td>
+			    <s:hidden name="productName" value="%{pro_detail.product_name}"/>
 				<s:property value="pro_detail.product_name"/>
-				<br>
-				<s:hidden name="productDescription" value="%{pro_detail.product_description}"/>
-				<br>
-				<s:property value="pro_detail.product_description"/>
-				<br>
-				<s:hidden name="price" value="%{pro_detail.price}"/>
-				<br>
-				<s:property value="pro_detail.price"/>
-			    <br>
-				<s:hidden name="releaseCompany" value="%{pro_detail.release_company}"/>
-				<br>
-				<s:property value="pro_detail.release_company"/>
-				<br>
-				購入個数:<s:select list="count" name="productCount" value="1" />
-				<br>
-				<br>
+			    </td>
+			    </tr>
+			    <tr>
+			    <th>カテゴリー</th>
+			    <td>
+			    <s:hidden name="productDescription" value="%{pro_detail.product_description}"/>
+                <s:property value="pro_detail.product_description"/>
+                </td>
+			    </tr>
+			    <tr>
+			    <th>値段</th>
+			    <td>
+			    <s:hidden name="price" value="%{pro_detail.price}"/>
+			    <s:property value="pro_detail.price"/>円</td>
+			    </tr>
+			    <tr>
+			    <th>販売会社</th>
+			    <td>
+			    <s:hidden name="releaseCompany" value="%{pro_detail.release_company}"/>
+                <s:property value="pro_detail.release_company"/></td>
+			    </tr>
+			    <tr>
+			    <th>購入個数:</th>
+			    <td><s:select list="count" name="productCount" value="1" /></td>
+			    </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			<%-- 	<br><br>
 				<s:hidden name="productId" value="%{pro_detail.product_id}" />
 				<s:hidden name="duplicationFlg" value="%{duplicationFlg}" />
@@ -74,8 +110,14 @@
 				<s:else>
 				<input type="submit" value="カートに追加">
 				</s:else> --%>
-				<br>
+				<tr>
+				<td class="cartbutton">
+				</td>
+				<td class="cartbutton">
 				<s:submit value="カートに追加"/>
+				</td>
+				</tr>
+				</table>
 			</div>
 			</div>
 		</s:form>
