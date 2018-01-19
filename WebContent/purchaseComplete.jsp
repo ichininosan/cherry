@@ -17,21 +17,35 @@
 
 <!-- ヘッダー -->
 <jsp:include page="include_header.jsp" />
-
+<div class="header"></div>
 
 <div class="main">
   <div class="message">
   <br><br><br>
-     <h1 >購入が完了いたしました</h1>
+     <div class="heart">&#9829;</div>
+     <h1>購入が完了いたしました</h1>
+  <br><br><br>
   </div>
- <!-- <div class="submit">-->
-        <div id="ph"><a href='<s:url action="PurchaseHistoryAction"/>' class="button">購入履歴</a></div>
-        <div id="gh"><a href='<s:url action="GoHomeAction"/>' class="button">HOME</a></div>
-  <!--</div>-->
+  <div class="submit">
+
+
+        <div class="gh">
+        <div class="btnn">
+        <a href='<s:url action="GoHomeAction"/>' class="button">HOME</a>
+        </div>
+        </div>
+
+        <div class="ph">
+        <div class="btnn">
+        <a href='<s:url action="PurchaseHistoryAction"/>' class="button">購入履歴</a>
+        </div>
+        </div>
+  </div>
  </div>
 
 <!-- フッター -->
 <jsp:include page="include_footer.jsp" />
+<div class="footer"></div>
 
 
 </body>

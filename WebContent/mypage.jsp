@@ -78,7 +78,7 @@
 
  			    <div class="buttonBox">
 					  <div class="btnn">
-					   <a href="/cherry/PurchaseHistoryAction" class="button">HISTORY</a>
+					   <a href="/cherry/PurchaseHistoryAction" class="button">購入履歴</a>
 					   </div>
 			    </div>
  			    </div>

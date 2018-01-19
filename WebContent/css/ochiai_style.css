@@ -55,22 +55,32 @@
 		width:100%
 }
 .message{
-    width: 100%;
+        width: 100%;
+    height: 440px;
     margin-top: 10px;
     text-align: center;
 }
-
-
-#ph {
-	width:200px;
+.message h1{
+   line-height: 204px;
+   font-family: "YuGothic M";
+   font-size: 25px;
+   z-index: 1;
+}
+.submit{
+	width:100%;
+	margin:0 auto;
+}
+.ph {
+	width:50%;
 	height:100px;
+	float:left;
 
 }
 
-#gh {
-	width:200px;
+.gh {
+	width:50%;
 	height:100px;
-
+    float:left;
 }
 
 /*-------------------------------------
@@ -202,16 +212,34 @@ a{
 
 a:hover img{opacity:0.8; filter:alpha(opacity=80);}
 
+.heart {
+    font-size: 80px;
+    color: #FF3D67;
+  margin: 100px 0 0;
+  z-index: 2;
+}
+.heart:hover {
+  -webkit-animation: heart-anim 1s linear .3s;
+  animation: heart-anim 1s linear .3s;
+}
 
+/* Animation setting */
+@-webkit-keyframes heart-anim {
+  to {
+    opacity: 0;
+    -webkit-transform: scale(50);
+  }
+}
+@keyframes heart-anim {
+  to {
+    opacity: 0;
+    transform: scale(50);
+  }
+}
 
-<!-- フッター -->
-<jsp:include page="include_footer.jsp" />
-
-
-<!--complete-->
-
-.top{
-
+/* Basic style */
+body {
+  text-align: center;
 }
 
 
