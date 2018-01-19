@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.internousdev.cherry.dao.CartInfoDAO;
 //import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dao.LoginDAO;
 //import com.internousdev.cherry.dto.CartInfoDTO;
@@ -124,6 +125,8 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 
 					System.out.println("kessai:"+kessai);
 					if(kessai==1){
+						CartInfoDAO dao=new CartInfoDAO();
+						dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
 						System.out.println("LoginAction:kessaiは1");
 //						session.put("kessai", 1);
 						return KESSAI;
