@@ -49,7 +49,12 @@
 
 			<s:iterator value="cartList">
 
-	<div class="cart_info">
+			<div class="date">
+            			<p>注文日</p>
+            			<p>わああああああああああああああ</p>
+            		</div>
+
+	<div class="main_content clearfix_hon">
 		<!-- 画像 --><div class="pro_img">
 						<s:url id="url" action="ProDetailAction"><s:param name="id" value="productId" /></s:url>
 							<s:a href="%{url}">
@@ -57,19 +62,23 @@
 							</s:a>
 					</div>
 
+	<div class="pro_text">
+					<div class="name">
+		<!-- ふりがな --><div class="kana">
+							<s:property value="product_name_kana" />
+						</div>
 
 		<!-- 商品名 --><div class="pro_name">
-							商品名
+							商品名:
 							<s:url id="url" action="ProDetailAction"><s:param name="id" value="productId" /></s:url>
 								<s:a href="%{url}">
 									<s:property value="product_name" />
 								</s:a>
 						</div>
+					</div>
 
-		<!-- ふりがな --><div class="kana">
-							ふりがな<s:property value="product_name_kana" />
-						</div>
 
+				<div class="price_count">
 		<!-- 値段 --><div class="price">
 							価格<s:property value="price" />円
 						</div>
@@ -77,20 +86,28 @@
 		<!-- 個数 --><div class="count">
 							購入個数<s:property value="productCount" />
 						</div>
+				</div>
 
+
+					 <div class="comp_info">
 		<!-- 発売会社 --><div class="company">
 							発売会社名<s:property value="release_company" />
 						</div>
 
-		<!-- 年月日 --><div class="date">
+		<!-- 年月日 --><div class="release_date">
 							発売年月日<s:date name="releaseDate" format="yyyy年MM月dd日" />
 						</div>
-			<!-- 削除 -->
-				<s:form action="GoCartAction">
-					<div class="delete">
-						<a href='<s:url action="CartDeleteAction"><s:param name="productId" value="productId"></s:param></s:url>'>削除</a>
 					</div>
+
+
+			<!-- 削除ボタンここから -->
+			<div class="delete">
+				<s:form action="GoCartAction">
+					<a href='<s:url action="CartDeleteAction"><s:param name="productId" value="productId"></s:param></s:url>'>削除</a>
 				</s:form>
+			</div>
+			<!-- 削除ここまで -->
+		</div>
 				</div>
 			</s:iterator>
 		</s:else>
