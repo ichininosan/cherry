@@ -51,14 +51,18 @@
 
 	<div class="cart_info">
 		<!-- 画像 --><div class="pro_img">
-
-							<a href="/cherry/ProDetailAction.action?id=#product_id">
+						<s:url id="url" action="ProDetailAction"><s:param name="id" value="productId" /></s:url>
+							<s:a href="%{url}">
 								<img class="pro_img" src='<s:property value="image_file_name"/>' alt="画像なし"/>
-							</a>
-						</div>
+							</s:a>
+					</div>
 
 		<!-- 商品名 --><div class="pro_name">
-							商品名<s:property value="product_name" />
+							商品名
+							<s:url id="url" action="ProDetailAction"><s:param name="id" value="productId" /></s:url>
+								<s:a href="%{url}">
+									<s:property value="product_name" />
+								</s:a>
 						</div>
 
 		<!-- ふりがな --><div class="kana">
@@ -66,7 +70,7 @@
 						</div>
 
 		<!-- 値段 --><div class="price">
-							値段<s:property value="price" />円
+							価格<s:property value="price" />円
 						</div>
 
 		<!-- 個数 --><div class="count">
