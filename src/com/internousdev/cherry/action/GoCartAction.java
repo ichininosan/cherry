@@ -21,61 +21,31 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 
 		CartInfoDAO dao = new CartInfoDAO();
 
-		//暫定でセッション値セット//
-		//session.put("loginFlg",true);
-		//session.put("userId", "a");
-		//session.put("tempUserId", "a");
-
 		/*
 		loginFlgが存在しているか判定
 		*/
 		if(!(boolean) session.containsKey("loginFlg")){
 			session.put("loginFlg", false);
 			System.out.println("TESSST");
-
-		}
-
-
-		if((boolean) session.containsKey("loginFlg")){
-
-
+		}if((boolean) session.containsKey("loginFlg")){
 			if((boolean) session.get("loginFlg")){
 				for(CartInfoDTO dto: dao.showUserCartList(session.get("userId").toString())){
 					cartList.add(dto);
 				}
-
 			}else{
 				for(CartInfoDTO dto: dao.showTempUserCartList(session.get("tempUserId").toString())){
 					cartList.add(dto);
 				}
 			}
-
 		}else{
-
 			for(CartInfoDTO dto: dao.showTempUserCartList(session.get("tempUserId").toString())){
 				cartList.add(dto);
 			}
 
 		}
 
-
-
-
-		//ログインユーザーのカート情報を引き出す
-		/*if((boolean) session.get("loginFlg")){
-			for(CartInfoDTO dto: dao.showUserCartList(session.get("userId").toString())){
-				cartList.add(dto);
-				System.out.println("ログインユーザー");
-			}
-		//非ログインユーザーのカート情報を引き出す
-		}else{
-			for(CartInfoDTO dto: dao.showTempUserCartList(session.get("tempUserId").toString())){
-				cartList.add(dto);
-			}
-		}*/
 		//合計金額の計算
 		totalPrice = calcTotalPrice(cartList);
-
 		return SUCCESS;
 	}
 

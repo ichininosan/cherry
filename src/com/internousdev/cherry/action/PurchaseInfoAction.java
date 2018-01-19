@@ -83,17 +83,6 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 
 		}
 
-//		if (cartInfoDTOList.size() > 0) {
-//			System.out.println("kessaiは0");
-//			result = SUCCESS;
-//
-//		} else {
-//			System.out.println("kessaiを１");
-//			kessai=1;
-////			session.put("kessai",1);
-//			result = ERROR;
-//		}
-
 		System.out.println("-----------------------");
 
 		return result;

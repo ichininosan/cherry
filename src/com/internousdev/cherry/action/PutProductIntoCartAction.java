@@ -39,16 +39,6 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		System.out.println("countは"+count);
 		CartInfoDTO dto = new CartInfoDTO();
 		CartInfoDAO dao = new CartInfoDAO();
-
-
-
-		//暫定でセッション値セット//
-		/*session.put("loginFlg",true);
-		session.put("userId", "a");*/
-		//productCount=0;
-		//String tempUserId="1";
-
-		//dto.setUserId(session.get("userId").toString());
 		dto.setProductId(Integer.parseInt(productId.toString()));
 		dto.setProductCount(productCount);
 
@@ -65,47 +55,10 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		System.out.println("duplicationFlg:"+duplicationFlg);
 		System.out.println("-----------------------------");
 
-		//int count=0;
 		int iPrice = Integer.parseInt(price);
 		if (!(session.containsKey("loginFlg"))){
 			session.put("loginFlg", false);
 		}
-
-
-		/*if (session.containsKey("loginFlg") && (boolean) session.get("loginFlg")) {
-			dto.setUserId(session.get("userId").toString());
-			if (duplicationFlg) {
-				count=dao.updateUsersCount(productCount,session.get("userId").toString(),session.get("productId").toString());
-				System.out.println("更新；"+ count + "件");
-			} else {
-				count=dao.putProductIntoCart(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
-				count=dao.updateUsersCount(productCount,session.get("userId").toString(),productId);
-				System.out.println("追加；"+ count + "件");
-			}
-			for (CartInfoDTO cartInfoDTO: dao.showUserCartList(session.get("userId").toString())) {
-				cartList.add(cartInfoDTO);
-			}
-		} else {
-
-			if (duplicationFlg) {
-
-				count=dao.updateTempUsersCount(productCount,session.get("tempUserId").toString());
-			} else {
-				System.out.println("テスト結果は"+session.get("tempUserId").toString());
-				count=dao.putProductIntoCartOfGuestUser(session.get("tempUserId").toString(),Integer.parseInt(productId),iPrice,productCount);
-			}
-
-			cartList = dao.showTempUserCartList(session.get("tempUserId").toString());
-		}*/
-
-		/*
-		商品重複確認メソッド
-		 */
-
-
-
-
-
 
 		/*櫻井作成メソッド*/
 
@@ -153,10 +106,6 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 
 
 		}
-
-
-
-
 
 		totalPrice = calcTotalPrice(cartList);
 		return SUCCESS;
