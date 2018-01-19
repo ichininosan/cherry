@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/kudo_style.css">
 
 <title>決済確認画面</title>
 </head>
@@ -26,7 +27,7 @@
 	<s:form action="PurchaseCompleteAction">
 		<table>
 		<caption>購入情報は以下になります</caption>
-		<s:iterator value="cartInfoDTOList">
+		<s:iterator value="cartList">
 			<thead>
 				<tr>
 					<th></th>

@@ -34,7 +34,7 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 	/**
 	 * カート情報一覧
 	 */
-	private List<CartInfoDTO> cartInfoDTOList = new ArrayList<CartInfoDTO>();
+	private List<CartInfoDTO> cartList = new ArrayList<CartInfoDTO>();
 
 	/**
 	 * 宛先情報一覧
@@ -75,9 +75,9 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 		}
 
 		CartInfoDAO cartInfoDAO = new CartInfoDAO();
-		cartInfoDTOList = cartInfoDAO.showUserCartList(session.get("userId").toString());
+		cartList = cartInfoDAO.showUserCartList(session.get("userId").toString());
 
-		for(CartInfoDTO dto:cartInfoDTOList) {
+		for(CartInfoDTO dto:cartList) {
 			totalPrice +=dto.getPrice() * dto.getProductCount();
 
 		}
@@ -116,15 +116,15 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 		/**
 		 * @return cartInfoDTOList
 		 */
-		public List<CartInfoDTO> getCartInfoDTOList() {
-			return cartInfoDTOList;
+		public List<CartInfoDTO> getCartList() {
+			return cartList;
 		}
 
 		/**
 		 * @param cartInfoDTOList セットする cartInfoDTOList
 		 */
-		public void setCartInfoDTOList(List<CartInfoDTO> cartInfoDTOList) {
-			this.cartInfoDTOList = cartInfoDTOList;
+		public void setCartList(List<CartInfoDTO> cartList) {
+			this.cartList = cartList;
 		}
 
 		/**

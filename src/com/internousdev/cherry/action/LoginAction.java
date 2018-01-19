@@ -7,8 +7,11 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.dao.CartInfoDAO;
+import com.internousdev.cherry.dao.DestinationInfoDAO;
 //import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dao.LoginDAO;
+import com.internousdev.cherry.dto.CartInfoDTO;
+import com.internousdev.cherry.dto.DestinationInfoDTO;
 //import com.internousdev.cherry.dto.CartInfoDTO;
 import com.internousdev.cherry.dto.UserInfoDTO;
 import com.internousdev.cherry.util.ErrorMessageConstants;
@@ -44,6 +47,16 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 	private ArrayList<String> errorMessageList = new ArrayList<>();
 
 	private int kessai;
+
+	/**
+	 * 宛先情報一覧
+	 */
+	private ArrayList<DestinationInfoDTO> destinationInfoListDTO = new ArrayList<DestinationInfoDTO>();
+
+	/**
+	 * カートリスト
+	 */
+	private ArrayList<CartInfoDTO> cartList = new ArrayList<CartInfoDTO>();
 
 	private String familyNameKana;
 	private String firstNameKana;
@@ -102,15 +115,15 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 				userInfoDTO = loginDAO.select(userId, password);
 
 
-				familyNameKana=userInfoDTO.getFamilyNameKana();
+				/*familyNameKana=userInfoDTO.getFamilyNameKana();
 				firstNameKana=userInfoDTO.getFirstNameKana();
 				familyName=userInfoDTO.getFamilyName();
 				firstName=userInfoDTO.getFirstName();
 				email=userInfoDTO.getEmail();
 				telNumber="データなし";
-//				telNumber=userInfoDTO.get;
+				telNumber=userInfoDTO.get;
 				userAddress="データなし";
-//				userAddress=userInfoDTO.get;
+				userAddress=userInfoDTO.get;*/
 
 
 				// ログイン判定
@@ -126,9 +139,10 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 					System.out.println("kessai:"+kessai);
 					if(kessai==1){
 						CartInfoDAO dao=new CartInfoDAO();
+						DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
 						dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
-
-						dao.aquireUserCartInfo(session.get("userId").toString());
+						cartList = dao.aquireUserCartInfo(session.get("userId").toString());
+						destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
 						System.out.println("LoginAction:kessaiは1");
 //						session.put("kessai", 1);
 						return KESSAI;
@@ -270,6 +284,26 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
+	}
+
+
+	public ArrayList<DestinationInfoDTO> getDestinationInfoListDTO() {
+		return destinationInfoListDTO;
+	}
+
+
+	public void setDestinationInfoListDTO(ArrayList<DestinationInfoDTO> destinationInfoListDTO) {
+		this.destinationInfoListDTO = destinationInfoListDTO;
+	}
+
+
+	public ArrayList<CartInfoDTO> getCartList() {
+		return cartList;
+	}
+
+
+	public void setCartList(ArrayList<CartInfoDTO> cartList) {
+		this.cartList = cartList;
 	}
 
 
