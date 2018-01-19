@@ -96,7 +96,7 @@
 						<span class="hissu">必須</span>
 						<div class="member_form_text">
 							<s:textfield type="text" name="email" value="%{email}" />
-							<br>
+							<br><br>
 						</div>
 
 						<br><br>
