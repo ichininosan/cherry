@@ -1,42 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
-	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 <title>購入完了画面</title>
-
 </head>
 <body>
-<!-- ヘッダー -->
-		<jsp:include page="include_header.jsp" />
 
-<!-- メイン -->
-	<div id="main" align="center">
-		<br><br>
-		<div class="heart">&#9829;</div>
-		<br>
-
-			<p>購入手続きが完了致しました</p>
-		<br><br><br><br>
-
-			<div class="nomember_btn">
-			 	<a href='<s:url action="GoPurchaseHistoryAction"/>'>購入履歴</a>
-			 	<br><br>
-				<a href='<s:url action="GoHomeAction"/>'>H O M E</a>
-			</div>
+<body>
+	<div id="header">
+	 	<div id="pr">
+		</div>
 	</div>
+	<div id="main">
+		<div id="top">
+			<p>購入完了</p>
+		</div>
+		<div>
+			<p>購入手続きが完了致しました。</p>
 
+			<div>
+			 <p>購入履歴<p>
+			</div>
 
-	<!-- フッター -->
-<jsp:include page="include_footer.jsp" />
+			<div>
+
+				<p>Homeへ戻る場合は<a href='<s:url action="GoHomeAction" />'>こちら</a></p>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div id="pr">
+		</div>
+	</div>
+</body>
+</html>
+
 
 </body>
 </html>
