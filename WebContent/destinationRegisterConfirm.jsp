@@ -28,26 +28,26 @@
 
 					<div class="member_form">
 						<div class="member-form-title">
-							<br><br>ふりがな　　　　:
+							<br>ふりがな　　　　:
 							<s:property value="familyNameKana" />
 							<s:hidden name="familyNameKana" value="%{familyNameKana}" />
 							<s:property value="firstNameKana" />
 							<s:hidden name="firstNameKana" value="%{firstNameKana}" />
-							<br><br>名前　　　　　　:
+							<br><br><br>名前　　　　　　:
 							<s:property value="familyName" />
 							<s:hidden name="familyName" value="%{familyName}" />
 							<s:property value="firstName" />
 							<s:hidden name="firstName" value="%{firstName}" />
-							<br><br>メールアドレス　:
+							<br><br><br>メールアドレス　:
 							<s:property value="email" />
 							<s:hidden name="email" value="%{email}" />
-							<br><br>電話番号　　　　:
+							<br><br><br>電話番号　　　　:
 							<s:property value="telNumber" />
 							<s:hidden name="telNumber" value="%{telNumber}" />
-							<br><br>住所　　　　　　:
+							<br><br><br>住所　　　　　　:
 							<s:property value="userAddress" />
 							<s:hidden name="userAddress" value="%{userAddress}" />
-							<br><br><br>
+							<br><br><br><br>
 							<div class="member_btn">
 								<button type="submit" class="">確 定</button>
 							</div>

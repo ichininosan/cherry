@@ -22,9 +22,9 @@
 		<p>新規ユーザー登録が完了しました</p>
 		<br><br><br><br>
 		<div class="nomember_btn">
-			<a href='<s:url action="GoHomeAction"/>'>Home画面へ</a>
+			<a href='<s:url action="GoHomeAction"/>'>H O M E</a>
 			<br><br>
-			<a href='<s:url action="GoCartAction"/>'>カート画面へ</a>
+			<a href='<s:url action="GoCartAction"/>'>C A R T</a>
 		</div>
 
 	</div>

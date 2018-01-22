@@ -19,7 +19,6 @@
 
 }
 
-
 .title{
 	width: 505px;
 	margin: auto;
@@ -67,30 +66,6 @@
 	margin-left: 46px;
 }
 
-.nomember{
-	width:340px;
-	margin:auto;
-	font-size:16px;
-	    letter-spacing: 1px;
-}
-.nomember p{
-	text-align:center;
-}
-
-input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,input#userRegister_firstName,input#userRegister_familyNameKana,input#userRegister_firstNameKana,input#userRegister_userId,input#userRegister_password,input#userRegister_email,
-input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfirmAction_firstName,input#DestinationRegisterConfirmAction_familyNameKana,input#DestinationRegisterConfirmAction_firstNameKana,input#DestinationRegisterConfirmAction_telNumber,input#DestinationRegisterConfirmAction_userAddress,input#DestinationRegisterConfirmAction_email{
-	width: 400px;
-    margin: 9px;
-    border: none;
-    padding: 16px;
-    max-width: 400px;
-    background: #FFF;
-    border-radius: 3px;
-    box-shadow: 0 0px 20px #f8bbd0a1;
-    height: 0;
-}
-
-
 .member_btn button{
 	border: none;
     position: relative;
@@ -113,9 +88,71 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
 .member_btn button:hover {
     background: #ec407ac4;
     width:470px;
+    height:39px;
     margin-left:-10px;
+    letter-spacing: 2px;
+    font-size:18px;
+}
+
+.member h5{
+	font-weight:bold;
+}
+
+
+.nomember{
+	width:340px;
+	margin:auto;
+	font-size:16px;
+	    letter-spacing: 1px;
+}
+
+.nomember_btn {
+	position: relative;
+	display: inline-block;
+	margin: 10px;
+	padding: 14px 30px;
+	min-width: 120px;
+	max-width: 100%;
+	font-size: 15px;
+	background: f8bbd0bd;
+	border-radius: 4px;
+	margin-left:20px;
+}
+
+.nomember_btn:before{
+	content: "";
+	position: absolute;
+	top: -30px;
+	left:10px;
+	border: 15px solid transparent;
+	border-bottom: 15px solid #f8bbd0bd;
+}
+
+.nomember_btn a {
+	margin: 0;
+	padding: 0;
+	color: #1f1f1fa6;
+    font-weight: bold;
     letter-spacing: 1px;
-    font-size:17px;
+}
+
+.nomember p{
+	text-align:center;
+}
+
+
+input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,input#userRegister_firstName,input#userRegister_familyNameKana,input#userRegister_firstNameKana,input#userRegister_userId,input#userRegister_password,input#userRegister_email,
+input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfirmAction_firstName,input#DestinationRegisterConfirmAction_familyNameKana,input#DestinationRegisterConfirmAction_firstNameKana,input#DestinationRegisterConfirmAction_telNumber,input#DestinationRegisterConfirmAction_userAddress,input#DestinationRegisterConfirmAction_email{
+	width: 400px;
+    margin: 9px;
+    border: none;
+    padding: 16px;
+    max-width: 400px;
+    background: #FFF;
+    border-radius: 3px;
+    box-shadow: 0 0px 20px #f8bbd0a1;
+    height: 0;
+
 }
 
 .hissu{
@@ -131,6 +168,7 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
     margin-left: 14px;
 }
 
+
 .heart {
 	font-size: 80px;
 	color: #f8bbd0;
@@ -140,7 +178,6 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
   -webkit-animation: heart-anim 1s linear .3s;
   animation: heart-anim 1s linear .3s;
 }
-
 
 /* Animation setting */
 @-webkit-keyframes heart-anim {
@@ -155,40 +192,6 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
     transform: scale(50);
   }
 }
-
-.nomember_btn {
-	position: relative;
-	display: inline-block;
-	margin: 10px;
-	padding: 12px 30px;
-	min-width: 120px;
-	max-width: 100%;
-	font-size: 15px;
-	background: #f8bbd069;
-	border-radius: 4px;
-	margin-left:20px;
-}
-
-.nomember_btn:before{
-	content: "";
-	position: absolute;
-	top: -30px;
-	left:10px;
-	border: 15px solid transparent;
-	border-bottom: 15px solid #f8bbd069;
-}
-
-.nomember_btn a {
-	margin: 0;
-	padding: 0;
-	color: #1f1f1fa6;
-    font-weight: bold;
-}
-
-.member h5{
-	font-weight:bold;
-}
-
 
 
 /* フッター */

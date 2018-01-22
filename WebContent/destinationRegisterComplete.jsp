@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 
 <%-- <script type="text/javascript">
 	function autolink(){
@@ -23,12 +24,16 @@
 <!-- ここからヘッダー -->
 	<jsp:include page="include_header.jsp" />
 <!-- ヘッダーここまで -->
+<br><br>
 
-<h2 class="title">宛先情報完了</h2>
-
-<div class="main">
-	<h3>宛先登録しました</h3>
-	<a href='<s:url action="PurchaseInfoAction" />'>決済画面へ</a>
+<div class="main" align="center">
+	<div class="heart">&#9829;</div>
+	<br>
+	<h3>宛先情報の登録が完了しました</h3>
+	<br><br><br><br>
+	<div class="nomember_btn">
+		<a href='<s:url action="PurchaseInfoAction" />'>決済画面へ</a>
+	</div>
 </div>
 
 <!-- フッター -->
