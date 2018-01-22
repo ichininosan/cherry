@@ -211,8 +211,23 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
 
 
 
+	/**
+	 * @return totalPrice
+	 */
+	public int getTotalPrice() {
+		return totalPrice;
+	}
 
-    }
+
+	/**
+	 * @param totalPrice セットする totalPrice
+	 */
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+
+}
 
 
 

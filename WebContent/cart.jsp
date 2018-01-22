@@ -105,7 +105,7 @@
 
 			<!-- 削除ボタンここから -->
 			<div class="delete">
-				<s:form action="GoCartAction">
+				<s:form action="CartDeleteAction">
 					<a href='<s:url action="CartDeleteAction"><s:param name="productId" value="productId"></s:param></s:url>'>削除</a>
 				</s:form>
 			</div>
