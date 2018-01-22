@@ -10,8 +10,10 @@
 }
 
 
+/*-------------------------------------
+	main
+-------------------------------------*/
 
-/* メインコンテンツ */
 .main{
 	width: 100%;
 	height: 900px;
@@ -27,10 +29,11 @@
 	background: transparent;
 	border-left: solid 10px #f48fb1;
 }
-
 .error{
 	font-weight:bold;
 }
+
+
 
 .member_form{
 	width:450px;
@@ -39,32 +42,73 @@
 	background: #f48fb12b;
 	border-radius: 5px;
 }
-
 .member_form_title{
     padding-left: 12px;
     font-size: 15px;
     letter-spacing: 1px;
 }
-
 .member_form p{
 	font-size:14px;
 	padding-left:15px;
 }
-
 .member_form a{
 	color: #ec407ac9;
     font-size: 15px;
     font-weight: bold;
     padding-left: 223px;
 }
-
 .member_form_radio{
 	margin: 14px;
 }
-
 .member_form_radio userRegister_sex1{
 	margin-left: 46px;
 }
+
+
+.member h5{
+	font-weight:bold;
+}
+
+
+.nomember{
+	width:340px;
+	margin:auto;
+	font-size:16px;
+	letter-spacing: 1px;
+}
+.nomember p{
+	text-align:center;
+}
+
+/* 入力欄 */
+input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,input#userRegister_firstName,input#userRegister_familyNameKana,input#userRegister_firstNameKana,input#userRegister_userId,input#userRegister_password,input#userRegister_email,
+input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfirmAction_firstName,input#DestinationRegisterConfirmAction_familyNameKana,input#DestinationRegisterConfirmAction_firstNameKana,input#DestinationRegisterConfirmAction_telNumber,input#DestinationRegisterConfirmAction_userAddress,input#DestinationRegisterConfirmAction_email{
+	width: 400px;
+    margin: 9px;
+    border: none;
+    padding: 16px;
+    max-width: 400px;
+    background: #FFF;
+    border-radius: 3px;
+    box-shadow: 0 0px 20px #f8bbd0a1;
+    height: 0;
+}
+.hissu{
+	font-size: 11px;
+    background-color: red;
+    width: 30px;
+    text-align: center;
+    padding-left: 3px;
+    padding-right: 4px;
+    color: white;
+    border-radius: 4px;
+    height: 10px;
+    margin-left: 14px;
+}
+
+/*-------------------------------------
+	button
+-------------------------------------*/
 
 .member_btn button{
 	border: none;
@@ -94,17 +138,6 @@
     font-size:18px;
 }
 
-.member h5{
-	font-weight:bold;
-}
-
-
-.nomember{
-	width:340px;
-	margin:auto;
-	font-size:16px;
-	    letter-spacing: 1px;
-}
 
 .nomember_btn {
 	position: relative;
@@ -114,20 +147,18 @@
 	min-width: 120px;
 	max-width: 100%;
 	font-size: 15px;
-	background: f8bbd0bd;
+	background: #f8bbd08a;
 	border-radius: 4px;
 	margin-left:20px;
 }
-
 .nomember_btn:before{
 	content: "";
 	position: absolute;
 	top: -30px;
 	left:10px;
 	border: 15px solid transparent;
-	border-bottom: 15px solid #f8bbd0bd;
+	border-bottom: 15px solid #f8bbd08a;
 }
-
 .nomember_btn a {
 	margin: 0;
 	padding: 0;
@@ -137,38 +168,10 @@
     font-size: 16px;
 }
 
-.nomember p{
-	text-align:center;
-}
 
-
-input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,input#userRegister_firstName,input#userRegister_familyNameKana,input#userRegister_firstNameKana,input#userRegister_userId,input#userRegister_password,input#userRegister_email,
-input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfirmAction_firstName,input#DestinationRegisterConfirmAction_familyNameKana,input#DestinationRegisterConfirmAction_firstNameKana,input#DestinationRegisterConfirmAction_telNumber,input#DestinationRegisterConfirmAction_userAddress,input#DestinationRegisterConfirmAction_email{
-	width: 400px;
-    margin: 9px;
-    border: none;
-    padding: 16px;
-    max-width: 400px;
-    background: #FFF;
-    border-radius: 3px;
-    box-shadow: 0 0px 20px #f8bbd0a1;
-    height: 0;
-
-}
-
-.hissu{
-	font-size: 11px;
-    background-color: red;
-    width: 30px;
-    text-align: center;
-    padding-left: 3px;
-    padding-right: 4px;
-    color: white;
-    border-radius: 4px;
-    height: 10px;
-    margin-left: 14px;
-}
-
+/*-------------------------------------
+	animation
+-------------------------------------*/
 
 .heart {
 	font-size: 80px;

@@ -11,25 +11,28 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
+
 <title>ログイン画面</title>
 
 </head>
 <body>
 <!-- ヘッダー -->
+
 		<jsp:include page="include_header.jsp" />
 
 <!-- メイン -->
-	<div id="main">
 
+	<div id="main">
         <br><br>
         <div class="title">ログイン</div>
-          	<br>
+        <br>
 		<div class="login_box">
 			<div class="member">
 				<div class="error" align="center">
 					<s:if test="message !=null">
 	          			<strong><s:property value="message"/></strong>
 	          		</s:if>
+
 					<s:iterator value="errorMessageList">
 	          			<s:div>
 	          				<s:property/>
@@ -39,7 +42,6 @@
 				<br>
 				<div class="member_form">
 					<s:form action="LoginAction" theme="simple" id="LoginForm">
-
 						<div class="member_form_title">
 							ユーザーID<br>
 						</div>
@@ -47,7 +49,6 @@
 							<s:textfield type="text" name="userId" value="%{#session.saveId}"/>
 							<br>
 						</div>
-
 						<br>
 						<div class="member_form_title">
 							パスワード
@@ -69,8 +70,6 @@
 								<span>L O G I N</span>
 							</button>
 						</div>
-						<div>
-				</div>
 					</s:form>
 				</div>
 			</div>
@@ -79,16 +78,15 @@
 				<p>商品購入の際はユーザー登録をお願いします<p><br>
 
 				<div class="nomember_btn">
-					<a href='<s:url action="UserCreateAction"/>'>新規ユーザー登録</a>
+				<a href='<s:url action="UserCreateAction"/>'>新規ユーザー登録</a>
 				</div>
 
 			</div>
 		</div>
-
-
-
 	</div>
+
 <!-- フッター -->
+
 <jsp:include page="include_footer.jsp" />
 
 </body>

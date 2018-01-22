@@ -15,13 +15,19 @@
 <title>新規登録完了画面</title>
 </head>
 <body>
+
+<!-- ヘッダー -->
+
 	<jsp:include page="include_header.jsp" />
+
+<!-- メイン -->
+
 	<div id="main" align="center">
 	<br><br>
 		<div class="heart">&#9829;</div>
 		<br>
-		<p>新規ユーザー登録が完了しました</p>
-		<br><br><br><br>
+			<p>新規ユーザー登録が完了しました</p>
+			<br><br><br><br>
 		<div class="nomember_btn">
 			<a href='<s:url action="GoHomeAction"/>'>H O M E</a>
 			<br><br>
@@ -29,7 +35,10 @@
 		</div>
 
 	</div>
+
 	<!-- フッター -->
+
 <jsp:include page="include_footer.jsp" />
+
 </body>
 </html>
