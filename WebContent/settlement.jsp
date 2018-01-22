@@ -10,10 +10,11 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/settlement_style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
+
 
 
 
@@ -27,7 +28,7 @@
 
 
 <!-- ここからメイン -->
-<div id="main">
+<div class="main">
 	<br>
 	<h2 class="title">決済確認</h2>
 	<br>
@@ -111,7 +112,8 @@
 			<div class="box">
 				<div class="destination_title">
 					<label>
-						<input type="radio" name="id" checked="checked"/>宛先情報
+						<input type="radio" name="id" checked="checked"/>
+						お届け先住所
 					</label>
 				</div>
 				<div class="destination_box">
@@ -123,13 +125,13 @@
 					<s:property value="familyName"/>
 					<s:property value="firstName"/>
 					<br>
-					住所
+					住所:
 					<s:property value="userAddress"/>
 					<br>
-					電話番号
+					電話番号:
 					<s:property value="telNumber"/>
 					<br>
-					メールアドレス
+					メールアドレス:
 					<s:property value="email"/>
 					<br>
 				</div>
