@@ -117,6 +117,9 @@
 		<action name="GoLoginAction" class="com.internousdev.cherry.action.GoLoginAction" method="execute">
 			<result name="success">login.jsp</result>
 		</action>
+		<action name="GoPurchaseHistoryAction" class="com.internousdev.cherry.action.GoPurchaseHistoryAction" method="execute">
+			<result name="success">purchaseHistory.jsp</result>
+		</action>
 
 
 	</package>
