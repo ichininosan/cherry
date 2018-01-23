@@ -681,7 +681,7 @@ public class MyPageDTOTest {
 
 
 
-	//登録日
+	//更新日
 	@Test
 	public void testGetUpdate_date1() {
 		MyPageDTO dto = new MyPageDTO();
