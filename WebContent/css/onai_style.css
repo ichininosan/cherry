@@ -33,7 +33,7 @@
 	font-weight:bold;
 }
 
-
+/*----- main フォーム -----*/
 
 .member_form{
 	width:450px;
@@ -63,24 +63,10 @@
 .member_form_radio userRegister_sex1{
 	margin-left: 46px;
 }
-
-
 .member h5{
 	font-weight:bold;
 }
 
-
-.nomember{
-	width:340px;
-	margin:auto;
-	font-size:16px;
-	letter-spacing: 1px;
-}
-.nomember p{
-	text-align:center;
-}
-
-/* 入力欄 */
 input#LoginForm_userId,input#LoginForm_password,input#userRegister_familyName,input#userRegister_firstName,input#userRegister_familyNameKana,input#userRegister_firstNameKana,input#userRegister_userId,input#userRegister_password,input#userRegister_email,
 input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfirmAction_firstName,input#DestinationRegisterConfirmAction_familyNameKana,input#DestinationRegisterConfirmAction_firstNameKana,input#DestinationRegisterConfirmAction_telNumber,input#DestinationRegisterConfirmAction_userAddress,input#DestinationRegisterConfirmAction_email{
 	width: 400px;
@@ -105,6 +91,20 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
     height: 10px;
     margin-left: 14px;
 }
+
+/*----- main サブ -----*/
+
+.nomember{
+	width:340px;
+	margin:auto;
+	font-size:16px;
+	letter-spacing: 1px;
+}
+.nomember p{
+	text-align:center;
+}
+
+
 
 /*-------------------------------------
 	button
@@ -195,16 +195,4 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
     opacity: 0;
     transform: scale(50);
   }
-}
-
-
-/* フッター */
-footer{
-	background: #F48FB1;
-	clear: both;
-	text-align: center;
-	height: 100px;
-	line-height: 100px;
-	margin-top: 100px;
-	color: #fff;
 }

@@ -46,7 +46,15 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 	 */
 	private ArrayList<String> errorMessageList = new ArrayList<>();
 
+	/**
+	 * 決済ページへ
+	 */
 	private int kessai;
+
+	/**
+	 * 合計金額
+	 */
+	private int totalPrice;
 
 	/**
 	 * 宛先情報一覧
@@ -114,18 +122,6 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 			} else {
 				userInfoDTO = loginDAO.select(userId, password);
 
-
-				/*familyNameKana=userInfoDTO.getFamilyNameKana();
-				firstNameKana=userInfoDTO.getFirstNameKana();
-				familyName=userInfoDTO.getFamilyName();
-				firstName=userInfoDTO.getFirstName();
-				email=userInfoDTO.getEmail();
-				telNumber="データなし";
-				telNumber=userInfoDTO.get;
-				userAddress="データなし";
-				userAddress=userInfoDTO.get;*/
-
-
 				// ログイン判定
 				if (userId.equals(userInfoDTO.getUserId()) && password.equals(userInfoDTO.getPassword())) {
 					loginDAO.login(userInfoDTO);
@@ -136,6 +132,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 					session.put("userId", userInfoDTO.getUserId());
 					session.put("loginFlg", true);
 
+					//カート、宛先情報を引き継ぐ
 					System.out.println("kessai:"+kessai);
 					if(kessai==1){
 						CartInfoDAO dao=new CartInfoDAO();
@@ -144,7 +141,8 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 						cartList = dao.showUserCartList(session.get("userId").toString());
 						destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
 						System.out.println("LoginAction:kessaiは1");
-//						session.put("kessai", 1);
+						//合計金額の計算
+						totalPrice = calcTotalPrice(cartList);
 						return KESSAI;
 					}
 				} else {
@@ -306,6 +304,26 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 		this.cartList = cartList;
 	}
 
+	/**
+	 * 合計金額を計算するメソッド
+	 */
+	public int calcTotalPrice(ArrayList<CartInfoDTO> cartList) {
+		int totalPrice = 0;
+		for(CartInfoDTO dto: cartList) {
+			totalPrice += dto.getPrice() * dto.getProductCount();
+			System.out.println("合計" + totalPrice + "円");
+		}
+		return totalPrice;
+	}
 
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 
 }

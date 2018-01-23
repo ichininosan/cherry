@@ -361,12 +361,13 @@ public class CartInfoDAO extends ActionSupport{
 	*/
 	public void changeUserId(String tempUserId,String userId) throws SQLException{
 		System.out.println("changeUserId");
-		String sql="UPDATE cart_info SET user_id=? where temp_user_id=?";
+		String sql="UPDATE cart_info SET user_id=? , temp_user_id=? where temp_user_id=?";
 		try{
 			con=db.getConnection();
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setString(1, userId);
-			ps.setString(2, tempUserId);
+			ps.setString(2, userId);
+			ps.setString(3, tempUserId);
 
 			ps.executeUpdate();
 		}catch(SQLException e){

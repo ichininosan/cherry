@@ -15,7 +15,7 @@ public class InputChecker {
 		}else if(familyName.length() < 1 || familyName.length() > 16){
 			result = "姓は１文字以上１６文字以下で入力してください。";
 		}else if(!familyName.matches("^[a-zA-Z一-龠あ-ん]+$")){
-			result = "姓は半角英語、またはひらがなで入力してください。";
+			result = "姓は半角英語、漢字またはひらがなで入力してください。";
 		}
 		return result;
 	}
@@ -132,8 +132,8 @@ public class InputChecker {
 
 		if (telNumber.equals("")) {
 			result = "電話番号を入力してください。";
-		} else if (telNumber.length() < 1 || telNumber.length() > 13) {
-			result = "電話番号は1文字以上13文字以下で入力してください。";
+		} else if (telNumber.length() < 11 || telNumber.length() > 13) {
+			result = "電話番号は11文字以上13文字以下で入力してください。";
 		} else if (!telNumber.matches("^[0-9]+$")) {
 			result = "電話番号は半角数字で入力してください。";
 		}
