@@ -360,6 +360,7 @@ public class CartInfoDAO extends ActionSupport{
 	ログインをした際にカート内のユーザー状態を引き継ぐメソッド
 	*/
 	public void changeUserId(String tempUserId,String userId) throws SQLException{
+		System.out.println("changeUserId");
 		String sql="UPDATE cart_info SET user_id=? where temp_user_id=?";
 		try{
 			con=db.getConnection();
