@@ -8,66 +8,67 @@ import com.internousdev.cherry.util.DBConnector;
 
 public class CartDeleteDAO {
 
-	 private DBConnector db= new DBConnector();
+	private DBConnector db = new DBConnector();
 
-     private Connection con = db.getConnection();
-
+	private Connection con = db.getConnection();
 
 	/**
-	 * カートの情報を削除
+	 * カートの情報を全て削除
+	 *
 	 * @param user_id
 	 */
 
-	public void deleteCartInfo(String userId){
-
+	public void deleteCartInfo(String userId) {
 
 		String sql = "DELETE FROM cart_info WHERE user_id = ?";
 
-		try{
+		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
 
 			ps.executeUpdate();
 
-
-
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 
-		}try{
+		}
+		try {
 			con.close();
 
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
 
 	}
 
-	public void deleteSeparate(String userId,String productId){
+	/**
+	 * カート内の商品を１つずつ削除するメソッド
+	 *
+	 * @param userId
+	 * @param productId
+	 */
+	public void deleteSeparate(String userId, String productId) {
 		String sql = "DELETE FROM cart_info WHERE user_id = ? AND product_id=?";
 
-		try{
+		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
-			ps.setString(2,productId);
+			ps.setString(2, productId);
 
 			ps.executeUpdate();
 
-
-
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 
-		}try{
+		}
+		try {
 			con.close();
 
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
 	}
-
-
 
 }
