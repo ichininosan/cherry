@@ -74,18 +74,18 @@
 						</div>
 
 						<br>
-						<span class="member_form_title">ユーザーID＜半角英数字＞</span>
+						<span class="member_form_title">ユーザーＩＤ</span>
 						<span class="hissu">必須</span>
 						<div class="member_form_text">
-							<s:textfield type="text" name="userId" value="%{userId}" />
+							<s:textfield type="text" name="userId" value="%{userId}" placeholder="半角英数字" />
 							<br>
 						</div>
 
 						<br>
-						<span class="member_form_title">パスワード＜半角英数字＞</span>
+						<span class="member_form_title">パスワード</span>
 						<span class="hissu">必須</span>
 						<div class="member_form_text">
-							<s:password name="password" value="%{password}" />
+							<s:password name="password" value="%{password}" placeholder="半角英数字" />
 							<br>
 						</div>
 
