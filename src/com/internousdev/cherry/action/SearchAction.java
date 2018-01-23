@@ -11,167 +11,111 @@ import com.internousdev.cherry.dto.SearchDTO;
 import com.internousdev.cherry.util.ToHiragana;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SearchAction extends ActionSupport implements SessionAware{
+public class SearchAction extends ActionSupport implements SessionAware {
 	private String searchWord;
 	private int categoryId;
-	private SearchDAO searchDAO=new SearchDAO();
-	private ArrayList<SearchDTO> searchDTOList=new ArrayList<SearchDTO>();
-	private ToHiragana toHiragana=new  ToHiragana();
-	public Map<String,Object> session;
-	private ArrayList<String> msgList=new ArrayList<String>();
+	private SearchDAO searchDAO = new SearchDAO();
+	private ArrayList<SearchDTO> searchDTOList = new ArrayList<SearchDTO>();
+	private ToHiragana toHiragana = new ToHiragana();
+	public Map<String, Object> session;
+	private ArrayList<String> msgList = new ArrayList<String>();
 
-/*	private String serchWordCheck(String serchWord){
-		String errorMsg="";
-		if(serchWord.length()<1 || serchWord.length()>16){
-			errorMsg="検索は、1文字以上16字以下で入力してください。";
+	public String execute() {
+		String ret = ERROR;
 
-		}else{
-			errorMsg="検索は半角英数字、漢字、カタカナ、ひらがなで入力してください。";
-		}return errorMsg;
-	}*/
-/*	private String[] createKeywords(String keyword) {
-		// 全角を半角に置き換えて、文字列を" "で分割する
-		keyword = keyword.replace("　", " ");
-		String[] keywords = keyword.split(" ", 0);
-		return keywords;
-	}
-*/
-	public String execute(){
-		String ret=ERROR;
-
-		if(searchWord.length()>16){
+		if (searchWord.length() > 16) {
 			msgList.add("16字以内で検索してください");
-		}else{
+		} else {
 			msgList.add(searchWord);
 		}
 
-		/*
-		検索値を全て全角ひらがな、全角カタカナに変換
-		 */
+		/*---------------------------------------------------------
+				検索値を全て全角ひらがな、全角カタカナに変換
+		-----------------------------------------------------------*/
 
-		searchWord=Normalizer.normalize(searchWord, Normalizer.Form.NFKC);
+		searchWord = Normalizer.normalize(searchWord, Normalizer.Form.NFKC);
 		System.out.println(searchWord);
 
+		/*---------------------------------------------------------
+				全件検索(カテゴリ、検索値なし)
+		-----------------------------------------------------------*/
 
-		/*
-		ひらがな検索
-		*/
-
-/*		if(categoryId==1&&searchWord.matches("^[\\u3040-\\u309F]+$")){
-			setSearchDTOList(searchDAO.BySerchWordKana(searchWord));
-			ret=SUCCESS;
-
-		}
-		else if(categoryId>1&&searchWord.matches("^[\\u3040-\\u309FF]+$")){
-			searchWord=toHiragana.toZenkakuHiragana(searchWord);
-			System.out.println(searchWord);
-			setSearchDTOList(searchDAO.ByCategoryANDSerchWordKana(categoryId, searchWord));
-			ret=SUCCESS;
-
-		}*/
-
-		/*
-		全件検索(カテゴリ、検索値なし)
-
-		*/
-
-		if(categoryId==1&&searchWord.isEmpty()){
+		if (categoryId == 1 && searchWord.isEmpty()) {
 			setSearchDTOList(searchDAO.allProductInfo());
-			ret=SUCCESS;
+			ret = SUCCESS;
 
 		}
-/*
-		ひらがな、カタカナ検索
-		*/
-		else if(categoryId==1&&(searchWord.matches("^[\\u3040-\\u309F]+$")||
-				searchWord.matches("^[\\u30A0-\\u30FF]+$"))){
-			searchWord=toHiragana.toZenkakuHiragana(searchWord);
+
+		/*---------------------------------------------------------
+				ひらがな、カタカナ検索
+		-----------------------------------------------------------*/
+		else if (categoryId == 1
+				&& (searchWord.matches("^[\\u3040-\\u309F]+$") || searchWord.matches("^[\\u30A0-\\u30FF]+$"))) {
+			searchWord = toHiragana.toZenkakuHiragana(searchWord);
 			System.out.println(searchWord);
 			setSearchDTOList(searchDAO.BySerchWordKana(searchWord));
-			ret=SUCCESS;
+			ret = SUCCESS;
 
-
-		}else if(categoryId>1&&(searchWord.matches("^[\\u3040-\\u309F]+$")||
-				searchWord.matches("^[\\u30A0-\\u30FF]+$"))){
-			searchWord=toHiragana.toZenkakuHiragana(searchWord);
+		} else if (categoryId > 1
+				&& (searchWord.matches("^[\\u3040-\\u309F]+$") || searchWord.matches("^[\\u30A0-\\u30FF]+$"))) {
+			searchWord = toHiragana.toZenkakuHiragana(searchWord);
 			System.out.println(searchWord);
 			setSearchDTOList(searchDAO.ByCategoryANDSerchWordKana(categoryId, searchWord));
-			ret=SUCCESS;
+			ret = SUCCESS;
 
 		}
 
-
-		/*
-		カテゴリ有り、検索値なし
-		 */
-		else if(categoryId>1&&searchWord.isEmpty()){
+		/*---------------------------------------------------------
+				カテゴリ有り、検索値なし
+		-----------------------------------------------------------*/
+		else if (categoryId > 1 && searchWord.isEmpty()) {
 
 			setSearchDTOList(searchDAO.ByProductCategory(categoryId));
-			ret=SUCCESS;
+			ret = SUCCESS;
 		}
 
-		/*
-		カテゴリなし、検索値あり
-		 */
-		else if(categoryId==1&&!(searchWord.isEmpty())){
+		/*---------------------------------------------------------
+				カテゴリなし、検索値あり
+		-----------------------------------------------------------*/
+		else if (categoryId == 1 && !(searchWord.isEmpty())) {
 			setSearchDTOList(searchDAO.BySerchWord(searchWord));
-			ret=SUCCESS;
+			ret = SUCCESS;
 		}
 
-		/*
-		カテゴリあり、検索値あり
-		 */
-		else{
+		/*---------------------------------------------------------
+				カテゴリあり、検索値あり
+		-----------------------------------------------------------*/
+		else {
 			setSearchDTOList(searchDAO.ByCategoryANDSerchWord(categoryId, searchWord));
-			ret=SUCCESS;
+			ret = SUCCESS;
 
-		}return ret;
+		}
+		return ret;
 	}
-
-
-
 
 	public String getSearchWord() {
 		return searchWord;
 	}
 
-
-
-
 	public void setSearchWord(String searchWord) {
 		this.searchWord = searchWord;
 	}
-
-
-
 
 	public int getCategoryId() {
 		return categoryId;
 	}
 
-
-
-
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-
-
-
 
 	public SearchDAO getSearchDAO() {
 		return searchDAO;
 	}
 
-
-
-
 	public void setSearchDAO(SearchDAO searchDAO) {
 		this.searchDAO = searchDAO;
 	}
-
-
-
 
 	public ArrayList<SearchDTO> getSearchDTOList() {
 		return searchDTOList;
@@ -181,52 +125,30 @@ public class SearchAction extends ActionSupport implements SessionAware{
 		this.searchDTOList = searchDTOList;
 	}
 
-
-
-
 	public ToHiragana getToHiragana() {
 		return toHiragana;
 	}
-
-
-
 
 	public void setToHiragana(ToHiragana toHiragana) {
 		this.toHiragana = toHiragana;
 	}
 
-
-
-
-
-
 	public ArrayList<String> getMsgList() {
 		return msgList;
 	}
-
-
-
 
 	public void setMsgList(ArrayList<String> msgList) {
 		this.msgList = msgList;
 	}
 
-
-
-
 	public Map<String, Object> getSession() {
 		return session;
 	}
-
-
-
 
 	@Override
 	public void setSession(Map<String, Object> arg0) {
 		// TODO 自動生成されたメソッド・スタブ
 
 	}
-
-
 
 }
