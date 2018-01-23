@@ -3,6 +3,8 @@ package com.internousdev.cherry.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -20,6 +22,9 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 	//商品ID
 	private int productId;
 
+	//カテゴリーID
+    private int categoryId;
+
 	//セッション
 	private Map<String,Object> session;
 
@@ -28,6 +33,13 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 
 	//購入個数
 	private ArrayList<Integer> count = new ArrayList<>();
+
+	//商品一覧リスト
+	private List<ProductDTO> proList=new ArrayList<ProductDTO>();
+
+	//商品一覧リスト(similarInfoDTOList)
+
+    private ArrayList<ProductDTO> similarInfoDTOList = new ArrayList<ProductDTO>();
 
 	//商品重複フラグ
 	private boolean duplicationFlg;
@@ -76,7 +88,40 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 			count.add(i);
 		}
 
+		/*-----------------------------------------------
+		 *関連商品を表示する
+		 * pro_detailにあるcategory_idを取り出す
+		 * category_idを引数にしてDBから同じカテゴリーの商品詳細を取得
+		 *
+		-------------------------------------------------*/
+		if(session.containsKey("pro_detail")){
+//			String categoryId = String.valueOf(session.get("category_id"));
 
+			Product_InfoDAO productInfo=new Product_InfoDAO();
+			//categoryIdをDAOに渡し、リストにしてアクションに返す
+//			proList=productInfo.selectByCategoryId(Integer.parseInt(categoryId));
+			proList=productInfo.selectByCategoryId(pro_detail.getCategory_id());
+
+			//Iterator<ProductDTO> の宣言
+			Iterator<ProductDTO> iterator=proList.iterator();
+
+			for(int i=0;i<3;i++){
+				if(iterator.hasNext()){
+					ProductDTO productDTO=(ProductDTO)iterator.next();
+
+					if(productId!=productDTO.getProduct_id()){
+
+						similarInfoDTOList.add(productDTO);
+					}else{
+						i--;
+						continue;
+					}
+					}else{
+						break;
+					}
+
+				}
+		}
 		return SUCCESS;
 	}
 
@@ -127,6 +172,30 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 
 	public void setDuplicationFlg(boolean duplicationFlg) {
 		this.duplicationFlg = duplicationFlg;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public List<ProductDTO> getProList() {
+		return proList;
+	}
+
+	public void setProList(List<ProductDTO> proList) {
+		this.proList = proList;
+	}
+
+	public ArrayList<ProductDTO> getSimilarInfoDTOList() {
+		return similarInfoDTOList;
+	}
+
+	public void setSimilarInfoDTOList(ArrayList<ProductDTO> similarInfoDTOList) {
+		this.similarInfoDTOList = similarInfoDTOList;
 	}
 
 

@@ -249,6 +249,11 @@ body {
 /*-------------------------------------
 	pro-detail
 -------------------------------------*/
+
+.detail{
+	width:100%;
+
+}
 .leftCol{
 	width:55%;
 	float:left;
@@ -295,6 +300,7 @@ body {
 }
 
 
+
 .table{
 	width:400px;
 }
@@ -315,3 +321,8 @@ body {
     float: right;
     margin-top: 10px;
 }
+.relation{
+	width:100%;
+
+}
+

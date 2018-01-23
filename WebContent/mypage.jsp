@@ -63,13 +63,13 @@
 
 					<tr>
 					    <th>cheryyID</th>
-						<td><p><s:property value="#session.userId" /></p></td>
+						<td><p><s:property value="userId" /></p></td>
 						 <td class="change"><!-- <a href="アクション"></> --></td>
 					</tr>
 
 					<tr>
 					    <th>パスワード</th>
-						<td><p><s:property value="#session.password" /></p></td>
+						<td><p><s:property value="password" /></p></td>
 					    <td class="change"><a href="/cherry/ResetPasswordAction" class="btn">変更</a></td>
 					</tr>
                    </s:iterator>

@@ -112,6 +112,48 @@
 					<!--<s:submit value="Add to Cart" onclick="goPutProductIntoCartAction();"/>-->
 					<!--<s:submit class="button" value="Add to Cart"/>-->
 				</div>
+
+			<!--関連商品の表示-->
+				<div class="relation">
+
+				  <s:iterator value="similarInfoDTOList">
+					  <s:url id="url" action="ProDetailAction">
+					    <s:param name="id" value="%{product_id}"/>
+					  </s:url>
+
+					  <s:a href="%{url}">
+					  <img src='<s:property value="image_file_name"/>' width="50px" height="50px" />
+					  </s:a>
+
+
+
+
+
+
+
+
+				  </s:iterator>
+
+
+<!--
+				  				ProductDTO productDTO = new ProductDTO();
+				productDTO.setDef_id(rs.getInt("id"));
+				productDTO.setProduct_id(rs.getInt("product_id"));
+				productDTO.setProduct_name(rs.getString("product_name"));
+				productDTO.setProduct_name_kana(rs.getString("product_name_kana"));
+				productDTO.setProduct_description(rs.getString("product_description"));
+				productDTO.setCategory_id(rs.getInt("category_id"));
+				productDTO.setPrice(rs.getInt("price"));
+				productDTO.setImage_file_name(rs.getString("image_file_name"));
+				productDTO.setRelease_date(rs.getString("release_date"));
+				productDTO.setRelease_company(rs.getString("release_company"));
+				productDTO.setRegist_date(rs.getString("regist_date"));
+				productDTO.setUpdate_date(rs.getString("update_date"));
+ -->
+
+
+
+                </div>
 			</div>
 		</s:form>
 </div>

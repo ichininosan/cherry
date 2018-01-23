@@ -144,10 +144,64 @@ public class Product_InfoDAO {
 
 
 
+/*----------------------------------------------------------------------------------------------------------------------
+ * CategoryIdに対応したDTOの中身を取得する
+ *  @param productId
+ *  @return productInfoDTOList
+ * -------------------------------------------------------------------------------------------------------------------*/
+	public List<ProductDTO> selectByCategoryId(int categoryId) {
+	DBConnector db = new DBConnector();
+	Connection con = db.getConnection();
+	List<ProductDTO> proList = new ArrayList<ProductDTO>();
 
+	if(categoryId == 1) {
+		proList = this.selectAll();
 
+	} else {
+		String sql = "SELECT *  FROM product_info WHERE category_id = ?";
 
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, categoryId);
+			ResultSet rs = ps.executeQuery();
 
+			while(rs.next()) {
+				ProductDTO productDTO = new ProductDTO();
+				productDTO.setDef_id(rs.getInt("id"));
+				productDTO.setProduct_id(rs.getInt("product_id"));
+				productDTO.setProduct_name(rs.getString("product_name"));
+				productDTO.setProduct_name_kana(rs.getString("product_name_kana"));
+				productDTO.setProduct_description(rs.getString("product_description"));
+				productDTO.setCategory_id(rs.getInt("category_id"));
+				productDTO.setPrice(rs.getInt("price"));
+				productDTO.setImage_file_name(rs.getString("image_file_name"));
+				productDTO.setRelease_date(rs.getString("release_date"));
+				productDTO.setRelease_company(rs.getString("release_company"));
+				productDTO.setRegist_date(rs.getString("regist_date"));
+				productDTO.setUpdate_date(rs.getString("update_date"));
 
+				proList.add(productDTO);
 
+			}
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+
+		}
+
+		try {
+			con.close();
+
+		} catch(SQLException e) {
+			e.printStackTrace();
+
+		}
+	}
+	return proList;
+}
+
+private List<ProductDTO> selectAll() {
+	// TODO 自動生成されたメソッド・スタブ
+	return null;
+}
 }	//Product_InfoDAO
