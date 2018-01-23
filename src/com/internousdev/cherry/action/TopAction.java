@@ -26,7 +26,8 @@ public class TopAction extends ActionSupport implements SessionAware {
 			session.put("proList",proList);
 			if(!(session.containsKey("loginFlg"))){
 				session.put("loginFlg", false);
-				String userId=RandomStringUtils.randomAlphabetic(10);
+				String userId=rndStr.randomAlphabetic(10);
+				/*String userId=RandomStringUtils.randomAlphabetic(10);*/
 				System.out.println(userId);
 				session.put("tempUserId", userId);
 				System.out.println(session.get("tempUserId").toString());
