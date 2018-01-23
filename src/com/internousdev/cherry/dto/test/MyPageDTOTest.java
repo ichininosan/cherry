@@ -498,7 +498,7 @@ public class MyPageDTOTest {
     	assertEquals(expected, actual);
     }
 	@Test
-    public void testIsSexa2() {
+    public void testIsSex2() {
 		MyPageDTO dto = new MyPageDTO();
     	boolean expected =false;
 
