@@ -1,9 +1,66 @@
 package com.internousdev.cherry.dto.test;
 
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import com.internousdev.cherry.dto.UserInfoDTO;
+
 public class UserInfoDTOTest {
 
 
 
+	//自動生成IDに関するテスト
+	@Test
+	public void testGetId1() {
+		UserInfoDTO dto = new UserInfoDTO();
+		int expected = 0;
+
+		dto.setId(expected);
+
+		assertEquals(expected, dto.getId());
+
+	}
+	@Test
+	public void testGetId2() {
+		UserInfoDTO dto = new UserInfoDTO();
+		int expected = 2147483647;
+
+		dto.setId(expected);
+
+		assertEquals(expected, dto.getId());
+	}
+	@Test
+	public void testGetId3() {
+		UserInfoDTO dto = new UserInfoDTO();
+		int expected = -2147483647;
+
+		dto.setId(expected);
+
+		assertEquals(expected, dto.getId());
+	}
+	@Test
+	public void testGetId4() throws Exception {
+		UserInfoDTO dto = new UserInfoDTO();
+	    try{
+	    	int postalMax = Integer.parseInt("2147483648");
+	    	dto.setId(postalMax);
+
+	    } catch (RuntimeException e) {
+	    	assertEquals(e.getMessage(), "For input string: \"2147483648\"");
+	    }
+	}
+	@Test
+	public void testGetId5() throws Exception {
+		UserInfoDTO dto = new UserInfoDTO();
+		try {
+		     int postalMin = Integer.parseInt("-2147483649");
+		     dto.setId(postalMin);
+
+		} catch (RuntimeException e) {
+			assertEquals(e.getMessage(), "For input string: \"-2147483649\"");
+		}
+	}
 
 
 

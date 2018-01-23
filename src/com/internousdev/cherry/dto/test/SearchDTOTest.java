@@ -12,7 +12,7 @@ public class SearchDTOTest{
 
 
 
-	//商品_デフォIDに関するテスト
+	//自動生成IDに関するテスト
 	@Test
 	public void testGetId1() {
 		SearchDTO dto = new SearchDTO();
