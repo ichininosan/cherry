@@ -25,11 +25,10 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 
 	//  ユーザーID
 	private String userId;
-
+	//session
 	private Map<String,Object> session;
 	//ログイン情報格納DTO
 	private ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
-
 	//エラーメッセージ
 	private String message;
 
@@ -39,6 +38,7 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 	 * セッション情報を取得する。
 	 * userListにセッションの情報が移っており、存在していたらSUCCESS
 	 */
+
 	public String execute(){
          //login画面遷移時にメッセージをだす
 	     if(!(session.containsKey("userId"))){
@@ -83,7 +83,6 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 	public Map<String,Object> getSession(){
 		return session;
 	}
-
 	/**
 	 * セッション情報を格納するメソッド
 	 * param session
@@ -127,10 +126,15 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 	public void setSession(Map<String, Object> arg0) {
 		this .session = arg0;
 	}
+	/**
+	 * エラーメッセージを格納するメソッド
+	 */
 	public String getMessage() {
 		return message;
 	}
-
+	/**
+	 * エラーメッセージを格納するメソッド
+	 */
 	public void setMessage(String message) {
 		this.message = message;
 	}

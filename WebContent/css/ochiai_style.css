@@ -53,19 +53,20 @@
     line-height:22px;
 }
 .contBody{
-		width:100%
+	width:100%;
+	margin-top: 20px;
 }
 .message{
-        width: 100%;
+    width: 100%;
     height: 440px;
     margin-top: 10px;
     text-align: center;
 }
 .message h1{
-   line-height: 204px;
-   font-family: "YuGothic M";
-   font-size: 25px;
-   z-index: 1;
+    line-height: 204px;
+    font-family: "YuGothic M";
+    font-size: 25px;
+    z-index: 1;
 }
 .submit{
 	width:100%;
@@ -162,57 +163,58 @@ a{
 }
 
 .btnn a {
-    color: #808080;
-    font-family: 'Covered By Your Grace', cursive;
-    font-size: 15px;
-    line-height: 11px;
+	color: #808080;
+	font-family: 'Covered By Your Grace', cursive;
+	font-size: 15px;
+	line-height: 11px;
 }
 
 
 
 /*------*/
 .button {
-  position: relative;
-  display: inline-block;
-  padding: .65em 4em;
-  border: 2px solid #e6e6e6;
-  color: #333;
-  text-decoration: none;
-  text-align: center;
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
+	position: relative;
+	display: inline-block;
+    padding: .65em 4em;
+	border: 2px solid #e6e6e6;
+	color: #333;
+	text-decoration: none;
+	text-align: center;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
 }
 .button::after {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  z-index: -1;
-  content: '';
-  width: 102%;
-  height: 102%;
-  background-color: #ffe6ea;
-  -webkit-transform: rotate(1deg);
-  transform: rotate(1deg);
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: -1;
+    content: '';
+    width: 102%;
+    height: 102%;
+    background-color: #ffe6ea;
+    -webkit-transform: rotate(1deg);
+    transform: rotate(1deg);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
 }
 .button:hover {
-  color: #b3b3b3;
+    color: #b3b3b3;
 }
 .button:hover::after {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-transform: rotate(0);
-  transform: rotate(0);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
 }
 
 /*-------------------------------------
 	マウスオン
 -------------------------------------*/
 
-a:hover img{opacity:0.8; filter:alpha(opacity=80);}
+a:hover img{
+	opacity:0.8; filter:alpha(opacity=80);}
 
 .heart {
     font-size: 80px;
@@ -221,8 +223,8 @@ a:hover img{opacity:0.8; filter:alpha(opacity=80);}
     z-index: 2;
 }
 .heart:hover {
-  -webkit-animation: heart-anim 1s linear .3s;
-  animation: heart-anim 1s linear .3s;
+    -webkit-animation: heart-anim 1s linear .3s;
+    animation: heart-anim 1s linear .3s;
 }
 
 /* Animation setting */
@@ -241,7 +243,7 @@ a:hover img{opacity:0.8; filter:alpha(opacity=80);}
 
 /* Basic style */
 body {
-  text-align: center;
+    text-align: center;
 }
 
 /*-------------------------------------

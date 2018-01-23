@@ -42,14 +42,15 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 				return "other";
 		    }
 
-		    
+		    //取得できているか確認のためのコンソール出力
 			System.out.println("----PurchaseCompleteAction:execute");
 			System.out.println(cartList.get(0).getUserId());
 			System.out.println(cartList.get(0).getPrice());
 			System.out.println(cartList.get(0).getProductId());
 			System.out.println(cartList.get(0).getProductCount());
 			System.out.println("------------------------");
-		    //2.登録メソッド
+
+			//2.登録メソッド
 	    	int i=purchaseCompleteDAO.setPurchseHistory(cartList);
 
 			if(cartList.size()==i){
