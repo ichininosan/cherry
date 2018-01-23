@@ -22,18 +22,27 @@
 
 
 <!-- メインコンテンツ -->
-	<div class="box">
-	    <div class="sectionHeader">
-			<h1>完了画面</h1>
-		</div>
-		<div class="contBody"><br>
-			<h3>パスワードの再設定が完了致しました。</h3>
 
-			<div>
-				<a href='<s:url action="LoginAction" />'>ログインへ</a>
+<div class="completetitle">
+<h1>パスワード変更</h1>
+</div>
+
+<div class=completemain>
+	<s:form action="GoLoginAction">
+
+			<div class="complete">
+			<h1>パスワードを変更しました!</h1>
+			<h2>ログインしてください</h2>
 			</div>
-		</div>
-	</div>
+
+			<div class="loginlink">
+			<button type="submit">
+			<span>ログイン画面へ</span>
+			</button>
+			</div>
+
+	</s:form>
+</div>
 
 	<!-- フッター -->
 <jsp:include page="include_footer.jsp" />

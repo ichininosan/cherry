@@ -25,8 +25,8 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 		String ret=SUCCESS;
 
 		//パスワードを変更
-		DAO.updatePassword(session.get("userId").toString(),
-						session.get("password").toString());
+		DAO.updatePassword(session.get("newUserId").toString(),
+						session.get("newPassword").toString());
 		return ret;
 	}
 

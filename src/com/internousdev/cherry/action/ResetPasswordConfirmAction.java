@@ -59,23 +59,26 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		}
 
 		//入力されたuserIdがDBにあるか(会員登録済みか)チェック
-		if(str==null || str.isEmpty()){
-			String error="Userがいません";
-			System.out.println(error);
+		if(i.userIdChk(userId).equals("OK")
+				&& i.passwordChk(password).equals("OK")
+				&& i.passwordcChk(passwordc,password).equals("OK")){
+			if(str==null || str.isEmpty()){
+			errMsgList.add("このIDは存在しません。登録済みのIDを入力してください。");
 			result = ERROR;
+			}
 		}
 
 		//パスワードが4文字以上のとき、最初の2文字のみ表示して、3文字以降を*で表示する
 		if(password.length() > 3){
-			session.put("userId", userId);
-			session.put("password", password);
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
 			confirmpass = password.substring(0,2);
 			confirmpass3 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*");
 			s = confirmpass + confirmpass3;
 		//パスワードが3文字以下のとき、*で表示する
 		}else{
-			session.put("userId", userId);
-			session.put("password", password);
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
 			s = password.replaceAll("^[0-9a-zA-Z]+$","*");
 		}
 
