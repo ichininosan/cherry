@@ -22,9 +22,9 @@
 
 
 <!-- メインコンテンツ -->
-	<div class="box">
+	<div class="main">
 	  <div class="sectionHeader">
-			<h1>確認画面</h1><br>
+			<h1>確認画面</h1>
 	  </div>
 	  <br>
 		<div class="contBody">
@@ -34,15 +34,15 @@
 				<table>
 					<tr id="box">
 						<th>
-							<label>ログインID:</label>
+							<label>cherryID</label>
 						</th>
 						<td>
-							<s:property value="userId" escape="false" />
+							<s:property value="session.newUserId" escape="false" />
 						</td>
 					</tr>
 					<tr id="box">
 						<th>
-							<label>パスワード:</label>
+							<label>パスワード</label>
 						</th>
 						<td>
 							<s:property value="s" escape="false" />
@@ -50,7 +50,9 @@
 					</tr>
 				</table>
 					<div class="btnn">
-					<s:submit value="完了" />
+						<button type="submit">
+							<span>送信</span>
+						</button>
 					</div>
 				</s:form>
 

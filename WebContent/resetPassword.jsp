@@ -16,55 +16,82 @@
 </head>
 <body>
 
+
+
+<%-- <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script>
+window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+</script>
+
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+ --%>
 <!-- ヘッダー -->
 <jsp:include page="include_header.jsp" />
 
 <!-- メインコンテンツ -->
-	<div class="box">
-		<div class="title">パスワード再設定</div>
-			<table>
+<div class="outbox">
+	<div class="main">
 
-			<!-- ここから入力エラーメッセージ表示 -->
+		<div class="sectionHeader">
+			<h1>パスワード再設定</h1>
+		</div>
 
-					<s:iterator value="errMsgList">
-						<s:property/>
-					</s:iterator>
+			<div class="error">
+				<s:iterator value="errMsgList"><s:property/>
+				</s:iterator>
+			</div>
 
+				<div class="contBody">
+					<s:form action="ResetPasswordConfirmAction">
+					<table>
 
-			<!-- ここまで入力エラーメッセージ表示 -->
-
-			<s:form action="ResetPasswordConfirmAction">
-
-
-				<tr>
-					<td>
-						<label>ログインID:</label>
-					</td>
-					<td>
-						<input type="text" name="userId" value=""/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>パスワード:</label>
-					</td>
-					<td>
-						<input type="password" name="password" value="">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>再確認パスワード:</label>
-					</td>
-					<td>
-						<input type="password" name="passwordc" value="">
-					</td>
-				</tr>
-				<s:submit value="登録" />
-			</s:form>
-			</table>
+					<tr id="box">
+						<th>
+						<label>cherryID</label>
+						</th>
+						<td>
+						<s:textfield name="userId" value="" placeholder="IDを入力" />
+						</td>
+					</tr>
+					<tr id="box">
+						<th>
+						<label>新しいパスワード</label>
+						</th>
+						<td>
+						<input type="password" name="password" value="" placeholder="パスワードを入力">
+						</td>
+					</tr>
+					<tr id="box">
+						<th>
+						<label>再確認パスワード</label>
+						</th>
+						<td>
+						<input type="password" name="passwordc" value="" placeholder="再入力">
+						</td>
+					</tr>
+					</table>
+						<div class="btnn">
+							<div class="btnnc">
+								<button type="submit">
+								<span>確認画面へ</span>
+								</button>
+							</div>
+						</div>
+					</s:form>
+					<!-- <div class="fb-like"></div>
+					<a class="twitter-share-button" href="https://twitter.com/share" data-dnt="true">Tweet</a>
+					<a data-pin-do="buttonPin" data-pin-round="true" href="https://www.pinterest.com/pin/create/button/?url=http%3A%2F%2Flocalhost%3A8080%2Fcherry%2FTopAction&media=https%3A%2F%2Ffarm8.staticflickr.com%2F7027%2F6851755809_df5b2051c9_z.jpg&description=Next%20stop%3A%20Pinterest"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_16.png" /></a> -->
+				</div>
 	</div>
-
+</div>
 
 <!-- フッター -->
 <jsp:include page="include_footer.jsp" />
