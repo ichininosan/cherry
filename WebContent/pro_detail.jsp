@@ -43,7 +43,7 @@
 			<div class="leftCol">
 			    <h1>Product Image</h1>
 			    <s:hidden name="imageFileName" value="%{pro_detail.image_file_name}"/>
-  		  		<img src='<s:property value="pro_detail.image_file_name"/>'/>
+  		  		<img src='<s:property value="pro_detail.image_file_name"/>'width="380px" height="380px"/>
     		</div>
 
 			<div class="rightCol">
@@ -122,21 +122,13 @@
 					  </s:url>
 
 					  <s:a href="%{url}">
-					  <img src='<s:property value="image_file_name"/>' width="50px" height="50px" />
+					  <img src='<s:property value="image_file_name"/>' width="70px" height="70px" />
 					  </s:a>
-
-
-
-
-
-
-
-
 				  </s:iterator>
 
 
 <!--
-				  				ProductDTO productDTO = new ProductDTO();
+				ProductDTO productDTO = new ProductDTO();
 				productDTO.setDef_id(rs.getInt("id"));
 				productDTO.setProduct_id(rs.getInt("product_id"));
 				productDTO.setProduct_name(rs.getString("product_name"));
@@ -150,8 +142,6 @@
 				productDTO.setRegist_date(rs.getString("regist_date"));
 				productDTO.setUpdate_date(rs.getString("update_date"));
  -->
-
-
 
                 </div>
 			</div>
