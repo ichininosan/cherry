@@ -144,7 +144,7 @@
 				onclick="location.href='<s:url action="GoDestinationRegisterAction" />'">
 			</div>
 			<div class="btn_2">
-				<button type="submit">完了</button>
+				<button type="submit">購入</button>
 			</div>
 		</div>
 	</s:form>
