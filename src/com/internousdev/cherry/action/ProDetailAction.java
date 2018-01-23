@@ -69,7 +69,7 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 		}*/
 
 		//ここから、購入個数を在庫に応じて変えるよう記述
-		for(int i = 1; i <= 5; i++) {
+		for(int i = 1; i <= pro_detail.getStock(); i++) {
 			if (i > pro_detail.getStock()) {
 				break;
 			}
