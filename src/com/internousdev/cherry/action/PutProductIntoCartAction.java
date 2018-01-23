@@ -72,9 +72,11 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 
 			boolean dupFlg = dao.isAlreadyIntoCart(session.get("userId").toString(),Integer.parseInt(productId));
 			if(!dupFlg){
+				dao.changeProductStock(productCount, Integer.parseInt(productId));
 			count=dao.putProductIntoCart(session.get("userId").toString(),Integer.parseInt(productId),productCount,iPrice);
 			cartList = dao.showUserCartList(session.get("userId").toString());
 			}else{
+				dao.changeProductStock(productCount, Integer.parseInt(productId));
 				count=dao.UpdateProductCount(session.get("userId").toString(),Integer.parseInt(productId),productCount,iPrice);
 				cartList = dao.showUserCartList(session.get("userId").toString());
 
@@ -97,9 +99,11 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 			boolean dupFlg = dao.isAlreadyIntoCart(session.get("tempUserId").toString(),Integer.parseInt(productId));
 			if(!dupFlg){
 				count=dao.putProductIntoCart(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
+				dao.changeProductStock(productCount, Integer.parseInt(productId));
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
 				}else{
 					count=dao.UpdateProductCount(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
+					dao.changeProductStock(productCount, Integer.parseInt(productId));
 					cartList = dao.showUserCartList(session.get("tempUserId").toString());
 
 				}

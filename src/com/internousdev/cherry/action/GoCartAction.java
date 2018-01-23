@@ -29,19 +29,13 @@ public class GoCartAction extends ActionSupport implements SessionAware,ErrorMes
 			System.out.println("TESSST");
 		}if((boolean) session.containsKey("loginFlg")){
 			if((boolean) session.get("loginFlg")){
-				for(CartInfoDTO dto: dao.showUserCartList(session.get("userId").toString())){
-					cartList.add(dto);
-				}
+				dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
+				cartList = dao.showUserCartList(session.get("userId").toString());
 			}else{
-				for(CartInfoDTO dto: dao.showTempUserCartList(session.get("tempUserId").toString())){
-					cartList.add(dto);
-				}
+				cartList = dao.showTempUserCartList(session.get("tempUserId").toString());
 			}
 		}else{
-			for(CartInfoDTO dto: dao.showTempUserCartList(session.get("tempUserId").toString())){
-				cartList.add(dto);
-			}
-
+			cartList = dao.showTempUserCartList(session.get("tempUserId").toString());
 		}
 
 		//合計金額の計算

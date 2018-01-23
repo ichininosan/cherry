@@ -360,12 +360,14 @@ public class CartInfoDAO extends ActionSupport{
 	ログインをした際にカート内のユーザー状態を引き継ぐメソッド
 	*/
 	public void changeUserId(String tempUserId,String userId) throws SQLException{
-		String sql="UPDATE cart_info SET user_id=? where temp_user_id=?";
+		System.out.println("changeUserId");
+		String sql="UPDATE cart_info SET user_id=? , temp_user_id=? where temp_user_id=?";
 		try{
 			con=db.getConnection();
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setString(1, userId);
-			ps.setString(2, tempUserId);
+			ps.setString(2, userId);
+			ps.setString(3, tempUserId);
 
 			ps.executeUpdate();
 		}catch(SQLException e){
@@ -373,6 +375,27 @@ public class CartInfoDAO extends ActionSupport{
 		}finally {
 			con.close();
 		}
+	}
+	/*
+	在庫を管理するメソッド
+	*/
+	public void changeProductStock(int productStock,int productId) throws SQLException{
+		System.out.println("Stockを変更");
+		String sql="UPDATE product_info SET stock=stock-? WHERE product_id=?";
+
+		try{
+			con=db.getConnection();
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setInt(1, productStock);
+			ps.setInt(2, productId);
+
+			ps.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			con.close();
+		}
+
 	}
 
 
