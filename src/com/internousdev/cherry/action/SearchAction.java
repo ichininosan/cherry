@@ -11,6 +11,12 @@ import com.internousdev.cherry.dto.SearchDTO;
 import com.internousdev.cherry.util.ToHiragana;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * @author internousdev
+ * @author yuzan-sakurai
+ *
+ */
+
 public class SearchAction extends ActionSupport implements SessionAware {
 	private String searchWord;
 	private int categoryId;

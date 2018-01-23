@@ -1,5 +1,10 @@
 package com.internousdev.cherry.util;
 
+/**
+ * @author internousdev
+ * @author yuzan-sakurai
+ *
+ */
 public class ToHiragana {
 	private String searchWord;
 

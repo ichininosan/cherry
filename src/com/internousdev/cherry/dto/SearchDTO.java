@@ -2,6 +2,11 @@ package com.internousdev.cherry.dto;
 
 import java.util.Date;
 
+/**
+ * @author internousdev
+ * @author yuzan-sakurai
+ *
+ */
 public class SearchDTO {
 	private int id;
 	private int productId;

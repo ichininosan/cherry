@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import com.internousdev.cherry.dto.SearchDTO;
 import com.internousdev.cherry.util.DBConnector;
 
+
+/**
+ * @author internousdev
+ * @author yuzan-sakurai
+ *
+ */
 public class SearchDAO {
 	private DBConnector db = new DBConnector();
 	private Connection con = db.getConnection();
