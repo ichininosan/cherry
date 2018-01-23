@@ -75,10 +75,10 @@
 			</div>
 			<br><br>
 			<div class="nomember">
-				<p>商品購入の際はユーザー登録をお願いします<p><br>
+				<p>Ｃｈｅｒｒｙ の新しいお客様ですか？<p><br>
 
 				<div class="nomember_btn">
-				<a href='<s:url action="UserCreateAction"/>'>新規ユーザー登録</a>
+				<a href='<s:url action="UserCreateAction"/>'>新規Ｃｈｅｒｒｙユーザー登録</a>
 				</div>
 
 			</div>

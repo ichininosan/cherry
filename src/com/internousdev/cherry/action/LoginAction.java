@@ -46,6 +46,9 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 	 */
 	private ArrayList<String> errorMessageList = new ArrayList<>();
 
+	/**
+	 * 決済ページへ
+	 */
 	private int kessai;
 
 	/**
