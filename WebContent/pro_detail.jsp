@@ -115,19 +115,22 @@
 
 			<!--関連商品の表示-->
 				<div class="relation">
-
+				<p> [関連商品] </p>
+                <ul>
 				  <s:iterator value="similarInfoDTOList">
-					  <s:url id="url" action="ProDetailAction">
+					<li>
+					 <s:url id="url" action="ProDetailAction">
 					  <s:param name="id" value="%{product_id}"/>
 					  </s:url>
 
 
-					  <s:a href="%{url}" style="float:left; margin: 10px;">
+					  <s:a href="%{url}">
 					  <s:property value="product_name" />
-					  <img src='<s:property value="image_file_name"/>' width="80px" height="80px" style="float:none; margin: 10px;"  />
+					  <img src='<s:property value="image_file_name"/>' width="80px" height="80px"  />
 				      </s:a>
-
+				     </li>
 				  </s:iterator>
+				  </ul>
 
 
 <!--
