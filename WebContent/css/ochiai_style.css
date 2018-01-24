@@ -317,26 +317,35 @@ body {
 }
 
 .cartbutton{
-    width: 100%;
+    width: 50%;
     height:80px;
     margin-top: 50px;
+    float:right;
 
 }
 
 .relation{
 	width: 100%;
-    margin-top: 50px 0 20px 0 ;
+    margin-top: 80px;
 }
 .relation p{
 	text-align:center;
 	font-family: sans-serif;
-	line-height:50px;
+	line-height:20px;
+	margin-top:5px;
 }
+.price{
+	color:#E91E63;
+	font-weight: bold;
+	}
 
 
 /*-------------------------------------
 	pro-detail list
 -------------------------------------*/
+.relation ul{
+	margin-bottom: 100px;
+}
 .relation ul li{
     width: 213px;
     margin: 20px 0 0 20px;
