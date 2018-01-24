@@ -51,7 +51,7 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 		}
 
 		if(dao.existsUserId(userId)) {
-			errorMessageList.add("入力されたIDは既に存在します。");
+			errorMessageList.add("入力されたIDは既に存在します");
 			result = ERROR;
 		}else if (!i.userIdChk(userId).equals("OK")) {
 			errorMessageList.add(i.userIdChk(userId));
@@ -73,10 +73,10 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 			result = ERROR;
 		}
 
-		if (kozin == null) {
-			errorMessageList.add("個人情報規約に同意されない方は新規ユーザーを登録できません");
-			result = ERROR;
-		}
+//		if (!(kozin.equals("3"))) {
+//			errorMessageList.add("利用規約及び個人情報保護方針に同意されない方は新規登録できません");
+//			result = ERROR;
+//		}
 
 		return result;
 	}

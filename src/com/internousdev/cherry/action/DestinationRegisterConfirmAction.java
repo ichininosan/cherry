@@ -51,6 +51,7 @@ public class DestinationRegisterConfirmAction extends ActionSupport implements E
 			errMsgList.add(i.userAddressChk(userAddress));
 			result = ERROR;
 		}
+
 		return result;
 	}
 
@@ -122,7 +123,6 @@ public class DestinationRegisterConfirmAction extends ActionSupport implements E
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
-
 
 	public ArrayList<String> getErrMsgList() {
 		return errMsgList;
