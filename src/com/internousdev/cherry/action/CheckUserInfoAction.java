@@ -21,6 +21,7 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 	private String email;
 	private String userId;
 	private String password;
+	private String kozin;
 	private ArrayList<String> errorMessageList = new ArrayList<>();
 	public String execute() throws SQLException {
 		String result = SUCCESS;
@@ -69,6 +70,11 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 
 		if (!(sex.equals("0") || sex.equals("1"))) {
 			errorMessageList.add("性別の値が不正です");
+			result = ERROR;
+		}
+
+		if (kozin == null) {
+			errorMessageList.add("個人情報規約に同意されない方は新規ユーザーを登録できません");
 			result = ERROR;
 		}
 
@@ -138,6 +144,14 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getKozin() {
+		return kozin;
+	}
+
+	public void setKozin(String kozin) {
+		this.kozin = kozin;
 	}
 
 	public ArrayList<String> getErrorMessageList() {

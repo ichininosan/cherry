@@ -55,7 +55,7 @@
 	color: #ec407ac9;
     font-size: 15px;
     font-weight: bold;
-    padding-left: 223px;
+    padding-left: 175px;
 }
 .member_form_radio{
 	margin: 14px;
@@ -90,6 +90,10 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
     border-radius: 4px;
     height: 10px;
     margin-left: 14px;
+}
+.kozin{
+	background-color:white;
+	margin-left:10px;
 }
 
 /*----- main サブ -----*/

@@ -28,7 +28,7 @@
 
 	<div id="main">
 	<br><br>
-		<div class="title">新規ユーザー登録確認</div>
+		<div class="title">登録情報確認</div>
 		<br><br>
 		<div class="register_box">
 			<div class="member">
@@ -71,7 +71,7 @@
 
 							<br><br><br>
 							<div class="member_btn">
-								<button type="submit" class="">登 録 情 報 完 了</button>
+								<button type="submit" class="">登 録 情 報 を 確 定</button>
 							</div>
 						</div>
 
