@@ -58,7 +58,7 @@ window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.
 						<label>cherryID</label>
 						</th>
 						<td>
-						<s:textfield name="userId" value="" placeholder="IDを入力" />
+						<input type="text"  autofocus name="userId" value="" placeholder="IDを入力" />
 						</td>
 					</tr>
 					<tr id="box">

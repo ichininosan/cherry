@@ -49,6 +49,7 @@
 .error {
 	text-align: center;
 	margin-top: 30px;
+    font-weight: bold;
 }
 
 .contBody{
@@ -69,7 +70,32 @@
 	color: #F48FB1;
 	text-align: center;
 	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	background: #ffe6ea;
+	padding: 0.5em;
+	border-radius: 0.5em;
+	width: 50%;
+	animation: text_animation 1s;
 }
+
+@keyframes text_animation{
+  0%{
+    letter-spacing: -0.5em;
+    transform: translateY(-1000px);
+  }
+
+  50%{
+    letter-spacing: -0.5em;
+    transform: none;
+  }
+
+  100%{
+    letter-spacing: 0;
+  }
+}
+
+
 
 .completemain{
 	text-align: center;
@@ -158,6 +184,16 @@ input {
 	font-size: 100%;
 }
 
+input[type="text"]:focus {
+  border: 1px solid #F48FB1;
+  outline: 0;
+}
+
+input[type="password"]:focus {
+  border: 1px solid #F48FB1;
+  outline: 0;
+}
+
 /* Google Chrome, Safari, Opera 15+, Android, iOS */
 ::-webkit-input-placeholder {
     color: #F48FB1; }
@@ -183,7 +219,8 @@ input {
 	color         : #330033;     /* 文字色     */
 	line-height   : 1em;         /* 1行の高さ  */
 	transition    : .3s;         /* なめらか変化 */
-	border        : 0px solid black;    /* 枠の指定 */
+	border        : 1px solid #ffe6ea;
+	outline       : 0;           /* 枠の指定 */
     }
 
 .btnnc button{

@@ -27,7 +27,7 @@
 <!-- メインコンテンツ -->
 
 <div class="completetitle">
-<h1>パスワード変更</h1>
+	<h1>パスワード変更</h1>
 </div>
 
 <div class=completemain>
