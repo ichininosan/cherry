@@ -10,7 +10,7 @@ import com.internousdev.cherry.dao.CartInfoDAO;
 import com.internousdev.cherry.dto.CartInfoDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class PutProductIntoCartAction extends ActionSupport implements SessionAware{
+public class PutProductIntoCartAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
 	private ArrayList<CartInfoDTO> cartList = new ArrayList<CartInfoDTO>();
@@ -35,86 +35,94 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 	// カートの合計金額
 	private int totalPrice = 0;
 
-	public String execute() throws SQLException{
-		System.out.println("countは"+count);
+	public String execute() throws SQLException {
+		System.out.println("countは" + count);
 		CartInfoDTO dto = new CartInfoDTO();
 		CartInfoDAO dao = new CartInfoDAO();
 		dto.setProductId(Integer.parseInt(productId.toString()));
 		dto.setProductCount(productCount);
 
 		System.out.println("----PutProductIntoCartAction");
-		System.out.println("productId:"+ productId);
-		System.out.println("productNameKana"+productNameKana);
-		System.out.println("productName"+productName);
-		System.out.println("productDescription"+productDescription);
-		System.out.println("price"+price);
-		System.out.println("imageFileName"+imageFileName);
-		System.out.println("releaseCompany"+releaseCompany);
-		System.out.println("loginFlg:"+session.get("loginFlg"));
-		System.out.println("userId:"+session.get("userId"));
-		System.out.println("duplicationFlg:"+duplicationFlg);
+		System.out.println("productId:" + productId);
+		System.out.println("productNameKana" + productNameKana);
+		System.out.println("productName" + productName);
+		System.out.println("productDescription" + productDescription);
+		System.out.println("price" + price);
+		System.out.println("imageFileName" + imageFileName);
+		System.out.println("releaseCompany" + releaseCompany);
+		System.out.println("loginFlg:" + session.get("loginFlg"));
+		System.out.println("userId:" + session.get("userId"));
+		System.out.println("duplicationFlg:" + duplicationFlg);
 		System.out.println("-----------------------------");
 
 		int iPrice = Integer.parseInt(price);
-		if (!(session.containsKey("loginFlg"))){
+		if (!(session.containsKey("loginFlg"))) {
 			session.put("loginFlg", false);
 		}
 
-		/*櫻井作成メソッド*/
+		/* 櫻井作成メソッド */
 
 		/*
-		ログインしている際にカートに入れた場合
-		*/
+		 * ログインしている際にカートに入れた場合
+		 */
 
-		if(session.containsKey("loginFlg") && (boolean) session.get("loginFlg")){
-			/*カート内の商品の重複を確認
-			*/
+		if (session.containsKey("loginFlg") && (boolean) session.get("loginFlg")) {
+			/*
+			 * カート内の商品の重複を確認
+			 */
 
-			boolean dupFlg = dao.isAlreadyIntoCart(session.get("userId").toString(),Integer.parseInt(productId));
-			if(!dupFlg){
-				dao.changeProductStock(productCount, Integer.parseInt(productId));
-			count=dao.putProductIntoCart(session.get("userId").toString(),Integer.parseInt(productId),productCount,iPrice);
-			cartList = dao.showUserCartList(session.get("userId").toString());
-			}else{
-				dao.changeProductStock(productCount, Integer.parseInt(productId));
-				count=dao.UpdateProductCount(session.get("userId").toString(),Integer.parseInt(productId),productCount,iPrice);
+			boolean dupFlg = dao.isAlreadyIntoCart(session.get("userId").toString(), Integer.parseInt(productId));
+			if (!dupFlg) {
+				/*
+				 * dao.changeProductStock(productCount,
+				 * Integer.parseInt(productId));
+				 */
+				count = dao.putProductIntoCart(session.get("userId").toString(), Integer.parseInt(productId),
+						productCount, iPrice);
+				cartList = dao.showUserCartList(session.get("userId").toString());
+
+			} else {
+				/*
+				 * dao.changeProductStock(productCount,
+				 * Integer.parseInt(productId));
+				 */
+				count = dao.UpdateProductCount(session.get("userId").toString(), Integer.parseInt(productId),
+						productCount, iPrice);
 				cartList = dao.showUserCartList(session.get("userId").toString());
 
 			}
 
-
 		}
 
 
-		/*
-		ログインしていないときにカートに入れた場合。
-		上記と同様のメソッドにしたらよいと思う。
-		現在、sqlの制限によりERROR(18/01/18)
-		*/
-		else{
-			/*count=dao.putProductIntoCart(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
-			cartList = dao.showUserCartList(session.get("tempUserId").toString());
-
-			System.out.println("OK,TEST"+session.get("tempUserId").toString());*/
-			boolean dupFlg = dao.isAlreadyIntoCart(session.get("tempUserId").toString(),Integer.parseInt(productId));
-			if(!dupFlg){
-				count=dao.putProductIntoCart(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
+		else {
+			/*
+			 * count=dao.putProductIntoCart(session.get("tempUserId").toString()
+			 * ,Integer.parseInt(productId),productCount,iPrice); cartList =
+			 * dao.showUserCartList(session.get("tempUserId").toString());
+			 *
+			 * System.out.println("OK,TEST"+session.get("tempUserId").toString()
+			 * );
+			 */
+			boolean dupFlg = dao.isAlreadyIntoCart(session.get("tempUserId").toString(), Integer.parseInt(productId));
+			if (!dupFlg) {
+				count = dao.putProductIntoCart(session.get("tempUserId").toString(), Integer.parseInt(productId),
+						productCount, iPrice);
 				dao.changeProductStock(productCount, Integer.parseInt(productId));
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
-				}else{
-					count=dao.UpdateProductCount(session.get("tempUserId").toString(),Integer.parseInt(productId),productCount,iPrice);
-					dao.changeProductStock(productCount, Integer.parseInt(productId));
-					cartList = dao.showUserCartList(session.get("tempUserId").toString());
+			} else {
+				count = dao.UpdateProductCount(session.get("tempUserId").toString(), Integer.parseInt(productId),
+						productCount, iPrice);
+				dao.changeProductStock(productCount, Integer.parseInt(productId));
+				cartList = dao.showUserCartList(session.get("tempUserId").toString());
 
-				}
-
+			}
 
 		}
 
 		totalPrice = calcTotalPrice(cartList);
 		return SUCCESS;
 	}
-
 
 	/**
 	 * @return session
@@ -124,86 +132,68 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 	}
 
 	/**
-	 * @param session セットする session
+	 * @param session
+	 *            セットする session
 	 */
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
-
-
-
 	public String getProductId() {
 		return productId;
 	}
-
 
 	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
-
-
-
 	public String getProductNameKana() {
 		return productNameKana;
 	}
-
 
 	public void setProductNameKana(String productNameKana) {
 		this.productNameKana = productNameKana;
 	}
 
-
 	public String getProductName() {
 		return productName;
 	}
-
 
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
 
-
 	public String getProductDescription() {
 		return productDescription;
 	}
-
 
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
 
-
 	public String getPrice() {
 		return price;
 	}
-
 
 	public void setPrice(String price) {
 		this.price = price;
 	}
 
-
 	public String getImageFileName() {
 		return imageFileName;
 	}
-
 
 	public void setImageFileName(String imageFileName) {
 		this.imageFileName = imageFileName;
 	}
 
-
 	public String getReleaseCompany() {
 		return releaseCompany;
 	}
 
-
 	public void setReleaseCompany(String releaseCompany) {
 		this.releaseCompany = releaseCompany;
 	}
-
 
 	/**
 	 * @return cartList
@@ -212,14 +202,13 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		return cartList;
 	}
 
-
 	/**
-	 * @param cartList セットする cartList
+	 * @param cartList
+	 *            セットする cartList
 	 */
 	public void setCartList(ArrayList<CartInfoDTO> cartList) {
 		this.cartList = cartList;
 	}
-
 
 	/**
 	 * @return duplicationFlg
@@ -228,14 +217,13 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		return duplicationFlg;
 	}
 
-
 	/**
-	 * @param duplicationFlg セットする duplicationFlg
+	 * @param duplicationFlg
+	 *            セットする duplicationFlg
 	 */
 	public void setDuplicationFlg(boolean duplicationFlg) {
 		this.duplicationFlg = duplicationFlg;
 	}
-
 
 	/**
 	 * @return totalPrice
@@ -244,9 +232,9 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		return totalPrice;
 	}
 
-
 	/**
-	 * @param totalPrice セットする totalPrice
+	 * @param totalPrice
+	 *            セットする totalPrice
 	 */
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
@@ -257,32 +245,27 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 	 */
 	public int calcTotalPrice(ArrayList<CartInfoDTO> cartList) {
 		int totalPrice = 0;
-		for(CartInfoDTO dto: cartList) {
+		for (CartInfoDTO dto : cartList) {
 			totalPrice += dto.getPrice() * dto.getProductCount();
 			System.out.println("合計" + totalPrice + "円");
 		}
 		return totalPrice;
 	}
 
-
 	public int getProductCount() {
 		return productCount;
 	}
-
 
 	public void setProductCount(int productCount) {
 		this.productCount = productCount;
 	}
 
-
 	public int getCount() {
 		return count;
 	}
 
-
 	public void setCount(int count) {
 		this.count = count;
 	}
-
 
 }

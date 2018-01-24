@@ -411,6 +411,33 @@ public class CartInfoDAO extends ActionSupport {
 		}
 
 	}
+	/**
+	 * 在庫を更新するメソッド
+	 *
+	 * @param productStock
+	 * @param productId
+	 * @param userId
+	 * @throws SQLException
+	 */
+	public void changeProductStockId(int productStock, int productId,String userId) throws SQLException {
+		System.out.println("Stockを変更");
+		String sql = "UPDATE cart_info SET product_count=product_count+? WHERE product_id=? AND user_id=?";
+
+		try {
+			con = db.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, productStock);
+			ps.setInt(2, productId);
+			ps.setString(3, userId);
+
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			con.close();
+		}
+
+	}
 
 	/*
 	 * UPDATE cart_info SET product_count=product_count + 10 WHERE user_id=? AND

@@ -137,10 +137,123 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 					if(kessai==1){
 						CartInfoDAO dao=new CartInfoDAO();
 						DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
-						dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
+						ArrayList<CartInfoDTO> tempCartList = new ArrayList<CartInfoDTO>();
+						ArrayList <Integer> productIdList =new ArrayList <Integer>();
+						ArrayList <Integer> tempProductIdList =new ArrayList <Integer>();
+						tempCartList = dao.showUserCartList(session.get("tempUserId").toString());
+						cartList = dao.showUserCartList(session.get("userId").toString());
+						int i=0;
+						/*
+						ログイン後のカートの中身を生成
+						*/
+						for(i=0;i<cartList.size();i++){
+							productIdList.add(cartList.get(i).getProductId());
+							/*tempProductIdList.add(tempCartList.get(i).getProductId());
+
+							boolean exist=productIdList.contains(tempProductIdList.get(i));
+								System.out.println("TESTです"+productIdList.get(i));
+
+							boolean exist=productIdList.contains(i);
+							System.out.println("存在は"+exist);*/
+						}
+						/*
+						未ログイン時のカートの中身をリストとして生成
+						*/
+						i=0;
+						for(i=0;i<tempCartList.size();i++){
+							tempProductIdList.add(tempCartList.get(i).getProductId());
+							/*tempProductIdList.add(tempCartList.get(i).getProductId());
+
+							boolean exist=productIdList.contains(tempProductIdList.get(i));
+								System.out.println("TESTです"+productIdList.get(i));
+
+							boolean exist=productIdList.contains(i);
+							System.out.println("存在は"+exist);*/
+						}
+
+						/*
+						カートの中身を確認
+						*/
+
+						if(cartList.size()<tempCartList.size()){
+							i=0;
+							for(i=0;i<productIdList.size();i++){
+							boolean exist=tempProductIdList.contains(productIdList.get(i));
+							if(exist){
+								dao.changeProductStockId(Integer.valueOf(tempCartList.get(i).getProductCount()),Integer.valueOf(productIdList.get(i)), session.get("userId").toString());
+							}else{
+								dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
+							}
+							System.out.println("TEST1"+exist);
+							}
+						}else{
+							i=0;
+							for(i=0;i<tempProductIdList.size();i++){
+							boolean exist=productIdList.contains(tempProductIdList.get(i));
+							if(exist){
+								dao.changeProductStockId(Integer.valueOf(tempCartList.get(i).getProductCount()),Integer.valueOf(productIdList.get(i)), session.get("userId").toString());
+							}else{
+								dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
+							}
+							System.out.println("TEST2"+exist);
+							}
+						}
+
+
+
+
+
+
+/*						for(i=0;i<cartList.size();i++){
+							productIdList.add(cartList.get(i).getProductId());
+							tempProductIdList.add(tempCartList.get(i).getProductId());
+
+							boolean exist=productIdList.contains(tempProductIdList.get(i));
+								System.out.println("TESTです"+productIdList.get(i));
+
+							boolean exist=productIdList.contains(i);
+							System.out.println("存在は"+exist);
+						}*/
+						/*boolean exist=productIdList.contains(tempProductIdList.get(0));
+						System.out.println("存在は"+exist);
+*/
+
+/*
+						if(cartList.size()<tempCartList.size()){
+							for(i=0;i<cartList.size();i++){
+								productIdList.add(cartList.get(i).getProductId());
+								tempProductIdList.add(tempCartList.get(i).getProductId());
+
+								boolean exist=productIdList.contains(tempProductIdList.get(i));
+								System.out.println("TESTです"+productIdList.get(i));
+
+								boolean exist=productIdList.contains(i);
+								System.out.println("存在は"+exist);
+							}
+						}else{
+							for(i=0;i<tempCartList.size();i++){
+								productIdList.add(cartList.get(i).getProductId());
+								tempProductIdList.add(tempCartList.get(i).getProductId());
+
+								boolean exist=productIdList.contains(tempProductIdList.get(i));
+								System.out.println("TESTです"+productIdList.get(i));
+
+								boolean exist=productIdList.contains(i);
+								System.out.println("2存在は"+exist);
+							}
+						}
+*/
+
+
+
+
+
+
+/*						dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());*/
 						cartList = dao.showUserCartList(session.get("userId").toString());
 						destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
 						System.out.println("LoginAction:kessaiは1");
+
 						//合計金額の計算
 						totalPrice = calcTotalPrice(cartList);
 						return KESSAI;
