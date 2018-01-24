@@ -38,12 +38,28 @@
 
 <!-- メインコンテンツ -->
 <div class="main">
-		<s:form id="form" name="form" action="PutProductIntoCartAction">
+	<s:form id="form" name="form" action="PutProductIntoCartAction">
   			<div class="detail">
 			<div class="leftCol">
 			    <h1>Product Image</h1>
 			    <s:hidden name="imageFileName" value="%{pro_detail.image_file_name}"/>
   		  		<img src='<s:property value="pro_detail.image_file_name"/>'width="380px" height="380px"/>
+  		  		<div class="relation">
+					<p> [関連商品] </p>
+                	<ul>
+				  	<s:iterator value="similarInfoDTOList">
+						<li>
+					 	<s:url id="url" action="ProDetailAction">
+					  		<s:param name="id" value="%{product_id}"/>
+					  	</s:url>
+					  	<s:a href="%{url}">
+					  		<s:property value="product_name" />
+					  		<img src='<s:property value="image_file_name"/>' width="80px" height="80px"  />
+				      	</s:a>
+				    	 </li>
+				  	</s:iterator>
+					  </ul>
+				</div>
     		</div>
 
 			<div class="rightCol">
@@ -102,9 +118,8 @@
 				<s:else>
 				<input type="submit" value="カートに追加">
 				</s:else> --%>
-				<tr>
+			    <tr>
 				</table>
-			</div>
 				<div class="cartbutton">
 					<a href="javascript:void(0)" onclick="document.form.submit();return false;" class="button">Add to Cart</a>
 					<!-- a hrefだとnull pointerのerrorがでる -->
@@ -112,25 +127,13 @@
 					<!--<s:submit value="Add to Cart" onclick="goPutProductIntoCartAction();"/>-->
 					<!--<s:submit class="button" value="Add to Cart"/>-->
 				</div>
-
-			<!--関連商品の表示-->
-				<div class="relation">
-				<p> [関連商品] </p>
-                <ul>
-				  <s:iterator value="similarInfoDTOList">
-					<li>
-					 <s:url id="url" action="ProDetailAction">
-					  <s:param name="id" value="%{product_id}"/>
-					  </s:url>
+			</div>
+				<!--関連商品の表示-->
 
 
-					  <s:a href="%{url}">
-					  <s:property value="product_name" />
-					  <img src='<s:property value="image_file_name"/>' width="80px" height="80px"  />
-				      </s:a>
-				     </li>
-				  </s:iterator>
-				  </ul>
+
+
+
 
 
 <!--
@@ -149,9 +152,9 @@
 				productDTO.setUpdate_date(rs.getString("update_date"));
  -->
 
-                </div>
-			</div>
-		</s:form>
+
+		</div>
+	</s:form>
 </div>
 
 <!-- フッター -->
