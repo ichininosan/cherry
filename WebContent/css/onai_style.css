@@ -16,7 +16,7 @@
 
 .main{
 	width: 100%;
-	height: 900px;
+	height: 1500px;
     vertical-align:-50%;
 
 }
@@ -49,7 +49,8 @@
 }
 .member_form p{
 	font-size:14px;
-	padding-left:15px;
+	padding-left:10px;
+	padding-top: 4px;
 }
 .member_form a{
 	color: #ec407ac9;
@@ -81,7 +82,7 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
 }
 .hissu{
 	font-size: 11px;
-    background-color: red;
+    background-color:#ff0000b8;
     width: 30px;
     text-align: center;
     padding-left: 3px;
@@ -94,6 +95,8 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
 .kozin{
 	background-color:white;
 	margin-left:10px;
+    border-radius: 3px;
+    box-shadow: 0 0px 10px #f8bbd0a1;
 }
 
 /*----- main サブ -----*/

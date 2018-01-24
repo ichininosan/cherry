@@ -14,6 +14,7 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 
 	public String execute() {
+		
 		if (session.containsKey("loginFlg")) {
 			return SUCCESS;
 		} else {

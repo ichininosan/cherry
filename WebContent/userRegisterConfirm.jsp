@@ -29,9 +29,11 @@
 	<div id="main">
 	<br><br>
 		<div class="title">登録情報確認</div>
-		<br><br>
+		<br>
 		<div class="register_box">
-			<div class="member">
+			<div class="member" >
+				<div class="touroku" align="center">以下の内容で登録します</div>
+				<br>
 				<div class="member_form">
 					<s:form action="RegisterUserInfoAction" theme="simple">
 						<div class="member-form-title">
@@ -70,11 +72,16 @@
 							<s:hidden name="email" value="%{email}" />
 
 							<br><br><br>
+							<p>貴方はＣｈｅｒｒｙの利用規約及び個人情報保護方針に同意しました</p>
+							<br>
+
 							<div class="member_btn">
 								<button type="submit" class="">登 録 情 報 を 確 定</button>
 							</div>
-						</div>
+							<br><br>
 
+							<div class="modoru" style="padding-left: 23px;"><a href="/cherry/userRegister.jsp">戻 る</a></div>
+						</div>
 					</s:form>
 				</div>
 			</div>

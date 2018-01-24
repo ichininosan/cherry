@@ -80,7 +80,8 @@
 						<div class="member_form_text">
 							<s:textfield name="userAddress" value="%{userAddress}"/>
 						</div>
-						<br><br>
+						<br>
+							<br><br><br>
 
 						<div class="member_btn">
 							<button type="submit" class="">登 録 情 報 確 認</button>

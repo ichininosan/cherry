@@ -25,19 +25,20 @@
 <h2 class="title">宛先情報確認</h2>
 <br><br>
 <s:form action="DestinationRegisterCompleteAction" >
-
+					<div class="touroku" align="center">以下の内容で登録します</div>
+					<br>
 					<div class="member_form">
 						<div class="member-form-title">
-							<br>ふりがな　　　　:
-							<s:property value="familyNameKana" />
-							<s:hidden name="familyNameKana" value="%{familyNameKana}" />
-							<s:property value="firstNameKana" />
-							<s:hidden name="firstNameKana" value="%{firstNameKana}" />
-							<br><br><br>名前　　　　　　:
+							<br>名前　　　　　　:
 							<s:property value="familyName" />
 							<s:hidden name="familyName" value="%{familyName}" />
 							<s:property value="firstName" />
 							<s:hidden name="firstName" value="%{firstName}" />
+							<br><br><br>ふりがな　　　　:
+							<s:property value="familyNameKana" />
+							<s:hidden name="familyNameKana" value="%{familyNameKana}" />
+							<s:property value="firstNameKana" />
+							<s:hidden name="firstNameKana" value="%{firstNameKana}" />
 							<br><br><br>メールアドレス　:
 							<s:property value="email" />
 							<s:hidden name="email" value="%{email}" />
@@ -49,10 +50,13 @@
 							<s:hidden name="userAddress" value="%{userAddress}" />
 							<br><br><br><br>
 							<div class="member_btn">
-								<button type="submit" class="">確 定</button>
+								<button type="submit" class="">登 録 情 報 を 確 定</button>
 							</div>
 						</div>
+						<br><br>
+						<div class="modoru" style="padding-left: 23px;"><a href="/cherry/destinationRegister.jsp">戻 る</a></div>
 					</div>
+
 					</s:form>
 <!-- メインここまで -->
 
