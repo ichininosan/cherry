@@ -58,7 +58,7 @@
 					 <tr>
 					    <th>メールアドレス</th>
 						<td><s:property value="email" /></td>
-					    <td class="change">変更<!-- <a href="アクション"></> --></td>
+					    <td class="change"><!-- <a href="アクション"></> --></td>
 				   	</tr>
 
 					<tr>

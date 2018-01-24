@@ -31,7 +31,7 @@
 
         <div class="gh">
         <div class="btnn">
-        <a href='<s:url action="GoHomeAction"/>' class="button">HOME</a>
+        <a href='<s:url action="GoHomeAction"/>' class="button">ホーム</a>
         </div>
         </div>
 

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,8 +54,8 @@
 					  		<s:param name="id" value="%{product_id}"/>
 					  	</s:url>
 					  	<s:a href="%{url}">
+					  		<img src='<s:property value="image_file_name"/>' width="100px" height="100px" />
 					  		<p><s:property value="product_name" /></p>
-					  		<img src='<s:property value="image_file_name"/>' width="80px" height="80px" />
 					  		<p class="price">\<s:property value="price"/></p>
 				      	</s:a>
 				    	 </li>
@@ -62,6 +63,13 @@
 					  </ul>
 				</div>
     		</div>
+
+
+
+    		<!--
+      ：
+   -->
+
 
 			<div class="rightCol">
 			    <h1>商品詳細</h1>
