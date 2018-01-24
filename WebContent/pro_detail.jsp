@@ -41,11 +41,11 @@
 	<s:form id="form" name="form" action="PutProductIntoCartAction">
   			<div class="detail">
 			<div class="leftCol">
-			    <h1>Product Image</h1>
+			    <h1>商品画像</h1>
 			    <s:hidden name="imageFileName" value="%{pro_detail.image_file_name}"/>
   		  		<img src='<s:property value="pro_detail.image_file_name"/>'width="380px" height="380px"/>
   		  		<div class="relation">
-					<p> [関連商品] </p>
+					<h4> [関連商品] </h4>
                 	<ul>
 				  	<s:iterator value="similarInfoDTOList">
 						<li>
@@ -53,8 +53,9 @@
 					  		<s:param name="id" value="%{product_id}"/>
 					  	</s:url>
 					  	<s:a href="%{url}">
-					  		<s:property value="product_name" />
-					  		<img src='<s:property value="image_file_name"/>' width="80px" height="80px"  />
+					  		<p><s:property value="product_name" /></p>
+					  		<img src='<s:property value="image_file_name"/>' width="80px" height="80px" />
+					  		<p class="price">\<s:property value="price"/></p>
 				      	</s:a>
 				    	 </li>
 				  	</s:iterator>
@@ -63,7 +64,7 @@
     		</div>
 
 			<div class="rightCol">
-			    <h1>Details</h1>
+			    <h1>商品詳細</h1>
 			    <table class="table">
 			    <tr>
 			    <th>商品番号</th>
@@ -121,12 +122,16 @@
 			    <tr>
 				</table>
 				<div class="cartbutton">
-					<a href="javascript:void(0)" onclick="document.form.submit();return false;" class="button">Add to Cart</a>
+					<a href="javascript:void(0)" onclick="document.form.submit();return false;" class="button">カートに入れる</a>
 					<!-- a hrefだとnull pointerのerrorがでる -->
 					<!--<a href='<s:url action="PutProductIntoCartAction"/>' class="button">Add to Cart</a>-->
 					<!--<s:submit value="Add to Cart" onclick="goPutProductIntoCartAction();"/>-->
 					<!--<s:submit class="button" value="Add to Cart"/>-->
 				</div>
+				<div class="cartbutton">
+					<a href="/cherry/GoHomeAction" class="button">ホーム</a>
+				</div>
+
 			</div>
 				<!--関連商品の表示-->
 
