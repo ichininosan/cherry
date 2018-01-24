@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%
+	String id = (String)session.getAttribute("userId");
+%>
 
 
 <!DOCTYPE html>
@@ -32,14 +35,24 @@
 
 			<div class="complete">
 			<h1>パスワードを変更しました!</h1>
-			<h2>ログインしてください</h2>
 			</div>
 
-			<div class="loginlink">
-			<button type="submit">
-			<span>ログイン画面へ</span>
-			</button>
-			</div>
+<!-- ログインしていなければログイン画面へ -->
+	<% if( id == null){ %>
+
+		<div class="loginlink">
+			<h2>ログインしてください</h2>
+			<button>ログイン</button>
+		</div>
+
+		<% }else{ %>
+
+		<div class="loginlink">
+			<button formaction="TopAction">TOPページへ</button>
+		</div>
+
+	<% } %>
+
 
 	</s:form>
 </div>

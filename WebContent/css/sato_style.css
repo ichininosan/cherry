@@ -78,8 +78,13 @@
 }
 
 .complete{
-	margin-top: 80px;
+	margin-top: -60px;
 	font-size:25px;
+}
+
+
+.passtop{
+	margin-top: 100px;
 }
 
 .loginlink button{
@@ -100,6 +105,11 @@
 	color         : #330033;     /* 背景色     */
 	background    : #F48FB1;     /* 文字色     */
 	border        : 3px solid #F48FB1;    /* 枠の指定 */
+}
+
+.loginlink h2{
+	font-size: 25px;
+	margin-top: 35px;
 }
 
 
