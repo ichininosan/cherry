@@ -41,9 +41,11 @@ public class MyPageDAO {
 
 				myPageDTO.setEmail(rs.getString("email"));
 
+				myPageDTO.setPassword(rs.getString("password"));
 
-
-
+				System.out.println("---myPageDTO-----");
+				System.out.println(myPageDTO.getPassword());
+				System.out.println("--------");
 
 				myPageList.add(myPageDTO);
 

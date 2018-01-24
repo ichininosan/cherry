@@ -118,12 +118,15 @@
 
 				  <s:iterator value="similarInfoDTOList">
 					  <s:url id="url" action="ProDetailAction">
-					    <s:param name="id" value="%{product_id}"/>
+					  <s:param name="id" value="%{product_id}"/>
 					  </s:url>
 
-					  <s:a href="%{url}">
-					  <img src='<s:property value="image_file_name"/>' width="70px" height="70px" />
-					  </s:a>
+
+					  <s:a href="%{url}" style="float:left; margin: 10px;">
+					  <s:property value="product_name" />
+					  <img src='<s:property value="image_file_name"/>' width="80px" height="80px" style="float:none; margin: 10px;"  />
+				      </s:a>
+
 				  </s:iterator>
 
 

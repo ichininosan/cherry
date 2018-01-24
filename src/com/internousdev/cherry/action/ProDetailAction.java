@@ -37,7 +37,7 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 	//商品一覧リスト
 	private List<ProductDTO> proList=new ArrayList<ProductDTO>();
 
-	//商品一覧リスト(similarInfoDTOList)
+	//関連商品一覧リスト(similarInfoDTOList)
 
     private ArrayList<ProductDTO> similarInfoDTOList = new ArrayList<ProductDTO>();
 
@@ -104,14 +104,15 @@ public class ProDetailAction extends ActionSupport implements SessionAware{
 
 			//Iterator<ProductDTO> の宣言
 			Iterator<ProductDTO> iterator=proList.iterator();
-
+			//関連商品3つまで表示
 			for(int i=0;i<3;i++){
 				if(iterator.hasNext()){
 					ProductDTO productDTO=(ProductDTO)iterator.next();
-
-					if(productId!=productDTO.getProduct_id()){
-
+					//現在の商品と一致しないものを取得
+					if(pro_id!=productDTO.getProduct_id()){
+                        //関連商品DTOに格納
 						similarInfoDTOList.add(productDTO);
+
 					}else{
 						i--;
 						continue;
