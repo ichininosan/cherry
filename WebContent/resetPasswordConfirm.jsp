@@ -22,6 +22,7 @@
 
 
 <!-- メインコンテンツ -->
+<div class="outbox">
 	<div class="main">
 	  <div class="sectionHeader">
 			<h1>確認画面</h1>
@@ -58,7 +59,7 @@
 
 		</div>
 	</div>
-
+</div>
 <!-- フッター -->
 <jsp:include page="include_footer.jsp" />
 

@@ -25,7 +25,6 @@
 
 
 <!-- メインコンテンツ -->
-
 <div class="completetitle">
 	<h1>パスワード変更</h1>
 </div>
