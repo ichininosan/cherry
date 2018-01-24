@@ -52,7 +52,7 @@
 						<br>
 						<div class="member_form_title">
 							パスワード
-							<a href='<s:url action="ResetPasswordAction"/>'>パスワード再設定</a>
+							<a href='<s:url action="ResetPasswordAction"/>'>パスワードを忘れた場合</a>
 							<br>
 						</div>
 						<div class="member_textbox">
@@ -75,10 +75,10 @@
 			</div>
 			<br><br>
 			<div class="nomember">
-				<p>Ｃｈｅｒｒｙ の新しいお客様ですか？<p><br>
+				<p>Ｃｈｅｒｒｙ の新しいお客様ですか？<p><br><br>
 
 				<div class="nomember_btn">
-				<a href='<s:url action="UserCreateAction"/>'>新規Ｃｈｅｒｒｙユーザー登録</a>
+				<a href='<s:url action="UserCreateAction"/>'>Ｃherryアカウントの新規登録</a>
 				</div>
 
 			</div>

@@ -26,7 +26,7 @@
 
 <div id="main">
 <br><br>
-       <div class="title">新規ユーザー登録</div>
+       <div class="title">アカウント新規登録</div>
 		<br>
 		<div class="register_box">
 			<div class="member">
@@ -102,12 +102,32 @@
 						<span class="hissu">必須</span>
 						<div class="member_form_text">
 							<s:textfield type="text" name="email" value="%{email}" />
-							<br><br>
+							<br>
 						</div>
+
+						<br>
+						<span class="member_form_title">個人情報保護方針</span>
+						<br>
+						<div class="kozin" style="width:460px;height:60px;overflow:auto;margin-top:6px;">
+							<p>cherryは個人情報を絶対に守ります！</p>
+							<p>cherryは個人情報を絶対に守ります！</p>
+							<p>cherryは個人情報を絶対に守ります！</p>
+							<p>cherryは個人情報を絶対に守ります！</p>
+							<p>cherryは個人情報を絶対に守ります！</p>
+							<p>cherryは個人情報を絶対に守ります！</p>
+							<p>cherryは個人情報を絶対に守ります！</p>
+							<p>cherryは個人情報を絶対に守ります！</p>
+							<p>cherryは個人情報を絶対に守ります！</p>
+						</div>
+						<br>
+						<s:checkbox name="kozin" />
+							個人情報保護方針に同意する
+							<br><br>
+
 
 						<br><br>
 						<div class="member_btn">
-							<button type="submit" class="">登 録 情 報 確 認</button>
+							<button type="submit" class="">登 録 情 報 を 確 認</button>
 						</div>
 						<br>
 					</s:form>
