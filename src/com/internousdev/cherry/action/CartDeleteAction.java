@@ -47,11 +47,9 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
 	 */
 
 	/**
-	 * 実行メソッド 処理内容と順番
-	 *  1：ログインしているかを確認
-	 *  2：カートからその商品のデータを削除
-	 *  3：カートの情報を取得
-	 *  4：カート内の合計金額を算出
+	 * 実行メソッド 処理内容と順番 1：ログインしているかを確認 2：カートからその商品のデータを削除 3：カートの情報を取得
+	 * 4：カート内の合計金額を算出
+	 *
 	 * @throws SQLException
 	 */
 
@@ -128,10 +126,27 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
 	 * セッションを格納するためのメソッド
 	 *
 	 * @param session
-	 *            セットする session
 	 */
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	/**
+	 * プロダクトIDを取得するためのメソッド
+	 *
+	 * @return productId
+	 */
+	public String getProductId() {
+		return productId;
+	}
+
+	/**
+	 * プロダクトIDを格納するためのメソッド
+	 *
+	 * @param productId
+	 */
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
 	/**
@@ -139,21 +154,17 @@ public class CartDeleteAction extends ActionSupport implements SessionAware {
 	 *
 	 * @return cartList カート内の商品情報
 	 */
-
-	public String getProductId() {
-		return productId;
-	}
-
 	public ArrayList<CartInfoDTO> getCartList() {
 		return cartList;
 	}
 
+	/**
+	 * カート内の商品情報を取得するためのメソッド
+	 *
+	 * @param cartList
+	 */
 	public void setCartList(ArrayList<CartInfoDTO> cartList) {
 		this.cartList = cartList;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
 	}
 
 	public int calcTotalPrice(ArrayList<CartInfoDTO> cartList) {
