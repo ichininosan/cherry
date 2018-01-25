@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sato_style.css">
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
 <body class="home">
@@ -52,7 +53,7 @@
 				</table>
 					<div class="btnn">
 						<button type="submit">
-							<span>送信</span>
+							<span>送信<i class="fa fa-upload" aria-hidden="true"></i></span>
 						</button>
 					</div>
 				</s:form>

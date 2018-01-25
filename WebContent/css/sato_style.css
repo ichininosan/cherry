@@ -267,7 +267,7 @@ input[type="password"]:focus {
 
 
 /*-------------------------------------
-	マウスオン,鍵アイコン
+	マウスオン,アイコン
 -------------------------------------*/
 
 a:hover img{opacity:0.8; filter:alpha(opacity=80);}
@@ -277,3 +277,7 @@ a:hover img{opacity:0.8; filter:alpha(opacity=80);}
   font-size: 0.8em;
   letter-spacing: 5px;
   margin-left: 5px;
+
+ .fa.fa-upload {
+ margin-left: 5px;
+ }

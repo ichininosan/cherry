@@ -72,6 +72,7 @@ window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.
 						<input type="password" name="password" value="" placeholder="パスワードを入力">
 						</td>
 					</tr>
+
 					<tr id="box">
 						<th>
 						<label>再確認パスワード</label>
