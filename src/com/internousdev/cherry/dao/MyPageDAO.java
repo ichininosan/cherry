@@ -1,4 +1,5 @@
 package com.internousdev.cherry.dao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,21 +14,22 @@ public class MyPageDAO {
 	DBConnector db = new DBConnector();
 	Connection con = db.getConnection();
 
-	/**ユーザー情報を取得
+	/**
+	 * ユーザー情報を取得
+	 *
 	 * @return myPageList
 	 */
-	public ArrayList<MyPageDTO> getUserInfo (String userId){
+	public ArrayList<MyPageDTO> getUserInfo(String userId) {
 		MyPageDTO myPageDTO = new MyPageDTO();
-		ArrayList<MyPageDTO> myPageList=new ArrayList<MyPageDTO>();
+		ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
 
 		String sql = "SELECT * FROM user_info where user_id = ? ";
-		try{
+		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
-            ResultSet rs = ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-
 
 				myPageDTO.setUserId(rs.getString("user_id"));
 
@@ -51,7 +53,6 @@ public class MyPageDAO {
 
 				myPageList.add(myPageDTO);
 
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -64,8 +65,4 @@ public class MyPageDAO {
 		return myPageList;
 	}
 
-
-
 }
-
-

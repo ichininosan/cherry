@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 
@@ -7,118 +7,121 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>
-<s:property value="pro_detail.product_name"/>の詳細ページ
+<title><s:property value="pro_detail.product_name" />の詳細ページ</title>
 
 
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/reset.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/mt_style.css">
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/img/favicon.ico">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/ochiai_style.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript"
+	src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Dosis"
+	rel="stylesheet">
 
-</title>
-
-
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
-	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ochiai_style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-
-	<script>
-    function goPutProductIntoCartAction(){
-        document.getElementById('form').action="PutProductIntoCartAction";
-    }
-	</script>
+<script>
+	function goPutProductIntoCartAction() {
+		document.getElementById('form').action = "PutProductIntoCartAction";
+	}
+</script>
 
 </head>
 <body>
 
-<!-- ヘッダー -->
-<jsp:include page="include_header.jsp" />
+	<!-- ヘッダー -->
+	<jsp:include page="include_header.jsp" />
 
 
-<!-- メインコンテンツ -->
-<div class="main">
-	<s:form id="form" name="form" action="PutProductIntoCartAction">
-  			<div class="detail">
-			<div class="leftCol">
-			    <h1>商品画像</h1>
-			    <s:hidden name="imageFileName" value="%{pro_detail.image_file_name}"/>
-  		  		<img src='<s:property value="pro_detail.image_file_name"/>'width="380px" height="380px"/>
-  		  		<div class="relation">
-					<h4> [関連商品] </h4>
-                	<ul>
-				  	<s:iterator value="similarInfoDTOList">
-						<li>
-					 	<s:url id="url" action="ProDetailAction">
-					  		<s:param name="id" value="%{product_id}"/>
-					  	</s:url>
-					  	<s:a href="%{url}">
-					  		<img src='<s:property value="image_file_name"/>' width="100px" height="100px" />
-					  		<p><s:property value="product_name" /></p>
-					  		<p class="price">\<s:property value="price"/></p>
-				      	</s:a>
-				    	 </li>
-				  	</s:iterator>
-					  </ul>
+	<!-- メインコンテンツ -->
+	<div class="main">
+		<s:form id="form" name="form" action="PutProductIntoCartAction">
+			<div class="detail">
+				<div class="leftCol">
+					<h1>商品画像</h1>
+					<s:hidden name="imageFileName"
+						value="%{pro_detail.image_file_name}" />
+					<img src='<s:property value="pro_detail.image_file_name"/>'
+						width="380px" height="380px" />
+					<div class="relation">
+						<h4>[関連商品]</h4>
+						<ul>
+							<s:iterator value="similarInfoDTOList">
+								<li><s:url id="url" action="ProDetailAction">
+										<s:param name="id" value="%{product_id}" />
+									</s:url> <s:a href="%{url}">
+										<img src='<s:property value="image_file_name"/>' width="100px"
+											height="100px" />
+										<p>
+											<s:property value="product_name" />
+										</p>
+										<p class="price">
+											\
+											<s:property value="price" />
+										</p>
+									</s:a></li>
+							</s:iterator>
+						</ul>
+					</div>
 				</div>
-    		</div>
 
 
 
-    		<!--
+				<!--
       ：
    -->
 
 
-			<div class="rightCol">
-			    <h1>商品詳細</h1>
-			    <table class="table">
-			    <tr>
-			    <th>商品番号</th>
-			    <td>
-			    <s:hidden name="productId" value="%{pro_detail.product_id}"/>
-				<s:property value="pro_detail.product_id"/>
-				</td>
-			    </tr>
-			    <tr>
-			    <th>ふりがな</th>
-			    <td>
-			    <s:hidden name="productNameKana" value="%{pro_detail.product_name_kana}"/>
-                <s:property value="pro_detail.product_name_kana"/>
-                </td>
-                </tr>
-                <tr>
-                <th>商品名</th>
-                <td>
-			    <s:hidden name="productName" value="%{pro_detail.product_name}"/>
-				<s:property value="pro_detail.product_name"/>
-			    </td>
-			    </tr>
-			    <tr>
-			    <th>商品詳細</th>
-			    <td>
-			    <s:hidden name="productDescription" value="%{pro_detail.product_description}"/>
-                <s:property value="pro_detail.product_description"/>
-                </td>
-			    </tr>
-			    <tr>
-			    <th>値段</th>
-			    <td>
-			    <s:hidden name="price" value="%{pro_detail.price}"/>
-			    <s:property value="pro_detail.price"/>円</td>
-			    </tr>
-			    <tr>
-			    <th>発売会社</th>
-			    <td>
-			    <s:hidden name="releaseCompany" value="%{pro_detail.release_company}"/>
-                <s:property value="pro_detail.release_company"/></td>
-			    </tr>
-			    <tr>
-			    <th>購入個数</th>
-			    <td><s:select list="count" name="productCount" value="1" /></td>
-			    </tr>
-			<%-- 	<br><br>
+				<div class="rightCol">
+					<h1>商品詳細</h1>
+					<table class="table">
+						<tr>
+							<th>商品番号</th>
+							<td><s:hidden name="productId"
+									value="%{pro_detail.product_id}" /> <s:property
+									value="pro_detail.product_id" /></td>
+						</tr>
+						<tr>
+							<th>ふりがな</th>
+							<td><s:hidden name="productNameKana"
+									value="%{pro_detail.product_name_kana}" /> <s:property
+									value="pro_detail.product_name_kana" /></td>
+						</tr>
+						<tr>
+							<th>商品名</th>
+							<td><s:hidden name="productName"
+									value="%{pro_detail.product_name}" /> <s:property
+									value="pro_detail.product_name" /></td>
+						</tr>
+						<tr>
+							<th>商品詳細</th>
+							<td><s:hidden name="productDescription"
+									value="%{pro_detail.product_description}" /> <s:property
+									value="pro_detail.product_description" /></td>
+						</tr>
+						<tr>
+							<th>値段</th>
+							<td><s:hidden name="price" value="%{pro_detail.price}" /> <s:property
+									value="pro_detail.price" />円</td>
+						</tr>
+						<tr>
+							<th>発売会社</th>
+							<td><s:hidden name="releaseCompany"
+									value="%{pro_detail.release_company}" /> <s:property
+									value="pro_detail.release_company" /></td>
+						</tr>
+						<tr>
+							<th>購入個数</th>
+							<td><s:select list="count" name="productCount" value="1" /></td>
+						</tr>
+						<%-- 	<br><br>
 				<s:hidden name="productId" value="%{pro_detail.product_id}" />
 				<s:hidden name="duplicationFlg" value="%{duplicationFlg}" />
 				<s:if test="duplicationFlg">
@@ -127,20 +130,21 @@
 				<s:else>
 				<input type="submit" value="カートに追加">
 				</s:else> --%>
-			    <tr>
-				</table>
-				<div class="cartbutton">
-					<a href="javascript:void(0)" onclick="document.form.submit();return false;" class="button">カートに入れる</a>
-					<!-- a hrefだとnull pointerのerrorがでる -->
-					<!--<a href='<s:url action="PutProductIntoCartAction"/>' class="button">Add to Cart</a>-->
-					<!--<s:submit value="Add to Cart" onclick="goPutProductIntoCartAction();"/>-->
-					<!--<s:submit class="button" value="Add to Cart"/>-->
-				</div>
-				<div class="cartbutton">
-					<a href="/cherry/GoHomeAction" class="button">ホーム</a>
-				</div>
+						<tr>
+					</table>
+					<div class="cartbutton">
+						<a href="javascript:void(0)"
+							onclick="document.form.submit();return false;" class="button">カートに入れる</a>
+						<!-- a hrefだとnull pointerのerrorがでる -->
+						<!--<a href='<s:url action="PutProductIntoCartAction"/>' class="button">Add to Cart</a>-->
+						<!--<s:submit value="Add to Cart" onclick="goPutProductIntoCartAction();"/>-->
+						<!--<s:submit class="button" value="Add to Cart"/>-->
+					</div>
+					<div class="cartbutton">
+						<a href="/cherry/GoHomeAction" class="button">ホーム</a>
+					</div>
 
-			</div>
+				</div>
 				<!--関連商品の表示-->
 
 
@@ -149,7 +153,7 @@
 
 
 
-<!--
+				<!--
 				ProductDTO productDTO = new ProductDTO();
 				productDTO.setDef_id(rs.getInt("id"));
 				productDTO.setProduct_id(rs.getInt("product_id"));
@@ -166,12 +170,12 @@
  -->
 
 
-		</div>
-	</s:form>
-</div>
+			</div>
+		</s:form>
+	</div>
 
-<!-- フッター -->
-<jsp:include page="include_footer.jsp" />
+	<!-- フッター -->
+	<jsp:include page="include_footer.jsp" />
 
 
 </body>
