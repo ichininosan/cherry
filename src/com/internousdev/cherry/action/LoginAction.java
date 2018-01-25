@@ -164,7 +164,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 						for (i = 0; i < productIdList.size(); i++) {
 							boolean exist = tempProductIdList.contains(productIdList.get(i));
 							if (exist) {
-								dao.changeProductStockId(Integer.valueOf(tempCartList.get(i).getProductCount()),
+								dao.changeProductStockId(Integer.valueOf(cartList.get(i).getProductCount()),
 										Integer.valueOf(productIdList.get(i)), session.get("userId").toString());
 								dao.deleteSeparate(session.get("tempUserId").toString(),
 										Integer.valueOf(productIdList.get(i)));
