@@ -58,10 +58,10 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 			userId = session.get("userId").toString();
 			MyPageDAO dao = new MyPageDAO();
 
-			/*---------------------------------------------------------
+	    /*---------------------------------------------------------
 			ユーザー情報をリストで受け取り
 			リストにデータが入っていたらSUCCESS
-			---------------------------------------------------------*/
+		---------------------------------------------------------*/
 			myPageList = dao.getUserInfo(userId);
 			if (myPageList.size() > 0) {
 				result = SUCCESS;
