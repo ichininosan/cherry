@@ -74,15 +74,14 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 	private String telNumber;
 	private String userAddress;
 
-
 	public String execute() throws SQLException {
 		String result = ERROR;
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
 		LoginDAO loginDAO = new LoginDAO();
 
 		System.out.println(userId);
-		//ユーザーID入力チェック
-		if(userId==null){
+		// ユーザーID入力チェック
+		if (userId == null) {
 			return "login";
 		}
 		if (userId.equals("")) {
@@ -95,7 +94,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 			errorMessageList.add("ユーザーIDは半角英数字で入力してください");
 		}
 
-		//パスワード入力チェック
+		// パスワード入力チェック
 		if (password.equals("")) {
 			errorMessageList.add("パスワードを入力してください。");
 
@@ -106,7 +105,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 			errorMessageList.add("パスワードは半角英数字で入力してください");
 		}
 
-		//ID保存
+		// ID保存
 		if (saveLogin) {
 			session.put("saveId", userId);
 
@@ -132,129 +131,152 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 					session.put("userId", userInfoDTO.getUserId());
 					session.put("loginFlg", true);
 
-					//カート、宛先情報を引き継ぐ
-					System.out.println("kessai:"+kessai);
-					if(kessai==1){
-						CartInfoDAO dao=new CartInfoDAO();
-						DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
-						ArrayList<CartInfoDTO> tempCartList = new ArrayList<CartInfoDTO>();
-						ArrayList <Integer> productIdList =new ArrayList <Integer>();
-						ArrayList <Integer> tempProductIdList =new ArrayList <Integer>();
-						tempCartList = dao.showUserCartList(session.get("tempUserId").toString());
-						cartList = dao.showUserCartList(session.get("userId").toString());
-						int i=0;
+					CartInfoDAO dao = new CartInfoDAO();
+					DestinationInfoDAO destinationInfoDAO = new DestinationInfoDAO();
+					ArrayList<CartInfoDTO> tempCartList = new ArrayList<CartInfoDTO>();
+					ArrayList<Integer> productIdList = new ArrayList<Integer>();
+					ArrayList<Integer> tempProductIdList = new ArrayList<Integer>();
+					tempCartList = dao.showUserCartList(session.get("tempUserId").toString());
+					cartList = dao.showUserCartList(session.get("userId").toString());
+					int i = 0;
+					/*
+					 * ログイン後のカートの中身を生成
+					 */
+					for (i = 0; i < cartList.size(); i++) {
+						productIdList.add(cartList.get(i).getProductId());
+
+					}
+					/*
+					 * 未ログイン時のカートの中身をリストとして生成
+					 */
+					i = 0;
+					for (i = 0; i < tempCartList.size(); i++) {
+						tempProductIdList.add(tempCartList.get(i).getProductId());
+
+					}
+
+					/*
+					 * カートの中身を確認
+					 */
+
+					if (cartList.size() < tempCartList.size()) {
+						i = 0;
+						for (i = 0; i < productIdList.size(); i++) {
+							boolean exist = tempProductIdList.contains(productIdList.get(i));
+							if (exist) {
+								dao.changeProductStockId(Integer.valueOf(tempCartList.get(i).getProductCount()),
+										Integer.valueOf(productIdList.get(i)), session.get("userId").toString());
+								dao.deleteSeparate(session.get("tempUserId").toString(),
+										Integer.valueOf(productIdList.get(i)));
+							} else {
+								dao.changeUserId(session.get("tempUserId").toString(),
+										session.get("userId").toString());
+							}
+							System.out.println("TEST1" + exist);
+						}
+					} else {
+						i = 0;
+						for (i = 0; i < tempProductIdList.size(); i++) {
+							boolean exist = productIdList.contains(tempProductIdList.get(i));
+							if (exist) {
+								dao.changeProductStockId(Integer.valueOf(tempCartList.get(i).getProductCount()),
+										Integer.valueOf(tempProductIdList.get(i)), session.get("userId").toString());
+								dao.deleteSeparate(session.get("tempUserId").toString(),
+										Integer.valueOf(tempProductIdList.get(i)));
+							} else {
+								dao.changeUserId(session.get("tempUserId").toString(),
+										session.get("userId").toString());
+							}
+							System.out.println("TEST2" + exist);
+						}
+					}
+
+					dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
+					cartList = dao.showUserCartList(session.get("userId").toString());
+					destinationInfoListDTO = destinationInfoDAO
+							.obtainingDestinationInfo(session.get("userId").toString());
+					/* System.out.println("LoginAction:kessaiは1"); */
+
+					// 合計金額の計算
+					totalPrice = calcTotalPrice(cartList);
+
+					// カート、宛先情報を引き継ぐ
+					System.out.println("kessai:" + kessai);
+					if (kessai == 1) {
 						/*
-						ログイン後のカートの中身を生成
-						*/
-						for(i=0;i<cartList.size();i++){
-							productIdList.add(cartList.get(i).getProductId());
-							/*tempProductIdList.add(tempCartList.get(i).getProductId());
-
-							boolean exist=productIdList.contains(tempProductIdList.get(i));
-								System.out.println("TESTです"+productIdList.get(i));
-
-							boolean exist=productIdList.contains(i);
-							System.out.println("存在は"+exist);*/
-						}
+						 * CartInfoDAO dao = new CartInfoDAO();
+						 * DestinationInfoDAO destinationInfoDAO = new
+						 * DestinationInfoDAO(); ArrayList<CartInfoDTO>
+						 * tempCartList = new ArrayList<CartInfoDTO>();
+						 * ArrayList<Integer> productIdList = new
+						 * ArrayList<Integer>(); ArrayList<Integer>
+						 * tempProductIdList = new ArrayList<Integer>();
+						 * tempCartList =
+						 * dao.showUserCartList(session.get("tempUserId").
+						 * toString()); cartList =
+						 * dao.showUserCartList(session.get("userId").toString()
+						 * ); int i = 0;
+						 */
 						/*
-						未ログイン時のカートの中身をリストとして生成
-						*/
-						i=0;
-						for(i=0;i<tempCartList.size();i++){
-							tempProductIdList.add(tempCartList.get(i).getProductId());
-							/*tempProductIdList.add(tempCartList.get(i).getProductId());
-
-							boolean exist=productIdList.contains(tempProductIdList.get(i));
-								System.out.println("TESTです"+productIdList.get(i));
-
-							boolean exist=productIdList.contains(i);
-							System.out.println("存在は"+exist);*/
-						}
-
+						 * ログイン後のカートの中身を生成
+						 */
 						/*
-						カートの中身を確認
-						*/
-
-						if(cartList.size()<tempCartList.size()){
-							i=0;
-							for(i=0;i<productIdList.size();i++){
-							boolean exist=tempProductIdList.contains(productIdList.get(i));
-							if(exist){
-								dao.changeProductStockId(Integer.valueOf(tempCartList.get(i).getProductCount()),Integer.valueOf(productIdList.get(i)), session.get("userId").toString());
-							}else{
-								dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
-							}
-							System.out.println("TEST1"+exist);
-							}
-						}else{
-							i=0;
-							for(i=0;i<tempProductIdList.size();i++){
-							boolean exist=productIdList.contains(tempProductIdList.get(i));
-							if(exist){
-								dao.changeProductStockId(Integer.valueOf(tempCartList.get(i).getProductCount()),Integer.valueOf(productIdList.get(i)), session.get("userId").toString());
-							}else{
-								dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
-							}
-							System.out.println("TEST2"+exist);
-							}
-						}
-
-
-
-
-
-
-/*						for(i=0;i<cartList.size();i++){
-							productIdList.add(cartList.get(i).getProductId());
-							tempProductIdList.add(tempCartList.get(i).getProductId());
-
-							boolean exist=productIdList.contains(tempProductIdList.get(i));
-								System.out.println("TESTです"+productIdList.get(i));
-
-							boolean exist=productIdList.contains(i);
-							System.out.println("存在は"+exist);
-						}*/
-						/*boolean exist=productIdList.contains(tempProductIdList.get(0));
-						System.out.println("存在は"+exist);
-*/
-
-/*
-						if(cartList.size()<tempCartList.size()){
-							for(i=0;i<cartList.size();i++){
-								productIdList.add(cartList.get(i).getProductId());
-								tempProductIdList.add(tempCartList.get(i).getProductId());
-
-								boolean exist=productIdList.contains(tempProductIdList.get(i));
-								System.out.println("TESTです"+productIdList.get(i));
-
-								boolean exist=productIdList.contains(i);
-								System.out.println("存在は"+exist);
-							}
-						}else{
-							for(i=0;i<tempCartList.size();i++){
-								productIdList.add(cartList.get(i).getProductId());
-								tempProductIdList.add(tempCartList.get(i).getProductId());
-
-								boolean exist=productIdList.contains(tempProductIdList.get(i));
-								System.out.println("TESTです"+productIdList.get(i));
-
-								boolean exist=productIdList.contains(i);
-								System.out.println("2存在は"+exist);
-							}
-						}
-*/
-
-
-
-
-
-
-/*						dao.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());*/
-						cartList = dao.showUserCartList(session.get("userId").toString());
-						destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
+						 * for (i = 0; i < cartList.size(); i++) {
+						 * productIdList.add(cartList.get(i).getProductId());
+						 *
+						 * }
+						 *
+						 * 未ログイン時のカートの中身をリストとして生成
+						 *
+						 * i = 0; for (i = 0; i < tempCartList.size(); i++) {
+						 * tempProductIdList.add(tempCartList.get(i).
+						 * getProductId());
+						 *
+						 * }
+						 *
+						 *
+						 * カートの中身を確認
+						 *
+						 *
+						 * if (cartList.size() < tempCartList.size()) { i = 0;
+						 * for (i = 0; i < productIdList.size(); i++) { boolean
+						 * exist =
+						 * tempProductIdList.contains(productIdList.get(i)); if
+						 * (exist) {
+						 * dao.changeProductStockId(Integer.valueOf(tempCartList
+						 * .get(i).getProductCount()),
+						 * Integer.valueOf(productIdList.get(i)),
+						 * session.get("userId").toString());
+						 * dao.deleteSeparate(session.get("tempUserId").toString
+						 * (), Integer.valueOf(productIdList.get(i))); } else {
+						 * dao.changeUserId(session.get("tempUserId").toString()
+						 * , session.get("userId").toString()); }
+						 * System.out.println("TEST1" + exist); } } else { i =
+						 * 0; for (i = 0; i < tempProductIdList.size(); i++) {
+						 * boolean exist =
+						 * productIdList.contains(tempProductIdList.get(i)); if
+						 * (exist) {
+						 * dao.changeProductStockId(Integer.valueOf(tempCartList
+						 * .get(i).getProductCount()),
+						 * Integer.valueOf(tempProductIdList.get(i)),
+						 * session.get("userId").toString());
+						 * dao.deleteSeparate(session.get("tempUserId").toString
+						 * (), Integer.valueOf(tempProductIdList.get(i))); }
+						 * else {
+						 * dao.changeUserId(session.get("tempUserId").toString()
+						 * , session.get("userId").toString()); }
+						 * System.out.println("TEST2" + exist); } }
+						 *
+						 * dao.changeUserId(session.get("tempUserId").toString()
+						 * , session.get("userId").toString()); cartList =
+						 * dao.showUserCartList(session.get("userId").toString()
+						 * ); destinationInfoListDTO = destinationInfoDAO
+						 * .obtainingDestinationInfo(session.get("userId").
+						 * toString());
+						 */
 						System.out.println("LoginAction:kessaiは1");
 
-						//合計金額の計算
+						// 合計金額の計算
 						totalPrice = calcTotalPrice(cartList);
 						return KESSAI;
 					}
@@ -268,51 +290,41 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 		return result;
 	}
 
-
 	public String getUserId() {
 		return userId;
 	}
-
 
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-
 	public String getPassword() {
 		return password;
 	}
-
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
 	public boolean isSaveLogin() {
 		return saveLogin;
 	}
-
 
 	public void setSaveLogin(boolean saveLogin) {
 		this.saveLogin = saveLogin;
 	}
 
-
 	public Map<String, Object> getSession() {
 		return session;
 	}
-
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
 
-
 	public ArrayList<String> getErrorMessageList() {
 		return errorMessageList;
 	}
-
 
 	public void setErrorMessageList(ArrayList<String> errorMessageList) {
 		this.errorMessageList = errorMessageList;
@@ -322,96 +334,77 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 		return kessai;
 	}
 
-
 	public void setKessai(int kessai) {
 		this.kessai = kessai;
 	}
-
 
 	public String getFamilyNameKana() {
 		return familyNameKana;
 	}
 
-
 	public void setFamilyNameKana(String familyNameKana) {
 		this.familyNameKana = familyNameKana;
 	}
-
 
 	public String getFirstNameKana() {
 		return firstNameKana;
 	}
 
-
 	public void setFirstNameKana(String firstNameKana) {
 		this.firstNameKana = firstNameKana;
 	}
-
 
 	public String getFamilyName() {
 		return familyName;
 	}
 
-
 	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
 	}
-
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public String getTelNumber() {
 		return telNumber;
 	}
 
-
 	public void setTelNumber(String telNumber) {
 		this.telNumber = telNumber;
 	}
-
 
 	public String getUserAddress() {
 		return userAddress;
 	}
 
-
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
-
 
 	public ArrayList<DestinationInfoDTO> getDestinationInfoListDTO() {
 		return destinationInfoListDTO;
 	}
 
-
 	public void setDestinationInfoListDTO(ArrayList<DestinationInfoDTO> destinationInfoListDTO) {
 		this.destinationInfoListDTO = destinationInfoListDTO;
 	}
 
-
 	public ArrayList<CartInfoDTO> getCartList() {
 		return cartList;
 	}
-
 
 	public void setCartList(ArrayList<CartInfoDTO> cartList) {
 		this.cartList = cartList;
@@ -422,18 +415,16 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 	 */
 	public int calcTotalPrice(ArrayList<CartInfoDTO> cartList) {
 		int totalPrice = 0;
-		for(CartInfoDTO dto: cartList) {
+		for (CartInfoDTO dto : cartList) {
 			totalPrice += dto.getPrice() * dto.getProductCount();
 			System.out.println("合計" + totalPrice + "円");
 		}
 		return totalPrice;
 	}
 
-
 	public int getTotalPrice() {
 		return totalPrice;
 	}
-
 
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;

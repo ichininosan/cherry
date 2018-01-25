@@ -433,10 +433,36 @@ public class CartInfoDAO extends ActionSupport {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
+		}/* finally {
 			con.close();
-		}
+		}*/
 
+	}
+
+
+
+
+
+	/**
+	 * カート内の商品を１つずつ削除するメソッド
+	 *
+	 * @param userId
+	 * @param integer
+	 */
+	public void deleteSeparate(String userId, Integer integer) {
+		String sql = "DELETE FROM cart_info WHERE user_id = ? AND product_id=?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.setLong(2, integer);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
 	}
 
 	/*
