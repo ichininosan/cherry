@@ -12,14 +12,30 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 	 * セッション
 	 */
 	public Map<String, Object> session;
+	// private String userId;
+	String result = null;
+	private boolean loginFlg;
 
 	public String execute() {
 
 		if (session.containsKey("loginFlg")) {
-			return SUCCESS;
-		} else {
-			return ERROR;
+			loginFlg = (boolean) session.get("loginFlg");
+			System.out.println(loginFlg);
+			if (loginFlg != true) {
+				result = ERROR;
+
+				// if(!session.containsKey("userId")){
+
+			} else {
+
+				// if (session.containsKey("loginFlg")) {
+
+				result = SUCCESS;
+			}
 		}
+
+		return result;
+
 	}
 
 	/**
@@ -34,6 +50,14 @@ public class GoLoginAction extends ActionSupport implements SessionAware {
 	 */
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	public boolean isLoginFlg() {
+		return loginFlg;
+	}
+
+	public void setLoginFlg(boolean loginFlg) {
+		this.loginFlg = loginFlg;
 	}
 
 }
