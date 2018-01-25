@@ -2,6 +2,7 @@ package com.internousdev.cherry.dto;
 
 import java.io.Serializable;
 
+
 public class ProductDTO implements Serializable{
 
 	private int def_id;

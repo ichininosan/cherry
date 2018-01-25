@@ -18,14 +18,11 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 	 * 1.ログイン状態か確認(sessionにuserIdがあればログイン状態)
 	 * 2.未ログインならhome画面に返す
 	 * 3.ログイン状態ならユーザー登録情報を取得
-	 * 4.sessionに保存
 	 */
 
-
-
-	//  ユーザーID
+    //userId格納
 	private String userId;
-	//session
+	//session情報格納
 	private Map<String,Object> session;
 	//ログイン情報格納DTO
 	private ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
@@ -33,23 +30,20 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 	private String message;
 
 
-
-	/**
-	 * セッション情報を取得する。
-	 * userListにセッションの情報が移っており、存在していたらSUCCESS
-	 */
-
 	public String execute(){
-         //login画面遷移時にメッセージをだす
-	     if(!(session.containsKey("userId"))){
+		/*---------------------------------------------------------
+	     セッション情報取得
+	    ---------------------------------------------------------*/
+		if(!(session.containsKey("userId"))){
 
 				setMessage("ログインしてください");
 
-     	}
-		String result=ERROR;
-		//String result = null;
+     		}
+			String result=ERROR;
 
-
+		/*---------------------------------------------------------
+		   test用
+		 ---------------------------------------------------------*/
 		//暫定でセッション値セット//
 				//session.put("loginFlg",true);
 				//session.put("userId", "a");
@@ -57,40 +51,40 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 				//ログインユーザーのカート情報を引き出す
 				//if(session.containsKey("useId") && (boolean) session.get("loginFlg")){
 
+		/*---------------------------------------------------------
+		    ユーザー情報取得
+		    @param userId
+		 ---------------------------------------------------------*/
 		if (session.containsKey("userId")){
+			userId = session.get("userId").toString();
+			MyPageDAO dao= new MyPageDAO();
 
-			     userId = session.get("userId").toString();
-
-		//ログイン情報取得DAO
-		MyPageDAO dao= new MyPageDAO();
-
-		myPageList =dao.getUserInfo(userId);
-
-		  if (myPageList.size() >0){
-
-			result=SUCCESS;
-
-		  }
-		}
+		/*---------------------------------------------------------
+		    ユーザー情報をリストで受け取り
+		    リストにデータが入っていたらSUCCESS
+		---------------------------------------------------------*/
+			myPageList =dao.getUserInfo(userId);
+			if (myPageList.size() >0){
+				result=SUCCESS;
+				}
+			}
 			return result;
-
 	}
 
 	/**
 	 * セッション情報を取得するメソッド
-	 * return session
+	 * @return session
 	 */
 	public Map<String,Object> getSession(){
 		return session;
 	}
 	/**
 	 * セッション情報を格納するメソッド
-	 * param session
+	 * @param session
 	 */
 	public void setSession1(Map<String, Object> session){
 		this.session =session;
 	}
-
 	/**
 	 *  配列化されたユーザー情報を取得するメソッド
 	 * @return UserList
@@ -105,7 +99,6 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 	public void setMyPageList(ArrayList<MyPageDTO> myPageList){
 		this.myPageList = myPageList;
 	}
-
 	/**
 	 * ユーザーIDを取得するメソッド
 	 * @return userId
@@ -122,6 +115,7 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 	}
 	/**
 	 * セッション情報を格納するメソッド
+	 * @param arg0
 	 */
 	public void setSession(Map<String, Object> arg0) {
 		this .session = arg0;
@@ -134,6 +128,7 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 	}
 	/**
 	 * エラーメッセージを格納するメソッド
+	 * @param message
 	 */
 	public void setMessage(String message) {
 		this.message = message;

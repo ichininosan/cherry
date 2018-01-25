@@ -13,7 +13,9 @@ public class MyPageDAO {
 	DBConnector db = new DBConnector();
 	Connection con = db.getConnection();
 
-
+	/**ユーザー情報を取得
+	 * @return myPageList
+	 */
 	public ArrayList<MyPageDTO> getUserInfo (String userId){
 		MyPageDTO myPageDTO = new MyPageDTO();
 		ArrayList<MyPageDTO> myPageList=new ArrayList<MyPageDTO>();
