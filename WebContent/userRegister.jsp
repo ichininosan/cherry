@@ -121,7 +121,7 @@
 							<p>cherryは個人情報を絶対に守ります！</p>
 						</div>
 						<br>
-						<s:checkbox name="kozin" value="0" />
+						<s:checkbox name="kozin" value="true" />
 							上記の利用規約及び個人情報保護方針に同意する
 							<br><br>
 

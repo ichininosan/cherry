@@ -73,10 +73,10 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 			result = ERROR;
 		}
 
-//		if (!(kozin.equals("3"))) {
-//			errorMessageList.add("利用規約及び個人情報保護方針に同意されない方は新規登録できません");
-//			result = ERROR;
-//		}
+		if (!(kozin.equals("true"))) {
+			errorMessageList.add("利用規約及び個人情報保護方針に同意されない方は新規登録できません");
+			result = ERROR;
+		}
 
 		return result;
 	}
