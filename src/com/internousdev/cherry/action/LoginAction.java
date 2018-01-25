@@ -202,6 +202,24 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 
 					// カート、宛先情報を引き継ぐ
 					System.out.println("kessai:" + kessai);
+					if((boolean) session.get("loginFlg")){
+						destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
+						}
+
+
+						if(destinationInfoListDTO.size() > 0) {
+							result = SUCCESS;
+
+						} else if(!(boolean) session.get("loginFlg")) {
+							result=ERROR;
+							kessai=1;
+							return result;
+
+						} else {
+							result = "destination";
+							return result;
+
+						}
 					if (kessai == 1) {
 						/*
 						 * CartInfoDAO dao = new CartInfoDAO();
