@@ -236,7 +236,7 @@ input[type="password"]:focus {
 -------------------------------------*/
 
 .btnn button{
-	margin-left: 180px;
+	margin-left: 162px;
 	margin-top: 10px;
 	display       : inline-block;
 	border-radius : 5%;          /* 角丸       */
@@ -253,11 +253,12 @@ input[type="password"]:focus {
     }
 
 .btnnc button{
-	margin-left:162px;
+	margin-left:133px;
 }
 
 .btnn button>span{
 	width: 100%;
+	letter-spacing: 3px;
 }
 .btnn button:hover {
 	color         : white;     /* 背景色     */
