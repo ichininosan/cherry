@@ -13,7 +13,7 @@
     margin-left: auto;
     margin-right: auto;
     width: 600px;
-    height: 450px;
+    height: 500px;
 }
 
 
@@ -24,7 +24,7 @@
 }
 
 .sectionHeader{
-	width:280px;
+	width:330px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 60px;
@@ -64,6 +64,7 @@
 	text-align: center;
 	margin-top: 30px;
     font-weight: bold;
+    line-height: 21px;
 }
 
 .contBody{
@@ -92,7 +93,6 @@
 	padding: 0.5em;
 	border-radius: 0.5em;
 	width: 50%;
-	animation: text_animation 1s;
 	font-weight: bold;
 }
 
@@ -122,6 +122,15 @@
 .complete{
 	margin-top: -60px;
 	font-size:25px;
+	animation: text_animation 1s;
+    animation-name: text_animation;
+    animation-duration: 1s;
+    animation-timing-function: initial;
+    animation-delay: initial;
+    animation-iteration-count: initial;
+    animation-direction: initial;
+    animation-fill-mode: initial;
+    animation-play-state: initial;
 }
 
 
@@ -141,6 +150,9 @@
 	color         : white;     /* 文字色     */
 	line-height   : 1em;         /* 1行の高さ  */
 	transition    : .3s;         /* なめらか変化 */
+	font-weight   : bold;
+	letter-spacing: 3px;
+	outline       : 0;
 }
 
 .loginlink button:hover {
@@ -255,10 +267,13 @@ input[type="password"]:focus {
 
 
 /*-------------------------------------
-	マウスオン
+	マウスオン,鍵アイコン
 -------------------------------------*/
 
 a:hover img{opacity:0.8; filter:alpha(opacity=80);}
 
 
-
+.fa.fa-unlock-alt {
+  font-size: 0.8em;
+  letter-spacing: 5px;
+  margin-left: 5px;

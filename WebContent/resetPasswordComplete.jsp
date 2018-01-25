@@ -41,7 +41,7 @@
 
 		<div class="loginlink">
 			<h2>ログインしてください</h2>
-			<button>ログイン</button>
+			<button>ログインへ</button>
 		</div>
 
 		<% }else{ %>

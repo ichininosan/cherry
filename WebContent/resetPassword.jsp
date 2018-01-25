@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sato_style.css">
 	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
 
@@ -41,13 +42,15 @@ window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.
 	<div class="main">
 
 		<div class="sectionHeader">
-			<h1>パスワード再設定</h1>
+			<h1><i class="fa fa-unlock-alt" aria-hidden="true"></i>パスワード再設定<i class="fa fa-unlock-alt" aria-hidden="true"></i></h1>
 		</div>
-
-			<div class="error">
-				<s:iterator value="errMsgList"><s:property/>
-				</s:iterator>
-			</div>
+	<div class="error" align="center">
+		<s:iterator value="errMsgList">
+			<s:div>
+				<s:property/>
+			</s:div>
+		</s:iterator>
+	</div>
 
 				<div class="contBody">
 					<s:form action="ResetPasswordConfirmAction">
@@ -74,7 +77,7 @@ window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.
 						<label>再確認パスワード</label>
 						</th>
 						<td>
-						<input type="password" name="passwordc" value="" placeholder="再入力">
+						<input type="password" name="passwordc" value="" placeholder="再入力してください">
 						</td>
 					</tr>
 					</table>
