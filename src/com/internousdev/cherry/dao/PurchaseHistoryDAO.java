@@ -10,19 +10,16 @@ import com.internousdev.cherry.dto.PurchaseHistoryDTO;
 import com.internousdev.cherry.util.DBConnector;
 
 /*
- *    PreparedStatementの1をuser_idとかにする！
- *    購入履歴削除メソッドも同じ！！
- *
- *  1/12
- *       ここは大ジョブそう
- *
+ *購入履歴表示
+ *購入履歴削除メソッド
  */
 
 public class PurchaseHistoryDAO {
 
 /*
  * 購入履歴表示メソッド
- *
+ * @param userId
+ * @purchaseHistoryDTOList
  */
 
 
@@ -41,7 +38,6 @@ public class PurchaseHistoryDAO {
 		try{
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
-						//user_id
 
 			ResultSet rs = ps.executeQuery();
 
@@ -68,7 +64,8 @@ public class PurchaseHistoryDAO {
 	}
 
 	/*
-	 * 購入履歴削除メソッド
+	 * すべて削除するメソッド
+	 * @param userId
 	 */
 	public int deleteHistory(String userId) throws SQLException{
 		DBConnector db = new DBConnector();
@@ -80,7 +77,6 @@ public class PurchaseHistoryDAO {
 		try{
 			ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
-			//user_id
 
 			result = ps.executeUpdate();
 		}catch (SQLException e){
@@ -95,7 +91,8 @@ public class PurchaseHistoryDAO {
 
 
 	/*
-	 * 履歴個別削除メソッド
+	 * 個別削除メソッド
+	 * @param id(auto incrementのID)
 	 */
 	public int deletePart(int id) throws SQLException{
 		DBConnector db = new DBConnector();
