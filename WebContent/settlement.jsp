@@ -90,7 +90,7 @@
 				<!-- 年月日 -->
 				<div class="release_date">
 					発売日：
-					<fmt:parseDate var="date2" value="${releaseDate}" pattern="yyyy-MM-dd HH:mm:ss.SS" /><fmt:formatDate value="${date2}" pattern="yyyy年M月d日" />
+					<fmt:parseDate var="date2" value="${release_date}" pattern="yyyy-MM-dd HH:mm:ss.SS" /><fmt:formatDate value="${date2}" pattern="yyyy年M月d日" />
 				</div>
 			</div>
 		</div>
