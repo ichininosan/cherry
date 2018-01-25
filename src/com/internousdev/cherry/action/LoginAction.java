@@ -156,7 +156,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 					}
 
 					/*
-					 * カートの中身を確認
+					 * カートの中身の重複を確認
 					 */
 
 					if (cartList.size() < tempCartList.size()) {
