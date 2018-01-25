@@ -108,10 +108,10 @@
 						<br>
 						<span class="member_form_title">利用規約及び個人情報保護方針</span><span class="hissu">必須</span>
 						<br>
-						<div class="kozin" style="width:460px;height:60px;overflow:auto;margin-top:8px;">
-							<p>─　利用規約　───────────────────────</p>
+						<div class="kozin" style="width:433px;height:64px;overflow:auto;margin-top:8px;">
+							<p>─　利用規約　──────────────────────</p>
 							<p>楽しんでお買い物してください！</p>
-							<p>─　個人情報保護方針　───────────────────</p>
+							<p>─　個人情報保護方針　──────────────────</p>
 							<p>cherryは個人情報を絶対に守ります！</p>
 							<p>cherryは個人情報を絶対に守ります！</p>
 							<p>cherryは個人情報を絶対に守ります！</p>

@@ -87,8 +87,8 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 		if (userId.equals("")) {
 			errorMessageList.add("ユーザーIDを入力してください");
 
-		} else if (userId.length() < 1 || userId.length() > 16) {
-			errorMessageList.add("ユーザーIDは1文字以上16文字以下で入力してください");
+		} else if (userId.length() < 1 || userId.length() > 8) {
+			errorMessageList.add("ユーザーIDは1文字以上8文字以下で入力してください");
 
 		} else if (!userId.matches("^[a-zA-Z0-9]+$")) {
 			errorMessageList.add("ユーザーIDは半角英数字で入力してください");
@@ -98,8 +98,8 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 		if (password.equals("")) {
 			errorMessageList.add("パスワードを入力してください。");
 
-		} else if (password.length() < 1 || password.length() > 8) {
-			errorMessageList.add("パスワードは1文字以上8文字以下で入力してください");
+		} else if (password.length() < 1 || password.length() > 16) {
+			errorMessageList.add("パスワードは1文字以上16文字以下で入力してください");
 
 		} else if (!password.matches("^[a-zA-Z0-9]+$")) {
 			errorMessageList.add("パスワードは半角英数字で入力してください");

@@ -38,7 +38,7 @@
 					<s:form action="RegisterUserInfoAction" theme="simple">
 						<div class="member-form-title">
 
-							名前　　　　　　:　
+							<br>名前　　　　　　:　
 							<s:property value="familyName" />
 							<s:hidden name="familyName" value="%{familyName}" />
 							<s:property value="firstName" />
@@ -72,7 +72,7 @@
 							<s:hidden name="email" value="%{email}" />
 
 							<br><br><br>
-							<p>貴方はＣｈｅｒｒｙの利用規約及び個人情報保護方針に同意しました</p>
+							<p>　貴方はCherryの利用規約及び個人情報保護方針に同意しました</p>
 							<br>
 
 							<div class="member_btn">

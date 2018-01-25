@@ -13,7 +13,7 @@ public class InputChecker {
 		if(familyName.equals("")){
 			result = "姓を入力してください。";
 		}else if(familyName.length() < 1 || familyName.length() > 16){
-			result = "姓は１文字以上１６文字以下で入力してください。";
+			result = "姓は１文字以上16文字以下で入力してください。";
 		}else if(!familyName.matches("^[a-zA-Z一-龠あ-ん]+$")){
 			result = "姓は半角英語、漢字またはひらがなで入力してください。";
 		}
