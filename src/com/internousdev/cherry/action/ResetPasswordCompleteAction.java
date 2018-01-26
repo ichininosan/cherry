@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordCompleteAction  extends ActionSupport implements SessionAware{
 
-	//Id
+	//ユーザーＩＤ
 	private String userId;
 	//新規パスワード
 	private String password;
@@ -27,8 +27,6 @@ public class ResetPasswordCompleteAction  extends ActionSupport implements Sessi
 		//パスワードを変更
 		DAO.updatePassword(session.get("newUserId").toString(),
 						session.get("newPassword").toString());
-	/*	session.put("newPassword", password);*/
-
 		return ret;
 	}
 

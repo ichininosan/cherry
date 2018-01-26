@@ -49,10 +49,9 @@
 
 			<!-- 全件削除ボタン -->
 				<div class="all_delete">
-
-					<s:form action = "PurchaseHistoryAction">
-						<input type = "hidden" name="deleteFlg" value= "1">
-						<s:submit id="all_delete" value="履歴をすべて削除" method="delete"/>
+					<s:form action="PurchaseHistoryAction" onSubmit="return allDel()" >
+						<input type ="hidden" name="deleteFlg" value="1">
+						<s:submit id="all_delete" value="履歴をすべて削除"/>
 					</s:form>
 				</div>
 			<!-- 全件削除ボタンここまで -->
@@ -141,6 +140,21 @@
 	<span><jsp:include page="include_footer.jsp" /></span>
 <!-- フッターここまで -->
 
+<!-- 全件削除の確認 -->
+<script type="text/javascript">
+   function allDel(){
+	   //OKの処理
+	   if(window.confirm('すべて削除しますか？')){
+			alert('きえぇぇぇぇい');
+		   return true;
+	   }else{
+		   //キャンセルの処理
+		   return false;
+	   }
+   }
+
+ </script>
+ <!-- 全件削除の確認ここまで -->
 
 </body>
 </html>
