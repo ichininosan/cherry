@@ -24,7 +24,7 @@
 <!-- ここからヘッダー -->
 	<jsp:include page="include_header.jsp" />
 <!-- ヘッダーここまで -->
-<br><br>
+<br><br><br><br>
 
 <div class="main" align="center">
 	<div class="heart">&#9829;</div>

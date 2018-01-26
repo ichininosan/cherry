@@ -70,8 +70,8 @@ public class InputChecker {
 
 		if (email.equals("")) {
 			result = "メールアドレスを入力してください。";
-		} else if (email.length() < 18 || email.length() > 32) {
-			result = "メールアドレスは18文字以上32文字以下で入力してください。";
+		} else if (email.length() < 10 || email.length() > 32) {
+			result = "メールアドレスは10文字以上32文字以下で入力してください。";
 		} else if (!email.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
 			result = "正しいメールアドレスの形式で入力してください。";
 		}
@@ -84,11 +84,11 @@ public class InputChecker {
 		String result = "OK";
 
 		if (userId.equals("")) {
-			result = "ログインIDを入力してください。";
+			result = "ユーザーIDを入力してください。";
 		} else if (userId.length() < 1 || userId.length() > 8) {
-			result = "ログインIDは1文字以上8文字以下で入力してください。";
+			result = "ユーザーIDは1文字以上8文字以下で入力してください。";
 		} else if (!userId.matches("^[a-zA-Z0-9]+$")) {
-			result = "ログインIDは半角英数字で入力してください。";
+			result = "ユーザーIDは半角英数字で入力してください。";
 		}
 
 		return result;
@@ -132,8 +132,8 @@ public class InputChecker {
 
 		if (telNumber.equals("")) {
 			result = "電話番号を入力してください。";
-		} else if (telNumber.length() < 11 || telNumber.length() > 13) {
-			result = "電話番号は11文字以上13文字以下で入力してください。";
+		} else if (telNumber.length() < 8 || telNumber.length() > 13) {
+			result = "電話番号は7文字以上13文字以下で入力してください。";
 		} else if (!telNumber.matches("^[0-9]+$")) {
 			result = "電話番号は半角数字で入力してください。";
 		}
@@ -147,8 +147,8 @@ public class InputChecker {
 
 		if (userAddress.equals("")) {
 			result = "住所を入力してください。";
-		} else if (userAddress.length() < 15 || userAddress.length() > 50) {
-			result = "住所は15文字以上50文字以下で入力してください。";
+		} else if (userAddress.length() < 7 || userAddress.length() > 50) {
+			result = "住所は7文字以上50文字以下で入力してください。";
 		} else if (!userAddress.matches("^[a-zA-Z0-9ァ-ヴぁ-ん一-龠々!-~]+$")) {
 			result = "住所は半角英数字、漢字、カタカナ及び半角記号で入力してください。";
 		}
