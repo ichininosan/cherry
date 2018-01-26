@@ -344,6 +344,12 @@ body {
 /*-------------------------------------
 	pro-detail list
 -------------------------------------*/
+.leftCol img{
+	width:auto;
+    height:auto;
+    max-width:380px;
+    max-height:380px;
+}
 .relation ul{
 	margin-bottom: 100px;
 }
@@ -367,6 +373,10 @@ body {
 	display: block;
     margin: 0 auto;
     margin-top: 19px;
+    width:auto;
+    height:auto;
+    max-width:95px;
+    max-height:95px;
 }
 
 .relation ul li a{

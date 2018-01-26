@@ -108,8 +108,8 @@
 						</tr>
 						<tr>
 							<th>値段</th>
-							<td><s:hidden name="price" value="%{pro_detail.price}" /> <s:property
-									value="pro_detail.price" />円</td>
+							<td><s:hidden name="price" value="%{pro_detail.price}" /> \<s:property
+									value="pro_detail.price" /></td>
 						</tr>
 						<tr>
 							<th>発売会社</th>

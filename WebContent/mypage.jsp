@@ -45,8 +45,8 @@
 									<th>氏名</th>
 									<td>
 										<p>
-											<s:property value="familyNameKana" />
-											<s:property value="firstNameKana" />
+											<s:property value="familyName" />
+											<s:property value="firstName" />
 										<p>
 									</td>
 									<td class="change">
@@ -57,8 +57,8 @@
 								<tr>
 									<th>ふりがな</th>
 									<td><p>
-											<s:property value="familyName" />
-											<s:property value="firstName" />
+											<s:property value="familyNameKana" />
+											<s:property value="firstNameKana" />
 										<p></td>
 									<td class="change">
 										<!-- <a href="アクション"></> -->
@@ -85,7 +85,7 @@
 								</tr>
 
 								<tr>
-									<th>cheryyID</th>
+									<th>cherryID</th>
 									<td><p>
 											<s:property value="userId" />
 										</p></td>
