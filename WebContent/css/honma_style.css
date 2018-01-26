@@ -2,13 +2,11 @@
 
 /* クリア */
 .clearfix_hon:after {
-
   display: block;
   clear: both;
 }
 html {
-  min-height: 100%;
-  position: relative;
+ 	height: 100%;
 }
 
 img{
@@ -17,7 +15,8 @@ img{
 	margin: auto;
 }
 body{
-	height: 100%;
+	height: 53%;
+	margin: 0;
 }
 
 
@@ -244,4 +243,5 @@ h2{
 }
 
 /*----------------移植CSSここまで--------------------------------------*/
+
 
