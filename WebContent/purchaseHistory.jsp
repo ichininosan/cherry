@@ -140,7 +140,7 @@
 	<span><jsp:include page="include_footer.jsp" /></span>
 <!-- フッターここまで -->
 
-<!-- 全件削除の確認 -->
+<!-- js全件削除の確認 -->
 <script type="text/javascript">
    function allDel(){
 	   //OKの処理
@@ -154,7 +154,8 @@
    }
 
  </script>
- <!-- 全件削除の確認ここまで -->
+ <!-- js全件削除の確認ここまで -->
+
 
 </body>
 </html>
