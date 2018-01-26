@@ -34,7 +34,7 @@ public class MyPageAction extends ActionSupport implements SessionAware, ErrorMe
 		---------------------------------------------------------*/
 		if (!(session.containsKey("userId"))) {
 
-			setMessage("ログインしてください");
+			setMessage("このサービスをご利用になるにはログインしてください。");
 
 		}
 		String result = ERROR;
