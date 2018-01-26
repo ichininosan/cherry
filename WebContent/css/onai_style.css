@@ -138,11 +138,7 @@ input#DestinationRegisterConfirmAction_familyName,input#DestinationRegisterConfi
 }
 .member_btn button:hover {
     background: #ec407ac4;
-    width:470px;
-    height:39px;
-    margin-left:-10px;
     letter-spacing: 2px;
-    font-size:18px;
 }
 
 
