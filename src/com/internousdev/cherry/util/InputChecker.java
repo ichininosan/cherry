@@ -14,8 +14,8 @@ public class InputChecker {
 			result = "姓を入力してください。";
 		}else if(familyName.length() < 1 || familyName.length() > 16){
 			result = "姓は１文字以上16文字以下で入力してください。";
-		}else if(!familyName.matches("^[a-zA-Z一-龠あ-ん]+$")){
-			result = "姓は半角英語、漢字またはひらがなで入力してください。";
+		}else if(!familyName.matches("^[a-zA-Zぁ-ゞ一-龠々ァ-ヶ]+$")){
+			result = "姓は半角英語、漢字、ひらがな、カタカナで入力してください。";
 		}
 		return result;
 	}
@@ -27,8 +27,8 @@ public class InputChecker {
 			result = "名を入力してください。";
 		} else if (firstName.length() < 1 || firstName.length() > 16) {
 			result = "名は1文字以上16文字以下で入力してください。";
-		} else if (!firstName.matches("^[a-zA-Z一-龠あ-ん]+$")) {
-				result = "名は半角英語、漢字またはひらがなで入力してください。";
+		} else if (!firstName.matches("^[a-zA-Zぁ-ゞ一-龠々ァ-ヶ]+$")) {
+				result = "名は半角英語、漢字、ひらがな、カタカナで入力してください。";
 		}
 
 		return result;
