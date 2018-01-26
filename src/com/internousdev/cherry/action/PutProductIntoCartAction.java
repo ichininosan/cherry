@@ -65,7 +65,6 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		/*
 		 * ログインしている際にカートに入れた場合
 		 */
-
 		if (session.containsKey("loginFlg") && (boolean) session.get("loginFlg")) {
 			/*
 			 * カート内の商品の重複を確認
@@ -73,51 +72,27 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 
 			boolean dupFlg = dao.isAlreadyIntoCart(session.get("userId").toString(), Integer.parseInt(productId));
 			if (!dupFlg) {
-				/*
-				 * dao.changeProductStock(productCount,
-				 * Integer.parseInt(productId));
-				 */
 				count = dao.putProductIntoCart(session.get("userId").toString(), Integer.parseInt(productId),
 						productCount, iPrice);
 				cartList = dao.showUserCartList(session.get("userId").toString());
-
 			} else {
-				/*
-				 * dao.changeProductStock(productCount,
-				 * Integer.parseInt(productId));
-				 */
 				count = dao.UpdateProductCount(session.get("userId").toString(), Integer.parseInt(productId),
 						productCount, iPrice);
 				cartList = dao.showUserCartList(session.get("userId").toString());
-
 			}
-
 		}
 
-
 		else {
-			/*
-			 * count=dao.putProductIntoCart(session.get("tempUserId").toString()
-			 * ,Integer.parseInt(productId),productCount,iPrice); cartList =
-			 * dao.showUserCartList(session.get("tempUserId").toString());
-			 *
-			 * System.out.println("OK,TEST"+session.get("tempUserId").toString()
-			 * );
-			 */
 			boolean dupFlg = dao.isAlreadyIntoCart(session.get("tempUserId").toString(), Integer.parseInt(productId));
 			if (!dupFlg) {
 				count = dao.putProductIntoCart(session.get("tempUserId").toString(), Integer.parseInt(productId),
 						productCount, iPrice);
-				/*dao.changeProductStock(productCount, Integer.parseInt(productId));*/
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
 			} else {
 				count = dao.UpdateProductCount(session.get("tempUserId").toString(), Integer.parseInt(productId),
 						productCount, iPrice);
-				/*dao.changeProductStock(productCount, Integer.parseInt(productId));*/
 				cartList = dao.showUserCartList(session.get("tempUserId").toString());
-
 			}
-
 		}
 
 		totalPrice = calcTotalPrice(cartList);
