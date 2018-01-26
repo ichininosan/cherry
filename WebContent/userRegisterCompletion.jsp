@@ -23,7 +23,7 @@
 <!-- メイン -->
 
 	<div id="main" align="center">
-	<br><br>
+	<br><br><br><br>
 		<div class="heart">&#9829;</div>
 		<br>
 			<p>	Cherryアカウントの新規登録が完了しました</p>
@@ -35,6 +35,7 @@
 		</div>
 
 	</div>
+	<br><br>
 
 	<!-- フッター -->
 
