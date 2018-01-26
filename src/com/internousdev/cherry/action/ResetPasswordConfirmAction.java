@@ -21,11 +21,26 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	//確認用パスワード
 	private String passwordc;
 
-	//パスワードの先頭2文字
-	private String confirmpass;
-	//パスワードの3文字目以降
+	//分割して*に変換する部分のパスワード
+	private String confirmpass1;
+	private String confirmpass2;
 	private String confirmpass3;
-	//確認画面で表示する先頭以外*のパスワード
+	private String confirmpass4;
+	private String confirmpass5;
+	private String confirmpass6;
+	private String confirmpass7;
+	private String confirmpass8;
+	private String confirmpass9;
+	private String confirmpass10;
+	private String confirmpass11;
+	private String confirmpass12;
+	private String confirmpass13;
+	private String confirmpass14;
+	private String confirmpass01;
+	private String confirmpass02;
+	private String confirmpass1n;
+
+	//確認画面で表示するパスワード
 	private String s;
 
 	//エラーメッセージリスト
@@ -68,7 +83,7 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			}
 		}
 
-		//パスワードが4文字以上のとき、最初の2文字のみ表示して、3文字以降を*で表示する
+	/*	//パスワードが4文字以上のとき、最初の2文字のみ表示して、3文字以降を*で表示する
 		if(password.length() > 3){
 			session.put("newUserId", userId);
 			session.put("newPassword", password);
@@ -80,6 +95,106 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			session.put("newUserId", userId);
 			session.put("newPassword", password);
 			s = password.replaceAll("^[0-9a-zA-Z]+$","*");
+		}*/
+
+
+		//パスワード1文字の時はそのまま表示
+		if(password.length() < 2){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			s = password;
+		//パスワード2文字の時は先頭1文字のみ表示
+		}else if(password.length() < 3){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass01 = password.substring(0,1);
+			confirmpass1 = password.substring(1).replaceAll("^[0-9a-zA-Z]+$","*");
+			s = confirmpass01 + confirmpass1;
+		//パスワード3文字以上の時は先頭2文字のみ表示
+		}else if(password.length() < 4){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass1n = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*");
+			s = confirmpass02 + confirmpass1n;
+		}else if(password.length() < 5){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass2 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","**");
+			s = confirmpass02 + confirmpass2;
+		}else if(password.length() < 6){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass3 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","***");
+			s = confirmpass02 + confirmpass3;
+		}else if(password.length() < 7){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass4 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","****");
+			s = confirmpass02 + confirmpass4;
+		}else if(password.length() < 8){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass5 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*****");
+			s = confirmpass02 + confirmpass5;
+		}else if(password.length() < 9){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass6 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","******");
+			s = confirmpass02 + confirmpass6;
+		}else if(password.length() < 10){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass7 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*******");
+			s = confirmpass02 + confirmpass7;
+		}else if(password.length() < 11){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass8 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","********");
+			s = confirmpass02 + confirmpass8;
+		}else if(password.length() < 12){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass9 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*********");
+			s = confirmpass02 + confirmpass9;
+		}else if(password.length() < 13){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass10 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","**********");
+			s = confirmpass02 + confirmpass10;
+		}else if(password.length() < 14){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass11 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","***********");
+			s = confirmpass02 + confirmpass11;
+		}else if(password.length() < 15){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass12 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","************");
+			s = confirmpass02 + confirmpass12;
+		}else if(password.length() < 16){
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass13 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*************");
+			s = confirmpass02 + confirmpass13;
+		}else{
+			session.put("newUserId", userId);
+			session.put("newPassword", password);
+			confirmpass02 = password.substring(0,2);
+			confirmpass14 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","**************");
+			s = confirmpass02 + confirmpass14;
 		}
 
 
@@ -127,22 +242,6 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 		this.userInfoDTO = userInfoDTO;
 	}
 
-
-	//パスワード先頭二文字のゲッターセッター
-	public String getConfirmpass() {
-		return confirmpass;
-	}
-	public void setConfirmpass(String confirmpass) {
-		this.confirmpass = confirmpass;
-	}
-
-	//パスワード3文字以降のゲッターセッター
-	public String getConfirmpass3() {
-		return confirmpass3;
-	}
-	public void setConfirmpass3(String confirmpass1) {
-		this.confirmpass3 = confirmpass1;
-	}
 
 	//確認画面用パスワードのゲッターセッター
 	public String getS() {
