@@ -26,7 +26,7 @@
 	<br><br>
 		<div class="heart">&#9829;</div>
 		<br>
-			<p>	Ｃｈｅｒｒｙアカウントの新規登録が完了しました</p>
+			<p>	Cherryアカウントの新規登録が完了しました</p>
 			<br><br><br><br>
 		<div class="nomember_btn">
 			<a href='<s:url action="GoHomeAction"/>'>H O M E</a>
