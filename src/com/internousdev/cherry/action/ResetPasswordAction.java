@@ -2,7 +2,7 @@ package com.internousdev.cherry.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class ResetPasswordAction extends ActionSupport/* implements SessionAware*/{
+public class ResetPasswordAction extends ActionSupport{
 
 	private String userId;
 	private boolean saveLogin;
@@ -10,7 +10,6 @@ public class ResetPasswordAction extends ActionSupport/* implements SessionAware
 
 
 	public String execute(){
-		/*System.out.println(userId);*/
 		String ret=SUCCESS;
 		return ret;
 	}

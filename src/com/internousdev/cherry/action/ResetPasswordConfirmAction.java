@@ -83,21 +83,6 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 			}
 		}
 
-	/*	//パスワードが4文字以上のとき、最初の2文字のみ表示して、3文字以降を*で表示する
-		if(password.length() > 3){
-			session.put("newUserId", userId);
-			session.put("newPassword", password);
-			confirmpass = password.substring(0,2);
-			confirmpass3 = password.substring(2).replaceAll("^[0-9a-zA-Z]+$","*");
-			s = confirmpass + confirmpass3;
-		//パスワードが3文字以下のとき、*で表示する
-		}else{
-			session.put("newUserId", userId);
-			session.put("newPassword", password);
-			s = password.replaceAll("^[0-9a-zA-Z]+$","*");
-		}*/
-
-
 		//パスワード1文字の時はそのまま表示
 		if(password.length() < 2){
 			session.put("newUserId", userId);

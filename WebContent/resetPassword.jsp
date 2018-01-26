@@ -34,6 +34,7 @@ window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.
 
 <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
  --%>
+
 <!-- ヘッダー -->
 <jsp:include page="include_header.jsp" />
 
