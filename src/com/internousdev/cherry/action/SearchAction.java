@@ -2,6 +2,8 @@ package com.internousdev.cherry.action;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -21,7 +23,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
 	private String searchWord;
 	private int categoryId;
 	private SearchDAO searchDAO = new SearchDAO();
-	private ArrayList<SearchDTO> searchDTOList = new ArrayList<SearchDTO>();
+	private List<SearchDTO> searchDTOList = new ArrayList<SearchDTO>(new HashSet<>());
 	private ToHiragana toHiragana = new ToHiragana();
 	public Map<String, Object> session;
 	private ArrayList<String> msgList = new ArrayList<String>();
@@ -29,17 +31,37 @@ public class SearchAction extends ActionSupport implements SessionAware {
 	public String execute() {
 		String ret = ERROR;
 
+
 		if (searchWord.length() > 16) {
 			msgList.add("16字以内で検索してください");
 		} else {
 			msgList.add(searchWord);
 		}
 
+
 		/*---------------------------------------------------------
 				検索値を全て全角ひらがな、全角カタカナに変換
 		-----------------------------------------------------------*/
 
 		searchWord = Normalizer.normalize(searchWord, Normalizer.Form.NFKC);
+		int kuuhakunobasho=searchWord.indexOf(" ");
+
+		if(kuuhakunobasho>0){
+			String[] searchWords=searchWord.split(" ",0);
+			int count=searchWords.length;
+			
+			for(String str:searchWords ){
+				searchDTOList=searchDAO.BySerchWord(str);
+				searchDTOList.get(searchWords.hashCode()).getProductId();
+			}
+		}
+		for(int i=0; i<searchWord.length();i++){
+
+		}
+		String keyword =searchWord.replace(" ", "/");
+		System.out.println(keyword);
+		System.out.println("空白の場所は"+kuuhakunobasho);
+
 		System.out.println(searchWord);
 
 		/*---------------------------------------------------------
@@ -56,14 +78,14 @@ public class SearchAction extends ActionSupport implements SessionAware {
 				ひらがな、カタカナ検索
 		-----------------------------------------------------------*/
 		else if (categoryId == 1
-				&& (searchWord.matches("^[\\u3040-\\u309F]+$") || searchWord.matches("^[\\u30A0-\\u30FF]+$"))) {
+				&& (searchWord.matches("^[\\u3040-\\u30FF]+$") || searchWord.matches("^[\\u30A0-\\u30FF]+$"))) {
 			searchWord = toHiragana.toZenkakuHiragana(searchWord);
 			System.out.println(searchWord);
 			setSearchDTOList(searchDAO.BySerchWordKana(searchWord));
 			ret = SUCCESS;
 
 		} else if (categoryId > 1
-				&& (searchWord.matches("^[\\u3040-\\u309F]+$") || searchWord.matches("^[\\u30A0-\\u30FF]+$"))) {
+				&& (searchWord.matches("^[\\u3040-\\u30FF]+$") || searchWord.matches("^[\\u30A0-\\u30FF]+$"))) {
 			searchWord = toHiragana.toZenkakuHiragana(searchWord);
 			System.out.println(searchWord);
 			setSearchDTOList(searchDAO.ByCategoryANDSerchWordKana(categoryId, searchWord));
@@ -93,6 +115,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		-----------------------------------------------------------*/
 		else {
 			setSearchDTOList(searchDAO.ByCategoryANDSerchWord(categoryId, searchWord));
+			System.out.println(searchWord);
 			ret = SUCCESS;
 
 		}
@@ -123,11 +146,11 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		this.searchDAO = searchDAO;
 	}
 
-	public ArrayList<SearchDTO> getSearchDTOList() {
+	public List<SearchDTO> getSearchDTOList() {
 		return searchDTOList;
 	}
 
-	public void setSearchDTOList(ArrayList<SearchDTO> searchDTOList) {
+	public void setSearchDTOList(List<SearchDTO> searchDTOList) {
 		this.searchDTOList = searchDTOList;
 	}
 

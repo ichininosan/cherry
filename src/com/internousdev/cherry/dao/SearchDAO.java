@@ -305,4 +305,50 @@ public class SearchDAO {
 
 	}
 
+
+
+
+
+
+/*	public ArrayList<SearchDTO> MultiWords(int categoryId, String[] serchWord) {
+		String sql = "SELECT FROM product_info WHERE product_name LIKE \'%'" +serchWord+ "\'%' AND category_id=?";
+
+		for(int i=0;i<=serchWord.length;i++){
+
+		}
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setLong(1, serchWord);
+			ps.setInt(2, categoryId);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				SearchDTO serchDTO = new SearchDTO();
+				serchDTO.setId(rs.getInt("id"));
+				serchDTO.setProductId(rs.getInt("product_id"));
+				serchDTO.setProductName(rs.getString("product_name"));
+				serchDTO.setProductNameKana(rs.getString("product_name_kana"));
+				serchDTO.setProductDescription(rs.getString("product_description"));
+				serchDTO.setCategoryId(rs.getInt("category_id"));
+				serchDTO.setPrice(rs.getInt("price"));
+				serchDTO.setImageFileName(rs.getString("image_file_name"));
+				serchDTO.setReleaseDate(rs.getDate("release_date"));
+				serchDTO.setReleaseCompany(rs.getString("release_company"));
+				serchDTO.setStatus(rs.getShort("status"));
+				serchDTO.setRegistDate(rs.getDate("regist_date"));
+				serchDTO.setUpdateDate(rs.getDate("update_date"));
+
+				searchDTOList.add(serchDTO);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return searchDTOList;
+
+	}
+*/
 }
