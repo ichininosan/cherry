@@ -57,8 +57,8 @@
 								<li><s:url id="url" action="ProDetailAction">
 										<s:param name="id" value="%{product_id}" />
 									</s:url> <s:a href="%{url}">
-										<img src='<s:property value="image_file_name"/>' width="100px"
-											height="100px" />
+										<img src='<s:property value="image_file_name"/>' width="95px"
+											height="95px" />
 										<p>
 											<s:property value="product_name" />
 										</p>
