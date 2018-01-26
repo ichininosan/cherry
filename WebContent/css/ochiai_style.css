@@ -242,9 +242,6 @@ a:hover img{
 }
 
 /* Basic style */
-body {
-    text-align: center;
-}
 
 /*-------------------------------------
 	pro-detail
@@ -255,12 +252,12 @@ body {
 
 }
 .leftCol{
-	width:45%;
+	width:48%;
 	float:left;
 	display:inline-block;
 }
 .rightCol{
-	width:45%;
+	width:48%;
 	display:inline-block;
 }
 .underCol{
@@ -273,6 +270,7 @@ body {
     position: relative;
     padding: 1.25em 0;
     margin-left: 40px;
+    text-align: center;
 }
 
 .leftCol h1:after {
@@ -288,6 +286,7 @@ body {
     position: relative;
     padding: 1.25em 0;
     margin-left: 20px;
+    text-align: center;
 }
 
 .rightCol h1:after {
@@ -321,6 +320,7 @@ body {
     height:80px;
     margin-top: 50px;
     float:right;
+    text-align: center;
 
 }
 
@@ -344,14 +344,25 @@ body {
 /*-------------------------------------
 	pro-detail list
 -------------------------------------*/
-.leftCol img{
+.proImg{
+	width:100%;
+    text-align:center;
+
+
+}
+.proImg img{
 	width:auto;
     height:auto;
+    margin:0 atuo;
     max-width:380px;
     max-height:380px;
 }
+.relation h4{
+text-align: center;
+	}
 .relation ul{
 	margin-bottom: 100px;
+	text-align: center;
 }
 .relation ul li{
     width: 213px;

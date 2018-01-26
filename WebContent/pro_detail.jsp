@@ -48,8 +48,8 @@
 					<h1>商品画像</h1>
 					<s:hidden name="imageFileName"
 						value="%{pro_detail.image_file_name}" />
-					<img src='<s:property value="pro_detail.image_file_name"/>'
-						width="380px" height="380px" />
+					<div class="proImg"><img src='<s:property value="pro_detail.image_file_name"/>'
+						/></div>
 					<div class="relation">
 						<h4>[関連商品]</h4>
 						<ul>
