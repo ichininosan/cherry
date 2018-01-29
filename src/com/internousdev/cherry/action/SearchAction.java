@@ -2,9 +2,9 @@ package com.internousdev.cherry.action;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -21,16 +21,17 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class SearchAction extends ActionSupport implements SessionAware {
 	private String searchWord;
+	private String keyword;
 	private int categoryId;
 	private SearchDAO searchDAO = new SearchDAO();
 	private List<SearchDTO> searchDTOList = new ArrayList<SearchDTO>();
 	private ToHiragana toHiragana = new ToHiragana();
+	private String[] searchWords;
 	public Map<String, Object> session;
 	private ArrayList<String> msgList = new ArrayList<String>();
 
 	public String execute() {
 		String ret = ERROR;
-
 
 		if (searchWord.length() > 16) {
 			msgList.add("16字以内で検索してください");
@@ -38,60 +39,131 @@ public class SearchAction extends ActionSupport implements SessionAware {
 			msgList.add(searchWord);
 		}
 
+		/*---------------------------------------------------------
+				検索値を全て全角に変換、適切な値に加工
+		-----------------------------------------------------------*/
+		keyword = Normalizer.normalize(searchWord, Normalizer.Form.NFKC);
+		keyword = keyword.trim();
 
 		/*---------------------------------------------------------
-				検索値を全て全角ひらがな、全角カタカナに変換
+				複数検索
 		-----------------------------------------------------------*/
 
-		searchWord = Normalizer.normalize(searchWord, Normalizer.Form.NFKC);
-		int kuuhakunobasho=searchWord.indexOf(" ");
+		int kuuhakunobasho = keyword.indexOf(" ");
 
-		if(kuuhakunobasho>0){{
+		if (categoryId == 1 && kuuhakunobasho > 0) {
+
 			List<SearchDTO> notUniqueSearchDTOList = new ArrayList<SearchDTO>();
-			String[] searchWords=searchWord.split(" ",0);
+
+			String[] searchWords = keyword.replace("|", "hogehoge").replace("_", "|_").replace("　", " ")
+					.replace("~", "～").replace("%", "|%").split("[\\s]+");
+			for (String str : searchWords) {
+				System.out.println(str);
+			}
+
 			/*
-			検索ワードを作って重複ありのリストを作成
-			*/
-			for(String str:searchWords ){
-				notUniqueSearchDTOList=searchDAO.BySerchWord(str);
+			 * 検索ワードを作って重複ありのリストを作成
+			 *
+			 */ for (String str : searchWords) {
+				notUniqueSearchDTOList = searchDAO.BySerchWord(str);
 			}
 			/*
-			重複ありのidリストを作成
-			*/
-
-			List<Integer> idList=new ArrayList<Integer>();
-			for(int i=0;i<notUniqueSearchDTOList.size();i++){
-				int id=notUniqueSearchDTOList.get(i).getId();
+			 * 重複ありのidリストを作成
+			 *
+			 *
+			 */ List<Integer> idList = new ArrayList<Integer>();
+			for (int i = 0; i < notUniqueSearchDTOList.size(); i++) {
+				int id = notUniqueSearchDTOList.get(i).getId();
 				idList.add(id);
 			}
 
-			for(int x=0;x<notUniqueSearchDTOList.size();x++){
-				notUniqueSearchDTOList.remove(x);
+			/*
+			 * 重複なしのリストを作成
+			 *
+			 */
+
+			/*
+			 * List<Integer>
+			 * uniqueIdList=idList.stream().distinct().collect(Collectors.toList
+			 * ());
+			 */
+
+			List<Integer> uniqueIdList = new ArrayList<Integer>(new HashSet<>(idList));
+			System.out.println("重複削除後は" + uniqueIdList);
+			/*
+			 * 検索開始
+			 *
+			 */ for (int uniqueId : uniqueIdList) {
+
+				searchDTOList = searchDAO.ByPrductId(uniqueId);
+			}
+
+			for (int i = 0; i < searchDTOList.size(); i++) {
+
+				System.out.println("検索結果は" + searchDTOList.get(i).getProductName());
+			}
+			ret = SUCCESS;
+			return ret;
+		} else if (categoryId >= 1 && kuuhakunobasho > 0) {
+
+			List<SearchDTO> notUniqueSearchDTOList = new ArrayList<SearchDTO>();
+
+			String[] searchWords = keyword.replace("|", "hogehoge").replace("_", "|_").replace("　", " ")
+					.replace("~", "～").replace("%", "|%").split("[\\s]+");
+			for (String str : searchWords) {
+				System.out.println(str);
+			}
+
+			/*
+			 * 検索ワードを作って重複ありのリストを作成
+			 *
+			 */ for (String str : searchWords) {
+				notUniqueSearchDTOList = searchDAO.BySerchWord(str);
 			}
 			/*
-			重複なしのリストを作成
-			*/
-
-			List<Integer> uniqueIdList=idList.stream().distinct().collect(Collectors.toList());
-			for(int uniqueId:uniqueIdList){
-				System.out.println("ユニークIDは"+uniqueId);
+			 * 重複ありのidリストを作成
+			 *
+			 *
+			 */ List<Integer> idList = new ArrayList<Integer>();
+			for (int i = 0; i < notUniqueSearchDTOList.size(); i++) {
+				int id = notUniqueSearchDTOList.get(i).getId();
+				idList.add(id);
 			}
-			/*
-			重複なしのリストを使って検索結果のListを作成
-			*/
 
-			for(int uniqueId:uniqueIdList){
-				searchDTOList=searchDAO.ByPrductId(uniqueId);
+			/*
+			 * 重複なしのリストを作成
+			 *
+			 */
+
+			/*
+			 * List<Integer>
+			 * uniqueIdList=idList.stream().distinct().collect(Collectors.toList
+			 * ());
+			 */
+
+			List<Integer> uniqueIdList = new ArrayList<Integer>(new HashSet<>(idList));
+			System.out.println("重複削除後は" + uniqueIdList);
+			/*
+			 * 検索開始
+			 *
+			 */ for (int uniqueId : uniqueIdList) {
+
+				searchDTOList = searchDAO.ByPrductIdANDcate(uniqueId, categoryId);
+			}
+
+			for (int i = 0; i < searchDTOList.size(); i++) {
+
+				System.out.println("検索結果は" + searchDTOList.get(i).getProductName());
 			}
 			ret = SUCCESS;
 			return ret;
 		}
 
 		/*---------------------------------------------------------
-				全件検索(カテゴリ、検索値なし)
+					全件検索(カテゴリ、検索値なし)
 		-----------------------------------------------------------*/
 
-		}else if (categoryId == 1 && searchWord.isEmpty()) {
+		else if (categoryId == 1 && keyword.isEmpty()) {
 			setSearchDTOList(searchDAO.allProductInfo());
 			ret = SUCCESS;
 
@@ -101,17 +173,17 @@ public class SearchAction extends ActionSupport implements SessionAware {
 				ひらがな、カタカナ検索
 		-----------------------------------------------------------*/
 		else if (categoryId == 1
-				&& (searchWord.matches("^[\\u3040-\\u30FF]+$") || searchWord.matches("^[\\u30A0-\\u30FF]+$"))) {
-			searchWord = toHiragana.toZenkakuHiragana(searchWord);
-			System.out.println(searchWord);
-			setSearchDTOList(searchDAO.BySerchWordKana(searchWord));
+				&& (keyword.matches("^[\\u3040-\\u30FF]+$") || keyword.matches("^[\\u30A0-\\u30FF]+$"))) {
+			keyword = toHiragana.toZenkakuHiragana(keyword);
+			System.out.println(keyword);
+			setSearchDTOList(searchDAO.BySerchWordKana(keyword));
 			ret = SUCCESS;
 
 		} else if (categoryId > 1
-				&& (searchWord.matches("^[\\u3040-\\u30FF]+$") || searchWord.matches("^[\\u30A0-\\u30FF]+$"))) {
-			searchWord = toHiragana.toZenkakuHiragana(searchWord);
-			System.out.println(searchWord);
-			setSearchDTOList(searchDAO.ByCategoryANDSerchWordKana(categoryId, searchWord));
+				&& (keyword.matches("^[\\u3040-\\u30FF]+$") || keyword.matches("^[\\u30A0-\\u30FF]+$"))) {
+			keyword = toHiragana.toZenkakuHiragana(keyword);
+			System.out.println(keyword);
+			setSearchDTOList(searchDAO.ByCategoryANDSerchWordKana(categoryId, keyword));
 			ret = SUCCESS;
 
 		}
@@ -119,7 +191,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		/*---------------------------------------------------------
 				カテゴリ有り、検索値なし
 		-----------------------------------------------------------*/
-		else if (categoryId > 1 && searchWord.isEmpty()) {
+		else if (categoryId > 1 && keyword.isEmpty()) {
 
 			setSearchDTOList(searchDAO.ByProductCategory(categoryId));
 			ret = SUCCESS;
@@ -128,8 +200,8 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		/*---------------------------------------------------------
 				カテゴリなし、検索値あり
 		-----------------------------------------------------------*/
-		else if (categoryId == 1 && !(searchWord.isEmpty())) {
-			setSearchDTOList(searchDAO.BySerchWord(searchWord));
+		else if (categoryId == 1 && !(keyword.isEmpty())) {
+			setSearchDTOList(searchDAO.BySerchWord(keyword));
 			ret = SUCCESS;
 		}
 
@@ -137,11 +209,12 @@ public class SearchAction extends ActionSupport implements SessionAware {
 				カテゴリあり、検索値あり
 		-----------------------------------------------------------*/
 		else {
-			setSearchDTOList(searchDAO.ByCategoryANDSerchWord(categoryId, searchWord));
-			System.out.println(searchWord);
+			setSearchDTOList(searchDAO.ByCategoryANDSerchWord(categoryId, keyword));
+			System.out.println(keyword);
 			ret = SUCCESS;
 
 		}
+		keyword = getSearchWord();
 		return ret;
 	}
 
@@ -201,6 +274,14 @@ public class SearchAction extends ActionSupport implements SessionAware {
 	public void setSession(Map<String, Object> arg0) {
 		// TODO 自動生成されたメソッド・スタブ
 
+	}
+
+	public String[] getSearchWords() {
+		return searchWords;
+	}
+
+	public void setSearchWords(String[] searchWords) {
+		this.searchWords = searchWords;
 	}
 
 }
