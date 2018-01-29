@@ -63,10 +63,11 @@ public class SearchDAO {
 	 *
 	 * @return searchDTOList
 	 */
-	public ArrayList<SearchDTO> ByPrductId() {
+	public ArrayList<SearchDTO> ByPrductId(int uniqueId) {
 		String sql = "SELECT*FROM product_info WHERE product_id=?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, uniqueId);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {

@@ -2,9 +2,9 @@ package com.internousdev.cherry.action;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -23,7 +23,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
 	private String searchWord;
 	private int categoryId;
 	private SearchDAO searchDAO = new SearchDAO();
-	private List<SearchDTO> searchDTOList = new ArrayList<SearchDTO>(new HashSet<>());
+	private List<SearchDTO> searchDTOList = new ArrayList<SearchDTO>();
 	private ToHiragana toHiragana = new ToHiragana();
 	public Map<String, Object> session;
 	private ArrayList<String> msgList = new ArrayList<String>();
@@ -46,29 +46,52 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		searchWord = Normalizer.normalize(searchWord, Normalizer.Form.NFKC);
 		int kuuhakunobasho=searchWord.indexOf(" ");
 
-		if(kuuhakunobasho>0){
+		if(kuuhakunobasho>0){{
+			List<SearchDTO> notUniqueSearchDTOList = new ArrayList<SearchDTO>();
 			String[] searchWords=searchWord.split(" ",0);
-			int count=searchWords.length;
-			
+			/*
+			検索ワードを作って重複ありのリストを作成
+			*/
 			for(String str:searchWords ){
-				searchDTOList=searchDAO.BySerchWord(str);
-				searchDTOList.get(searchWords.hashCode()).getProductId();
+				notUniqueSearchDTOList=searchDAO.BySerchWord(str);
 			}
-		}
-		for(int i=0; i<searchWord.length();i++){
+			/*
+			重複ありのidリストを作成
+			*/
 
-		}
-		String keyword =searchWord.replace(" ", "/");
-		System.out.println(keyword);
-		System.out.println("空白の場所は"+kuuhakunobasho);
+			List<Integer> idList=new ArrayList<Integer>();
+			for(int i=0;i<notUniqueSearchDTOList.size();i++){
+				int id=notUniqueSearchDTOList.get(i).getId();
+				idList.add(id);
+			}
 
-		System.out.println(searchWord);
+			for(int x=0;x<notUniqueSearchDTOList.size();x++){
+				notUniqueSearchDTOList.remove(x);
+			}
+			/*
+			重複なしのリストを作成
+			*/
+
+			List<Integer> uniqueIdList=idList.stream().distinct().collect(Collectors.toList());
+			for(int uniqueId:uniqueIdList){
+				System.out.println("ユニークIDは"+uniqueId);
+			}
+			/*
+			重複なしのリストを使って検索結果のListを作成
+			*/
+
+			for(int uniqueId:uniqueIdList){
+				searchDTOList=searchDAO.ByPrductId(uniqueId);
+			}
+			ret = SUCCESS;
+			return ret;
+		}
 
 		/*---------------------------------------------------------
 				全件検索(カテゴリ、検索値なし)
 		-----------------------------------------------------------*/
 
-		if (categoryId == 1 && searchWord.isEmpty()) {
+		}else if (categoryId == 1 && searchWord.isEmpty()) {
 			setSearchDTOList(searchDAO.allProductInfo());
 			ret = SUCCESS;
 
