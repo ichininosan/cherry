@@ -60,6 +60,7 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 			---------------------------------------------------------*/
 
 			int i = purchaseCompleteDAO.setPurchseHistory(cartList);
+			System.out.println(cartList);
 
 			/*---------------------------------------------------------
 				カート情報ありの場合(listの数と処理件数と同じ場合)
