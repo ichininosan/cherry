@@ -132,7 +132,8 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 			System.out.println("注文日！");
 		}else if(sort == 2){
 			System.out.println("値段！！");
-			historyList = purchaseHistoryDAO.sortHistory(userId);
+			historyList = purchaseHistoryDAO.sortPrice(userId);
+
 		}
 		/*-----------------------------------
 		 * ソート機能のテストォ！！！

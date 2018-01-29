@@ -66,7 +66,7 @@ public class PurchaseHistoryDAO {
 	/*
 	 *	金額高い順にならびかえメソッド
 	 */
-	public ArrayList<PurchaseHistoryDTO> sortHistory(String userId) throws SQLException{
+	public ArrayList<PurchaseHistoryDTO> sortPrice(String userId) throws SQLException{
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 		ArrayList<PurchaseHistoryDTO> purchaseHistoryDTOList = new ArrayList<PurchaseHistoryDTO>();
