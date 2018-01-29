@@ -64,6 +64,51 @@ public class PurchaseHistoryDAO {
 	}
 
 	/*
+	 *	金額高い順にならびかえメソッド
+	 */
+	public ArrayList<PurchaseHistoryDTO> sortHistory(String userId) throws SQLException{
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+		ArrayList<PurchaseHistoryDTO> purchaseHistoryDTOList = new ArrayList<PurchaseHistoryDTO>();
+
+		/*
+		 * piはproduct_infoの略
+		 * phiはpurchase_history_infoの略
+		 */
+		String sql = "SELECT phi.id, pi.product_name, pi.product_name_kana, pi.image_file_name,  phi.price, phi.product_count, pi.release_company, pi.release_date, phi.regist_date  FROM purchase_history_info phi LEFT JOIN product_info pi ON phi.product_id = pi.product_id  WHERE phi.user_id = ? ORDER BY price DESC";
+
+
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, userId);
+
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()){
+				PurchaseHistoryDTO dto = new PurchaseHistoryDTO();
+				dto.setId(rs.getInt("id"));
+				dto.setProductName(rs.getString("product_name"));
+				dto.setProductNameKana(rs.getString("product_name_kana"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setCount(rs.getInt("product_count"));
+				dto.setReleaseCompany(rs.getString("release_company"));
+				dto.setReleaseDate(rs.getString("release_date"));
+				dto.setRegistDate(rs.getString("regist_date"));
+				dto.setProductImage(rs.getString("image_file_name"));
+
+				purchaseHistoryDTOList.add(dto);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			con.close();
+		}
+		return purchaseHistoryDTOList;
+	}
+
+
+
+	/*
 	 * すべて削除するメソッド
 	 * @param userId
 	 */

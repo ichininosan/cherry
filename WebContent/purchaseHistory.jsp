@@ -31,8 +31,8 @@
 					<h2><s:property value="message"/></h2>
 				</s:if> --%>
 			</div>
-
 		<!-- メインのトップここまで -->
+
 
 
 
@@ -45,7 +45,17 @@
 				<s:elseif test= "historyList != null && historyList.size() != 0">
 					<h2>購入情報は以下になります</h2>
 
-
+<!-- ソートのぉ、テストーーーーーーーーーーーーーーーーーーーー -->
+<div>
+	<s:form action="PurchaseHistoryAction">
+		<select name="sort">
+			<option value="1">注文日　新しい順</option>
+			<option value="2">値段　高い順</option>
+		</select>
+		<s:submit value="ならびかえ！"/>
+	</s:form>
+</div>
+<!--　ソートのぉ、テストーーーーーーーーーーーーーーーーーーーー  -->
 
 			<!-- 全件削除ボタン -->
 				<div class="all_delete">
@@ -130,20 +140,27 @@
 		</div>
 <!-- ページリンクここまで -->
 
+
 <!-- トップに戻れる！ -->
  	<p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i> ＞ページトップへ＜ </a></p>
 <!-- トップに戻れるここまで -->
+
 		</div>
 	</div>
 <!-- メインここまで -->
+
+
 <!-- フッター -->
 	<span><jsp:include page="include_footer.jsp" /></span>
 <!-- フッターここまで -->
+
+
 
 <!-- js全件削除の確認 -->
 <script type="text/javascript">
    function allDel(){
 	   //OKの処理
+
 	   if(window.confirm('すべて削除しますか？')){
 		   return true;
 	   }else{

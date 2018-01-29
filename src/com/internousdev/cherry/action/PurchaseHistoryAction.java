@@ -60,15 +60,23 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	private  List<String> chooseList;
 
 
+	//ソートのやつ
+	private int sort;
+
+
+
 
 
 	/*
 	 * 商品購入履歴取得メソッド
 	 */
+
+
 	public String execute()throws SQLException{
 
 		//ログインしてなければログインに飛ばす
 		if (!session.containsKey("userId")) {
+
 			return ERROR;
 		}
 
@@ -78,11 +86,10 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		String userId = (String) session.get("userId");
 
 		if(deleteFlg == null){
+			//購入履歴表示メソッド
 
 			//session.get("user_id").toString()せっっしょンの名前！
 			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
-
-
 			System.out.println("List = "+ historyList);
 
 
@@ -108,7 +115,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
-		}	else if(deleteFlg.equals("3")){
+		}else if(deleteFlg.equals("3")){
 			/*
 			 * 選択した項目を削除
 			 */
@@ -118,9 +125,21 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 
 		}
+		/*-----------------------------------
+		 * ソート機能のテストォ！！！
+		 *---------------------------------- */
+		if(sort == 1){
+			System.out.println("注文日！");
+		}else if(sort == 2){
+			System.out.println("値段！！");
+			historyList = purchaseHistoryDAO.sortHistory(userId);
+		}
+		/*-----------------------------------
+		 * ソート機能のテストォ！！！
+		 *---------------------------------- */
 
-		historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
-		System.out.println("List = "+ historyList);
+		/*historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
+		System.out.println("List = "+ historyList);*/
 		return result;
 	}
 
@@ -238,6 +257,15 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	}
 	public void setChooseList(List<String> chooseList){
 		this.chooseList = chooseList;
+	}
+
+	//ソートのげっっとセット
+	public int getSort() {
+		return sort;
+	}
+
+	public void setSort(int sort) {
+		this.sort = sort;
 	}
 
 }
