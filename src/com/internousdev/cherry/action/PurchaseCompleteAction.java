@@ -2,7 +2,6 @@ package com.internousdev.cherry.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -25,9 +24,11 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 	// userId格納
 	private String userId;
 	// cartInfoDTO格納List
-	private List<CartInfoDTO> cartList = new ArrayList<CartInfoDTO>();
+	private ArrayList<CartInfoDTO> cartList = new ArrayList<CartInfoDTO>();
 	// session情報格納
 	public Map<String, Object> session;
+	// カートの合計金額
+	private int totalPrice = 0;
 
 	public String execute() throws SQLException {
 		String result = ERROR;
@@ -72,6 +73,7 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 				result = SUCCESS;
 			}
 		}
+		totalPrice = calcTotalPrice(cartList);
 		return result;
 	}
 
@@ -98,7 +100,7 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 	 *
 	 * @return cartList
 	 */
-	public List<CartInfoDTO> getCartList() {
+	public ArrayList<CartInfoDTO> getCartList() {
 		return cartList;
 	}
 
@@ -107,7 +109,7 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 	 *
 	 * @return cartList
 	 */
-	public void setCartList(List<CartInfoDTO> cartList) {
+	public void setCartList(ArrayList<CartInfoDTO> cartList) {
 		this.cartList = cartList;
 	}
 
@@ -127,6 +129,26 @@ public class PurchaseCompleteAction extends ActionSupport implements SessionAwar
 	 */
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
+	}
+
+	/**
+	 * 合計金額を計算するメソッド
+	 */
+	public int calcTotalPrice(ArrayList<CartInfoDTO> cartList) {
+		int totalPrice = 0;
+		for (CartInfoDTO dto : cartList) {
+			totalPrice += dto.getPrice() * dto.getProductCount();
+			System.out.println("合計" + totalPrice + "円");
+		}
+		return totalPrice;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 }
