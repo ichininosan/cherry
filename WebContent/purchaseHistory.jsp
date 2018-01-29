@@ -131,7 +131,7 @@
 <!-- ページリンクここまで -->
 
 <!-- トップに戻れる！ -->
- 	<p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i> ＞トップへ＜ </a></p>
+ 	<p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i> ＞ページトップへ＜ </a></p>
 <!-- トップに戻れるここまで -->
 		</div>
 	</div>
@@ -145,7 +145,6 @@
    function allDel(){
 	   //OKの処理
 	   if(window.confirm('すべて削除しますか？')){
-			alert('きえぇぇぇぇい');
 		   return true;
 	   }else{
 		   //キャンセルの処理
