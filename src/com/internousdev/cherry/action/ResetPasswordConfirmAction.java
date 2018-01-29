@@ -51,7 +51,6 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 	private ResetPasswordDAO DAO = new ResetPasswordDAO();
 	private UserInfoDTO userInfoDTO = new UserInfoDTO();
 
-
 	//メソッドの実行
 	public String execute(){
 		String result =SUCCESS;
