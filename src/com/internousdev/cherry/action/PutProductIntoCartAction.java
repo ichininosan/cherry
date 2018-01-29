@@ -95,6 +95,8 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 			}
 		}
 
+		
+
 		totalPrice = calcTotalPrice(cartList);
 		return SUCCESS;
 	}

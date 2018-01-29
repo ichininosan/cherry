@@ -140,6 +140,28 @@
 		</s:if>
 	<!-- 決済にとばすここまで -->
 
+<!-- F5, Backspaceの無効化 -->
+<script>
+	$(function(){
+		$(document).keydown(function(event){
+			//クリックされたキーコードを取得する
+			var keyCode = event.keyCode;
+
+			//F5の場合はfalseをリターン
+			if(keyCode == 116){
+				console.log("F5");
+				return false;
+			}
+
+			//バックスペースキーを制御する
+			if(keyCode == 8){
+				console.log("Backspace");
+				return false;
+			}
+		})
+	});
+</script>
+
 </body>
 <!-- フッター -->
 	<jsp:include page="include_footer.jsp" />
