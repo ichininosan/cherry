@@ -1,6 +1,9 @@
 package com.internousdev.cherry.action;
 
 import java.util.ArrayList;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.internousdev.cherry.util.InputChecker;
@@ -8,7 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 
 
-public class DestinationRegisterConfirmAction extends ActionSupport implements ErrorMessageConstants{
+public class DestinationRegisterConfirmAction extends ActionSupport implements ErrorMessageConstants, SessionAware{
 
 	private String familyName;
 	private String firstName;
@@ -19,8 +22,24 @@ public class DestinationRegisterConfirmAction extends ActionSupport implements E
 	private String userAddress;
 	private ArrayList<String> errMsgList = new ArrayList<>();
 
+	/**
+	 * セッション
+	 */
+	private Map<String,Object> session;
+
+
 	public String execute(){
+
 		String result = SUCCESS;
+
+		/**
+		 * ログイン判定
+		 */
+		if(!(session.containsKey("userId"))){
+			System.out.println("ログアウトしてます");
+			result = "login";
+			return result;
+		}
 
 		InputChecker i = new InputChecker();
 		if(!i.familyNameChk(familyName).equals("OK")){
@@ -133,6 +152,13 @@ public class DestinationRegisterConfirmAction extends ActionSupport implements E
 		this.errMsgList = errMsgList;
 	}
 
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
 
 }
 
