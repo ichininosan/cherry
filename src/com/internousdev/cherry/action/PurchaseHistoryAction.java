@@ -66,6 +66,12 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	 * 商品購入履歴取得メソッド
 	 */
 	public String execute()throws SQLException{
+
+		//ログインしてなければログインに飛ばす
+		if (!session.containsKey("userId")) {
+			return ERROR;
+		}
+
 		String result = SUCCESS;
 
 		//sessionからもってこれるようにする
