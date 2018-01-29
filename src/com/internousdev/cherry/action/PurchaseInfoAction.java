@@ -79,6 +79,13 @@ public class PurchaseInfoAction extends ActionSupport implements SessionAware {
 		CartInfoDAO cartInfoDAO = new CartInfoDAO();
 		cartList = cartInfoDAO.showUserCartList(session.get("userId").toString());
 
+		/**
+		 * カート情報なしの場合
+		 */
+		if(cartList.size() == 0){
+			return "other";
+		}
+
 		for(CartInfoDTO dto:cartList) {
 			totalPrice +=dto.getPrice() * dto.getProductCount();
 
