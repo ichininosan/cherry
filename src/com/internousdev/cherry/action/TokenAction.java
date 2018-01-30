@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.internousdev.cherry.util.RandomTokenizer;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class TokenAction extends ActionSupport implements SessionAware{
@@ -12,8 +11,8 @@ public class TokenAction extends ActionSupport implements SessionAware{
 
 	private Map<String, Object> session;
 	public String execute(){
-		if(new RandomTokenizer().checkToken()) return ERROR;
-
+		/*if(new RandomTokenizer().checkToken()) return ERROR;
+*/
 
 
 

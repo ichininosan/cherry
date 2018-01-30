@@ -37,19 +37,49 @@ public class RandomTokenizer implements SessionAware{
 	}
 
 
-	public boolean checkToken(){
-		String token=String.valueOf(session.get("token"));
-		String nextToken=String.valueOf(session.get("nextToken"));
+	public boolean checkToken(Map<String,Object> session){
+		String token=null;
+		String nextToken=null;
 
-		if(token!=nextToken){
-			RandomTokenizer t = new RandomTokenizer();
-			nextToken=t.getRandomToken();
-			session.put("token", token);
-			session.put("nextToken",nextToken);
-			return false;
+		if(session.containsKey("nextToken")){
+			token=String.valueOf(session.get("token"));
+			nextToken=String.valueOf(session.get("nextToken"));
+			System.out.println("TOKEN       :" + token);
+			System.out.println("NEXTTOKEN   :" + nextToken);
+			if(token.equals(nextToken)){
+				return true;
+			}
 		}else{
-			return true;
+			RandomTokenizer t = new RandomTokenizer();
+			token=t.getRandomToken();
+			System.out.println("TOKEN       :" + token);
+			System.out.println("NEXTTOKEN   :" + nextToken);
+			session.put("token", token);
+			return false;
 		}
+
+////		System.out.println(String.valueOf(session.get("token")));
+//		if((String.valueOf(session.get("token"))==null)){
+//			RandomTokenizer t = new RandomTokenizer();
+//			nextToken=t.getRandomToken();
+//			session.put("token", token);
+//			session.put("nextToken",nextToken);
+//		}
+//
+//		token=String.valueOf(session.get("token"));
+//		nextToken=String.valueOf(session.get("nextToken"));
+
+
+//		if(token!=nextToken){
+//			RandomTokenizer t = new RandomTokenizer();
+//			nextToken=t.getRandomToken();
+//			session.put("token", token);
+//			session.put("nextToken",nextToken);
+//			return false;
+//		}else{
+//			return true;
+//		}
+		return false;
 	}
 
 

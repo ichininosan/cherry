@@ -10,6 +10,7 @@ import com.internousdev.cherry.dao.ResetPasswordDAO;
 import com.internousdev.cherry.dto.UserInfoDTO;
 import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.internousdev.cherry.util.InputChecker;
+import com.internousdev.cherry.util.RandomTokenizer;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ResetPasswordConfirmAction extends ActionSupport implements SessionAware,ErrorMessageConstants {
@@ -53,6 +54,10 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 
 	//メソッドの実行
 	public String execute(){
+
+		if(new RandomTokenizer().checkToken(session)) return ERROR;
+		System.out.println(String.valueOf(session.get("token")));
+		session.put("nextToken",String.valueOf(session.get("nextToken")));
 		String result =SUCCESS;
 		userInfoDTO=DAO.UserInfoByUserId(userId);
 		String str=userInfoDTO.getUserId();
