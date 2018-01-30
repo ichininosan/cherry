@@ -6,11 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/onai_style.css">
-	<link rel="shortcut icon" href="${pageContext.request.contextPath}/img/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mt_style.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/reset.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/onai_style.css">
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/img/favicon.ico">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/mt_style.css">
 <script type="text/javascript" src="script.js"></script>
 
 <title>ユーザー情報入力画面</title>
@@ -18,15 +23,15 @@
 </head>
 <body>
 
-<!-- ヘッダー -->
+	<!-- ヘッダー -->
 
-		<jsp:include page="include_header.jsp" />
+	<jsp:include page="include_header.jsp" />
 
-<!-- メイン -->
+	<!-- メイン -->
 
-<div id="main">
-<br><br>
-       <div class="title">アカウント新規登録</div>
+	<div id="main">
+		<br> <br>
+		<div class="title">アカウント新規登録</div>
 		<br>
 		<div class="register_box">
 			<div class="member">
@@ -45,9 +50,9 @@
 
 						<span class="member_form_title">姓</span>
 						<span class="hissu">必須</span>
-							<div class="member_form_text">
-								<s:textfield type="text" name="familyName" value="%{familyName}" />
-							</div>
+						<div class="member_form_text">
+							<s:textfield type="text" name="familyName" value="%{familyName}" />
+						</div>
 
 						<br>
 						<span class="member_form_title">名</span>
@@ -61,7 +66,8 @@
 						<span class="member_form_title">姓ふりがな</span>
 						<span class="hissu">必須</span>
 						<div class="member_form_text">
-							<s:textfield type="text" name="familyNameKana" value="%{familyNameKana}" />
+							<s:textfield type="text" name="familyNameKana"
+								value="%{familyNameKana}" />
 							<br>
 						</div>
 
@@ -69,7 +75,8 @@
 						<span class="member_form_title">名ふりがな</span>
 						<span class="hissu">必須</span>
 						<div class="member_form_text">
-							<s:textfield type="text" name="firstNameKana" value="%{firstNameKana}" />
+							<s:textfield type="text" name="firstNameKana"
+								value="%{firstNameKana}" />
 							<br>
 						</div>
 
@@ -77,7 +84,8 @@
 						<span class="member_form_title">cherryID</span>
 						<span class="hissu">必須</span>
 						<div class="member_form_text">
-							<s:textfield type="text" name="userId" value="%{userId}" placeholder="半角英数字" />
+							<s:textfield type="text" name="userId" value="%{userId}"
+								placeholder="半角英数字" />
 							<br>
 						</div>
 
@@ -85,7 +93,8 @@
 						<span class="member_form_title">パスワード</span>
 						<span class="hissu">必須</span>
 						<div class="member_form_text">
-							<s:password name="password" value="%{password}" placeholder="半角英数字" />
+							<s:password name="password" value="%{password}"
+								placeholder="半角英数字" />
 							<br>
 						</div>
 
@@ -106,9 +115,11 @@
 						</div>
 
 						<br>
-						<span class="member_form_title">利用規約及び個人情報保護方針</span><span class="hissu">必須</span>
+						<span class="member_form_title">利用規約及び個人情報保護方針</span>
+						<span class="hissu">必須</span>
 						<br>
-						<div class="kozin" style="width:433px;height:64px;overflow:auto;margin-top:8px;">
+						<div class="kozin"
+							style="width: 433px; height: 64px; overflow: auto; margin-top: 8px;">
 							<p>─　利用規約　──────────────────────</p>
 							<p>楽しんでお買い物してください！</p>
 							<p>─　個人情報保護方針　──────────────────</p>
@@ -123,10 +134,12 @@
 						<br>
 						<s:checkbox name="kozin" value="true" />
 							上記の利用規約及び個人情報保護方針に同意する
-							<br><br>
+							<br>
+						<br>
 
 
-						<br><br>
+						<br>
+						<br>
 						<div class="member_btn">
 							<button type="submit" class="">登 録 情 報 を 確 認</button>
 						</div>
@@ -137,8 +150,8 @@
 		</div>
 	</div>
 
-		<!-- フッター -->
+	<!-- フッター -->
 
-<jsp:include page="include_footer.jsp" />
+	<jsp:include page="include_footer.jsp" />
 </body>
 </html>

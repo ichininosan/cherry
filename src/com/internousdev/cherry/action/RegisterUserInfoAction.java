@@ -38,7 +38,7 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 		UserInfoDAO dao = new UserInfoDAO();
 		UserInfoDTO dto = new UserInfoDTO();
 		dto.setUserName(familyName, firstName, familyNameKana, firstNameKana);
-		if(sex.equals("0")) {
+		if (sex.equals("0")) {
 			dto.setSex(false);
 		} else if (sex.equalsIgnoreCase("1")) {
 			dto.setSex(true);
@@ -50,7 +50,7 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 		if (dao.registerUser(dto)) {
 			session.put("userId", userId);
 			session.put("loginFlg", true);
-			//カーとの情報を引き継ぐ
+			// カーとの情報を引き継ぐ
 			CartInfoDAO cartInfoDAO = new CartInfoDAO();
 			cartInfoDAO.changeUserId(session.get("tempUserId").toString(), session.get("userId").toString());
 
@@ -60,7 +60,6 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 			return SUCCESS;
 		}
 	}
-
 
 	public Map<String, Object> getSession() {
 		return session;
@@ -89,6 +88,7 @@ public class RegisterUserInfoAction extends ActionSupport implements SessionAwar
 	public String getFamilyNameKana() {
 		return familyNameKana;
 	}
+
 	public void setFamilyNameKana(String familyNameKana) {
 		this.familyNameKana = familyNameKana;
 	}

@@ -19,7 +19,7 @@ public class UserInfoDAO {
 		int updateCount = 0;
 
 		String sql = "INSERT INTO user_info(user_id, password, family_name, first_name, family_name_kana, first_name_kana, sex, email, regist_date) "
-						+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
 		try {
 			con = db.getConnection();
@@ -35,9 +35,9 @@ public class UserInfoDAO {
 
 			System.out.println(userInfoDTO.getFirstName());
 
-		updateCount = ps.executeUpdate();
+			updateCount = ps.executeUpdate();
 
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {
@@ -45,7 +45,7 @@ public class UserInfoDAO {
 
 		}
 
-		if(updateCount == 1) {
+		if (updateCount == 1) {
 			result = true;
 
 		}
@@ -53,7 +53,7 @@ public class UserInfoDAO {
 		return result;
 	}
 
-	public int  update(String password,String userId) {
+	public int update(String password, String userId) {
 		int result = 0;
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -66,13 +66,13 @@ public class UserInfoDAO {
 			ps.setString(2, userId);
 			int i = ps.executeUpdate();
 
-			if(i > 0) {
+			if (i > 0) {
 				System.out.println(i + "件変更されました。");
 				result = i;
 
 			}
 
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
@@ -80,7 +80,7 @@ public class UserInfoDAO {
 
 	}
 
-	public List<UserInfoDTO> select(String password,String userId) {
+	public List<UserInfoDTO> select(String password, String userId) {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
@@ -93,7 +93,7 @@ public class UserInfoDAO {
 			ps.setString(2, userId);
 			ResultSet rs = ps.executeQuery();
 
-			while(rs.next()) {
+			while (rs.next()) {
 				UserInfoDTO userInfoDTO = new UserInfoDTO();
 				userInfoDTO.setPassword(rs.getString("password"));
 				userInfoDTO.setUserId(rs.getString("user_id"));
@@ -101,7 +101,7 @@ public class UserInfoDAO {
 
 			}
 
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
@@ -109,7 +109,7 @@ public class UserInfoDAO {
 		try {
 			con.close();
 
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
@@ -118,16 +118,16 @@ public class UserInfoDAO {
 
 	public ArrayList<UserInfoDTO> userInfo(String userId) {
 		ArrayList<UserInfoDTO> userInfoDTO = new ArrayList<UserInfoDTO>();
-	    Connection con = db.getConnection();
+		Connection con = db.getConnection();
 
 		String sql = "SELECT family_name,first_name,family_name_kana,first_name_kana,sex,email FROM user_info WHERE user_id = ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1,userId);
-			ResultSet rs=ps.executeQuery();
+			ps.setString(1, userId);
+			ResultSet rs = ps.executeQuery();
 
-			if(rs.next()){
+			if (rs.next()) {
 				UserInfoDTO userInfodto = new UserInfoDTO();
 				userInfodto.setFamilyName(rs.getString("familyName"));
 				userInfodto.setFirstName(rs.getString("firstName"));
@@ -139,15 +139,15 @@ public class UserInfoDAO {
 
 			}
 
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
 
-		try{
+		try {
 			con.close();
 
-		}catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
@@ -166,12 +166,12 @@ public class UserInfoDAO {
 			ps.setString(1, userId);
 			ResultSet rs = ps.executeQuery();
 
-			if(rs.next()) {
+			if (rs.next()) {
 				result = true;
 
 			}
 
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {

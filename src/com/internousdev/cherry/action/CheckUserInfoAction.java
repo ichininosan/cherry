@@ -12,16 +12,14 @@ import com.internousdev.cherry.util.InputChecker;
 import com.internousdev.cherry.util.RandomTokenizer;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CheckUserInfoAction extends ActionSupport implements SessionAware,ErrorMessageConstants {
-
-
+public class CheckUserInfoAction extends ActionSupport implements SessionAware, ErrorMessageConstants {
 
 	private String familyName;
 	private String firstName;
 	private String familyNameKana;
 	private String firstNameKana;
 
-	//0:男性、1:女性
+	// 0:男性、1:女性
 
 	private String sex;
 	private String email;
@@ -29,14 +27,16 @@ public class CheckUserInfoAction extends ActionSupport implements SessionAware,E
 	private String password;
 	private String kozin;
 	private ArrayList<String> errorMessageList = new ArrayList<>();
-	private Map<String,Object> session;
+	private Map<String, Object> session;
+
 	public String execute() throws SQLException {
 
-		//----------トークン生成------------
-		if(new RandomTokenizer().checkToken(session)) return ERROR;
+		// ----------トークン生成------------
+		if (new RandomTokenizer().checkToken(session))
+			return ERROR;
 		System.out.println(String.valueOf(session.get("token")));
-		session.put("nextToken",String.valueOf(session.get("nextToken")));
-		//----------------------------------------
+		session.put("nextToken", String.valueOf(session.get("nextToken")));
+		// ----------------------------------------
 
 		String result = SUCCESS;
 		UserInfoDAO dao = new UserInfoDAO();
@@ -62,10 +62,10 @@ public class CheckUserInfoAction extends ActionSupport implements SessionAware,E
 			result = ERROR;
 		}
 
-		if(dao.existsUserId(userId)) {
+		if (dao.existsUserId(userId)) {
 			errorMessageList.add("入力されたIDは既に存在します");
 			result = ERROR;
-		}else if (!i.userIdChk(userId).equals("OK")) {
+		} else if (!i.userIdChk(userId).equals("OK")) {
 			errorMessageList.add(i.userIdChk(userId));
 			result = ERROR;
 		}
@@ -92,7 +92,6 @@ public class CheckUserInfoAction extends ActionSupport implements SessionAware,E
 
 		return result;
 	}
-
 
 	public String getFamilyName() {
 		return familyName;
@@ -174,11 +173,9 @@ public class CheckUserInfoAction extends ActionSupport implements SessionAware,E
 		this.errorMessageList = errorMessageList;
 	}
 
-
 	public Map<String, Object> getSession() {
 		return session;
 	}
-
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;

@@ -8,11 +8,10 @@ import java.sql.SQLException;
 import com.internousdev.cherry.dto.UserInfoDTO;
 import com.internousdev.cherry.util.DBConnector;
 
-
 public class LoginDAO {
 
-
-	public UserInfoDTO select(String userId,String password) /*throws SQLException*/ {
+	public UserInfoDTO select(String userId,
+			String password) /* throws SQLException */ {
 		UserInfoDTO userInfoDTO = new UserInfoDTO();
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -24,7 +23,7 @@ public class LoginDAO {
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 
-			if(rs.next()) {
+			if (rs.next()) {
 				userInfoDTO.setUserId(rs.getString("user_id"));
 				userInfoDTO.setPassword(rs.getString("password"));
 				userInfoDTO.setFamilyNameKana(rs.getString("family_name_kana"));
@@ -35,16 +34,15 @@ public class LoginDAO {
 
 			}
 
-		} catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 
-		} /*finally {
-			con.close();
-		}*/
+		} /*
+			 * finally { con.close(); }
+			 */
 
 		return userInfoDTO;
 	}
-
 
 	public boolean login(UserInfoDTO userInfoDTO) throws SQLException {
 		boolean result = false;
@@ -57,7 +55,7 @@ public class LoginDAO {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userInfoDTO.getUserId());
 			updateCount = ps.executeUpdate();
-			if(updateCount > 0) {
+			if (updateCount > 0) {
 				System.out.println("ログイン済み");
 				result = true;
 			}
@@ -81,7 +79,7 @@ public class LoginDAO {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, userId);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				result = true;
 
 			}

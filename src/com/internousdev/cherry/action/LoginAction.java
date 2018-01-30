@@ -204,24 +204,24 @@ public class LoginAction extends ActionSupport implements SessionAware, ErrorMes
 					System.out.println("kessai:" + kessai);
 
 					if (kessai == 1) {
-						if((boolean) session.get("loginFlg")){
-							destinationInfoListDTO = destinationInfoDAO.obtainingDestinationInfo(session.get("userId").toString());
-							}
+						if ((boolean) session.get("loginFlg")) {
+							destinationInfoListDTO = destinationInfoDAO
+									.obtainingDestinationInfo(session.get("userId").toString());
+						}
 
+						if (destinationInfoListDTO.size() > 0) {
+							result = SUCCESS;
 
-							if(destinationInfoListDTO.size() > 0) {
-								result = SUCCESS;
+						} else if (!(boolean) session.get("loginFlg")) {
+							result = ERROR;
+							kessai = 1;
+							return result;
 
-							} else if(!(boolean) session.get("loginFlg")) {
-								result=ERROR;
-								kessai=1;
-								return result;
+						} else {
+							result = "destination";
+							return result;
 
-							} else {
-								result = "destination";
-								return result;
-
-							}
+						}
 						/*
 						 * CartInfoDAO dao = new CartInfoDAO();
 						 * DestinationInfoDAO destinationInfoDAO = new
