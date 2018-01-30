@@ -55,6 +55,7 @@ body{
 .pro_img{
 	margin: 10px 0 10px auto;
     float: left;
+    display: table-cell;
 }
 
 .delete{
@@ -131,6 +132,7 @@ h2{
     width: 24%;
 	margin: 10px 0 10px auto;
     float: left;
+    display: table-cell;
 }
 .pro_img a:hover{
 	opacity: 0.5;
