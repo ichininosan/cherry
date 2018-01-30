@@ -2,13 +2,17 @@ package com.internousdev.cherry.action;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import com.internousdev.cherry.dao.UserInfoDAO;
 import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.internousdev.cherry.util.InputChecker;
+import com.internousdev.cherry.util.RandomTokenizer;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CheckUserInfoAction extends ActionSupport implements ErrorMessageConstants {
+
+
 
 	private String familyName;
 	private String firstName;
@@ -23,7 +27,15 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 	private String password;
 	private String kozin;
 	private ArrayList<String> errorMessageList = new ArrayList<>();
+	private Map<String,Object> session;
 	public String execute() throws SQLException {
+
+		//----------トークン生成------------
+		if(new RandomTokenizer().checkToken(session)) return ERROR;
+		System.out.println(String.valueOf(session.get("token")));
+		session.put("nextToken",String.valueOf(session.get("nextToken")));
+		//----------------------------------------
+
 		String result = SUCCESS;
 		UserInfoDAO dao = new UserInfoDAO();
 
@@ -161,4 +173,15 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 	public void setErrMsgList(ArrayList<String> errorMessageList) {
 		this.errorMessageList = errorMessageList;
 	}
+
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
 }
