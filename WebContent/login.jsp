@@ -43,7 +43,7 @@
 				<div class="member_form">
 					<s:form action="LoginAction" theme="simple" id="LoginForm">
 						<div class="member_form_title">
-							ユーザーID<br>
+							cherryID<br>
 						</div>
 						<div class="member_textbox">
 							<s:textfield type="text" name="userId" value="%{#session.saveId}"/>

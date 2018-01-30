@@ -50,7 +50,7 @@
 							<s:property value="firstNameKana" />
 							<s:hidden name="firstNameKana" value="%{firstNameKana}" />
 
-							<br><br><br>ユーザーＩＤ　　:　
+							<br><br><br>cherryID　　　　:　
 							<s:property value="userId" />
 							<s:hidden name="userId" value="%{userId}" />
 

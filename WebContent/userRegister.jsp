@@ -74,7 +74,7 @@
 						</div>
 
 						<br>
-						<span class="member_form_title">ユーザーＩＤ</span>
+						<span class="member_form_title">cherryID</span>
 						<span class="hissu">必須</span>
 						<div class="member_form_text">
 							<s:textfield type="text" name="userId" value="%{userId}" placeholder="半角英数字" />
