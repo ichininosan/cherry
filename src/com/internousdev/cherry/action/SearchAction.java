@@ -46,7 +46,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		keyword = keyword.trim();
 
 		/*---------------------------------------------------------
-				複数検索
+				複数検索 カテゴリーなし
 		-----------------------------------------------------------*/
 
 		int kuuhakunobasho = keyword.indexOf(" ");
@@ -82,12 +82,6 @@ public class SearchAction extends ActionSupport implements SessionAware {
 			 *
 			 */
 
-			/*
-			 * List<Integer>
-			 * uniqueIdList=idList.stream().distinct().collect(Collectors.toList
-			 * ());
-			 */
-
 			List<Integer> uniqueIdList = new ArrayList<Integer>(new HashSet<>(idList));
 			System.out.println("重複削除後は" + uniqueIdList);
 			/*
@@ -104,6 +98,11 @@ public class SearchAction extends ActionSupport implements SessionAware {
 			}
 			ret = SUCCESS;
 			return ret;
+
+			/*---------------------------------------------------------
+					複数検索 カテゴリーあり
+			-----------------------------------------------------------*/
+
 		} else if (categoryId >= 1 && kuuhakunobasho > 0) {
 
 			List<SearchDTO> notUniqueSearchDTOList = new ArrayList<SearchDTO>();
@@ -130,16 +129,6 @@ public class SearchAction extends ActionSupport implements SessionAware {
 				idList.add(id);
 			}
 
-			/*
-			 * 重複なしのリストを作成
-			 *
-			 */
-
-			/*
-			 * List<Integer>
-			 * uniqueIdList=idList.stream().distinct().collect(Collectors.toList
-			 * ());
-			 */
 
 			List<Integer> uniqueIdList = new ArrayList<Integer>(new HashSet<>(idList));
 			System.out.println("重複削除後は" + uniqueIdList);
