@@ -15,8 +15,6 @@ import com.opensymphony.xwork2.ActionSupport;
 /*
  * マイページからボタン押して遷移
  *
- *       (要) executeメソッドとdeleteメソッドの
- *        user_idをsessionからひっぱれるようにする！
  *
  *
  */
@@ -76,7 +74,6 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 		//ログインしてなければログインに飛ばす
 		if (!session.containsKey("userId")) {
-
 			return ERROR;
 		}
 
@@ -87,14 +84,10 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 		if(deleteFlg == null){
 			//購入履歴表示メソッド
-
-			//session.get("user_id").toString()せっっしょンの名前！
 			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
 			System.out.println("List = "+ historyList);
 
-
 			Iterator<PurchaseHistoryDTO> iterator = historyList.iterator();
-
 
 			if(!(iterator.hasNext())){
 				historyList = null;
@@ -102,6 +95,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		} else if(deleteFlg.equals("1")){
 			/*
 			 * すべて削除するメソッド
+			 * deleteFlg="1"
 			 */
 			delete();
 			//historyList = null;
@@ -109,6 +103,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		} else if(deleteFlg.equals("2")){
 			/*
 			 * 個別削除するメソッド
+			 * deleteFlg="2"
 			 */
 			System.out.println("ID:"+id);
 			deletePart(id);
@@ -118,15 +113,17 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 		}else if(deleteFlg.equals("3")){
 			/*
 			 * 選択した項目を削除
+			 * deleteFlg="3"
+			 * 機能実装はしてない
 			 */
-			System.out.println("chooseList:"+ chooseList);
+			/*System.out.println("chooseList:"+ chooseList);
 			//deleteChoose(chooseList);
 
 			historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
-
+*/
 		}
 		/*-----------------------------------
-		 * ソート機能のテストォ！！！
+		 * ソート機能↓
 		 *---------------------------------- */
 		if(sort == 1){
 			System.out.println("注文日！");
@@ -136,7 +133,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 		}
 		/*-----------------------------------
-		 * ソート機能のテストォ！！！
+		 * ソート機能↑
 		 *---------------------------------- */
 
 		/*historyList = purchaseHistoryDAO.getPurchaseHistory(userId);
@@ -151,7 +148,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 
 	/*
-	 * 購入履歴削除メソッド
+	 * 全件削除メソッド------------------------
 	 */
 	public void delete() throws SQLException{
 		//sessionからもってこれるようにする
@@ -175,7 +172,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 
 	/*
-	 * 個別削除メソッド
+	 * 個別削除メソッド------------------------
 	 */
 	public void deletePart(int id) throws SQLException{
 		//jspからもってきた
@@ -207,7 +204,12 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 
 
-
+/*----------------------------------------------------------------
+ *
+ * ゲット  セット
+ *
+ *
+ ----------------------------------------------------------------*/
 
 
 	/*
@@ -270,25 +272,4 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
