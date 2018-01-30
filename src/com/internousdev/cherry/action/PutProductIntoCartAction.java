@@ -95,7 +95,12 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 			}
 		}
 
-		
+		/*
+		 * 検証画面で購入個数をマイナスにした場合エラーを返しホームに戻る
+		 */
+		if(productCount < 0){
+			return "CountError";
+		}
 
 		totalPrice = calcTotalPrice(cartList);
 		return SUCCESS;
