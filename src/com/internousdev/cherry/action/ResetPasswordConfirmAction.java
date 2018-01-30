@@ -54,10 +54,11 @@ public class ResetPasswordConfirmAction extends ActionSupport implements Session
 
 	//メソッドの実行
 	public String execute(){
-
+	//----------トークン生成------------
 		if(new RandomTokenizer().checkToken(session)) return ERROR;
 		System.out.println(String.valueOf(session.get("token")));
 		session.put("nextToken",String.valueOf(session.get("nextToken")));
+		//----------------------------------------
 		String result =SUCCESS;
 		userInfoDTO=DAO.UserInfoByUserId(userId);
 		String str=userInfoDTO.getUserId();
