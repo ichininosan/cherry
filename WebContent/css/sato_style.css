@@ -324,16 +324,3 @@ a:hover img{opacity:0.8; filter:alpha(opacity=80);}
 }
 
 
-/*-------------------------------------
-	エラー
--------------------------------------*/
-
-.relative {
-    position: relative;
-}
-
-.absolute {
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
-}
