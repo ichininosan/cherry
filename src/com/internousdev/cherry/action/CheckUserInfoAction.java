@@ -4,13 +4,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.internousdev.cherry.dao.UserInfoDAO;
 import com.internousdev.cherry.util.ErrorMessageConstants;
 import com.internousdev.cherry.util.InputChecker;
 import com.internousdev.cherry.util.RandomTokenizer;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CheckUserInfoAction extends ActionSupport implements ErrorMessageConstants {
+public class CheckUserInfoAction extends ActionSupport implements SessionAware,ErrorMessageConstants {
 
 
 
@@ -38,8 +40,6 @@ public class CheckUserInfoAction extends ActionSupport implements ErrorMessageCo
 
 		String result = SUCCESS;
 		UserInfoDAO dao = new UserInfoDAO();
-
-
 
 		InputChecker i = new InputChecker();
 		if (!i.familyNameChk(familyName).equals("OK")) {

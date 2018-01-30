@@ -1,5 +1,6 @@
 package com.internousdev.cherry.action;
 
+import java.sql.SQLException;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -30,11 +31,15 @@ public class SearchAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 	private ArrayList<String> msgList = new ArrayList<String>();
 
-	public String execute() {
+	public String execute() throws SQLException{
+
 		String ret = ERROR;
+
 
 		if (searchWord.length() > 16) {
 			msgList.add("16字以内で検索してください");
+			ret = SUCCESS;
+			return ret;
 		} else {
 			msgList.add(searchWord);
 		}
@@ -44,6 +49,11 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		-----------------------------------------------------------*/
 		keyword = Normalizer.normalize(searchWord, Normalizer.Form.NFKC);
 		keyword = keyword.trim();
+		if(keyword.matches("^[\\p{Punct}]+$")){
+			msgList.add("一般的な検索ワードを使ってください");
+			ret = SUCCESS;
+			return ret;
+		}
 
 		/*---------------------------------------------------------
 				複数検索 カテゴリーなし
