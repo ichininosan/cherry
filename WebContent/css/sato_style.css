@@ -323,9 +323,17 @@ a:hover img{opacity:0.8; filter:alpha(opacity=80);}
   margin-left: 5px;
 }
 
-image {
-	background: url(/cherry/img/cherryerror.png) no-repeat;
-    width: 100px;
-    height: 100px;
+
+/*-------------------------------------
+	エラー
+-------------------------------------*/
+
+.relative {
+    position: relative;
+}
+
+.absolute {
     position: absolute;
+    right: 30px;
+    bottom: 30px;
 }
