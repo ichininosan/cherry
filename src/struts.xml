@@ -34,7 +34,7 @@
 		<action name="PutProductIntoCartAction" class="com.internousdev.cherry.action.PutProductIntoCartAction" method="execute">
 			<result name="success">cart.jsp</result>
 			<result name="error">cart.jsp</result>
-			<result name="input">cart.jsp</result>
+			<result name="CountError">pro_detail.jsp</result>
 		</action>
 		<action name="PurchaseInfoAction" class="com.internousdev.cherry.action.PurchaseInfoAction" method="execute">
 			<result name="success">settlement.jsp</result>
