@@ -46,7 +46,7 @@
 
 		<% }else{ %>
 
-		<div class="loginlink">
+		<div class="toplink">
 			<button formaction="TopAction">TOPページへ</button>
 		</div>
 

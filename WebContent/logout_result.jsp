@@ -26,11 +26,11 @@
 <div class="completemain">
 	<s:form action="TopAction">
 
-			<div class="complete">
+			<div class="completelogout">
 			<h1>ログアウトしました</h1>
 			</div>
 
-			<div class="loginlink">
+			<div class="toplink">
 			<button type="submit">
 			<span>TOPページへ</span>
 			</button>

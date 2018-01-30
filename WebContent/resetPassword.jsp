@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 
+
 <!DOCTYPE html>
 <html>
 
@@ -39,7 +40,7 @@ window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.
 <jsp:include page="include_header.jsp" />
 
 <!-- メインコンテンツ -->
-<div class="outbox">
+<div class="outbox1">
 	<div class="main">
 
 		<div class="sectionHeader">

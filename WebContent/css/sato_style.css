@@ -13,6 +13,18 @@
     margin-left: auto;
     margin-right: auto;
     width: 600px;
+    height: 407px;
+}
+
+.outbox1{
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    color: #565656;
+    border: dashed 2px #ffc3c3;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
     height: 500px;
 }
 
@@ -119,8 +131,22 @@
 	margin-top: 120px;
 }
 
+
 .complete{
-	margin-top: -60px;
+	font-size:25px;
+	animation: text_animation 1s;
+    animation-name: text_animation;
+    animation-duration: 1s;
+    animation-timing-function: initial;
+    animation-delay: initial;
+    animation-iteration-count: initial;
+    animation-direction: initial;
+    animation-fill-mode: initial;
+    animation-play-state: initial;
+}
+
+.completelogout{
+
 	font-size:25px;
 	animation: text_animation 1s;
     animation-name: text_animation;
@@ -139,7 +165,24 @@
 }
 
 .loginlink button{
-	margin-top: 100px;
+	margin-top: 80px;
+	display       : inline-block;
+	border-radius : 10%;          /* 角丸       */
+	font-size     : 15pt;        /* 文字サイズ */
+	text-align    : center;      /* 文字位置   */
+	cursor        : pointer;     /* カーソル   */
+	padding       : 15px 100px;   /* 余白       */
+	background    : #F48FB1;     /* 背景色     */
+	color         : white;     /* 文字色     */
+	line-height   : 1em;         /* 1行の高さ  */
+	transition    : .3s;         /* なめらか変化 */
+	font-weight   : bold;
+	letter-spacing: 3px;
+	outline       : 0;
+}
+
+.toplink button{
+	margin-top: 140px;
 	display       : inline-block;
 	border-radius : 10%;          /* 角丸       */
 	font-size     : 15pt;        /* 文字サイズ */
