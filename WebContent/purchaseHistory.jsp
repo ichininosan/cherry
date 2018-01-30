@@ -45,17 +45,17 @@
 				<s:elseif test= "historyList != null && historyList.size() != 0">
 					<h2>購入情報は以下になります</h2>
 
-<!-- ソートのぉ、テストーーーーーーーーーーーーーーーーーーーー -->
+<!-- ソートーーーーーーーーーーーーーーーーーーー -->
 <div>
 	<s:form action="PurchaseHistoryAction">
-		<select name="sort">
+		<select class="sort" name="sort">
 			<option value="1">注文日　新しい順</option>
 			<option value="2">値段　高い順</option>
 		</select>
-		<s:submit value="ならびかえ！"/>
+		<s:submit value="並び替え"/>
 	</s:form>
 </div>
-<!--　ソートのぉ、テストーーーーーーーーーーーーーーーーーーーー  -->
+<!--ソートーーーーーーーーーーーーーーーーーーー  -->
 
 			<!-- 全件削除ボタン -->
 				<div class="all_delete">
@@ -68,7 +68,7 @@
 
 		<!-- リストに応じたトップメッセージここまで -->
 
-<!----------------------ここから------------------------------->
+<!----------------------履歴詳細   ここから------------------------------->
 				<s:iterator value = "historyList">
         			<div class="date">
             			<p>注文日</p>
@@ -78,10 +78,17 @@
             			</p>
             		</div>
 
+
+
+
 			<div class="main_content clearfix_hon">
 				<div class="pro_image">
 					<img src="<s:property value="productImage"/>">
 				</div>
+
+
+
+
 				<div class="pro_text">
 					 <div class="name">
            				 <div class="kana"><s:property value="productNameKana"/></div>
@@ -89,6 +96,10 @@
            				 	商品名: <s:property value="productName"/>
            				 </div>
         			</div>
+
+
+
+
 
 					<div class="price_count">
             			<div class="price">
@@ -100,12 +111,20 @@
        				 </div>
 
 
+
+
+
+
 					 <div class="comp_info">
            				 <div class="company">発売会社：<s:property value="releaseCompany"/></div>
            				 <div class="release_date">
            				 	発売日：<fmt:parseDate var="date2" value="${releaseDate}" pattern="yyyy-MM-dd HH:mm:ss.SS" /><fmt:formatDate value="${date2}" pattern="yyyy年M月d日" />
            				 </div>
         			</div>
+
+
+
+
 
 
         			<div class="delete">
@@ -116,18 +135,17 @@
 								<s:submit id="deletePart" value="×削除" method="deletePart"/>
 							</s:form>
 						<!--  履歴個別削除ボタンここまで-->
+
+
+
+
 					 </div>
 				</div>
     		</div>
 
-    			<!-- test -->
 
-    			<!-- test -->
     		</s:iterator>
-<!----------------------ここまで------------------------------->
-
-
-
+<!----------------------履歴詳細   ここまで------------------------------->
 		</s:elseif>
 
 
@@ -141,6 +159,9 @@
 <!-- ページリンクここまで -->
 
 
+
+
+
 <!-- トップに戻れる！ -->
  	<p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i> ＞ページトップへ＜ </a></p>
 <!-- トップに戻れるここまで -->
@@ -150,9 +171,17 @@
 <!-- メインここまで -->
 
 
+
+
+
+
 <!-- フッター -->
 	<span><jsp:include page="include_footer.jsp" /></span>
 <!-- フッターここまで -->
+
+
+
+
 
 
 

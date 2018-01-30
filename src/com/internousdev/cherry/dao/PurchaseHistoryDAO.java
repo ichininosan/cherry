@@ -12,15 +12,16 @@ import com.internousdev.cherry.util.DBConnector;
 /*
  *購入履歴表示
  *購入履歴削除メソッド
+ *ソート機能
  */
 
 public class PurchaseHistoryDAO {
 
-/*
+/*--------------------------------------------------------------
  * 購入履歴表示メソッド
  * @param userId
  * @purchaseHistoryDTOList
- */
+------------------------------------------------ */
 
 
 	public ArrayList<PurchaseHistoryDTO> getPurchaseHistory(String userId) throws SQLException{
@@ -63,9 +64,9 @@ public class PurchaseHistoryDAO {
 		return purchaseHistoryDTOList;
 	}
 
-	/*
-	 *	金額高い順にならびかえメソッド
-	 */
+	/*--------------------------------------------------------------
+	 *	金額高い順にならびかえるメソッド
+	 --------------------------------------------------------------*/
 	public ArrayList<PurchaseHistoryDTO> sortPrice(String userId) throws SQLException{
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -108,10 +109,10 @@ public class PurchaseHistoryDAO {
 
 
 
-	/*
+	/*--------------------------------------------------------------
 	 * すべて削除するメソッド
 	 * @param userId
-	 */
+	 --------------------------------------------------------------*/
 	public int deleteHistory(String userId) throws SQLException{
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
@@ -135,10 +136,10 @@ public class PurchaseHistoryDAO {
 
 
 
-	/*
+	/*--------------------------------------------------------------
 	 * 個別削除メソッド
 	 * @param id(auto incrementのID)
-	 */
+	 --------------------------------------------------------------*/
 	public int deletePart(int id) throws SQLException{
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
