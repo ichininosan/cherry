@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<!-- 金額、日付表示カスタムタグ -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -48,7 +50,7 @@
 
 
 				<p class="name"><s:property value="product_name"/></p>
-				<p class="price">\<span><s:property value="price"/></span></p>
+				<p class="price">\<span><fmt:formatNumber value="${price}" /></span></p>
 			</s:a>
 		</li>
 		</s:iterator>
