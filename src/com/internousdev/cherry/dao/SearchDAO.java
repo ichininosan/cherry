@@ -151,7 +151,6 @@ public class SearchDAO {
 	public ArrayList<SearchDTO> BySerchWord(String serchWord) {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
-		ArrayList<SearchDTO> searchDTOList = new ArrayList<SearchDTO>();
 		String sql = "SELECT*FROM product_info WHERE product_name LIKE \'%' ? \'%' OR product_name_kana LIKE \'%' ? \'%' ";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

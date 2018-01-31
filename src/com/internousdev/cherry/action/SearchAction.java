@@ -48,6 +48,8 @@ public class SearchAction extends ActionSupport implements SessionAware {
 				検索値を全て全角に変換、適切な値に加工
 		-----------------------------------------------------------*/
 		keyword = Normalizer.normalize(searchWord, Normalizer.Form.NFKC);
+		keyword = toHiragana.toZenkakuHiragana(keyword);
+		System.out.println(keyword);
 		keyword = keyword.trim();
 		if(keyword.matches("^[\\p{Punct}]+$")){
 			msgList.add("一般的な検索ワードを使ってください");
@@ -86,6 +88,10 @@ public class SearchAction extends ActionSupport implements SessionAware {
 				int id = notUniqueSearchDTOList.get(i).getId();
 				idList.add(id);
 			}
+			/*
+			jspで引っ張られてしまうので、削除
+			*/
+			notUniqueSearchDTOList.clear();
 
 			/*
 			 * 重複なしのリストを作成
@@ -138,6 +144,10 @@ public class SearchAction extends ActionSupport implements SessionAware {
 				int id = notUniqueSearchDTOList.get(i).getId();
 				idList.add(id);
 			}
+			/*
+			jspで引っ張られてしまうので、リストを削除
+			*/
+			notUniqueSearchDTOList.clear();
 
 
 			List<Integer> uniqueIdList = new ArrayList<Integer>(new HashSet<>(idList));
