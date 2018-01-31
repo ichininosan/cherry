@@ -31,10 +31,9 @@ public class SearchAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 	private ArrayList<String> msgList = new ArrayList<String>();
 
-	public String execute() throws SQLException{
+	public String execute() throws SQLException {
 
 		String ret = ERROR;
-
 
 		if (searchWord.length() > 16) {
 			msgList.add("16字以内で検索してください");
@@ -51,7 +50,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		keyword = toHiragana.toZenkakuHiragana(keyword);
 		System.out.println(keyword);
 		keyword = keyword.trim();
-		if(keyword.matches("^[\\p{Punct}]+$")){
+		if (keyword.matches("^[\\p{Punct}]+$")) {
 			msgList.add("一般的な検索ワードを使ってください");
 			ret = SUCCESS;
 			return ret;
@@ -60,7 +59,9 @@ public class SearchAction extends ActionSupport implements SessionAware {
 		/*---------------------------------------------------------
 				複数検索 カテゴリーなし
 		-----------------------------------------------------------*/
-
+		/*
+		空白の場所を確認
+		*/
 		int kuuhakunobasho = keyword.indexOf(" ");
 
 		if (categoryId == 1 && kuuhakunobasho > 0) {
@@ -89,8 +90,8 @@ public class SearchAction extends ActionSupport implements SessionAware {
 				idList.add(id);
 			}
 			/*
-			jspで引っ張られてしまうので、削除
-			*/
+			 * jspで引っ張られてしまうので、削除
+			 */
 			notUniqueSearchDTOList.clear();
 
 			/*
@@ -145,10 +146,9 @@ public class SearchAction extends ActionSupport implements SessionAware {
 				idList.add(id);
 			}
 			/*
-			jspで引っ張られてしまうので、リストを削除
-			*/
+			 * jspで引っ張られてしまうので、リストを削除
+			 */
 			notUniqueSearchDTOList.clear();
-
 
 			List<Integer> uniqueIdList = new ArrayList<Integer>(new HashSet<>(idList));
 			System.out.println("重複削除後は" + uniqueIdList);

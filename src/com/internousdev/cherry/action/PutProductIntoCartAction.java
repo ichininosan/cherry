@@ -81,7 +81,9 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 				cartList = dao.showUserCartList(session.get("userId").toString());
 			}
 		}
-
+		/*
+		 * ログインしていない場合
+		 */
 		else {
 			boolean dupFlg = dao.isAlreadyIntoCart(session.get("tempUserId").toString(), Integer.parseInt(productId));
 			if (!dupFlg) {
@@ -98,7 +100,7 @@ public class PutProductIntoCartAction extends ActionSupport implements SessionAw
 		/*
 		 * 検証画面で購入個数をマイナスにした場合エラーを返しホームに戻る
 		 */
-		if(productCount < 0){
+		if (productCount < 0) {
 			return "CountError";
 		}
 
