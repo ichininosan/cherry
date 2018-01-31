@@ -108,7 +108,6 @@ public class SearchDAO {
 	public ArrayList<SearchDTO> ByPrductIdANDcate(int uniqueId, int categoryId) {
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
-		ArrayList<SearchDTO> searchDTOList = new ArrayList<SearchDTO>();
 		String sql = "SELECT*FROM product_info WHERE product_id=? AND category_id=?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
