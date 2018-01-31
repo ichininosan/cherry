@@ -10,9 +10,17 @@ html {
 }
 
 img{
-	width: 200px;
+	/* width: 200px;
 	height: 200px;
 	margin: auto;
+	max-width: 200px;
+    max-height: 230px; */
+
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
 }
 body{
 	height: 53%;
@@ -132,10 +140,10 @@ h2{
            メイン
 ----------------------------------*/
 .main_content {
-    width: 100%;
-	min-height: 240px;
+   width: 100%;
+    min-height: 240px;
     margin: 0 auto;
-    margin-top:23px;
+    margin-top: 23px;
 
 }
 
@@ -152,8 +160,11 @@ h2{
             画像
 ----------------------------------*/
 .pro_image{
-    width: 24%;
-	margin: 10px 0 10px auto;
+    width: 21%;
+    height: 230px;
+    text-align: center;
+    /* margin: 10px 0 10px auto; */
+	margin: 0px 20px 10px 16px;
     float: left;
 }
 
