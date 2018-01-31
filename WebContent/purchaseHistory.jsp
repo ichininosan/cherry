@@ -45,7 +45,7 @@
 				<s:elseif test= "historyList != null && historyList.size() != 0">
 					<h2>購入情報は以下になります</h2>
 
-<!-- ソートーーーーーーーーーーーーーーーーーーー -->
+<!-- ソート機能ーーーーーーーーーーーーーーーーーーー -->
 <div>
 	<s:form action="PurchaseHistoryAction">
 		<select class="sort" name="sort">
@@ -55,7 +55,7 @@
 		<s:submit value="並び替え"/>
 	</s:form>
 </div>
-<!--ソートーーーーーーーーーーーーーーーーーーー  -->
+<!--ソートここまでーーーーーーーーーーーーーーーーーーー  -->
 
 			<!-- 全件削除ボタン -->
 				<div class="all_delete">

@@ -58,7 +58,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 	private  List<String> chooseList;
 
 
-	//ソートのやつ
+	//ソート
 	private int sort;
 
 
@@ -79,7 +79,7 @@ public class PurchaseHistoryAction extends ActionSupport implements SessionAware
 
 		String result = SUCCESS;
 
-		//sessionからもってこれるようにする
+		//sessionからuserId取得
 		String userId = (String) session.get("userId");
 
 		if(deleteFlg == null){
